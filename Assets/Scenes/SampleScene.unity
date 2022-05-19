@@ -175,7 +175,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 20
+  field of view: 30
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -201,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: 0.5000004, y: -0, z: -0, w: 0.8660252}
-  m_LocalPosition: {x: 0, y: 77.5, z: -45}
+  m_LocalPosition: {x: 0.5, y: 35, z: -20.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -582,7 +582,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1193752715}
-  - component: {fileID: 1193752714}
+  - component: {fileID: 1193752718}
   - component: {fileID: 1193752716}
   - component: {fileID: 1193752717}
   m_Layer: 0
@@ -592,24 +592,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1193752714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193752713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d1c7cd51cc50b42b644ed2ed1e6fa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridSize: {x: 30, y: 30}
-  gridSpacing: 1.1
-  nodePrefab: {fileID: 3159788204143126556, guid: 37dc664b21f90334a971bce341cb25ab,
-    type: 3}
-  drawGizmos: 1
-  teamIndex: 0
 --- !u!4 &1193752715
 Transform:
   m_ObjectHideFlags: 0
@@ -660,6 +642,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1193752718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193752713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d1c7cd51cc50b42b644ed2ed1e6fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSize: {x: 20, y: 20}
+  gridSpacing: 1.2
+  nodePrefab: {fileID: 3159788204143126556, guid: 37dc664b21f90334a971bce341cb25ab,
+    type: 3}
+  drawGizmos: 1
+  teamIndex: 0
 --- !u!1 &1221805244
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Core.Pathing;
 
 namespace Core.Grid
 {
@@ -15,7 +16,18 @@ namespace Core.Grid
         [SerializeField] private bool drawGizmos;
         [SerializeField] private int teamIndex = 0;
 
-        private void Start() => GridGenerator.CreateGrid(gridSize: gridSize, spacing: gridSpacing, center: transform.position, prefab: nodePrefab,teamIndex: teamIndex, parent: transform);
+        private void Start()
+        {
+            GridGenerator.CreateGrid(
+                gridSize: gridSize, 
+                spacing: gridSpacing, 
+                center: transform.position, 
+                prefab: nodePrefab, 
+                teamIndex: teamIndex, 
+                parent: transform, 
+                callback: PathManager.GeneratePath
+            );
+        }
 
         private void OnDrawGizmos()
         {

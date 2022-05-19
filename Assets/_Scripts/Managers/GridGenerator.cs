@@ -33,7 +33,28 @@ namespace Core.Grid
             });
 
             return staticGridNodes;
-        }   
+        }
+
+        public static GridNode[] CreateGrid(Vector2Int gridSize, float spacing, Vector3 center, GameObject prefab, int teamIndex, Action callback, Transform parent = null)
+        {
+            staticGridSize = gridSize;
+            coordDictionary = new Dictionary<Vector2Int, GridNode>();
+            staticGridNodes = new GridNode[gridSize.x * gridSize.y];
+
+            int counter = 0;
+            GridScaffold(center, gridSize, spacing, (x, y, pos) =>
+            {
+                GameObject nodeObject = UnityEngine.Object.Instantiate(prefab, pos, Quaternion.identity, parent);
+                nodeObject.name = $"{x}, {y}";
+                GridNode node = new GridNode(x, y, nodeObject, teamIndex);
+                coordDictionary.Add(new Vector2Int(x, y), node);
+                staticGridNodes[counter] = node;
+                counter++;
+            });
+
+            callback();
+            return staticGridNodes;
+        }
 
         public static void GridScaffold(Vector3 center, Vector2Int gridSize, float spacing, Action<int, int, Vector3> method)
         {

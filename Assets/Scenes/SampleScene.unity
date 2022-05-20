@@ -584,6 +584,7 @@ GameObject:
   - component: {fileID: 1193752715}
   - component: {fileID: 1193752718}
   - component: {fileID: 1193752716}
+  - component: {fileID: 1193752719}
   - component: {fileID: 1193752717}
   m_Layer: 0
   m_Name: Managers
@@ -660,6 +661,20 @@ MonoBehaviour:
     type: 3}
   drawGizmos: 1
   teamIndex: 0
+--- !u!114 &1193752719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193752713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da322e38658d4184a9e2bea29a2e6ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: 17
+  weightPointCount: 5
 --- !u!1 &1221805244
 GameObject:
   m_ObjectHideFlags: 0

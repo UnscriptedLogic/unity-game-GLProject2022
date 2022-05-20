@@ -12,6 +12,7 @@ namespace Core.Grid
         private static GridNode[] staticGridNodes;
         private static Dictionary<Vector2Int, GridNode> coordDictionary;
 
+        public static Vector2Int GridSize { get => staticGridSize; }
         public static GridNode[] GridNodes { get => staticGridNodes; }
         public static Dictionary<Vector2Int, GridNode> CoordDictionary { get => coordDictionary; }
 
@@ -102,11 +103,18 @@ namespace Core.Grid
         private int teamIndex;
         private Vector3 placementOffset = new Vector3(0, .1f, 0f);
 
+        public bool isObstacle;
+        public float hCost;
+        public float gCost = float.MaxValue;
+        public GridNode cameFromNode;
+
         public Vector2Int Coords => new Vector2Int(coordx, coordy);
         public GameObject NodeObject => node;
         public GameObject TowerOnNode => tower;
         public bool IsOccupied => tower != null;
         public int TeamIndex => teamIndex;
+
+        public float fCost => hCost + gCost;
 
         public GridNode(int coordx, int coordy, GameObject node, int teamIndex)
         {
@@ -130,6 +138,11 @@ namespace Core.Grid
         {
             GameObject.Destroy(tower);
             tower = null;
+        }
+
+        public void SetColor(Color color)
+        {
+            NodeObject.GetComponent<Renderer>().material.color = color;
         }
     }
 }

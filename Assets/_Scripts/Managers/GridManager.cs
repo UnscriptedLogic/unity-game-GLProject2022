@@ -25,7 +25,7 @@ namespace Core.Grid
                 prefab: nodePrefab, 
                 teamIndex: teamIndex, 
                 parent: transform, 
-                callback: PathManager.GeneratePath
+                callback: PathManager.instance.GeneratePath
             );
         }
 

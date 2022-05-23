@@ -22,7 +22,6 @@ namespace Core.Pathing
                 GridGenerator.GridNodes[i].cameFromNode = null;
             }
 
-            List<GridNode> path = new List<GridNode>();
             openSet = new List<GridNode>() { startNode };
             closedSet = new List<GridNode>();
 
@@ -32,6 +31,7 @@ namespace Core.Pathing
             while (openSet.Count > 0)
             {
                 GridNode currentNode = GetLowestFCost(openSet);
+                currentNode.isObstacle = true;
 
                 if (currentNode == endNode)
                 {
@@ -43,8 +43,8 @@ namespace Core.Pathing
 
                 foreach (GridNode neighbourNode in GetNeighbours(currentNode))
                 {
-                    if (neighbourNode == null)
-                        UnityEngine.Debug.Log(currentNode.NodeObject.name);
+                    //if (neighbourNode == null)
+                    //    UnityEngine.Debug.Log(currentNode.NodeObject.name);
 
                     if (closedSet.Contains(neighbourNode)) continue;
 
@@ -110,16 +110,16 @@ namespace Core.Pathing
             return path;
         }
 
-        private static float GetDistance(GridNode nodeA, GridNode nodeB)
+        public static float GetDistance(GridNode nodeA, GridNode nodeB)
         {
-            int distX = (int)MathF.Abs(nodeA.Coords.x - nodeB.Coords.x);
-            int distY = (int)MathF.Abs(nodeA.Coords.y - nodeB.Coords.y);
+            //int distX = (int)MathF.Abs(nodeA.Coords.x - nodeB.Coords.x);
+            //int distY = (int)MathF.Abs(nodeA.Coords.y - nodeB.Coords.y);
 
-            if (distX > distY)
-                return (14 * distY) + 10 * (distX - distY);
+            //if (distX > distY)
+            //    return (14 * distY) + 10 * (distX - distY);
 
-            return (14 * distX) + 10 * (distY - distX);
-            //return Vector3.Distance(nodeB.position, nodeA.position);
+            //return (14 * distX) + 10 * (distY - distX);
+            return Vector3.Distance(nodeB.NodeObject.transform.position, nodeA.NodeObject.transform.position);
         }
 
         private static GridNode GetLowestFCost(List<GridNode> gridNodes)

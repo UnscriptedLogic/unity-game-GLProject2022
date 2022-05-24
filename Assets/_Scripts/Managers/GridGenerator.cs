@@ -140,9 +140,7 @@ namespace Core.Grid
             tower = null;
         }
 
-        public void SetColor(Color color)
-        {
-            NodeObject.GetComponent<Renderer>().material.color = color;
-        }
+        public void SetColor(Color color) => NodeObject.GetComponent<Renderer>().material.color = color;
+        public void SetVisibility(bool value) => NodeObject.GetComponent<Renderer>().enabled = value;
     }
 }

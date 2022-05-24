@@ -20,6 +20,7 @@ namespace Core.Pathing
         private List<GridNode> path;
 
         public static PathManager instance;
+        public GridNode[] Path { get => path.ToArray(); }
         private void Awake() => instance = this;
 
         public void Initialize(int randomSeed, int pointCount)
@@ -39,29 +40,11 @@ namespace Core.Pathing
 
             GetWeightPoints();
 
-            for (int i = 0; i < weightPoints.Length; i++)
-            {
-                weightPoints[i].NodeObject.GetComponent<Renderer>().material.color = Color.black;
-            }
-
-            //path.AddRange(PathFinder.GetPath(weightPoints[0], weightPoints[1]));
-            //path.AddRange(PathFinder.GetPath(weightPoints[1], weightPoints[2]));
-
             StartCoroutine(Something());
         }
 
         private void GetWeightPoints()
         {
-            //weightPoints = new GridNode[weightPointCount];
-            //weightPoints[0] = nodes[UnityEngine.Random.Range(0, GridGenerator.GridNodes.Length - 1)];
-            //for (int i = 1; i < weightPointCount; i++)
-            //{
-            //    int randomIndex = UnityEngine.Random.Range(0, GridGenerator.GridNodes.Length - 1);
-            //    weightPoints[i] = nodes[randomIndex];
-
-            //    weightPoints[i].NodeObject.GetComponent<Renderer>().material.color = Color.black;
-            //}
-
             List<GridNode> newWeights = new List<GridNode>();
             newWeights.Add(nodes[UnityEngine.Random.Range(0, GridGenerator.GridNodes.Length - 1)]);
             int retries = 0, maxRetries = 50;
@@ -103,7 +86,7 @@ namespace Core.Pathing
 
             for (int i = 0; i < path.Count; i++)
             {
-                path[i].SetColor(Color.white);
+                path[i].SetVisibility(false);
             }
         }
 

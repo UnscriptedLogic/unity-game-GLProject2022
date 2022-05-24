@@ -24,9 +24,10 @@ namespace Core.Grid
                 center: transform.position, 
                 prefab: nodePrefab, 
                 teamIndex: teamIndex, 
-                parent: transform, 
-                callback: PathManager.instance.GeneratePath
+                parent: transform 
             );
+
+            PathManager.instance.GeneratePath();
         }
 
         private void OnDrawGizmos()

@@ -13,6 +13,7 @@ namespace Core.Pathing
         [SerializeField] private int seed = 10; //The seed for randomization
         [SerializeField] private int weightPointCount = 5; //The amount of 'crucial' points the path needs to meet (for proper path spread across the map)
         [SerializeField] private float weightPointDistance = 5f; //The amount of distance between the weightpoints;
+        [SerializeField] private bool randomizeSeed = false;
 
         private GridNode[] weightPoints;
         private List<GridNode> nodes;
@@ -29,6 +30,9 @@ namespace Core.Pathing
 
         public void GeneratePath()
         {
+            if (randomizeSeed)
+                seed = (int)System.DateTime.Now.TimeOfDay.TotalSeconds;
+
             UnityEngine.Random.InitState(seed);
             nodes = new List<GridNode>(GridGenerator.GridNodes);
             path = new List<GridNode>();
@@ -93,7 +97,7 @@ namespace Core.Pathing
                 if (i + 1 < weightPoints.Length)
                 {
                     path.AddRange(PathFinder.GetPath(weightPoints[i], weightPoints[i + 1]));
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.25f);
                 }
             }
 

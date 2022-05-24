@@ -47,6 +47,11 @@ namespace Core.Pathing
                     //    UnityEngine.Debug.Log(currentNode.NodeObject.name);
 
                     if (closedSet.Contains(neighbourNode)) continue;
+                    //if (neighbourNode.isObstacle)
+                    //{
+                    //    closedSet.Add(neighbourNode);
+                    //    continue;
+                    //}
 
                     float tmpGcost = currentNode.gCost + GetDistance(currentNode, neighbourNode);
                     if (tmpGcost < neighbourNode.gCost)

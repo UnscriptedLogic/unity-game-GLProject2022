@@ -835,9 +835,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 72293
-  weightPointCount: 7
+  weightPointCount: 6
   weightPointDistance: 8
-  randomizeSeed: 0
+  randomizeSeed: 1
 --- !u!114 &1193752720
 MonoBehaviour:
   m_ObjectHideFlags: 0

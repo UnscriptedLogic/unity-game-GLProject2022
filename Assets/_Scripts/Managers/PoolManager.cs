@@ -76,24 +76,24 @@ namespace Core.Pooling
             return poolItem;
         }
 
-        public void PushToPool(GameObject poolRep)
+        public void PushToPool(GameObject poolItem)
         {
-            string poolName = poolRep.name;
+            string poolName = poolItem.name;
             if (!pools.ContainsKey(poolName))
             {
-                CreatePool(poolName, poolRep);
+                CreatePool(poolName, poolItem);
             }
 
-            poolRep.SetActive(false);
+            poolItem.SetActive(false);
             for (int i = 0; i < prePools.Count; i++)
             {
-                if (prePools[i].poolItem.name == poolRep.name)
+                if (prePools[i].poolItem.name == poolItem.name)
                 {
-                    poolRep.transform.SetParent(prePools[i].container);
+                    poolItem.transform.SetParent(prePools[i].container);
                 }
             }
 
-            pools[poolName].Enqueue(poolRep);
+            pools[poolName].Enqueue(poolItem);
         }
 
         public void CreatePool(string poolName, GameObject item)

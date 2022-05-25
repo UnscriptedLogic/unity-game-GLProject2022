@@ -31,7 +31,6 @@ namespace Core.Pathing
             while (openSet.Count > 0)
             {
                 GridNode currentNode = GetLowestFCost(openSet);
-                currentNode.isObstacle = true;
 
                 if (currentNode == endNode)
                 {
@@ -43,15 +42,12 @@ namespace Core.Pathing
 
                 foreach (GridNode neighbourNode in GetNeighbours(currentNode))
                 {
-                    //if (neighbourNode == null)
-                    //    UnityEngine.Debug.Log(currentNode.NodeObject.name);
-
                     if (closedSet.Contains(neighbourNode)) continue;
-                    //if (neighbourNode.isObstacle)
-                    //{
-                    //    closedSet.Add(neighbourNode);
-                    //    continue;
-                    //}
+                    if (neighbourNode.isObstacle)
+                    {
+                        closedSet.Add(neighbourNode);
+                        continue;
+                    }
 
                     float tmpGcost = currentNode.gCost + GetDistance(currentNode, neighbourNode);
                     if (tmpGcost < neighbourNode.gCost)
@@ -107,6 +103,7 @@ namespace Core.Pathing
             {
                 path.Add(currentNode);
                 currentNode = currentNode.cameFromNode;
+                currentNode.isObstacle = true;
             }
             path.Reverse();
 

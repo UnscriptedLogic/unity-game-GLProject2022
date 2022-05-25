@@ -103,7 +103,7 @@ namespace Core.Grid
         private int teamIndex;
         private Vector3 placementOffset = new Vector3(0, .1f, 0f);
 
-        public bool isObstacle;
+        public bool isObstacle = false;
         public float hCost;
         public float gCost = float.MaxValue;
         public GridNode cameFromNode;
@@ -113,7 +113,7 @@ namespace Core.Grid
         public GameObject TowerOnNode => tower;
         public bool IsOccupied => tower != null;
         public int TeamIndex => teamIndex;
-
+        public Vector3 Position => node.transform.position;
         public float fCost => hCost + gCost;
 
         public GridNode(int coordx, int coordy, GameObject node, int teamIndex)
@@ -126,7 +126,7 @@ namespace Core.Grid
 
         public bool PlaceTower(GameObject towerAsset)
         {
-            if (!IsOccupied)
+            if (!IsOccupied && !isObstacle)
             {
                 tower = GameObject.Instantiate(towerAsset, node.transform.position + placementOffset, Quaternion.identity);
             }

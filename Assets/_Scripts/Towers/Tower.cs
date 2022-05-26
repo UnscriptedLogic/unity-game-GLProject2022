@@ -15,7 +15,7 @@ namespace Towers
         [SerializeField] private float rotationSpeed = 5f;
 
         private float _attackInterval;
-        private List<UnitMovement> unitsInRange;
+        private Collider[] unitsInRange;
         
         private UnitMovement target;
         private AttackBehaviour attackBehaviour;
@@ -39,23 +39,28 @@ namespace Towers
 
         private void Update()
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, range, unitLayer);
-            foreach (Collider collider in colliders)
+            unitsInRange = Physics.OverlapSphere(transform.position, range, unitLayer);
+            foreach (Collider collider1 in unitsInRange)
             {
-                UnitMovement unitMovement = collider.GetComponent<UnitMovement>();
+                UnitMovement unitMovement = collider1.GetComponent<UnitMovement>();
                 if (target == null)
                 {
-                    target = unitMovement;
+                    target = unitsInRange[0].GetComponent<UnitMovement>();
                 }
                 else
                 {
+                    if (Vector3.Distance(target.transform.position, transform.position) > range)
+                    {
+                        target = null;
+                        return;
+                    }
+
                     if (unitMovement.WaypointIndex > target.WaypointIndex)
-                        if (unitMovement != target)
-                            target = unitMovement;
+                        target = unitMovement;
                 }
             }
 
-            if (colliders.Length > 0)
+            if (unitsInRange.Length > 0 && target != null)
             {
                 FocusObject(rotatonPart, target.transform.position, rotationSpeed);
                 if (_attackInterval <= 0f)
@@ -68,7 +73,7 @@ namespace Towers
             _attackInterval = _attackInterval > 0 ? _attackInterval -= Time.deltaTime : attackInterval;
         }
 
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmos()
         {
             if (!drawGizmos) return;
 

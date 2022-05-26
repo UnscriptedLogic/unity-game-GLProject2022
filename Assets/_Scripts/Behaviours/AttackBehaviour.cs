@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core.Pooling;
+using Projectiles;
 using UnityEngine;
 
 namespace EntityBehaviours
@@ -19,6 +20,7 @@ namespace EntityBehaviours
         {
             GameObject projectile = poolManager.PullFromPool(projectilePrefab);
             projectile.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
+            projectile.GetComponent<Projectile>().PoolManager = poolManager;
         }
     }
 }

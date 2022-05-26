@@ -542,6 +542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 853069097}
+  - component: {fileID: 853069098}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -564,6 +565,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &853069098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853069096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491cc41bd3e96174eb30a1e0d8dc9acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnLocation: {fileID: 853069097}
+  startDelay: 5
+  waves:
+  - waveSegments:
+    - enemyToSpawn: {fileID: 0}
+      amount: 0
+      interval: 0
+      _spawnAmount: 0
+      _spawnInterval: 0
+    waveInterval: 0
+    segmentInterval: 0
+    _waveInterval: 0
+    _segmentInterval: 0
 --- !u!1 &1123251014
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,6 +734,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

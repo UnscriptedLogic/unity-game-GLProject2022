@@ -1,15 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
-using Core.Pooling;
-using Core.Pathing;
 using Core.Grid;
+using Core.Pathing;
+using Core.Pooling;
+using Interfaces;
+using UnityEngine;
 
 namespace Units
 {
-    public class UnitMovement : MonoBehaviour, ITakeDamage
+    public class UnitMovement : MonoBehaviour, IDamageable
     {
         private PathManager nodeManager;
         private GridNode[] nodePath;

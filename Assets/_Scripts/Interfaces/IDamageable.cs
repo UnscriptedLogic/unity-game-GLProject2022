@@ -11,9 +11,9 @@ public enum ModificationType
     Multiply
 }
 
-namespace Units
+namespace Interfaces
 {
-    public interface ITakeDamage
+    public interface IDamageable
     {
         void ModifyHealth(ModificationType modificationType, float amount, float maximum = 0f, float minimum = 0f);
     }

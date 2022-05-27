@@ -12,9 +12,13 @@ namespace Core.Grid
         [SerializeField] private Vector2Int gridSize = new Vector2Int(10, 10);
         [SerializeField] private float gridSpacing = 1f;
         [SerializeField] private GameObject nodePrefab;
+        [SerializeField] private GameObject homePrefab;
+        [SerializeField] private GameObject entitySpawnPrefab;
 
         [SerializeField] private bool drawGizmos;
         [SerializeField] private int teamIndex = 0;
+
+        private PathManager pathManager;
 
         private void Start()
         {
@@ -27,7 +31,10 @@ namespace Core.Grid
                 parent: transform 
             );
 
-            PathManager.instance.GeneratePath();
+            pathManager = PathManager.instance;
+            pathManager.GeneratePath();
+            pathManager.Path[0].PlaceTower(entitySpawnPrefab);
+            pathManager.Path[pathManager.Path.Length - 1].PlaceTower(homePrefab);
         }
 
         private void OnDrawGizmos()

@@ -16,11 +16,14 @@ namespace EntityBehaviours
             this.poolManager = poolManager;
         }
 
-        public void Attack(GameObject projectilePrefab, Transform spawnPoint)
+        public void Attack(GameObject projectilePrefab, Transform spawnPoint, ProjectileSettings settings)
         {
             GameObject projectile = poolManager.PullFromPool(projectilePrefab);
             projectile.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
-            projectile.GetComponent<Projectile>().PoolManager = poolManager;
+
+            Projectile script = projectile.GetComponent<Projectile>();
+            script.PoolManager = poolManager;
+            script.Initialize(settings);
         }
     }
 }

@@ -581,9 +581,10 @@ MonoBehaviour:
   startDelay: 5
   waves:
   - waveSegments:
-    - enemyToSpawn: {fileID: 0}
-      amount: 0
-      interval: 0
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
+        type: 3}
+      amount: 30
+      interval: 1
       _spawnAmount: 0
       _spawnInterval: 0
     waveInterval: 0
@@ -847,6 +848,8 @@ MonoBehaviour:
   gridSpacing: 1.2
   nodePrefab: {fileID: 3159788204143126556, guid: 37dc664b21f90334a971bce341cb25ab,
     type: 3}
+  homePrefab: {fileID: 0}
+  entitySpawnPrefab: {fileID: 0}
   drawGizmos: 0
   teamIndex: 0
 --- !u!114 &1193752719

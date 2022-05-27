@@ -4,12 +4,17 @@ using UnityEngine;
 using Interfaces;
 using EntityBehaviours;
 using Units;
+using Projectiles;
 
 namespace Towers
 {
     public class Tower : MonoBehaviour, IFocuseable, IAttackable
     {
         [Header("Attributes")]
+        [SerializeField] private float damage = 1f;
+        [SerializeField] private float projectileSpeed = 30f;
+        [SerializeField] private float projectileLifetime = 0.5f;
+
         [SerializeField] private float range = 5f;
         [SerializeField] private float attackInterval = 1f;
         [SerializeField] private float rotationSpeed = 5f;
@@ -81,6 +86,10 @@ namespace Towers
         }
 
         public void FocusObject(Transform partToRotate, Vector3 target, float rotationSpeed) => lookBehaviour.FocusTarget(partToRotate, target, rotationSpeed);
-        public void DoAttack(GameObject projectile, Transform spawnpoint) => attackBehaviour.Attack(projectile, spawnpoint);
+        public void DoAttack(GameObject projectile, Transform spawnpoint)
+        {
+            ProjectileSettings settings = new ProjectileSettings(damage, projectileSpeed, projectileLifetime);
+            attackBehaviour.Attack(projectile, spawnpoint, settings);
+        }
     }
 }

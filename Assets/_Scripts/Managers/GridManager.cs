@@ -20,7 +20,7 @@ namespace Core.Grid
 
         private PathManager pathManager;
 
-        private void Start()
+        public void GenerateGrid(Action method)
         {
             GridGenerator.CreateGrid(
                 gridSize: gridSize, 
@@ -32,9 +32,12 @@ namespace Core.Grid
             );
 
             pathManager = PathManager.instance;
-            pathManager.GeneratePath();
-            pathManager.Path[0].PlaceTower(entitySpawnPrefab);
-            pathManager.Path[pathManager.Path.Length - 1].PlaceTower(homePrefab);
+            pathManager.GeneratePath(() =>
+            {
+                pathManager.Path[0].ForcePlaceTower(entitySpawnPrefab);
+                pathManager.Path[pathManager.Path.Length - 1].ForcePlaceTower(homePrefab);
+                method();
+            });
         }
 
         private void OnDrawGizmos()

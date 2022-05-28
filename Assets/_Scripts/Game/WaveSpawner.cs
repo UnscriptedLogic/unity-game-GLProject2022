@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Core.Pooling;
+using Units;
 
 namespace Game.Spawning
 {
@@ -15,6 +16,7 @@ namespace Game.Spawning
             public GameObject enemyToSpawn;
             public int amount;
             public float interval;
+            public float segmentInterval;
 
             [HideInInspector] public int _spawnAmount = 0;
             [HideInInspector] public float _spawnInterval = 0;
@@ -31,7 +33,6 @@ namespace Game.Spawning
         {
             public WaveSegment[] waveSegments;
             public float waveInterval = 5f;
-            public float segmentInterval = 3f;
 
             [HideInInspector] public float _waveInterval;
             [HideInInspector] public float _segmentInterval;
@@ -40,6 +41,8 @@ namespace Game.Spawning
         public Transform spawnLocation;
         public float startDelay = 5f;
         private float _startDelay;
+
+        [SerializeField] private Transform cam;
 
         public Wave[] waves;
         private Wave currWave;
@@ -110,6 +113,7 @@ namespace Game.Spawning
 
         private void NextWaveSegment()
         {
+            currWave._segmentInterval = currWave.waveSegments[segmentIndex].segmentInterval;
             segmentIndex++;
             if (segmentIndex >= currWave.waveSegments.Length)
             {
@@ -117,9 +121,8 @@ namespace Game.Spawning
                 return;
             }
 
-            currWave._segmentInterval = currWave.segmentInterval;
             currSegment = currWave.waveSegments[segmentIndex];
-        }
+        }   
 
         private void NextWave()
         {

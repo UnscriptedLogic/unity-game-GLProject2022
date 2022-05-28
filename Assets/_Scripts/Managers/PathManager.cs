@@ -29,7 +29,7 @@ namespace Core.Pathing
             weightPointCount = pointCount;
         }
 
-        public void GeneratePath()
+        public void GeneratePath(Action callback)
         {
             if (randomizeSeed)
                 seed = (int)System.DateTime.Now.TimeOfDay.TotalSeconds;
@@ -39,8 +39,7 @@ namespace Core.Pathing
             path = new List<GridNode>();
 
             GetWeightPoints();
-
-            StartCoroutine(Something());
+            StartCoroutine(StitchPaths(callback));
         }
 
         private void GetWeightPoints()
@@ -73,7 +72,7 @@ namespace Core.Pathing
             weightPoints = newWeights.ToArray();
         }
 
-        private IEnumerator Something()
+        private IEnumerator StitchPaths(Action callback)
         {
             for (int i = 0; i < weightPointCount - 1; i++)
             {
@@ -88,6 +87,8 @@ namespace Core.Pathing
             {
                 path[i].SetVisibility(false);
             }
+
+            callback();
         }
 
         private void OnDrawGizmosSelected()

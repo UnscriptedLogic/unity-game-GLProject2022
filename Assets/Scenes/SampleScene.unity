@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 853069097}
   - component: {fileID: 853069098}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: WaveSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -563,7 +563,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &853069098
 MonoBehaviour:
@@ -579,16 +579,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnLocation: {fileID: 853069097}
   startDelay: 5
+  cam: {fileID: 330585546}
   waves:
   - waveSegments:
     - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
         type: 3}
-      amount: 30
+      amount: 2
       interval: 1
+      segmentInterval: 5
       _spawnAmount: 0
       _spawnInterval: 0
-    waveInterval: 0
-    segmentInterval: 0
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
+        type: 3}
+      amount: 10
+      interval: 0.5
+      segmentInterval: 0
+      _spawnAmount: 0
+      _spawnInterval: 0
+    - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
+        type: 3}
+      amount: 1
+      interval: 0
+      segmentInterval: 0
+      _spawnAmount: 0
+      _spawnInterval: 0
+    waveInterval: 5
     _waveInterval: 0
     _segmentInterval: 0
 --- !u!1 &1123251014
@@ -637,7 +652,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1123251018
 MonoBehaviour:
@@ -753,7 +768,7 @@ RectTransform:
   m_Children:
   - {fileID: 1691559459}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -774,7 +789,6 @@ GameObject:
   - component: {fileID: 1193752719}
   - component: {fileID: 1193752720}
   - component: {fileID: 1193752717}
-  - component: {fileID: 1193752721}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -848,8 +862,10 @@ MonoBehaviour:
   gridSpacing: 1.2
   nodePrefab: {fileID: 3159788204143126556, guid: 37dc664b21f90334a971bce341cb25ab,
     type: 3}
-  homePrefab: {fileID: 0}
-  entitySpawnPrefab: {fileID: 0}
+  homePrefab: {fileID: 7482607861986099073, guid: 47e8cd61d182e4d43ae8579f82b0555c,
+    type: 3}
+  entitySpawnPrefab: {fileID: 4142320509489033550, guid: bd377e4a30ee3d34e9cb4dc22248f3da,
+    type: 3}
   drawGizmos: 0
   teamIndex: 0
 --- !u!114 &1193752719
@@ -867,7 +883,7 @@ MonoBehaviour:
   seed: 72293
   weightPointCount: 6
   weightPointDistance: 8
-  randomizeSeed: 1
+  randomizeSeed: 0
 --- !u!114 &1193752720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -882,32 +898,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolContainer: {fileID: 754687650}
   prePools: []
---- !u!114 &1193752721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193752713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 491cc41bd3e96174eb30a1e0d8dc9acd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnLocation: {fileID: 1193752715}
-  startDelay: 5
-  waves:
-  - waveSegments:
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
-        type: 3}
-      amount: 5
-      interval: 1
-      _spawnAmount: 0
-      _spawnInterval: 0
-    waveInterval: 5
-    segmentInterval: 5
-    _waveInterval: 0
-    _segmentInterval: 0
 --- !u!1 &1221805244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,7 +1003,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691559458
 GameObject:

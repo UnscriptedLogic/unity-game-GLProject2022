@@ -140,6 +140,7 @@ namespace Core.Grid
             tower = null;
         }
 
+        public void ForcePlaceTower(GameObject towerAsset) => tower = GameObject.Instantiate(towerAsset, node.transform.position + placementOffset, Quaternion.identity);
         public void SetColor(Color color) => NodeObject.GetComponent<Renderer>().material.color = color;
         public void SetVisibility(bool value) => NodeObject.GetComponent<Renderer>().enabled = value;
     }

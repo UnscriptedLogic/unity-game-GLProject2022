@@ -1,8 +1,11 @@
+using System;
 using Core.Grid;
 using Core.Pathing;
 using Core.Pooling;
 using Interfaces;
 using UnityEngine;
+using External.DamageFlash;
+using External.CustomSlider;
 
 namespace Units
 {
@@ -11,14 +14,17 @@ namespace Units
         private PathManager nodeManager;
         private GridNode[] nodePath;
 
+        [SerializeField] private DamageFlash damageFlash;
+
         [Header("Stats")]
         [SerializeField] private float health = 100f;
-        private float currHealth;
-        
         [SerializeField] private float movementSpeed = 3f;
+        
+        private float currHealth;
         private int waypointCounter = 0;
 
         public int WaypointIndex => waypointCounter;
+        public Action<ModificationType, float> OnHealthModified;
 
         private void OnEnable()
         {
@@ -73,6 +79,8 @@ namespace Units
                     currHealth -= amount;
                     if (currHealth <= 0f)
                         currHealth = 0f;
+                    else
+                        damageFlash.Flash();
                     break;
                 case ModificationType.Set:
                     currHealth = amount;
@@ -88,6 +96,8 @@ namespace Units
                 default:
                     break;
             }
+
+            OnHealthModified?.Invoke(modificationType, amount);
 
             if (currHealth <= 0f)
             {

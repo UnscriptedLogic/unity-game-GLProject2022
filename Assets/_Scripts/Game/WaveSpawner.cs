@@ -51,14 +51,18 @@ namespace Game.Spawning
         private int waveIndex;
         private int segmentIndex;
 
-        private bool stopSpawning;
+        private bool stopSpawning = true;
 
-        private void Start()
+        public void StartSpawner()
         {
+            stopSpawning = false;
             _startDelay = startDelay;
             currWave = waves[waveIndex];
             currSegment = currWave.waveSegments[segmentIndex];
         }
+
+        public void StopSpawner() => stopSpawning = true;
+        public void ContinueSpawner() => stopSpawning = false;
 
         private void Update()
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Core.Grid;
 using Core.Building;
+using Game.Spawning;
 
 namespace Game
 {
@@ -17,17 +18,18 @@ namespace Game
 
     public class LevelManager : MonoBehaviour
     {
-        private LevelState levelState;
+        private LevelState levelState = LevelState.Start;
 
         [SerializeField] private GridManager gridManager;
         [SerializeField] private BuildManager buildManager;
+        [SerializeField] private WaveSpawner waveSpawner;
 
         public static LevelManager instance;
         private void Awake() => instance = this;
 
         private void Start()
         {
-            levelState = LevelState.Start;
+            EnterState();
         }
 
         private void Update()
@@ -47,15 +49,18 @@ namespace Game
                     break;
                 case LevelState.Playing:
                     buildManager.enabled = true;
+                    waveSpawner.StartSpawner();
                     break;
                 case LevelState.Paused:
                     buildManager.enabled = false;
                     break;
                 case LevelState.Won:
                     buildManager.enabled = false;
+                    waveSpawner.StopSpawner();
                     break;
                 case LevelState.Lost:
                     buildManager.enabled = false;
+                    waveSpawner.StopSpawner();
                     break;
                 default:
                     break;

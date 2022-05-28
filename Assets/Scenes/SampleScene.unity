@@ -784,6 +784,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1193752715}
+  - component: {fileID: 1193752721}
   - component: {fileID: 1193752718}
   - component: {fileID: 1193752716}
   - component: {fileID: 1193752719}
@@ -818,7 +819,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193752713}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fae9af7bd63d4a4bace9aa9d9ac0df4, type: 3}
   m_Name: 
@@ -898,6 +899,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolContainer: {fileID: 754687650}
   prePools: []
+--- !u!114 &1193752721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193752713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c822384b311a543bc74bd02fdf917f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridManager: {fileID: 1193752718}
+  buildManager: {fileID: 1193752716}
+  waveSpawner: {fileID: 853069098}
 --- !u!1 &1221805244
 GameObject:
   m_ObjectHideFlags: 0

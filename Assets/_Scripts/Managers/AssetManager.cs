@@ -12,7 +12,9 @@ namespace Core.Assets
         private void Awake() => instance = this;
 
         [SerializeField] private GameObject testTower;
+        [SerializeField] private GameObject worldSpaceSlider;
 
         public GameObject Tower { get => testTower; }
+        public GameObject WorldSpaceSlider { get => worldSpaceSlider; }
     }
 }

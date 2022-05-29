@@ -16,7 +16,7 @@ namespace External.CustomSlider
         [SerializeField] private float sizeScale = 1f;
         [SerializeField] private Ease trackEase = Ease.InOutSine;
 
-        [Tooltip("Leave empty if the current transform is the root. This transform is in charge of the tracking and orientation of the object")]
+        [Tooltip("Leave empty if the current transform is the root. This is usually assigned to the canvas the UI is on.")]
         [SerializeField] private Transform root;
         [SerializeField] private Transform lookTarget;
         [SerializeField] private Transform followTarget;
@@ -50,12 +50,12 @@ namespace External.CustomSlider
         }
         #endregion
 
-        private void Start()
+        protected override void OnEnable()
         {
             if (SetInInspector)
             {
                 Initialize(keepSize, lookTarget, followTarget);
-                SetCamera(lookTarget);
+                SetCamera(lookTarget != null ? lookTarget : Camera.main.transform);
                 SetFollowTarget(followTarget);
             }
         }
@@ -81,7 +81,7 @@ namespace External.CustomSlider
 
         private void Scale()
         {
-            if (!lookTarget) return;
+            if (!lookTarget || !keepSize) return;
             root.localScale = (Vector3.one * sizeScale) * Vector3.Distance(root.position, lookTarget.position);
         }
 

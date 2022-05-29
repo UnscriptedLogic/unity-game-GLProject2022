@@ -35,7 +35,7 @@ namespace External.CustomSlider
         [Header("Test Value")]
         [SerializeField] protected float amount = 25;
 
-        private void Start()
+        protected virtual void OnEnable()
         {
             if (SetInInspector)
             {
@@ -67,6 +67,15 @@ namespace External.CustomSlider
 
             sliderFill.DOColor(sliderColour.Evaluate(currentValue / maxValue), lerpDuration);
             predictFill.DOColor(predictSliderColour.Evaluate(currentValue / maxValue), lerpDuration);
+        }
+
+        public void SetLimits(float current, float max)
+        {
+            currentValue = current;
+            maxValue = max;
+
+            slider.value = current;
+            slider.maxValue = max;
         }
 
         public void SetValue(float amount)

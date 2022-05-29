@@ -19,6 +19,8 @@ namespace Units
         [Header("Stats")]
         [SerializeField] private float health = 100f;
         [SerializeField] private float movementSpeed = 3f;
+
+        [SerializeField] private WorldSpaceCustomSlider healthbar;
         
         private float currHealth;
         private int waypointCounter = 0;
@@ -39,6 +41,9 @@ namespace Units
 
             waypointCounter = 0;
             currHealth = health;
+
+            healthbar.SetLimits(currHealth, health);
+            healthbar.SetValue(health);
         }
 
         private void Update()
@@ -77,6 +82,7 @@ namespace Units
                     break;
                 case ModificationType.Subtract:
                     currHealth -= amount;
+                    healthbar.SetValue(currHealth);
                     if (currHealth <= 0f)
                         currHealth = 0f;
                     else

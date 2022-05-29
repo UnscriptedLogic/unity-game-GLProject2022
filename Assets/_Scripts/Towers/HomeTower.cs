@@ -19,6 +19,8 @@ namespace Towers
         public float MaxHealth => health;
         public float CurrentHealth => currHealth;
 
+        private string hw = "hello\nWorld";
+
         private void OnTriggerEnter(Collider other)
         {
             UnitMovement unit = other.GetComponent<UnitMovement>();

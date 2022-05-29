@@ -268,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageFlash: {fileID: 5736165837249898625}
   health: 75
-  movementSpeed: 4
+  movementSpeed: 5
   healthbar: {fileID: 5959593351887877580}
 --- !u!135 &1835879742151613041
 SphereCollider:
@@ -467,6 +467,11 @@ PrefabInstance:
       propertyPath: root
       value: 
       objectReference: {fileID: 1379490354735407507}
+    - target: {fileID: 3440015320198045450, guid: 770e3a7c1edf75e408b87cc71e22b0db,
+        type: 3}
+      propertyPath: trackSpeed
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 3440015320198045450, guid: 770e3a7c1edf75e408b87cc71e22b0db,
         type: 3}
       propertyPath: followTarget

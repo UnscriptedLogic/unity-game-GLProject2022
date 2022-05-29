@@ -146,6 +146,15 @@ namespace Game.Spawning
             GameObject enemy = PoolManager.instance.PullFromPool(currSegment.enemyToSpawn);
             enemy.transform.SetParent(transform);
         }
+
+        public void ClearEntities()
+        {
+            int count = transform.childCount;
+            for (int i = 0; i < count; i++)
+            {
+                transform.GetChild(0).GetComponent<UnitMovement>().DestroyUnit();
+            }
+        }
     }
 
 }

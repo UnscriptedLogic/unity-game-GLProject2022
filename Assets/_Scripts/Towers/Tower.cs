@@ -44,6 +44,8 @@ namespace Towers
 
         private void Update()
         {
+            _attackInterval = _attackInterval >= 0 ? _attackInterval -= Time.deltaTime : attackInterval;
+
             unitsInRange = Physics.OverlapSphere(transform.position, range, unitLayer);
             foreach (Collider collider1 in unitsInRange)
             {
@@ -74,8 +76,6 @@ namespace Towers
                     _attackInterval = attackInterval;
                 }
             }
-
-            _attackInterval = _attackInterval > 0 ? _attackInterval -= Time.deltaTime : attackInterval;
         }
 
         private void OnDrawGizmos()

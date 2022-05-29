@@ -4,6 +4,7 @@ using UnityEngine;
 using Units;
 using Interfaces;
 using Assets.Scripts.CustomEventSystem;
+using System;
 
 namespace Towers
 {
@@ -13,6 +14,8 @@ namespace Towers
         [SerializeField] private float currHealth;
         [SerializeField] private VoidEventSO OnHealthDepleted;
 
+        public Action<float> OnHealthModified;
+
         public float MaxHealth => health;
         public float CurrentHealth => currHealth;
 
@@ -21,8 +24,8 @@ namespace Towers
             UnitMovement unit = other.GetComponent<UnitMovement>();
             if (unit != null)
             {
-                ModifyHealth(ModificationType.Subtract, unit.CurrentHealth);    
-                Debug.Log(currHealth);
+                ModifyHealth(ModificationType.Subtract, unit.CurrentHealth);
+                unit.DestroyUnit();
             }
         }
 
@@ -58,7 +61,7 @@ namespace Towers
                     break;
             }
 
-
+            OnHealthModified?.Invoke(CurrentHealth);
         }
     }
 }

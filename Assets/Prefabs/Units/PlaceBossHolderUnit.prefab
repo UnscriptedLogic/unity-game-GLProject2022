@@ -268,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageFlash: {fileID: 5736165837249898625}
   health: 75
-  movementSpeed: 1
+  movementSpeed: 4
   healthbar: {fileID: 5959593351887877580}
 --- !u!135 &1835879742151613041
 SphereCollider:

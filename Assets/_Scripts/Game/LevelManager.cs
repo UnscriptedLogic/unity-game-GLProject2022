@@ -4,6 +4,8 @@ using UnityEngine;
 using Core.Grid;
 using Core.Building;
 using Game.Spawning;
+using External.CustomSlider;
+using Towers;
 
 namespace Game
 {
@@ -20,9 +22,15 @@ namespace Game
     {
         private LevelState levelState = LevelState.Start;
 
+        [Header("Components")]
         [SerializeField] private GridManager gridManager;
         [SerializeField] private BuildManager buildManager;
         [SerializeField] private WaveSpawner waveSpawner;
+
+        private HomeTower homeTower;
+
+        [Header("UI")]
+        [SerializeField] private CustomSlider baseSlider;
 
         public static LevelManager instance;
         private void Awake() => instance = this;
@@ -45,6 +53,12 @@ namespace Game
                     gridManager.GenerateGrid(() =>
                     {
                         SwitchState(LevelState.Playing);
+                        homeTower = gridManager.HomeNode.GetComponent<HomeTower>();
+                        baseSlider.Initialize(homeTower.CurrentHealth, homeTower.MaxHealth, false, true, false);
+                        homeTower.OnHealthModified += (health) =>
+                        {
+                            baseSlider.SetValue(health);
+                        };
                     });
                     break;
                 case LevelState.Playing:

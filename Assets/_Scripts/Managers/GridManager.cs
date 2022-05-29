@@ -20,6 +20,8 @@ namespace Core.Grid
 
         private PathManager pathManager;
 
+        public GameObject HomeNode => pathManager.Path[pathManager.Path.Length - 1].TowerOnNode;
+
         public void GenerateGrid(Action method)
         {
             GridGenerator.CreateGrid(
@@ -36,6 +38,7 @@ namespace Core.Grid
             {
                 pathManager.Path[0].ForcePlaceTower(entitySpawnPrefab);
                 pathManager.Path[pathManager.Path.Length - 1].ForcePlaceTower(homePrefab);
+
                 method();
             });
         }

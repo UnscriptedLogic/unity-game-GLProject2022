@@ -108,9 +108,14 @@ namespace Units
 
             if (currHealth <= 0f)
             {
-                PoolManager.instance.PushToPool(gameObject);
-                transform.position = nodePath[0].Position;
+                DestroyUnit();
             }
+        }
+
+        public void DestroyUnit()
+        {
+            PoolManager.instance.PushToPool(gameObject);
+            transform.position = nodePath[0].Position;
         }
     }
 }

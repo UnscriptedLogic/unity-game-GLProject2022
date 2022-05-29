@@ -160,5 +160,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 150
-  currHealth: 1
+  currHealth: 150
   OnHealthDepleted: {fileID: 11400000, guid: 47ed1488d0760224685a55e8bda671bd, type: 2}

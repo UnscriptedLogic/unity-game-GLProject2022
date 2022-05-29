@@ -71,11 +71,11 @@ namespace External.CustomSlider
 
         public void SetLimits(float current, float max)
         {
-            currentValue = current;
             maxValue = max;
+            slider.maxValue = maxValue;
 
-            slider.value = current;
-            slider.maxValue = max;
+            currentValue = current;
+            slider.value = currentValue;
         }
 
         public void SetValue(float amount)

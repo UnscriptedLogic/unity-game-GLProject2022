@@ -18,9 +18,17 @@ namespace Game
         Lost
     }
 
+    public enum GameState
+    {
+        None,
+        Building,
+        Viewing
+    }
+
     public class LevelManager : MonoBehaviour
     {
         private LevelState levelState = LevelState.Start;
+        private GameState gameState = GameState.None;
 
         [Header("Components")]
         [SerializeField] private GridManager gridManager;
@@ -31,28 +39,35 @@ namespace Game
 
         [Header("UI")]
         [SerializeField] private CustomSlider baseSlider;
+        [SerializeField] private GameObject buildModeUI;
+        [SerializeField] private GameObject gameModeUI;
+
+        public LevelState CurrentLevelState => levelState;
+        public GameState CurrentGameState => gameState;
 
         public static LevelManager instance;
         private void Awake() => instance = this;
 
         private void Start()
         {
-            EnterState();
+            EnterLevelState();
+            EnterGameState();
         }
 
         private void Update()
         {
-            UpdateState();
+            UpdateLevelState();
+            UpdateGameState();
         }
 
-        private void EnterState()
+        private void EnterLevelState()
         {
             switch (levelState)
             {
                 case LevelState.Start:
                     gridManager.GenerateGrid(() =>
                     {
-                        SwitchState(LevelState.Playing);
+                        SwitchLevelState(LevelState.Playing);
                         homeTower = gridManager.HomeNode.GetComponent<HomeTower>();
                         baseSlider.Initialize(homeTower.CurrentHealth, homeTower.MaxHealth, false, true, false);
                         homeTower.OnHealthModified += (health) =>
@@ -83,7 +98,27 @@ namespace Game
             }
         }
 
-        private void UpdateState()
+        private void EnterGameState()
+        {
+            switch (gameState)
+            {
+                case GameState.None:
+                    buildModeUI.SetActive(false);
+                    gameModeUI.SetActive(true);
+                    break;
+                case GameState.Building:
+                    buildManager.EnableBuildMode();
+                    buildModeUI.SetActive(true);
+                    gameModeUI.SetActive(false);
+                    break;
+                case GameState.Viewing:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void UpdateLevelState()
         {
             switch (levelState)
             {
@@ -102,7 +137,34 @@ namespace Game
             }
         }
 
-        private void ExitState()
+        private void UpdateGameState()
+        {
+            switch (gameState)
+            {
+                case GameState.None:
+                    break;
+                case GameState.Building:
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        if (buildManager.PlaceTower())
+                        {
+                            SwitchGameState(GameState.None);
+                        }
+                    }
+
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        SwitchGameState(GameState.None);
+                    }
+                    break;
+                case GameState.Viewing:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void ExitLevelState()
         {
             switch (levelState)
             {
@@ -121,17 +183,45 @@ namespace Game
             }
         }
 
-        public void SwitchState(LevelState newState)
+        private void ExitGameState()
         {
-            ExitState();
+            switch (gameState)
+            {
+                case GameState.None:
+                    break;
+                case GameState.Building:
+                    buildManager.DisableBuildMode();
+                    buildModeUI.SetActive(false);
+                    gameModeUI.SetActive(true);
+                    break;
+                case GameState.Viewing:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void SwitchLevelState(LevelState newState)
+        {
+            ExitLevelState();
             levelState = newState;
-            EnterState();
+            EnterLevelState();
+        }
+
+        public void SwitchGameState(GameState newState)
+        {
+            ExitGameState();
+            gameState = newState;
+            EnterGameState();
         }
 
         #region StateSetters
-        public void SetGameLost() => SwitchState(LevelState.Lost);
-        public void SetGamePlaying() => SwitchState(LevelState.Playing);
-        public void SetGamePaused() => SwitchState(LevelState.Paused);
+        public void SetGameLost() => SwitchLevelState(LevelState.Lost);
+        public void SetGamePlaying() => SwitchLevelState(LevelState.Playing);
+        public void SetGamePaused() => SwitchLevelState(LevelState.Paused);
+
+        public void SetBuildMode() => SwitchGameState(GameState.Building);
+        public void SetNoneMode() => SwitchGameState(GameState.None);
         #endregion
     }
 }

@@ -131,7 +131,7 @@ namespace Core.Grid
                 tower = GameObject.Instantiate(towerAsset, node.transform.position + placementOffset, Quaternion.identity);
             }
 
-            return !IsOccupied;
+            return IsOccupied;
         }
 
         public void RemoveTower()

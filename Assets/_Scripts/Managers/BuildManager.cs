@@ -16,31 +16,32 @@ namespace Core.Building
 
         public bool BuildMode => buildMode;
 
-        private void Update()
+        public bool PlaceTower()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1000f, nodeLayer))
             {
-                PlaceTower();
+                string[] str = hit.transform.name.Split(",");
+                int.TryParse(str[0], out int x);
+                int.TryParse(str[1], out int y);
+                return GridGenerator.GetNodeAt(x, y).PlaceTower(towerPrefab);
             }
+
+            return false;
         }
 
-        private void PlaceTower()
+        public void SetBuildObject(GameObject newObject)
         {
-            if (buildMode)
-            {
-                if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1000f, nodeLayer))
-                {
-                    string[] str = hit.transform.name.Split(",");
-                    int.TryParse(str[0], out int x);
-                    int.TryParse(str[1], out int y);
-                    GridGenerator.GetNodeAt(x, y).PlaceTower(towerPrefab);
-                }
-            }
+            towerPrefab = newObject;
         }
 
-        private void OnDrawGizmos()
+        public void EnableBuildMode() 
         {
-            Gizmos.DrawRay(cam.ScreenPointToRay(Input.mousePosition).origin, cam.ScreenPointToRay(Input.mousePosition).direction * 120f);
+            buildMode = true;
+        }
+
+        internal void DisableBuildMode()
+        {
+            buildMode = false;
         }
     }
 }

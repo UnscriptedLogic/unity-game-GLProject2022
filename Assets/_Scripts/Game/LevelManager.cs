@@ -55,10 +55,12 @@ namespace Game
                     buildManager.enabled = false;
                     break;
                 case LevelState.Won:
+                    Debug.Log("You won the game");
                     buildManager.enabled = false;
                     waveSpawner.StopSpawner();
                     break;
                 case LevelState.Lost:
+                    Debug.Log("You Lost the game");
                     buildManager.enabled = false;
                     waveSpawner.StopSpawner();
                     break;
@@ -105,11 +107,17 @@ namespace Game
             }
         }
 
-        private void SwitchState(LevelState newState)
+        public void SwitchState(LevelState newState)
         {
             ExitState();
             levelState = newState;
             EnterState();
         }
+
+        #region StateSetters
+        public void SetGameLost() => SwitchState(LevelState.Lost);
+        public void SetGamePlaying() => SwitchState(LevelState.Playing);
+        public void SetGamePaused() => SwitchState(LevelState.Paused);
+        #endregion
     }
 }

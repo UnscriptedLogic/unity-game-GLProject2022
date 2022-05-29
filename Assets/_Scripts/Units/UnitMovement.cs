@@ -26,6 +26,7 @@ namespace Units
         private int waypointCounter = 0;
 
         public int WaypointIndex => waypointCounter;
+        public float CurrentHealth => currHealth;
         public Action<ModificationType, float> OnHealthModified;
 
         private void OnEnable()

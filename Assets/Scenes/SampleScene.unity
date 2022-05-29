@@ -791,6 +791,7 @@ GameObject:
   - component: {fileID: 1193752720}
   - component: {fileID: 1193752722}
   - component: {fileID: 1193752717}
+  - component: {fileID: 1193752723}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -931,6 +932,34 @@ MonoBehaviour:
     type: 3}
   worldSpaceSlider: {fileID: 1524213906768237627, guid: 770e3a7c1edf75e408b87cc71e22b0db,
     type: 3}
+--- !u!114 &1193752723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193752713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10446af2a4e1d674c9ac46ccc652adac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSource: {fileID: 11400000, guid: 47ed1488d0760224685a55e8bda671bd, type: 2}
+  OnEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1193752721}
+        m_TargetAssemblyTypeName: Game.LevelManager, Assembly-CSharp
+        m_MethodName: SetGameLost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1221805244
 GameObject:
   m_ObjectHideFlags: 0

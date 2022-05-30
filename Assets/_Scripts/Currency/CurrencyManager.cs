@@ -9,11 +9,13 @@ namespace Core.Currency
     public class CurrencyManager : MonoBehaviour
     {
         [SerializeField] private CurrencySO currencyContainer;
+        [SerializeField] private TowerCosts towerCosts;
 
         [Header("UI")]
         [SerializeField] private TextMeshProUGUI currencyTMP;
 
         public CurrencySO CurrencyContainer => currencyContainer;
+        public TowerCosts TowerCosts => towerCosts;
         public Action OnCashModified;
 
         public void ModifyCurrency(ModificationType modificationType, float amount)

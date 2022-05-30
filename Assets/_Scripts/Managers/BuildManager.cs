@@ -12,9 +12,10 @@ namespace Core.Building
         [SerializeField] private bool buildMode;
         [SerializeField] private Camera cam;
         [SerializeField] private LayerMask nodeLayer;
-        [SerializeField] private GameObject towerPrefab;
+        private GameObject towerPrefab;
 
         public bool BuildMode => buildMode;
+        public GameObject TowerToPlace => towerPrefab;
 
         public bool PlaceTower()
         {
@@ -23,6 +24,7 @@ namespace Core.Building
                 string[] str = hit.transform.name.Split(",");
                 int.TryParse(str[0], out int x);
                 int.TryParse(str[1], out int y);
+
                 return GridGenerator.GetNodeAt(x, y).PlaceTower(towerPrefab);
             }
 

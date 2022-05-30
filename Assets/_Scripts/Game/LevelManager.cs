@@ -196,6 +196,7 @@ namespace Game
                     buildManager.DisableBuildMode();
                     buildModeUI.SetActive(false);
                     gameModeUI.SetActive(true);
+                    currencyManager.ModifyCurrency(ModificationType.Subtract, currencyManager.TowerCosts.GetTowerCost(buildManager.TowerToPlace));
                     break;
                 case GameState.Viewing:
                     break;

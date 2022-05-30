@@ -56,7 +56,7 @@ namespace Towers
                 }
                 else
                 {
-                    if (Vector3.Distance(target.transform.position, transform.position) > range)
+                    if (Vector3.Distance(target.transform.position, transform.position) > range || target.WaypointIndex == 0)
                     {
                         target = null;
                         return;

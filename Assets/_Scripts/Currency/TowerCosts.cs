@@ -24,7 +24,12 @@ namespace Core.Currency
             }
         }
 
+        //[SerializeField] private TowerCost[] towerCosts;
+        //public TowerCost[] TowerCosts => towerCosts;
+
         [SerializeField] private TowerCost[] towerCosts;
+        public TowerCost[] TowerCostList => towerCosts;
+
 
         public int GetTowerCost(GameObject subject)
         {

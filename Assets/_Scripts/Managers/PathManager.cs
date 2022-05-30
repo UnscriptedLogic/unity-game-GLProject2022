@@ -32,7 +32,7 @@ namespace Core.Pathing
         public void GeneratePath(Action callback)
         {
             if (randomizeSeed)
-                seed = (int)System.DateTime.Now.TimeOfDay.TotalSeconds;
+                seed = UnityEngine.Random.Range(-1000000, 1000000);
 
             UnityEngine.Random.InitState(seed);
             nodes = new List<GridNode>(GridGenerator.GridNodes);

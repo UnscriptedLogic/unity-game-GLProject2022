@@ -116,6 +116,7 @@ namespace Units
         {
             PoolManager.instance.PushToPool(gameObject);
             transform.position = nodePath[0].Position;
+            waypointCounter = 0;
         }
     }
 }

@@ -12,3 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5377099e6e047d548ac13150eac85caf, type: 3}
   m_Name: Tower Costs
   m_EditorClassIdentifier: 
+  towerCosts:
+  - tower: {fileID: 836754924125986003, guid: 03e8205c481f37e49a17b1068fab1b31, type: 3}
+    cost: 25
+  - tower: {fileID: 836754924125986003, guid: a03db29603aa5c143a906279e91413b2, type: 3}
+    cost: 75
+  - tower: {fileID: 836754924125986003, guid: 41a5f627fa421d345ab44d4d5715d113, type: 3}
+    cost: 50

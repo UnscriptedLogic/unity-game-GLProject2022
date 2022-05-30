@@ -4,6 +4,7 @@ using UnityEngine;
 using Core.Grid;
 using Core.Building;
 using Core.Currency;
+using Core.UI;
 using Game.Spawning;
 using External.CustomSlider;
 using Towers;
@@ -36,6 +37,7 @@ namespace Game
         [SerializeField] private BuildManager buildManager;
         [SerializeField] private WaveSpawner waveSpawner;
         [SerializeField] private CurrencyManager currencyManager;
+        [SerializeField] private UIManager uiManager;
 
         private HomeTower homeTower;
 
@@ -46,9 +48,7 @@ namespace Game
 
         public LevelState CurrentLevelState => levelState;
         public GameState CurrentGameState => gameState;
-
-        public static LevelManager instance;
-        private void Awake() => instance = this;
+        public CurrencyManager CurrencyManager => currencyManager;
 
         private void Start()
         {
@@ -172,6 +172,7 @@ namespace Game
             {
                 case LevelState.Start:
                     currencyManager.ModifyCurrency(ModificationType.Set, currencyManager.CurrencyContainer.StartAmount);
+                    uiManager.Initialize(this);
                     break;
                 case LevelState.Playing:
                     break;

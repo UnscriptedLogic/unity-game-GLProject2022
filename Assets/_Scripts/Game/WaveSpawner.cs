@@ -10,6 +10,15 @@ namespace Game.Spawning
 {
     public class WaveSpawner : MonoBehaviour
     {
+        private enum SpawnerStates
+        {
+            Stopped,
+            SpawningWave,
+            SpawningSegment,
+            Waiting,
+            Preparation
+        }
+
         [Serializable]
         public class WaveSegment
         {
@@ -17,15 +26,6 @@ namespace Game.Spawning
             public int amount;
             public float interval;
             public float segmentInterval;
-
-            [HideInInspector] public int _spawnAmount = 0;
-            [HideInInspector] public float _spawnInterval = 0;
-
-            public void ContinueSpawn()
-            {
-                _spawnInterval = interval;
-                _spawnAmount++;
-            }
         }
 
         [Serializable]
@@ -33,24 +33,23 @@ namespace Game.Spawning
         {
             public WaveSegment[] waveSegments;
             public float waveInterval = 5f;
-
-            [HideInInspector] public float _waveInterval;
-            [HideInInspector] public float _segmentInterval;
         }
 
-        public Transform spawnLocation;
-        public float startDelay = 5f;
-        private float _startDelay;
-
+        [SerializeField] private Transform spawnLocation;
+        [SerializeField] private float startDelay = 5f;
         [SerializeField] private Transform cam;
+        [SerializeField] private Wave[] waves;
 
-        public Wave[] waves;
         private Wave currWave;
         private WaveSegment currSegment;
+        private SpawnerStates currentState = SpawnerStates.Stopped;
+
+        private float _startDelay;
+        private float _interval;
+        private int _spawnAmount;
 
         private int waveIndex;
         private int segmentIndex;
-
         private bool stopSpawning = true;
 
         public void StartSpawner()
@@ -59,86 +58,147 @@ namespace Game.Spawning
             _startDelay = startDelay;
             currWave = waves[waveIndex];
             currSegment = currWave.waveSegments[segmentIndex];
-        }
 
-        public void StopSpawner() => stopSpawning = true;
-        public void ContinueSpawner() => stopSpawning = false;
+            SwitchState(SpawnerStates.Preparation);
+        }
 
         private void Update()
         {
             if (stopSpawning)
-            {
                 return;
-            }
 
-            if (_startDelay >= 0f)
-            {
-                _startDelay -= Time.deltaTime;
-                return;
-            }
+            UpdateState();
+        }
 
-            if (currWave._waveInterval <= 0f)
+        private void EnterState()
+        {
+            switch (currentState)
             {
-                if (currWave._segmentInterval <= 0)
-                {
-                    SpawnSegment();
-                }
-                else
-                {
-                    currWave._segmentInterval -= Time.deltaTime;
-                }
-            }
-            else
-            {
-                currWave._waveInterval -= Time.deltaTime;
+                case SpawnerStates.Stopped:
+                    break;
+                case SpawnerStates.SpawningWave:
+                    currWave = waves[waveIndex];
+                    break;
+                case SpawnerStates.SpawningSegment:
+                    currSegment = waves[waveIndex].waveSegments[segmentIndex];
+                    _spawnAmount = 0;
+                    break;
+                case SpawnerStates.Waiting:
+                    _interval = currSegment.segmentInterval;
+                    break;                
+                case SpawnerStates.Preparation:
+                    _interval = startDelay;
+                    break;
+                default:
+                    break;
             }
         }
 
-        private void SpawnSegment()
+        private void SpawningCompleted()
         {
-            if (currSegment._spawnInterval <= 0)
-            {
-                SpawnEnemy();
+            StopSpawner();
+        }
 
-                if (currSegment._spawnAmount == currSegment.amount - 1)
-                {
-                    NextWaveSegment();
-                }
-                else
-                {
-                    currSegment.ContinueSpawn();
-                }
-            }
-            else
+        private void UpdateState()
+        {
+            switch (currentState)
             {
-                currSegment._spawnInterval -= Time.deltaTime;
+                case SpawnerStates.Stopped:
+                    break;
+                case SpawnerStates.SpawningWave:
+                    if (_interval <= 0f)
+                    {
+                        SwitchState(SpawnerStates.SpawningSegment);
+                        break;
+                    } else
+                    {
+                        _interval -= Time.deltaTime;
+                    }
+                    break;
+                case SpawnerStates.SpawningSegment:
+                    if (_spawnAmount >= currSegment.amount) 
+                    {
+                        SwitchState(SpawnerStates.Waiting);
+                        break;
+                    }
+
+                    if (_interval <= 0f)
+                    {
+                        SpawnEnemy();
+                        _spawnAmount++;
+                        _interval = currSegment.interval;
+                    } else
+                    {
+                        _interval -= Time.deltaTime;
+                    }
+                    break;
+                case SpawnerStates.Waiting:
+                    if (_interval <= 0f)
+                    {
+                        segmentIndex++;
+                        if (segmentIndex >= waves[waveIndex].waveSegments.Length)
+                        {
+                            segmentIndex = 0;
+                            waveIndex++;
+                            if (waveIndex >= waves.Length)
+                            {
+                                SpawningCompleted();
+                                break;
+                            }
+
+                            _interval = currWave.waveInterval;
+                            SwitchState(SpawnerStates.SpawningWave);
+                            break;
+                        }
+
+                        SwitchState(SpawnerStates.SpawningSegment);
+                    } else
+                    {
+                        _interval -= Time.deltaTime;
+                    }
+                    break;
+                case SpawnerStates.Preparation:
+                    if (_interval <= 0f)
+                    {
+                        SwitchState(SpawnerStates.SpawningWave);
+                    } else
+                    {
+                        _interval -= Time.deltaTime;
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
-        private void NextWaveSegment()
+        private void ExitState()
         {
-            currWave._segmentInterval = currWave.waveSegments[segmentIndex].segmentInterval;
-            segmentIndex++;
-            if (segmentIndex >= currWave.waveSegments.Length)
+            switch (currentState)
             {
-                stopSpawning = true;
-                return;
+                case SpawnerStates.Stopped:
+                    break;
+                case SpawnerStates.SpawningWave:
+                    break;
+                case SpawnerStates.SpawningSegment:
+                    break;
+                case SpawnerStates.Waiting:
+                    break;
+                case SpawnerStates.Preparation:
+                    break;
+                default:
+                    break;
             }
-
-            currSegment = currWave.waveSegments[segmentIndex];
-        }   
-
-        private void NextWave()
-        {
-            waveIndex++;
-            if (waveIndex >= waves.Length)
-            {
-                waveIndex = 0;
-            }
-
-            currWave = waves[waveIndex];
-            currSegment = currWave.waveSegments[segmentIndex];
         }
+
+        private void SwitchState(SpawnerStates newState)
+        {
+            ExitState();
+            currentState = newState;
+            EnterState();
+        }
+
+        public void StopSpawner() => stopSpawning = true;
+        public void ContinueSpawner() => stopSpawning = false;
 
         private void SpawnEnemy()
         {

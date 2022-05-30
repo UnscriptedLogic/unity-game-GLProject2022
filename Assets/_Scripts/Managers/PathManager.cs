@@ -14,6 +14,7 @@ namespace Core.Pathing
         [SerializeField] private int weightPointCount = 5; //The amount of 'crucial' points the path needs to meet (for proper path spread across the map)
         [SerializeField] private float weightPointDistance = 5f; //The amount of distance between the weightpoints;
         [SerializeField] private bool randomizeSeed = false;
+        [SerializeField] private bool allowOverlap = false;
 
         private GridNode[] weightPoints;
         private List<GridNode> nodes;
@@ -78,7 +79,7 @@ namespace Core.Pathing
             {
                 if (i + 1 < weightPoints.Length)
                 {
-                    path.AddRange(PathFinder.GetPath(weightPoints[i], weightPoints[i + 1]));
+                    path.AddRange(PathFinder.GetPath(weightPoints[i], weightPoints[i + 1], allowOverlap));
                     yield return new WaitForSeconds(0.25f);
                 }
             }

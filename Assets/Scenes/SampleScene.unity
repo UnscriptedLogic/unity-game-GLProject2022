@@ -764,37 +764,44 @@ MonoBehaviour:
   cam: {fileID: 330585546}
   waves:
   - waveSegments:
-    - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
         type: 3}
-      amount: 2
+      amount: 5
       interval: 1
       segmentInterval: 10
-      _spawnAmount: 0
-      _spawnInterval: 0
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
-        type: 3}
-      amount: 60
-      interval: 0.1
-      segmentInterval: 5
-      _spawnAmount: 0
-      _spawnInterval: 0
     - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
         type: 3}
       amount: 10
       interval: 0.5
-      segmentInterval: 3
-      _spawnAmount: 0
-      _spawnInterval: 0
+      segmentInterval: 10
     - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
         type: 3}
-      amount: 10
+      amount: 1
+      interval: 0
+      segmentInterval: 0
+    waveInterval: 10
+  - waveSegments:
+    - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
+        type: 3}
+      amount: 5
+      interval: 2
+      segmentInterval: 0
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
+        type: 3}
+      amount: 30
+      interval: 0.5
+      segmentInterval: 5
+    - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
+        type: 3}
+      amount: 15
       interval: 0.5
       segmentInterval: 0
-      _spawnAmount: 0
-      _spawnInterval: 0
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
+        type: 3}
+      amount: 30
+      interval: 0.5
+      segmentInterval: 3
     waveInterval: 5
-    _waveInterval: 0
-    _segmentInterval: 0
 --- !u!114 &853069099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1258,12 +1265,12 @@ GameObject:
   - component: {fileID: 1193752718}
   - component: {fileID: 1193752716}
   - component: {fileID: 1193752719}
-  - component: {fileID: 1193752720}
   - component: {fileID: 1193752722}
   - component: {fileID: 1193752724}
+  - component: {fileID: 1193752725}
+  - component: {fileID: 1193752720}
   - component: {fileID: 1193752723}
   - component: {fileID: 1193752717}
-  - component: {fileID: 1193752725}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1356,7 +1363,8 @@ MonoBehaviour:
   seed: 72293
   weightPointCount: 6
   weightPointDistance: 8
-  randomizeSeed: 0
+  randomizeSeed: 1
+  allowOverlap: 1
 --- !u!114 &1193752720
 MonoBehaviour:
   m_ObjectHideFlags: 0

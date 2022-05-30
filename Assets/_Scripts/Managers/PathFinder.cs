@@ -13,7 +13,7 @@ namespace Core.Pathing
         private static List<GridNode> openSet;
         private static List<GridNode> closedSet;
 
-        public static List<GridNode> GetPath(GridNode startNode, GridNode endNode)
+        public static List<GridNode> GetPath(GridNode startNode, GridNode endNode, bool allowOverlap)
         {
             for (int i = 0; i < GridGenerator.GridNodes.Length; i++)
             {
@@ -43,10 +43,14 @@ namespace Core.Pathing
                 foreach (GridNode neighbourNode in GetNeighbours(currentNode))
                 {
                     if (closedSet.Contains(neighbourNode)) continue;
-                    if (neighbourNode.isObstacle)
+
+                    if (!allowOverlap)
                     {
-                        closedSet.Add(neighbourNode);
-                        continue;
+                        if (neighbourNode.isObstacle)
+                        {
+                            closedSet.Add(neighbourNode);
+                            continue;
+                        }
                     }
 
                     float tmpGcost = currentNode.gCost + GetDistance(currentNode, neighbourNode);

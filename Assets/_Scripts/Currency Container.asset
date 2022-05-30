@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c076f9d52e4ae04b92ef2fa3143b72e, type: 3}
   m_Name: Currency Container
   m_EditorClassIdentifier: 
-  startAmount: 250
-  clamp: {x: 0, y: 100}
+  startAmount: 400
+  clamp: {x: 0, y: 10000}

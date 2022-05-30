@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Core.Grid;
 using Core.Building;
+using Core.Currency;
 using Game.Spawning;
 using External.CustomSlider;
 using Towers;
@@ -34,6 +35,7 @@ namespace Game
         [SerializeField] private GridManager gridManager;
         [SerializeField] private BuildManager buildManager;
         [SerializeField] private WaveSpawner waveSpawner;
+        [SerializeField] private CurrencyManager currencyManager;
 
         private HomeTower homeTower;
 
@@ -169,6 +171,7 @@ namespace Game
             switch (levelState)
             {
                 case LevelState.Start:
+                    currencyManager.ModifyCurrency(ModificationType.Set, currencyManager.CurrencyContainer.StartAmount);
                     break;
                 case LevelState.Playing:
                     break;

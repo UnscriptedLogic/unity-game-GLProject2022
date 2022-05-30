@@ -14,10 +14,9 @@ namespace Core.Currency
         [SerializeField] private Vector2Int clamp = new Vector2Int(0, 100);
         private float currAmount;
 
-        public float CurrentAmount => currAmount;
+        public float CurrentAmount { get => currAmount; set { currAmount = value; } }
+        public float StartAmount { get => startAmount; set { startAmount = value; } }
 
-        public void ModifyAmount(ModificationType modificationType, float amount) => MathHelper.ModifyValue(modificationType, ref currAmount, amount);
-        public void ResetToStartAmount() => currAmount = startAmount;   
         public void CheckClampAmount() => currAmount = Mathf.Clamp(currAmount, clamp.x, clamp.y);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,10 +14,39 @@ namespace Core.Currency
         [SerializeField] private TextMeshProUGUI currencyTMP;
 
         public CurrencySO CurrencyContainer => currencyContainer;
+        public Action OnCashModified;
 
-        public void Initialize()
+        public void ModifyCurrency(ModificationType modificationType, float amount)
         {
-            currencyContainer.ResetToStartAmount();
+            switch (modificationType)
+            {
+                case ModificationType.Add:
+                    currencyContainer.CurrentAmount += amount;
+                    break;
+                case ModificationType.Subtract:
+                    currencyContainer.CurrentAmount -= amount;
+                    break;
+                case ModificationType.Set:
+                    currencyContainer.CurrentAmount = amount;
+                    break;
+                case ModificationType.Divide:
+                    currencyContainer.CurrentAmount /= amount;
+                    break;
+                case ModificationType.Multiply:
+                    currencyContainer.CurrentAmount *= amount;
+                    break;
+                default:
+                    break;
+            }
+
+            OnCashModified?.Invoke();
+            UpdateCashUI();
+        }
+
+        private void UpdateCashUI()
+        {
+            if (currencyTMP != null)
+                currencyTMP.text = "Cash: " + currencyContainer.CurrentAmount.ToString();
         }
     }       
 }

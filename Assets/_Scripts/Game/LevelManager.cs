@@ -49,6 +49,7 @@ namespace Game
         public LevelState CurrentLevelState => levelState;
         public GameState CurrentGameState => gameState;
         public CurrencyManager CurrencyManager => currencyManager;
+        public WaveSpawner WaveSpawner => waveSpawner;
 
         private void Start()
         {

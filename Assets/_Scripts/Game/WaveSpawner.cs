@@ -50,7 +50,11 @@ namespace Game.Spawning
 
         private int waveIndex;
         private int segmentIndex;
+        private int waveCount;
         private bool stopSpawning = true;
+
+        public int WaveCount => waveCount;
+        public Action OnWaveCompleted;
 
         public void StartSpawner()
         {
@@ -58,6 +62,7 @@ namespace Game.Spawning
             _startDelay = startDelay;
             currWave = waves[waveIndex];
             currSegment = currWave.waveSegments[segmentIndex];
+            waveCount = 0;
 
             SwitchState(SpawnerStates.Preparation);
         }
@@ -135,6 +140,8 @@ namespace Game.Spawning
                         {
                             segmentIndex = 0;
                             waveIndex++;
+                            waveCount++;
+                            OnWaveCompleted?.Invoke();
                             if (waveIndex >= waves.Length)
                             {
                                 SpawningCompleted();

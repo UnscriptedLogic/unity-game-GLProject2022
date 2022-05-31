@@ -150,6 +150,7 @@ namespace Game
                     {
                         if (buildManager.PlaceTower())
                         {
+                            currencyManager.ModifyCurrency(ModificationType.Subtract, currencyManager.TowerCosts.GetTowerCost(buildManager.TowerToPlace));
                             SwitchGameState(GameState.None);
                         }
                     }
@@ -197,7 +198,6 @@ namespace Game
                     buildManager.DisableBuildMode();
                     buildModeUI.SetActive(false);
                     gameModeUI.SetActive(true);
-                    currencyManager.ModifyCurrency(ModificationType.Subtract, currencyManager.TowerCosts.GetTowerCost(buildManager.TowerToPlace));
                     break;
                 case GameState.Viewing:
                     break;

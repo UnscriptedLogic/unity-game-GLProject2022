@@ -94,11 +94,6 @@ namespace Game.Spawning
             }
         }
 
-        private void SpawningCompleted()
-        {
-            StopSpawner();
-        }
-
         private void UpdateState()
         {
             switch (currentState)
@@ -190,6 +185,11 @@ namespace Game.Spawning
             }
         }
 
+        private void SpawningCompleted()
+        {
+            ResetSpawner();
+        }
+
         private void SwitchState(SpawnerStates newState)
         {
             ExitState();
@@ -199,6 +199,17 @@ namespace Game.Spawning
 
         public void StopSpawner() => stopSpawning = true;
         public void ContinueSpawner() => stopSpawning = false;
+
+        private void ResetSpawner()
+        {
+            waveIndex = 0;
+            segmentIndex = 0;
+
+            currWave = waves[waveIndex];
+            currSegment = currWave.waveSegments[segmentIndex];
+
+            SwitchState(SpawnerStates.SpawningWave);
+        }
 
         private void SpawnEnemy()
         {

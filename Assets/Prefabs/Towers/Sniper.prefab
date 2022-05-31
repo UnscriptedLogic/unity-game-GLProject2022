@@ -93,7 +93,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b0d59c11b6770d4d93413ca6986f32f, type: 2}
+  - {fileID: 2100000, guid: d3b0a88c8a840d5458808f67e6528316, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 836754924125986004}
   - component: {fileID: 8755096436310946305}
   m_Layer: 0
-  m_Name: TowerObject
+  m_Name: Sniper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,12 +175,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e8d586f84463d4a91ec05d9654d92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  projectileSpeed: 30
+  damage: 50
+  projectileSpeed: 50
   projectileLifetime: 0.5
-  range: 6
-  attackInterval: 1
-  rotationSpeed: 50
+  range: 10
+  attackInterval: 3
+  rotationSpeed: 70
   projectilePrefab: {fileID: 2184705531295620089, guid: 5303ffed305f8ae4694b3f3b9e958285,
     type: 3}
   shootAnchor: {fileID: 163164241}

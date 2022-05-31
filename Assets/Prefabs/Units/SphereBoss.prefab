@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 8834544070352170256}
   - component: {fileID: 5736165837249898625}
   m_Layer: 6
-  m_Name: PlaceBossHolderUnit
+  m_Name: SphereBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -841,8 +841,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: 5736165837249898625}
-  health: 75
-  movementSpeed: 2
+  health: 250
+  movementSpeed: 1.5
   healthbar: {fileID: 5959593351887877580}
 --- !u!135 &1835879742151613041
 SphereCollider:

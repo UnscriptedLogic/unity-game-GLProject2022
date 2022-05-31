@@ -36,6 +36,7 @@ namespace Game
         [SerializeField] private GridManager gridManager;
         [SerializeField] private BuildManager buildManager;
         [SerializeField] private WaveSpawner waveSpawner;
+        [SerializeField] private WaveIncome waveIncome;
         [SerializeField] private CurrencyManager currencyManager;
         [SerializeField] private UIManager uiManager;
 
@@ -175,6 +176,7 @@ namespace Game
                 case LevelState.Start:
                     currencyManager.ModifyCurrency(ModificationType.Set, currencyManager.CurrencyContainer.StartAmount);
                     uiManager.Initialize(this);
+                    waveIncome.Initialize(this);
                     break;
                 case LevelState.Playing:
                     break;

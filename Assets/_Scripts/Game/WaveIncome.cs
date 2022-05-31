@@ -10,6 +10,7 @@ public class WaveIncome : MonoBehaviour
 {
     [SerializeField] private AnimationCurve animationCurve;
     [SerializeField] private int waveCap;
+    [SerializeField] private float multiplier = 100f;
 
     private CurrencyManager currencyManager;
     private WaveSpawner waveSpawner;
@@ -24,12 +25,14 @@ public class WaveIncome : MonoBehaviour
 
     private void AddWaveIncome()
     {
-        float evaluation = 0f;
+        float evaluation;
         if (waveSpawner.WaveCount <= waveCap)
-            evaluation = waveSpawner.WaveCount / waveCap;
+            evaluation = waveSpawner.WaveCount / (float)waveCap;
         else
             evaluation = waveCap;
 
-        currencyManager.ModifyCurrency(ModificationType.Add, (float)Math.Round(animationCurve.Evaluate(evaluation), 2));
+        Debug.Log("Wave: " + waveSpawner.WaveCount);
+        Debug.Log("Evaluation: " + evaluation);
+        currencyManager.ModifyCurrency(ModificationType.Add, (float)Mathf.Round(animationCurve.Evaluate(evaluation) * multiplier));
     }
 }

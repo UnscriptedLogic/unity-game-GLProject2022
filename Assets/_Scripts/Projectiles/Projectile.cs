@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Interfaces;
+using Units;
 
 namespace Projectiles
 {
@@ -59,18 +60,26 @@ namespace Projectiles
         private void Update()
         {
             movementBehaviour.MoveEntity(movementSpeed, transform.forward, rb);
+
+            if (lifetime <= 0f)
+            {
+                poolManager.PushToPool(gameObject);
+                projectileSettings = null;
+            } else
+            {
+                lifetime -= Time.deltaTime;
+            }
         }
 
         private void OnTriggerEnter(Collider other)
         {
             IDamageable damageable = other.GetComponent<IDamageable>();
-            if (damageable != null)
+            if (damageable != null && other.GetComponent<UnitMovement>() != null)
             {
                 damageable.ModifyHealth(ModificationType.Subtract, damage);
+                poolManager.PushToPool(gameObject);
+                projectileSettings = null;
             }
-
-            poolManager.PushToPool(gameObject);
-            projectileSettings = null;
         }
     }
 }

@@ -860,7 +860,7 @@ MonoBehaviour:
         type: 3}
       amount: 1
       interval: 30
-      segmentInterval: 15
+      segmentInterval: 10
     - enemyToSpawn: {fileID: 7644136366003357881, guid: ee801da81d9c2714cbb897ed1b6c0df6,
         type: 3}
       amount: 20

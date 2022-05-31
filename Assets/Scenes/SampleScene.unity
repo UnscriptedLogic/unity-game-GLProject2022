@@ -1384,8 +1384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 72293
-  weightPointCount: 15
-  weightPointDistance: 3
+  weightPointCount: 6
+  weightPointDistance: 8
   randomizeSeed: 1
   allowOverlap: 1
 --- !u!114 &1193752720

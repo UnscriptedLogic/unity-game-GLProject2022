@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wavesSO: {fileID: 11400000, guid: faa2c1d51e407604881bc6e66cb7e331, type: 2}
   startDelay: 5
-  waveIndex: 1
+  waveIndex: 0
   spawnLocation: {fileID: 853069097}
   cam: {fileID: 330585546}
 --- !u!114 &853069099
@@ -1720,13 +1720,13 @@ MonoBehaviour:
   waveIncome: {fileID: 1193752726}
   currencyManager: {fileID: 1193752724}
   uiManager: {fileID: 1193752725}
+  pathManager: {fileID: 1193752719}
   UILayer:
     serializedVersion: 2
     m_Bits: 32
   buildModeUI: {fileID: 453098065}
   gameModeUI: {fileID: 933864111}
   viewModeUI: {fileID: 884261076}
-  towerDialogue: {fileID: 3395416466153213097}
 --- !u!114 &1193752722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1801,6 +1801,7 @@ MonoBehaviour:
   waveCounterTMP: {fileID: 1723135218}
   baseSlider: {fileID: 2125801760}
   towerButtonHolder: {fileID: 1115301466}
+  towerDialogue: {fileID: 3395416466153213097}
 --- !u!114 &1193752726
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,6 +28,7 @@ namespace Game.Spawning
         private Wave currWave;
         private WaveSegment currSegment;
         private SpawnerStates currentState = SpawnerStates.Stopped;
+        private LevelManager levelManager;
 
         private float _interval;
         private int _spawnAmount;
@@ -40,6 +41,11 @@ namespace Game.Spawning
         public WavesSO WavesSO => wavesSO;
         public Action OnWaveCompleted;
         public Action OnWaveStarted;
+
+        public void Initialize(LevelManager levelManager)
+        {
+            this.levelManager = levelManager;
+        }
 
         public void StartSpawner()
         {
@@ -208,6 +214,8 @@ namespace Game.Spawning
             //GameObject enemy = Instantiate(currSegment.enemyToSpawn, spawnLocation.position, Quaternion.identity, transform);
             GameObject enemy = PoolManager.instance.PullFromPool(currSegment.enemyToSpawn);
             enemy.transform.SetParent(transform);
+
+            enemy.GetComponent<UnitMovement>().InitializeEnemy(levelManager);
         }
 
         public void ClearEntities()

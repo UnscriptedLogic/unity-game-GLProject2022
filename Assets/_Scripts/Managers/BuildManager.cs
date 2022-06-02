@@ -34,7 +34,9 @@ namespace Core.Building
                 int.TryParse(str[0], out int x);
                 int.TryParse(str[1], out int y);
 
-                return GridGenerator.GetNodeAt(x, y).PlaceTower(towerPrefab);
+                GridNode node = GridGenerator.GetNodeAt(x, y);
+                bool value = node.PlaceTower(towerPrefab);
+                return value;
             }
 
             return false;

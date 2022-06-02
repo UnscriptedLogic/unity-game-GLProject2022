@@ -641,7 +641,7 @@ MonoBehaviour:
   currentValue: 100
   maxValue: 100
   predictDelay: 1
-  hideDelay: 3
+  hideDelay: 0
   slider: {fileID: 7507150220592004851}
   differenceSlider: {fileID: 7507150219885848550}
   background: {fileID: 7507150219877037963}
@@ -841,8 +841,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: 5736165837249898625}
-  health: 250
-  movementSpeed: 2
+  health: 180
+  movementSpeed: 1.5
   healthbar: {fileID: 5959593351887877580}
 --- !u!135 &1835879742151613041
 SphereCollider:

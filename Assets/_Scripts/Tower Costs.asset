@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerCosts:
   - tower: {fileID: 836754924125986003, guid: 03e8205c481f37e49a17b1068fab1b31, type: 3}
-    cost: 50
+    cost: 100
   - tower: {fileID: 836754924125986003, guid: a03db29603aa5c143a906279e91413b2, type: 3}
-    cost: 75
+    cost: 250
   - tower: {fileID: 836754924125986003, guid: 41a5f627fa421d345ab44d4d5715d113, type: 3}
-    cost: 150
+    cost: 300

@@ -527,7 +527,7 @@ MonoBehaviour:
   currentValue: 100
   maxValue: 100
   predictDelay: 1
-  hideDelay: 3
+  hideDelay: 0
   slider: {fileID: 3199580391474192166}
   differenceSlider: {fileID: 3199580389831394867}
   background: {fileID: 3199580389840148062}
@@ -712,7 +712,7 @@ Transform:
   - {fileID: 7263624245934417620}
   - {fileID: 6299725654869573702}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6877359742784348547
 MonoBehaviour:

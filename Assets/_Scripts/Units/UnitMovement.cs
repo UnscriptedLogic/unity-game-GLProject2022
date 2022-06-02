@@ -6,6 +6,7 @@ using Interfaces;
 using UnityEngine;
 using External.DamageFlash;
 using External.CustomSlider;
+using Game;
 
 namespace Units
 {
@@ -24,19 +25,17 @@ namespace Units
         
         private float currHealth;
         private int waypointCounter = 0;
+        private LevelManager levelManager;
 
         public int WaypointIndex => waypointCounter;
         public float CurrentHealth => currHealth;
         public Action<ModificationType, float> OnHealthModified;
 
-        private void OnEnable()
+        public void InitializeEnemy(LevelManager levelManager)
         {
-            InitializeEnemy();
-        }
+            this.levelManager = levelManager;
 
-        public void InitializeEnemy()
-        {
-            nodeManager = PathManager.instance;
+            nodeManager = levelManager.PathManager;
             nodePath = nodeManager.Path;
             transform.position = nodePath[0].Position;
 
@@ -45,6 +44,8 @@ namespace Units
 
             healthbar.SetLimits(currHealth, health);
             healthbar.SetValue(health);
+
+            enabled = true;
         }
 
         private void Update()
@@ -82,12 +83,15 @@ namespace Units
                         currHealth = maximum;
                     break;
                 case ModificationType.Subtract:
+                    float prev = currHealth;
                     currHealth -= amount;
                     healthbar.SetValue(currHealth);
                     if (currHealth <= 0f)
                         currHealth = 0f;
                     else
                         damageFlash.Flash();
+
+                    levelManager.CurrencyManager.ModifyCurrency(ModificationType.Add, Mathf.Round(prev - currHealth));
                     break;
                 case ModificationType.Set:
                     currHealth = amount;

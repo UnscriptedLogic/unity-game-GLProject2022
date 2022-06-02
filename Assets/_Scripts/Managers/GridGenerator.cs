@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Towers;
 using UnityEngine.Events;
 
 namespace Core.Grid
@@ -126,9 +127,13 @@ namespace Core.Grid
 
         public bool PlaceTower(GameObject towerAsset)
         {
+            Debug.Log("Hello World");
+
+
             if (!IsOccupied && !isObstacle)
             {
-                tower = GameObject.Instantiate(towerAsset, node.transform.position + placementOffset, Quaternion.identity);
+                tower = UnityEngine.Object.Instantiate(towerAsset, node.transform.position + placementOffset, Quaternion.identity);
+                tower.GetComponent<Tower>().GridNode = this;
             }
 
             return IsOccupied;

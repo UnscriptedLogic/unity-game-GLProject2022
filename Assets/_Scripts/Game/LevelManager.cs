@@ -9,6 +9,7 @@ using Game.Spawning;
 using Towers;
 using Standalone;
 using UnityEngine.EventSystems;
+using Core.Pathing;
 
 namespace Game
 {
@@ -37,13 +38,13 @@ namespace Game
         [SerializeField] private WaveIncome waveIncome;
         [SerializeField] private CurrencyManager currencyManager;
         [SerializeField] private UIManager uiManager;
+        [SerializeField] private PathManager pathManager; 
 
         [Header("UI")]
         [SerializeField] private LayerMask UILayer;
         [SerializeField] private GameObject buildModeUI;
         [SerializeField] private GameObject gameModeUI;
         [SerializeField] private GameObject viewModeUI;
-        [SerializeField] private TowerDialogue towerDialogue;
 
         private LevelState levelState = LevelState.Start;
         private GameState gameState = GameState.None;
@@ -53,6 +54,7 @@ namespace Game
         public CurrencyManager CurrencyManager => currencyManager;
         public WaveSpawner WaveSpawner => waveSpawner;
         public GridManager GridNodeManager => gridManager;
+        public PathManager PathManager => pathManager;
 
         private void Start()
         {
@@ -76,6 +78,7 @@ namespace Game
                         SwitchLevelState(LevelState.Playing);
 
                     });
+                    waveSpawner.Initialize(this);
                     break;
                 case LevelState.Playing:
                     buildManager.enabled = true;
@@ -115,7 +118,13 @@ namespace Game
                     break;
                 case GameState.Viewing:
                     viewModeUI.SetActive(true);
-                    towerDialogue.SetDetails(buildManager.InspectedTowerDetails);
+                    uiManager.SetTowerDialogue(buildManager.InspectedTowerDetails, buildManager.InspectedTower);
+                    uiManager.TowerDialogue.SellButton.onClick.AddListener(() => 
+                    { 
+                        currencyManager.ModifyCurrency(ModificationType.Add, buildManager.InspectedTowerDetails.SellCost);
+                        buildManager.InspectedTower.RemoveSelf();
+                        SwitchGameState(GameState.None);
+                    });
                     break;
                 default:
                     break;
@@ -148,12 +157,9 @@ namespace Game
                 case GameState.None:
                     if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0))
                     {
-                        Debug.Log("Click");
-
                         if (buildManager.TryInspectTower())
                         {
                             SwitchGameState(GameState.Viewing);
-                            Debug.Log("Viewing!");
                         }
                     }
                     break;
@@ -177,15 +183,13 @@ namespace Game
                     {
                         if (!EventSystem.current.IsPointerOverGameObject() && buildManager.TryInspectTower())
                         {
-                            towerDialogue.SetDetails(buildManager.InspectedTowerDetails);
+                            uiManager.SetTowerDialogue(buildManager.InspectedTowerDetails, buildManager.InspectedTower);
                         }
                         else if (!EventSystem.current.IsPointerOverGameObject())
                         {
                             SwitchGameState(GameState.None);
                         }
                     }
-
-                    towerDialogue.UpdateDetails();
 
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {

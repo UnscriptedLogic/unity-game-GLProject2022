@@ -6,6 +6,7 @@ using Game;
 using TMPro;
 using External.CustomSlider;
 using Towers;
+using Standalone;
 
 namespace Core.UI
 {
@@ -14,12 +15,13 @@ namespace Core.UI
         [SerializeField] private TextMeshProUGUI waveCounterTMP;
         [SerializeField] private CustomSlider baseSlider;
         [SerializeField] private Transform towerButtonHolder;
+        [SerializeField] private TowerDialogue towerDialogue;
 
         private Button[] towerButtons;
         private LevelManager levelManager;
         private HomeTower homeTower;
 
-        public Action OnUpdateUI;
+        public TowerDialogue TowerDialogue => towerDialogue;
 
         public void Initialize(LevelManager levelManager)
         {
@@ -43,6 +45,12 @@ namespace Core.UI
             };
         }
 
+        public void SetTowerDialogue(TowerTreeObject towerDetails, Tower tower)
+        {
+            towerDialogue.SetDetails(towerDetails);
+            towerDialogue.UpdateStats(tower.Damage, tower.Range, tower.FireRate, tower.TurnSpeed, tower.ProjSpeed);
+        }
+
         private void UpdateWaveCounter()
         {
             waveCounterTMP.text = "Wave: " + (levelManager.WaveSpawner.WaveCount == levelManager.WaveSpawner.WavesSO.Waves.Length - 1 ?
@@ -56,6 +64,8 @@ namespace Core.UI
             {
                 towerButtons[i].interactable = levelManager.CurrencyManager.TowerCosts.TowerCostList[i].Cost <= levelManager.CurrencyManager.CurrencyContainer.CurrentAmount;
             }
+
+            towerDialogue.UpdateButtons(levelManager.CurrencyManager.CurrencyContainer.CurrentAmount);
         }
     }
 }

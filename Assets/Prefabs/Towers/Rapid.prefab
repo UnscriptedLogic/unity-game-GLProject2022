@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerID: 1
-  damage: 1.5
+  damage: 1
   projectileSpeed: 20
   projectileLifetime: 0.5
   range: 5
@@ -173,7 +173,11 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2184705531295620089, guid: 5303ffed305f8ae4694b3f3b9e958285,
     type: 3}
   shootAnchor: {fileID: 163164241}
-  rotatonPart: {fileID: 836754924125986004}
+  rotationPart: {fileID: 836754924125986004}
+  gridNode:
+    isObstacle: 0
+    hCost: 0
+    gCost: 0
   unitLayer:
     serializedVersion: 2
     m_Bits: 64

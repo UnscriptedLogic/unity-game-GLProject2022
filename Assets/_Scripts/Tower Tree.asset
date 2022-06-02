@@ -16,18 +16,27 @@ MonoBehaviour:
   - towerID: 0
     towerName: Scout
     towerIcon: {fileID: 0}
+    sellCost: 25
+    upgradeIcon: {fileID: 0}
+    upgradeCost: 50
     upgradeName: Better Weapons
     upgradeDesc: Increases weapon damage
     nextUpgrade: {fileID: 0}
   - towerID: 1
     towerName: Rifler
     towerIcon: {fileID: 0}
+    sellCost: 35
+    upgradeIcon: {fileID: 0}
+    upgradeCost: 40
     upgradeName: Faster Damage
-    upgradeDesc: 
+    upgradeDesc: Gains an increase in fire rate
     nextUpgrade: {fileID: 0}
   - towerID: 2
     towerName: Mercenary
     towerIcon: {fileID: 0}
+    sellCost: 75
+    upgradeIcon: {fileID: 0}
+    upgradeCost: 100
     upgradeName: Recoil Control
-    upgradeDesc: 
+    upgradeDesc: Increases fire rate
     nextUpgrade: {fileID: 0}

@@ -107,6 +107,7 @@ namespace Core.Pooling
         {
             GameObject newItem = Instantiate(item);
             newItem.name = item.name;
+            newItem.SetActive(false);
             return newItem;
         }
 

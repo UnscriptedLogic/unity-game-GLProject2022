@@ -6,6 +6,7 @@ using EntityBehaviours;
 using Units;
 using Projectiles;
 using Core.Pooling;
+using Core.Grid;
 
 namespace Towers
 {
@@ -30,7 +31,8 @@ namespace Towers
         [Header("Others")]
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private Transform shootAnchor;
-        [SerializeField] private Transform rotatonPart;
+        [SerializeField] private Transform rotationPart;
+        [SerializeField] private GridNode gridNode;
         [SerializeField] private LayerMask unitLayer;
 
         private LookBehaviour lookBehaviour;
@@ -39,6 +41,12 @@ namespace Towers
         [SerializeField] private bool drawGizmos;
 
         public int ID => towerID;
+        public float Damage => damage;
+        public float Range => range;
+        public float FireRate => attackInterval;
+        public float TurnSpeed => rotationSpeed;
+        public float ProjSpeed => projectileSpeed;
+        public GridNode GridNode { get => gridNode; set { gridNode = value; } }
 
         private void Start()
         {
@@ -48,34 +56,37 @@ namespace Towers
 
         private void Update()
         {
-            _attackInterval = _attackInterval >= 0 ? _attackInterval -= Time.deltaTime : attackInterval;
-
-            unitsInRange = Physics.OverlapSphere(transform.position, range, unitLayer);
-            foreach (Collider collider1 in unitsInRange)
+            if (_attackInterval >= 0)
             {
-                UnitMovement unitMovement = collider1.GetComponent<UnitMovement>();
-                if (target == null)
-                {
-                    target = unitsInRange[0].GetComponent<UnitMovement>();
-                }
-                else
-                {
-                    if (Vector3.Distance(target.transform.position, transform.position) > range || target.WaypointIndex == 0)
-                    {
-                        target = null;
-                        return;
-                    }
-
-                    if (unitMovement.WaypointIndex > target.WaypointIndex)
-                        target = unitMovement;
-                }
+                _attackInterval -= Time.deltaTime;
             }
 
-            if (unitsInRange.Length > 0 && target != null)
+            if (_attackInterval <= 0f)
             {
-                FocusObject(rotatonPart, target.transform.position, rotationSpeed);
-                if (_attackInterval <= 0f)
+                unitsInRange = Physics.OverlapSphere(transform.position, range, unitLayer);
+                foreach (Collider collider1 in unitsInRange)
                 {
+                    UnitMovement unitMovement = collider1.GetComponent<UnitMovement>();
+                    if (target == null)
+                    {
+                        target = unitsInRange[0].GetComponent<UnitMovement>();
+                    }
+                    else
+                    {
+                        if (Vector3.Distance(target.transform.position, transform.position) > range || target.WaypointIndex == 0)
+                        {
+                            target = null;
+                            return;
+                        }
+
+                        if (unitMovement.WaypointIndex > target.WaypointIndex)
+                            target = unitMovement;
+                    }
+                }
+
+                if (unitsInRange.Length > 0 && target != null)
+                {
+                    rotationPart.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
                     DoAttack(projectilePrefab, shootAnchor);
                     _attackInterval = attackInterval;
                 }
@@ -95,5 +106,7 @@ namespace Towers
             ProjectileSettings settings = new ProjectileSettings(damage, projectileSpeed, projectileLifetime);
             attackBehaviour.Attack(projectile, spawnpoint, settings);
         }
+
+        public void RemoveSelf() => gridNode.RemoveTower();
     }
 }

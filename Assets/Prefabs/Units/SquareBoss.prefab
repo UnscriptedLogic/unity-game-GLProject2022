@@ -727,7 +727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: 852029564262320468}
-  health: 1750
+  health: 2500
   movementSpeed: 1
   healthbar: {fileID: 1656562306931233817}
 --- !u!135 &6715899306189405092

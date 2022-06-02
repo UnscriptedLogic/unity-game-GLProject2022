@@ -6,7 +6,6 @@ using Core.Building;
 using Core.Currency;
 using Core.UI;
 using Game.Spawning;
-using External.CustomSlider;
 using Towers;
 
 namespace Game
@@ -29,9 +28,6 @@ namespace Game
 
     public class LevelManager : MonoBehaviour
     {
-        private LevelState levelState = LevelState.Start;
-        private GameState gameState = GameState.None;
-
         [Header("Components")]
         [SerializeField] private GridManager gridManager;
         [SerializeField] private BuildManager buildManager;
@@ -40,17 +36,20 @@ namespace Game
         [SerializeField] private CurrencyManager currencyManager;
         [SerializeField] private UIManager uiManager;
 
-        private HomeTower homeTower;
-
         [Header("UI")]
-        [SerializeField] private CustomSlider baseSlider;
         [SerializeField] private GameObject buildModeUI;
         [SerializeField] private GameObject gameModeUI;
+        [SerializeField] private GameObject viewModeUI;
+
+        private LevelState levelState = LevelState.Start;
+        private GameState gameState = GameState.None;
+        private TowerDialogue towerDialogue;
 
         public LevelState CurrentLevelState => levelState;
         public GameState CurrentGameState => gameState;
         public CurrencyManager CurrencyManager => currencyManager;
         public WaveSpawner WaveSpawner => waveSpawner;
+        public GridManager GridNodeManager => gridManager;
 
         private void Start()
         {
@@ -72,12 +71,7 @@ namespace Game
                     gridManager.GenerateGrid(() =>
                     {
                         SwitchLevelState(LevelState.Playing);
-                        homeTower = gridManager.HomeNode.GetComponent<HomeTower>();
-                        baseSlider.Initialize(homeTower.CurrentHealth, homeTower.MaxHealth, false, true, false);
-                        homeTower.OnHealthModified += (health) =>
-                        {
-                            baseSlider.SetValue(health);
-                        };
+
                     });
                     break;
                 case LevelState.Playing:
@@ -116,6 +110,7 @@ namespace Game
                     gameModeUI.SetActive(false);
                     break;
                 case GameState.Viewing:
+                    viewModeUI.SetActive(true);
                     break;
                 default:
                     break;
@@ -203,6 +198,7 @@ namespace Game
                     gameModeUI.SetActive(true);
                     break;
                 case GameState.Viewing:
+                    viewModeUI.SetActive(false);
                     break;
                 default:
                     break;

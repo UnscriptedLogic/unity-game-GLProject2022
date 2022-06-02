@@ -48,7 +48,7 @@ namespace Core.Currency
         private void UpdateCashUI()
         {
             if (currencyTMP != null)
-                currencyTMP.text = "Cash: " + currencyContainer.CurrentAmount.ToString();
+                currencyTMP.text = "$" + currencyContainer.CurrentAmount.ToString();
         }
     }       
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Core.Grid;
+using Towers;
 
 namespace Core.Building
 {
@@ -12,6 +13,7 @@ namespace Core.Building
         [SerializeField] private bool buildMode;
         [SerializeField] private Camera cam;
         [SerializeField] private LayerMask nodeLayer;
+        [SerializeField] private LayerMask towerLayer;
         private GameObject towerPrefab;
 
         public bool BuildMode => buildMode;
@@ -29,6 +31,14 @@ namespace Core.Building
             }
 
             return false;
+        }
+
+        public void InspectTower()
+        {
+            if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1000f, towerLayer))
+            {
+                Tower tower = hit.transform.GetComponent<Tower>();
+            }
         }
 
         public void SetBuildObject(GameObject newObject)

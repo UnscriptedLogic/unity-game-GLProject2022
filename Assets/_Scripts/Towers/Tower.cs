@@ -5,12 +5,14 @@ using Interfaces;
 using EntityBehaviours;
 using Units;
 using Projectiles;
+using Core.Pooling;
 
 namespace Towers
 {
     public class Tower : MonoBehaviour, IFocuseable, IAttackable
     {
         [Header("Attributes")]
+        [SerializeField] private int towerID = 0;
         [SerializeField] private float damage = 1f;
         [SerializeField] private float projectileSpeed = 30f;
         [SerializeField] private float projectileLifetime = 0.5f;
@@ -39,7 +41,7 @@ namespace Towers
         private void Start()
         {
             lookBehaviour = new LookBehaviour();
-            attackBehaviour = new AttackBehaviour(Core.Pooling.PoolManager.instance);
+            attackBehaviour = new AttackBehaviour(PoolManager.instance);
         }
 
         private void Update()

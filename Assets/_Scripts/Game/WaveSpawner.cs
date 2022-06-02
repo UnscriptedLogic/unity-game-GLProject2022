@@ -19,20 +19,19 @@ namespace Game.Spawning
             Preparation
         }
 
-        [SerializeField] private Transform spawnLocation;
-        [SerializeField] private float startDelay = 5f;
-        [SerializeField] private Transform cam;
         [SerializeField] private WavesSO wavesSO;
+        [SerializeField] private float startDelay = 5f;
+        [SerializeField] private int waveIndex;
+        [SerializeField] private Transform spawnLocation;
+        [SerializeField] private Transform cam;
 
         private Wave currWave;
         private WaveSegment currSegment;
         private SpawnerStates currentState = SpawnerStates.Stopped;
 
-        private float _startDelay;
         private float _interval;
         private int _spawnAmount;
 
-        private int waveIndex;
         private int segmentIndex;
         private int waveCount;
         private bool stopSpawning = true;
@@ -40,11 +39,11 @@ namespace Game.Spawning
         public int WaveCount => waveCount;
         public WavesSO WavesSO => wavesSO;
         public Action OnWaveCompleted;
+        public Action OnWaveStarted;
 
         public void StartSpawner()
         {
             stopSpawning = false;
-            _startDelay = startDelay;
             currWave = wavesSO.Waves[waveIndex];
             currSegment = currWave.waveSegments[segmentIndex];
             waveCount = 0;
@@ -68,6 +67,7 @@ namespace Game.Spawning
                     break;
                 case SpawnerStates.SpawningWave:
                     currWave = wavesSO.Waves[waveIndex];
+                    OnWaveStarted?.Invoke();
                     break;
                 case SpawnerStates.SpawningSegment:
                     currSegment = wavesSO.Waves[waveIndex].waveSegments[segmentIndex];

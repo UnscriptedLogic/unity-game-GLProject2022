@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b2d79564296824793b0144595e248b, type: 3}
+  m_Name: Tower Tree
+  m_EditorClassIdentifier: 
+  towerTreeObjects:
+  - towerID: 0
+    towerName: Scout
+    towerIcon: {fileID: 0}
+    upgradeName: Better Weapons
+    upgradeDesc: Increases weapon damage
+    nextUpgrade: {fileID: 0}
+  - towerID: 1
+    towerName: Rifler
+    towerIcon: {fileID: 0}
+    upgradeName: Faster Damage
+    upgradeDesc: 
+    nextUpgrade: {fileID: 0}
+  - towerID: 2
+    towerName: Mercenary
+    towerIcon: {fileID: 0}
+    upgradeName: Recoil Control
+    upgradeDesc: 
+    nextUpgrade: {fileID: 0}

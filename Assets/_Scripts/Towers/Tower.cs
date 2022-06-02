@@ -38,6 +38,8 @@ namespace Towers
         [Header("Debugging")]
         [SerializeField] private bool drawGizmos;
 
+        public int ID => towerID;
+
         private void Start()
         {
             lookBehaviour = new LookBehaviour();

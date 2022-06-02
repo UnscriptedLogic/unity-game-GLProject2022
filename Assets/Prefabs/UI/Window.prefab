@@ -592,8 +592,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerNameTMP: {fileID: 7573022345262112869}
   towerIcon: {fileID: 3395416465205220996}
-  upgradeName: {fileID: 4465886195759230083}
-  upgradeDesc: {fileID: 4276647231405332149}
+  upgradeNameTMP: {fileID: 4465886195759230083}
+  upgradeDescTMP: {fileID: 4276647231405332149}
   upgradeButton: {fileID: 6257258238990605369}
   sellButton: {fileID: 5128661285068653994}
 --- !u!1 &4425097918003995159

@@ -7,6 +7,8 @@ using Core.Currency;
 using Core.UI;
 using Game.Spawning;
 using Towers;
+using Standalone;
+using UnityEngine.EventSystems;
 
 namespace Game
 {
@@ -37,13 +39,14 @@ namespace Game
         [SerializeField] private UIManager uiManager;
 
         [Header("UI")]
+        [SerializeField] private LayerMask UILayer;
         [SerializeField] private GameObject buildModeUI;
         [SerializeField] private GameObject gameModeUI;
         [SerializeField] private GameObject viewModeUI;
+        [SerializeField] private TowerDialogue towerDialogue;
 
         private LevelState levelState = LevelState.Start;
         private GameState gameState = GameState.None;
-        private TowerDialogue towerDialogue;
 
         public LevelState CurrentLevelState => levelState;
         public GameState CurrentGameState => gameState;
@@ -103,6 +106,7 @@ namespace Game
                 case GameState.None:
                     buildModeUI.SetActive(false);
                     gameModeUI.SetActive(true);
+                    viewModeUI.SetActive(false);
                     break;
                 case GameState.Building:
                     buildManager.EnableBuildMode();
@@ -111,6 +115,7 @@ namespace Game
                     break;
                 case GameState.Viewing:
                     viewModeUI.SetActive(true);
+                    towerDialogue.SetDetails(buildManager.InspectedTowerDetails);
                     break;
                 default:
                     break;
@@ -141,6 +146,16 @@ namespace Game
             switch (gameState)
             {
                 case GameState.None:
+                    if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0))
+                    {
+                        Debug.Log("Click");
+
+                        if (buildManager.TryInspectTower())
+                        {
+                            SwitchGameState(GameState.Viewing);
+                            Debug.Log("Viewing!");
+                        }
+                    }
                     break;
                 case GameState.Building:
                     if (Input.GetMouseButtonDown(0))
@@ -158,6 +173,24 @@ namespace Game
                     }
                     break;
                 case GameState.Viewing:
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        if (!EventSystem.current.IsPointerOverGameObject() && buildManager.TryInspectTower())
+                        {
+                            towerDialogue.SetDetails(buildManager.InspectedTowerDetails);
+                        }
+                        else if (!EventSystem.current.IsPointerOverGameObject())
+                        {
+                            SwitchGameState(GameState.None);
+                        }
+                    }
+
+                    towerDialogue.UpdateDetails();
+
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        SwitchGameState(GameState.None);
+                    }
                     break;
                 default:
                     break;
@@ -217,6 +250,26 @@ namespace Game
             ExitGameState();
             gameState = newState;
             EnterGameState();
+        }
+
+        private bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults)
+        {
+            for (int index = 0; index < eventSystemRaysastResults.Count; index++)
+            {
+                RaycastResult curRaysastResult = eventSystemRaysastResults[index];
+                if (curRaysastResult.gameObject.layer == UILayer)
+                    return true;
+            }
+            return false;
+        }
+
+        private static List<RaycastResult> GetEventSystemRaycastResults()
+        {
+            PointerEventData eventData = new PointerEventData(EventSystem.current);
+            eventData.position = Input.mousePosition;
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventData, raycastResults);
+            return raycastResults;
         }
 
         #region StateSetters

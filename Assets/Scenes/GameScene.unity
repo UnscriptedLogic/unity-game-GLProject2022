@@ -1073,7 +1073,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &884261077
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1631,7 +1631,8 @@ MonoBehaviour:
     m_Bits: 8
   towerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+  towerTree: {fileID: 11400000, guid: 2aa8d0fabaf0be44a8c0705f332c45c2, type: 2}
 --- !u!54 &1193752717
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1719,9 +1720,13 @@ MonoBehaviour:
   waveIncome: {fileID: 1193752726}
   currencyManager: {fileID: 1193752724}
   uiManager: {fileID: 1193752725}
+  UILayer:
+    serializedVersion: 2
+    m_Bits: 32
   buildModeUI: {fileID: 453098065}
   gameModeUI: {fileID: 933864111}
-  viewModeUI: {fileID: 0}
+  viewModeUI: {fileID: 884261076}
+  towerDialogue: {fileID: 3395416466153213097}
 --- !u!114 &1193752722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2942,66 +2947,78 @@ PrefabInstance:
     - target: {fileID: 3400458128361159786, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3400458128361159786, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3400458128361159786, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 80.82
       objectReference: {fileID: 0}
     - target: {fileID: 3400458128361159786, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 39.882004
       objectReference: {fileID: 0}
     - target: {fileID: 3400458128361159786, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 130.54
       objectReference: {fileID: 0}
     - target: {fileID: 3400458128361159786, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -19.941002
       objectReference: {fileID: 0}
     - target: {fileID: 7445809053452766210, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7445809053452766210, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7445809053452766210, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 80.82
       objectReference: {fileID: 0}
     - target: {fileID: 7445809053452766210, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 39.882004
       objectReference: {fileID: 0}
     - target: {fileID: 7445809053452766210, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 40.41
       objectReference: {fileID: 0}
     - target: {fileID: 7445809053452766210, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -19.941002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 581229353f4e2c44a8d2fba0cb02fdd7, type: 3}
+--- !u!114 &3395416466153213097 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5339660244540137273, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3395416466153213096}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30bcacd8c99115c448688522eaefab07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8779183785089549179
 PrefabInstance:
   m_ObjectHideFlags: 0

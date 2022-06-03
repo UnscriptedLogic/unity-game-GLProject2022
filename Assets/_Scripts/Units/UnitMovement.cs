@@ -45,7 +45,7 @@ namespace Units
             healthbar.SetLimits(currHealth, health);
             healthbar.SetValue(health);
 
-            enabled = true;
+            gameObject.SetActive(true);
         }
 
         private void Update()

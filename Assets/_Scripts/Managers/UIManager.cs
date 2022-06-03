@@ -45,10 +45,11 @@ namespace Core.UI
             };
         }
 
-        public void SetTowerDialogue(TowerTreeObject towerDetails, Tower tower)
+        public void SetTowerDialogue(TowerTreeObject towerDetails, Tower tower, float currency)
         {
             towerDialogue.SetDetails(towerDetails);
             towerDialogue.UpdateStats(tower.Damage, tower.Range, tower.FireRate, tower.TurnSpeed, tower.ProjSpeed);
+            towerDialogue.UpdateButtons(currency);
         }
 
         private void UpdateWaveCounter()
@@ -58,7 +59,7 @@ namespace Core.UI
             (levelManager.WaveSpawner.WaveCount + 1).ToString());
         }
 
-        private void UpdateTowerButtons()
+        public void UpdateTowerButtons()
         {
             for (int i = 0; i < towerButtons.Length; i++)
             {

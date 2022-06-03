@@ -76,6 +76,34 @@ namespace Core.Pooling
             return poolItem;
         }
 
+        public GameObject PullFromPool(GameObject poolRep, Action<GameObject> method)
+        {
+            string poolName = poolRep.name;
+            GameObject poolItem;
+            if (pools.ContainsKey(poolName))
+            {
+                //Greater than 1 because we never want a queue to be completely empty
+                //because we wont know what type of gameobject belongs to that queue
+                if (pools[poolName].Count > 1)
+                {
+                    poolItem = pools[poolName].Dequeue();
+                }
+                else
+                {
+                    poolItem = CreatePoolItem(poolRep);
+                }
+
+            }
+            else
+            {
+                CreatePool(poolName, poolRep);
+                poolItem = CreatePoolItem(poolRep);
+            }
+
+            method(poolItem);
+            return poolItem;
+        }
+
         public void PushToPool(GameObject poolItem)
         {
             string poolName = poolItem.name;

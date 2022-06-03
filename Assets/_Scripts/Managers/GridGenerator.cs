@@ -115,6 +115,7 @@ namespace Core.Grid
         public bool IsOccupied => tower != null;
         public int TeamIndex => teamIndex;
         public Vector3 Position => node.transform.position;
+        public Vector3 TowerPosition => node.transform.position + placementOffset;
         public float fCost => hCost + gCost;
 
         public GridNode(int coordx, int coordy, GameObject node, int teamIndex)
@@ -127,9 +128,6 @@ namespace Core.Grid
 
         public bool PlaceTower(GameObject towerAsset)
         {
-            Debug.Log("Hello World");
-
-
             if (!IsOccupied && !isObstacle)
             {
                 tower = UnityEngine.Object.Instantiate(towerAsset, node.transform.position + placementOffset, Quaternion.identity);

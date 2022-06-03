@@ -41,6 +41,7 @@ namespace Game.Spawning
         public WavesSO WavesSO => wavesSO;
         public Action OnWaveCompleted;
         public Action OnWaveStarted;
+        public Action OnSpawningCompleted;
 
         public void Initialize(LevelManager levelManager)
         {
@@ -148,6 +149,10 @@ namespace Game.Spawning
                     } else
                     {
                         _interval -= Time.deltaTime;
+                        if (transform.childCount <= 0)
+                        {
+                            _interval = 0f;
+                        }
                     }
                     break;
                 case SpawnerStates.Preparation:
@@ -185,7 +190,7 @@ namespace Game.Spawning
 
         private void SpawningCompleted()
         {
-            ResetSpawner();
+            OnSpawningCompleted?.Invoke();
         }
 
         private void SwitchState(SpawnerStates newState)
@@ -212,10 +217,11 @@ namespace Game.Spawning
         private void SpawnEnemy()
         {
             //GameObject enemy = Instantiate(currSegment.enemyToSpawn, spawnLocation.position, Quaternion.identity, transform);
-            GameObject enemy = PoolManager.instance.PullFromPool(currSegment.enemyToSpawn);
-            enemy.transform.SetParent(transform);
-
-            enemy.GetComponent<UnitMovement>().InitializeEnemy(levelManager);
+            PoolManager.instance.PullFromPool(currSegment.enemyToSpawn, item =>
+            {
+                item.transform.SetParent(transform);
+                item.GetComponent<UnitMovement>().InitializeEnemy(levelManager);
+            });
         }
 
         public void ClearEntities()

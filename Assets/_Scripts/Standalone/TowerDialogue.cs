@@ -31,9 +31,16 @@ namespace Standalone
             towerNameTMP.text = towerDetails.Name != "" ? towerDetails.Name : "Unnamed Tower";
             towerIcon.sprite = towerDetails.Icon != null ? towerDetails.Icon : null;
 
-            upgradeIcon.sprite = towerDetails.UpgradeIcon != null ? towerDetails.UpgradeIcon : null;
-            upgradeNameTMP.text = towerDetails.UpgradeName != "" ? towerDetails.UpgradeName : "Unnamed Upgrade";
-            upgradeDescTMP.text = towerDetails.UpgradeDesc != "" ? towerDetails.UpgradeDesc : "Empty upgrade description.";
+            if (towerDetails.UpgradedTower != null)
+            {
+                upgradeIcon.sprite = towerDetails.UpgradeIcon != null ? towerDetails.UpgradeIcon : null;
+                upgradeNameTMP.text = towerDetails.UpgradeName != "" ? towerDetails.UpgradeName : "Unnamed Upgrade";
+                upgradeDescTMP.text = towerDetails.UpgradeDesc != "" ? towerDetails.UpgradeDesc : "Empty upgrade description.";
+            } else 
+            {
+                upgradeNameTMP.text = "Fully Upgraded";
+                upgradeDescTMP.text = "No more upgrades";
+            }
 
             upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Upgrade(${towerDetails.UpgradeCost})";
             sellButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Sell(${towerDetails.SellCost})";
@@ -52,7 +59,10 @@ namespace Standalone
         public void UpdateButtons(float amount)
         {
             if (towerDetails != null)
+            {
                 upgradeButton.interactable = amount >= towerDetails.UpgradeCost;
+                upgradeButton.gameObject.SetActive(towerDetails.UpgradedTower != null);
+            }
         }
     }
 }

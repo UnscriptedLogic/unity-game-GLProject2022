@@ -45,6 +45,7 @@ namespace Game
         [SerializeField] private GameObject buildModeUI;
         [SerializeField] private GameObject gameModeUI;
         [SerializeField] private GameObject viewModeUI;
+        [SerializeField] private GameObject loadingUI;
 
         private LevelState levelState = LevelState.Start;
         private GameState gameState = GameState.None;
@@ -73,14 +74,21 @@ namespace Game
             switch (levelState)
             {
                 case LevelState.Start:
+                    loadingUI.SetActive(true);
                     gridManager.GenerateGrid(() =>
                     {
                         SwitchLevelState(LevelState.Playing);
 
                     });
                     waveSpawner.Initialize(this);
+                    waveSpawner.OnSpawningCompleted += () =>
+                    {
+                        SwitchLevelState(LevelState.Won);
+                        SwitchGameState(GameState.None);
+                    };
                     break;
                 case LevelState.Playing:
+                    uiManager.UpdateTowerButtons();
                     buildManager.enabled = true;
                     waveSpawner.StartSpawner();
                     break;
@@ -117,14 +125,39 @@ namespace Game
                     gameModeUI.SetActive(false);
                     break;
                 case GameState.Viewing:
+
+                    Debug.Log("Viewing");
                     viewModeUI.SetActive(true);
-                    uiManager.SetTowerDialogue(buildManager.InspectedTowerDetails, buildManager.InspectedTower);
+                    uiManager.SetTowerDialogue(buildManager.InspectedTowerDetails, buildManager.InspectedTower, currencyManager.CurrencyContainer.CurrentAmount);
                     uiManager.TowerDialogue.SellButton.onClick.AddListener(() => 
                     { 
+                        Debug.Log("Hello World");
                         currencyManager.ModifyCurrency(ModificationType.Add, buildManager.InspectedTowerDetails.SellCost);
                         buildManager.InspectedTower.RemoveSelf();
+
+                        uiManager.TowerDialogue.UpgradeButton.onClick.RemoveAllListeners();
+                        uiManager.TowerDialogue.SellButton.onClick.RemoveAllListeners();
+
                         SwitchGameState(GameState.None);
                     });
+
+                    uiManager.TowerDialogue.UpgradeButton.onClick.AddListener(() =>
+                    {
+                        currencyManager.ModifyCurrency(ModificationType.Subtract, buildManager.InspectedTowerDetails.UpgradeCost);
+                        GridNode node = buildManager.InspectedTower.GridNode;
+                        buildManager.InspectedTower.RemoveSelf();
+                        node.PlaceTower(buildManager.InspectedTowerDetails.UpgradedTower);
+
+                        buildManager.InspectedTower = node.TowerOnNode.GetComponent<Tower>();
+                        buildManager.InspectedTowerDetails = buildManager.TowerTree.GetTowerDetail(buildManager.InspectedTower.ID);
+                        
+                        uiManager.TowerDialogue.UpgradeButton.onClick.RemoveAllListeners();
+                        uiManager.TowerDialogue.SellButton.onClick.RemoveAllListeners();
+
+                        SwitchGameState(GameState.Viewing);
+                    });
+
+                    buildManager.VisualizeRange();
                     break;
                 default:
                     break;
@@ -183,7 +216,7 @@ namespace Game
                     {
                         if (!EventSystem.current.IsPointerOverGameObject() && buildManager.TryInspectTower())
                         {
-                            uiManager.SetTowerDialogue(buildManager.InspectedTowerDetails, buildManager.InspectedTower);
+                            uiManager.SetTowerDialogue(buildManager.InspectedTowerDetails, buildManager.InspectedTower, currencyManager.CurrencyContainer.CurrentAmount);
                         }
                         else if (!EventSystem.current.IsPointerOverGameObject())
                         {
@@ -209,6 +242,7 @@ namespace Game
                     currencyManager.ModifyCurrency(ModificationType.Set, currencyManager.CurrencyContainer.StartAmount);
                     uiManager.Initialize(this);
                     waveIncome.Initialize(this);
+                    loadingUI.SetActive(false);
                     break;
                 case LevelState.Playing:
                     break;
@@ -236,6 +270,9 @@ namespace Game
                     break;
                 case GameState.Viewing:
                     viewModeUI.SetActive(false);
+                    buildManager.HideRange();
+                    uiManager.TowerDialogue.UpgradeButton.onClick.RemoveAllListeners();
+                    uiManager.TowerDialogue.SellButton.onClick.RemoveAllListeners();
                     break;
                 default:
                     break;

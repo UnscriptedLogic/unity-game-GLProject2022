@@ -110,9 +110,6 @@ namespace Core.Pathing
                 currentNode.isObstacle = true;
             }
             path.Reverse();
-
-            UnityEngine.Debug.Log("done");
-
             return path;
         }
 

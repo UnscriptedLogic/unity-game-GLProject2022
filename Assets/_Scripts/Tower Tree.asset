@@ -14,29 +14,89 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerTreeObjects:
   - towerID: 0
-    towerName: Scout
+    towerName: Lvl 1 Scout
     towerIcon: {fileID: 0}
     sellCost: 25
-    upgradeIcon: {fileID: 0}
+    upgradeIcon: {fileID: 21300000, guid: 187a33a09d877304a92453cb6d326ffd, type: 3}
     upgradeCost: 50
-    upgradeName: Better Weapons
+    upgradeName: Sharper Bullets
     upgradeDesc: Increases weapon damage
-    nextUpgrade: {fileID: 0}
+    nextUpgrade: {fileID: 836754924125986003, guid: dcd578c7cecb9d14584e08bcab5a5f72,
+      type: 3}
   - towerID: 1
-    towerName: Rifler
-    towerIcon: {fileID: 0}
-    sellCost: 35
-    upgradeIcon: {fileID: 0}
-    upgradeCost: 40
-    upgradeName: Faster Damage
-    upgradeDesc: Gains an increase in fire rate
-    nextUpgrade: {fileID: 0}
-  - towerID: 2
-    towerName: Mercenary
+    towerName: Lvl 2 Scout
     towerIcon: {fileID: 0}
     sellCost: 75
     upgradeIcon: {fileID: 0}
     upgradeCost: 100
-    upgradeName: Recoil Control
+    upgradeName: Improved Accuracy
+    upgradeDesc: Increases range and damage
+    nextUpgrade: {fileID: 0}
+  - towerID: 10
+    towerName: Rifler
+    towerIcon: {fileID: 0}
+    sellCost: 35
+    upgradeIcon: {fileID: 0}
+    upgradeCost: 100
+    upgradeName: Improved Barrels
     upgradeDesc: Increases fire rate
+    nextUpgrade: {fileID: 836754924125986003, guid: dab0061b195618c43acc03955e77329d,
+      type: 3}
+  - towerID: 11
+    towerName: Lvl 2 Rifler
+    towerIcon: {fileID: 0}
+    sellCost: 100
+    upgradeIcon: {fileID: 0}
+    upgradeCost: 200
+    upgradeName: Goggles
+    upgradeDesc: Increases range
+    nextUpgrade: {fileID: 836754924125986003, guid: 276916985c3ebc04fa47d1fe1cec28bd,
+      type: 3}
+  - towerID: 12
+    towerName: Lvl 3
+    towerIcon: {fileID: 0}
+    sellCost: 125
+    upgradeIcon: {fileID: 0}
+    upgradeCost: 500
+    upgradeName: Twin Stick Shooter
+    upgradeDesc: Adds another gun to the tower, doubling its fire rate
+    nextUpgrade: {fileID: 0}
+  - towerID: 20
+    towerName: Mercenary
+    towerIcon: {fileID: 0}
+    sellCost: 75
+    upgradeIcon: {fileID: 0}
+    upgradeCost: 225
+    upgradeName: Recoil Control
+    upgradeDesc: Increases fire rate and damage
+    nextUpgrade: {fileID: 836754924125986003, guid: 762e1bb9d2a31514abdd70cfaa9df389,
+      type: 3}
+  - towerID: 21
+    towerName: Lvl 2 Mercenary
+    towerIcon: {fileID: 0}
+    sellCost: 150
+    upgradeIcon: {fileID: 0}
+    upgradeCost: 1500
+    upgradeName: Semi-Auto
+    upgradeDesc: Drastically reduces fire rate
+    nextUpgrade: {fileID: 836754924125986003, guid: 5ae591a6662f490479581c438726e2e0,
+      type: 3}
+  - towerID: 22
+    towerName: Lvl 3 Mercenary
+    towerIcon: {fileID: 0}
+    sellCost: 1000
+    upgradeIcon: {fileID: 0}
+    upgradeCost: 3000
+    upgradeName: High Impact Rifle
+    upgradeDesc: Increases damage and projectile speed
+    nextUpgrade: {fileID: 836754924125986003, guid: ecb4f9548ff1367428b10296c66771fd,
+      type: 3}
+  - towerID: 23
+    towerName: Lvl 4 Mercenary
+    towerIcon: {fileID: 0}
+    sellCost: 1500
+    upgradeIcon: {fileID: 0}
+    upgradeCost: 7000
+    upgradeName: Piercing Shots
+    upgradeDesc: Pierces through enemies
     nextUpgrade: {fileID: 0}

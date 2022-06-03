@@ -60,7 +60,7 @@ namespace External.CustomSlider
             }
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             FaceCamera();
             Follow();

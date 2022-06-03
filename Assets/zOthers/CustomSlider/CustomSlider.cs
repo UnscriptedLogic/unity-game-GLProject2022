@@ -101,7 +101,8 @@ namespace External.CustomSlider
             {
                 if (currentValue >= maxValue)
                 {
-                    StartCoroutine(HideBar());
+                    if (gameObject.activeInHierarchy)
+                        StartCoroutine(HideBar());
                 } else
                 {
                     StopAllCoroutines();

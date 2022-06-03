@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163164240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.75}
+  m_LocalPosition: {x: 0, y: 0.572, z: 0.643}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -57,8 +57,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836754923912079423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.338, z: 0}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 836754924125986004}
@@ -92,7 +92,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b5846d0e32984d44eaf1531fad587bd3, type: 2}
+  - {fileID: 2100000, guid: d3b0a88c8a840d5458808f67e6528316, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -124,10 +124,10 @@ GameObject:
   m_Component:
   - component: {fileID: 836754924125986004}
   - component: {fileID: 8755096436310946305}
-  - component: {fileID: 6236998431455586218}
-  - component: {fileID: 4120409424690595836}
+  - component: {fileID: 3830937369443702235}
+  - component: {fileID: 1413810088700504014}
   m_Layer: 7
-  m_Name: Rapid
+  m_Name: UpgSniper 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 836754924125986003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 836754923912079408}
@@ -163,13 +163,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e8d586f84463d4a91ec05d9654d92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerID: 1
-  damage: 1
-  projectileSpeed: 20
+  towerID: 21
+  damage: 20
+  projectileSpeed: 50
   projectileLifetime: 0.5
-  range: 5
-  attackInterval: 0.2
-  rotationSpeed: 35
+  range: 10
+  attackInterval: 1.8
+  rotationSpeed: 70
   projectilePrefab: {fileID: 2184705531295620089, guid: 5303ffed305f8ae4694b3f3b9e958285,
     type: 3}
   shootAnchor: {fileID: 163164241}
@@ -182,7 +182,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   drawGizmos: 1
---- !u!65 &6236998431455586218
+--- !u!65 &3830937369443702235
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,7 +195,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!54 &4120409424690595836
+--- !u!54 &1413810088700504014
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,8 +237,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976658314279752254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.6666666}
-  m_LocalScale: {x: 0.540765, y: 0.540765, z: 0.7016376}
+  m_LocalPosition: {x: -0, y: 0.614, z: 0.2069}
+  m_LocalScale: {x: 0.25398108, y: 0.25398108, z: 1.341584}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 836754924125986004}

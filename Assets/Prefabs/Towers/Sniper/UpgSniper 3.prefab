@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163164240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.75}
+  m_LocalPosition: {x: 0, y: 0.572, z: 0.643}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -57,8 +57,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836754923912079423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.338, z: 0}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 836754924125986004}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 3830937369443702235}
   - component: {fileID: 1413810088700504014}
   m_Layer: 7
-  m_Name: Sniper
+  m_Name: UpgSniper 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 836754924125986003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 836754923912079408}
@@ -163,12 +163,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e8d586f84463d4a91ec05d9654d92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerID: 2
-  damage: 10
-  projectileSpeed: 50
-  projectileLifetime: 0.5
+  towerID: 23
+  damage: 50
+  projectileSpeed: 60
+  projectileLifetime: 0.4
   range: 10
-  attackInterval: 2
+  attackInterval: 0.6
   rotationSpeed: 70
   projectilePrefab: {fileID: 2184705531295620089, guid: 5303ffed305f8ae4694b3f3b9e958285,
     type: 3}
@@ -237,8 +237,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1976658314279752254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.6666666}
-  m_LocalScale: {x: 0.540765, y: 0.540765, z: 0.7016376}
+  m_LocalPosition: {x: -0, y: 0.614, z: 0.2069}
+  m_LocalScale: {x: 0.25398108, y: 0.25398108, z: 1.341584}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 836754924125986004}

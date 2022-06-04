@@ -190,7 +190,7 @@ namespace Game.Spawning
 
         private void SpawningCompleted()
         {
-            OnSpawningCompleted?.Invoke();
+            ResetSpawner();
         }
 
         private void SwitchState(SpawnerStates newState)

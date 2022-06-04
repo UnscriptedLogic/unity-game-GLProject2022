@@ -28,27 +28,37 @@ MonoBehaviour:
     towerIcon: {fileID: 0}
     sellCost: 75
     upgradeIcon: {fileID: 0}
-    upgradeCost: 100
-    upgradeName: Improved Accuracy
-    upgradeDesc: Increases range and damage
+    upgradeCost: 150
+    upgradeName: Better Equipment
+    upgradeDesc: Improves range, damage and firing rate
+    nextUpgrade: {fileID: 836754924125986003, guid: a6284b46561af654ea3be22ed93ede06,
+      type: 3}
+  - towerID: 2
+    towerName: Lvl 3 Scout
+    towerIcon: {fileID: 0}
+    sellCost: 100
+    upgradeIcon: {fileID: 0}
+    upgradeCost: 200
+    upgradeName: Piercing Shots
+    upgradeDesc: Pierces through enemies
     nextUpgrade: {fileID: 0}
   - towerID: 10
     towerName: Rifler
     towerIcon: {fileID: 0}
     sellCost: 35
     upgradeIcon: {fileID: 0}
-    upgradeCost: 100
-    upgradeName: Improved Barrels
-    upgradeDesc: Increases fire rate
+    upgradeCost: 300
+    upgradeName: Tripod Stability
+    upgradeDesc: Increass the fire rate of the weapon
     nextUpgrade: {fileID: 836754924125986003, guid: dab0061b195618c43acc03955e77329d,
       type: 3}
   - towerID: 11
     towerName: Lvl 2 Rifler
     towerIcon: {fileID: 0}
-    sellCost: 100
+    sellCost: 175
     upgradeIcon: {fileID: 0}
-    upgradeCost: 200
-    upgradeName: Goggles
+    upgradeCost: 400
+    upgradeName: Enhanced GUI
     upgradeDesc: Increases range
     nextUpgrade: {fileID: 836754924125986003, guid: 276916985c3ebc04fa47d1fe1cec28bd,
       type: 3}

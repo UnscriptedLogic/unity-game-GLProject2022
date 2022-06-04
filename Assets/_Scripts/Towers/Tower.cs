@@ -86,7 +86,7 @@ namespace Towers
 
                 if (unitsInRange.Length > 0 && target != null)
                 {
-                    rotationPart.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
+                    rotationPart.LookAt(new Vector3(target.transform.position.x, rotationPart.position.y, target.transform.position.z));
                     DoAttack(projectilePrefab, shootAnchor);
                     _attackInterval = attackInterval;
                 }

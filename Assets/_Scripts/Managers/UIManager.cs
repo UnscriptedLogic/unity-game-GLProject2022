@@ -54,9 +54,20 @@ namespace Core.UI
 
         private void UpdateWaveCounter()
         {
-            waveCounterTMP.text = "Wave: " + (levelManager.WaveSpawner.WaveCount == levelManager.WaveSpawner.WavesSO.Waves.Length - 1 ?
-            "The Final Wave" :
-            (levelManager.WaveSpawner.WaveCount + 1).ToString());
+            string waveText = "Wave: ";
+
+            if (levelManager.WaveSpawner.WaveCount > levelManager.WaveSpawner.WavesSO.Waves.Length)
+            {
+                waveText += levelManager.WaveSpawner.WaveCount.ToString() + " [re-run]";
+            } else if (levelManager.WaveSpawner.WaveCount == levelManager.WaveSpawner.WavesSO.Waves.Length - 1)
+            {
+                waveText = "The Final Wave!";
+            } else
+            {
+                waveText += levelManager.WaveSpawner.WaveCount.ToString();
+            }
+
+            waveCounterTMP.text = waveText;
         }
 
         public void UpdateTowerButtons()

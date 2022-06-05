@@ -1228,7 +1228,7 @@ MonoBehaviour:
   panSpeed: 15
   scrollSpeed: 60
   borderThickness: 5
-  boundaries: {x: 50, y: 50}
+  boundaries: {x: 25, y: 25}
   scrollClamp: {x: 5, y: 50}
   camTransform: {fileID: 330585546}
 --- !u!1 &884261076

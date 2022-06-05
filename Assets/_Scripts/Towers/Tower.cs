@@ -86,7 +86,7 @@ namespace Towers
 
                 if (unitsInRange.Length > 0 && target != null)
                 {
-                    rotationPart.LookAt(new Vector3(target.transform.position.x, rotationPart.position.y, target.transform.position.z));
+                    FocusObject(rotationPart, target.transform.position, rotationSpeed);
                     DoAttack(projectilePrefab, shootAnchor);
                     _attackInterval = attackInterval;
                 }
@@ -100,7 +100,11 @@ namespace Towers
             Gizmos.DrawWireSphere(transform.position, range);
         }
 
-        public void FocusObject(Transform partToRotate, Vector3 target, float rotationSpeed) => lookBehaviour.FocusTarget(partToRotate, target, rotationSpeed);
+        public void FocusObject(Transform partToRotate, Vector3 target, float rotationSpeed)
+        {
+            rotationPart.LookAt(new Vector3(target.x, partToRotate.position.y, target.z));
+        }
+
         public void DoAttack(GameObject projectile, Transform spawnpoint)
         {
             ProjectileSettings settings = new ProjectileSettings(damage, projectileSpeed, projectileLifetime);

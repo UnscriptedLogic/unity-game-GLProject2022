@@ -79,10 +79,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerID: 12
-  damage: 1
-  projectileSpeed: 20
+  damage: 2
+  projectileSpeed: 25
   projectileLifetime: 0.5
-  range: 6
+  range: 5
   attackInterval: 0.15
   rotationSpeed: 35
   projectilePrefab: {fileID: 2184705531295620089, guid: 5303ffed305f8ae4694b3f3b9e958285,
@@ -142,17 +142,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 85356e41c5b6dcd459f3906c60981c43,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85356e41c5b6dcd459f3906c60981c43,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85356e41c5b6dcd459f3906c60981c43,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 85356e41c5b6dcd459f3906c60981c43,
         type: 3}

@@ -85,7 +85,7 @@ MonoBehaviour:
   range: 5
   attackInterval: 0.125
   rotationSpeed: 35
-  projectilePrefab: {fileID: 2184705531295620089, guid: 5303ffed305f8ae4694b3f3b9e958285,
+  projectilePrefab: {fileID: 2184705531295620089, guid: ab04dfce1227613429efaf692693b949,
     type: 3}
   shootAnchor: {fileID: 163164241}
   rotationPart: {fileID: 6736435120680597658}
@@ -209,6 +209,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: upg_rapid2
       objectReference: {fileID: 0}
+    - target: {fileID: 4321514657177891973, guid: 85356e41c5b6dcd459f3906c60981c43,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad0d5ad8b7324f94a89e120bff2f5b89, type: 2}
     - target: {fileID: 8946660040297601765, guid: 85356e41c5b6dcd459f3906c60981c43,
         type: 3}
       propertyPath: m_LocalScale.x

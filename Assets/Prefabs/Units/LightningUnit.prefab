@@ -946,6 +946,7 @@ MonoBehaviour:
   damageFlash: {fileID: -6004806168046530573}
   health: 10
   movementSpeed: 8
+  waypointVerifyDistance: 0.1
   healthbar: {fileID: 1278209766786932308}
 --- !u!135 &1761782913273591786
 SphereCollider:

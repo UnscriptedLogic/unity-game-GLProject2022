@@ -89,7 +89,7 @@ MonoBehaviour:
     upgradeCost: 1750
     upgradeName: High Impact Rifle
     upgradeDesc: Increases damage and projectile speed
-    nextUpgrade: {fileID: 836754924125986003, guid: ecb4f9548ff1367428b10296c66771fd,
+    nextUpgrade: {fileID: 836754924125986003, guid: 5ae591a6662f490479581c438726e2e0,
       type: 3}
   - towerID: 22
     towerName: Lvl 2 Mercenary
@@ -99,7 +99,7 @@ MonoBehaviour:
     upgradeCost: 3000
     upgradeName: Semi-Auto
     upgradeDesc: Drastically reduces fire rate
-    nextUpgrade: {fileID: 836754924125986003, guid: 5ae591a6662f490479581c438726e2e0,
+    nextUpgrade: {fileID: 836754924125986003, guid: ecb4f9548ff1367428b10296c66771fd,
       type: 3}
   - towerID: 23
     towerName: Lvl 4 Mercenary

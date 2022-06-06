@@ -21,6 +21,8 @@ namespace Units
         [SerializeField] private float health = 100f;
         [SerializeField] private float movementSpeed = 3f;
 
+        [Space(10)]
+        [SerializeField] private float waypointVerifyDistance = 0.05f;
         [SerializeField] private WorldSpaceCustomSlider healthbar;
         
         private float currHealth;
@@ -65,7 +67,7 @@ namespace Units
             transform.Translate(direction.normalized * movementSpeed * Time.deltaTime, Space.World);
             transform.forward = direction;
 
-            if (Vector3.Distance(transform.position, GetWaypoint(waypointCounter)) <= 0.05f)
+            if (Vector3.Distance(transform.position, GetWaypoint(waypointCounter)) <= waypointVerifyDistance)
                 waypointCounter++;
         }
 

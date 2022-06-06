@@ -700,7 +700,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2
+  m_Time: 3
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -946,6 +946,7 @@ MonoBehaviour:
   damageFlash: {fileID: -6004806168046530573}
   health: 0
   movementSpeed: 20
+  waypointVerifyDistance: 0.25
   healthbar: {fileID: 1278209766786932308}
 --- !u!135 &1761782913273591786
 SphereCollider:

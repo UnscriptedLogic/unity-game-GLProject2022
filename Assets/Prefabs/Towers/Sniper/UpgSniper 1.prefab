@@ -85,7 +85,7 @@ MonoBehaviour:
   range: 10
   attackInterval: 2
   rotationSpeed: 70
-  projectilePrefab: {fileID: 2184705531295620089, guid: 5303ffed305f8ae4694b3f3b9e958285,
+  projectilePrefab: {fileID: 2184705531295620089, guid: 59fa188dc728ba944b2ebe48a4865105,
     type: 3}
   shootAnchor: {fileID: 163164241}
   rotationPart: {fileID: 4877810125480535488}

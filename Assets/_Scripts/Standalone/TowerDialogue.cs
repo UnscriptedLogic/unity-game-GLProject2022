@@ -52,7 +52,6 @@ namespace Standalone
                 $"Damage: {damage}\n" +
                 $"Range: {range}\n" +
                 $"Fire Rate: {fireRate}\n" +
-                $"Turn Speed: {turnSpeed}\n" +
                 $"Proj. Speed: {projSpeed}";
         }
 

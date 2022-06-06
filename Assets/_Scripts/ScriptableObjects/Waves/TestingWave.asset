@@ -27,7 +27,7 @@ MonoBehaviour:
     - enemyToSpawn: {fileID: 7644136366003357881, guid: f78919e5216024144a2aab50255dfa74,
         type: 3}
       amount: 10
-      interval: 0.5
+      interval: 0.75
       segmentInterval: 1
     - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
         type: 3}

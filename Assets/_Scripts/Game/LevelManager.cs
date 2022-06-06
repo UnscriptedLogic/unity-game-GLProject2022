@@ -5,16 +5,19 @@ using Core.Grid;
 using Core.Building;
 using Core.Currency;
 using Core.UI;
+using Core.Pathing;
+using Core.Scene;
 using Game.Spawning;
 using Towers;
 using Standalone;
 using UnityEngine.EventSystems;
-using Core.Pathing;
+using System;
 
 namespace Game
 {
     public enum LevelState
     {
+        None,
         Start,
         Playing,
         Paused,
@@ -38,7 +41,8 @@ namespace Game
         [SerializeField] private WaveIncome waveIncome;
         [SerializeField] private CurrencyManager currencyManager;
         [SerializeField] private UIManager uiManager;
-        [SerializeField] private PathManager pathManager; 
+        [SerializeField] private PathManager pathManager;
+        [SerializeField] private GameSceneManager gameSceneManager;
 
         [Header("UI")]
         [SerializeField] private LayerMask UILayer;
@@ -46,6 +50,11 @@ namespace Game
         [SerializeField] private GameObject gameModeUI;
         [SerializeField] private GameObject viewModeUI;
         [SerializeField] private GameObject loadingUI;
+        [SerializeField] private GameObject lostUI;
+        [SerializeField] private GameObject wonUI;
+
+        [Space(10)]
+        [SerializeField] private float returnHomedelay = 5f;
 
         private LevelState levelState = LevelState.Start;
         private GameState gameState = GameState.None;
@@ -56,6 +65,9 @@ namespace Game
         public WaveSpawner WaveSpawner => waveSpawner;
         public GridManager GridNodeManager => gridManager;
         public PathManager PathManager => pathManager;
+
+        public Action OnLevelStateChanged;
+        public Action OnGameStateChanged;
 
         private void Start()
         {
@@ -73,8 +85,12 @@ namespace Game
         {
             switch (levelState)
             {
+                case LevelState.None:
+                    break;
                 case LevelState.Start:
                     loadingUI.SetActive(true);
+                    lostUI.SetActive(false);
+                    wonUI.SetActive(false);
                     gridManager.GenerateGrid(() =>
                     {
                         SwitchLevelState(LevelState.Playing);
@@ -96,12 +112,12 @@ namespace Game
                     buildManager.enabled = false;
                     break;
                 case LevelState.Won:
-                    Debug.Log("You won the game");
+                    wonUI.SetActive(true);
                     buildManager.enabled = false;
                     waveSpawner.StopSpawner();
                     break;
                 case LevelState.Lost:
-                    Debug.Log("You Lost the game");
+                    lostUI.SetActive(true);
                     buildManager.enabled = false;
                     waveSpawner.StopSpawner();
                     break;
@@ -125,13 +141,10 @@ namespace Game
                     gameModeUI.SetActive(false);
                     break;
                 case GameState.Viewing:
-
-                    Debug.Log("Viewing");
                     viewModeUI.SetActive(true);
                     uiManager.SetTowerDialogue(buildManager.InspectedTowerDetails, buildManager.InspectedTower, currencyManager.CurrencyContainer.CurrentAmount);
                     uiManager.TowerDialogue.SellButton.onClick.AddListener(() => 
                     { 
-                        Debug.Log("Hello World");
                         currencyManager.ModifyCurrency(ModificationType.Add, buildManager.InspectedTowerDetails.SellCost);
                         buildManager.InspectedTower.RemoveSelf();
 
@@ -168,6 +181,8 @@ namespace Game
         {
             switch (levelState)
             {
+                case LevelState.None:
+                    break;
                 case LevelState.Start:
                     break;
                 case LevelState.Playing:
@@ -175,8 +190,23 @@ namespace Game
                 case LevelState.Paused:
                     break;
                 case LevelState.Won:
+                    if (returnHomedelay <= 0f)
+                    {
+                        SwitchLevelState(LevelState.None);
+                    } else
+                    {
+                        returnHomedelay -= Time.deltaTime;
+                    }
                     break;
                 case LevelState.Lost:
+                    if (returnHomedelay <= 0f)
+                    {
+                        SwitchLevelState(LevelState.None);
+                    }
+                    else
+                    {
+                        returnHomedelay -= Time.deltaTime;
+                    }
                     break;
                 default:
                     break;
@@ -238,6 +268,8 @@ namespace Game
         {
             switch (levelState)
             {
+                case LevelState.None:
+                    break;
                 case LevelState.Start:
                     currencyManager.ModifyCurrency(ModificationType.Set, currencyManager.CurrencyContainer.StartAmount);
                     uiManager.Initialize(this);
@@ -249,8 +281,10 @@ namespace Game
                 case LevelState.Paused:
                     break;
                 case LevelState.Won:
+                    gameSceneManager.ReturnHome();
                     break;
                 case LevelState.Lost:
+                    gameSceneManager.ReturnHome();
                     break;
                 default:
                     break;
@@ -284,6 +318,8 @@ namespace Game
             ExitLevelState();
             levelState = newState;
             EnterLevelState();
+
+            OnLevelStateChanged?.Invoke();
         }
 
         public void SwitchGameState(GameState newState)
@@ -291,27 +327,11 @@ namespace Game
             ExitGameState();
             gameState = newState;
             EnterGameState();
+
+            OnGameStateChanged?.Invoke();
         }
 
-        private bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults)
-        {
-            for (int index = 0; index < eventSystemRaysastResults.Count; index++)
-            {
-                RaycastResult curRaysastResult = eventSystemRaysastResults[index];
-                if (curRaysastResult.gameObject.layer == UILayer)
-                    return true;
-            }
-            return false;
-        }
-
-        private static List<RaycastResult> GetEventSystemRaycastResults()
-        {
-            PointerEventData eventData = new PointerEventData(EventSystem.current);
-            eventData.position = Input.mousePosition;
-            List<RaycastResult> raycastResults = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(eventData, raycastResults);
-            return raycastResults;
-        }
+        
 
         #region StateSetters
         public void SetGameLost() => SwitchLevelState(LevelState.Lost);

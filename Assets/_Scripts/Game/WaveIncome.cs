@@ -31,8 +31,6 @@ public class WaveIncome : MonoBehaviour
         else
             evaluation = waveCap;
 
-        Debug.Log("Wave: " + waveSpawner.WaveCount);
-        Debug.Log("Evaluation: " + evaluation);
         currencyManager.ModifyCurrency(ModificationType.Add, (float)Mathf.Round(animationCurve.Evaluate(evaluation) * multiplier));
     }
 }

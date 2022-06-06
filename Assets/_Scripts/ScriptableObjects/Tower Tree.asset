@@ -15,28 +15,28 @@ MonoBehaviour:
   towerTreeObjects:
   - towerID: 0
     towerName: Lvl 1 Scout
-    towerIcon: {fileID: 0}
-    sellCost: 25
+    towerIcon: {fileID: 21300000, guid: 6f83de6c790fa524aa8708d7fefe29d3, type: 3}
+    sellCost: 100
     upgradeIcon: {fileID: 21300000, guid: 187a33a09d877304a92453cb6d326ffd, type: 3}
-    upgradeCost: 50
+    upgradeCost: 100
     upgradeName: Sharper Bullets
     upgradeDesc: Increases weapon damage
     nextUpgrade: {fileID: 836754924125986003, guid: dcd578c7cecb9d14584e08bcab5a5f72,
       type: 3}
   - towerID: 1
     towerName: Lvl 2 Scout
-    towerIcon: {fileID: 0}
-    sellCost: 75
-    upgradeIcon: {fileID: 0}
-    upgradeCost: 150
+    towerIcon: {fileID: 21300000, guid: 08606989148d5724796e71887dfb7f4a, type: 3}
+    sellCost: 125
+    upgradeIcon: {fileID: 21300000, guid: df3fe60946792bc41b6fffc79a1d2f8a, type: 3}
+    upgradeCost: 300
     upgradeName: Better Equipment
     upgradeDesc: Improves range, damage and firing rate
     nextUpgrade: {fileID: 836754924125986003, guid: a6284b46561af654ea3be22ed93ede06,
       type: 3}
   - towerID: 2
     towerName: Lvl 3 Scout
-    towerIcon: {fileID: 0}
-    sellCost: 100
+    towerIcon: {fileID: 21300000, guid: 344a7005d5d6c56469262e2f0d2351ff, type: 3}
+    sellCost: 200
     upgradeIcon: {fileID: 0}
     upgradeCost: 200
     upgradeName: Piercing Shots
@@ -44,27 +44,27 @@ MonoBehaviour:
     nextUpgrade: {fileID: 0}
   - towerID: 10
     towerName: Rifler
-    towerIcon: {fileID: 0}
+    towerIcon: {fileID: 21300000, guid: 39e2258169c85844598929b63dc206ee, type: 3}
     sellCost: 35
-    upgradeIcon: {fileID: 0}
-    upgradeCost: 300
+    upgradeIcon: {fileID: 21300000, guid: f5575c4a96bfb344d8547970923792c2, type: 3}
+    upgradeCost: 600
     upgradeName: Tripod Stability
     upgradeDesc: Increass the fire rate of the weapon
     nextUpgrade: {fileID: 836754924125986003, guid: dab0061b195618c43acc03955e77329d,
       type: 3}
   - towerID: 11
     towerName: Lvl 2 Rifler
-    towerIcon: {fileID: 0}
+    towerIcon: {fileID: 21300000, guid: ed1bc996a654a254fa33ba7cd7f8fd46, type: 3}
     sellCost: 175
-    upgradeIcon: {fileID: 0}
-    upgradeCost: 400
-    upgradeName: Enhanced GUI
-    upgradeDesc: Increases range
+    upgradeIcon: {fileID: 21300000, guid: 33ac22f6e33c8494fb4ac8ba9515055c, type: 3}
+    upgradeCost: 1200
+    upgradeName: Enhanced Weaponry
+    upgradeDesc: Increases the damage and range
     nextUpgrade: {fileID: 836754924125986003, guid: 276916985c3ebc04fa47d1fe1cec28bd,
       type: 3}
   - towerID: 12
     towerName: Lvl 3
-    towerIcon: {fileID: 0}
+    towerIcon: {fileID: 21300000, guid: 4d88f2b9efd0c734a89b8984fec4ee80, type: 3}
     sellCost: 125
     upgradeIcon: {fileID: 0}
     upgradeCost: 500
@@ -73,9 +73,9 @@ MonoBehaviour:
     nextUpgrade: {fileID: 0}
   - towerID: 20
     towerName: Mercenary
-    towerIcon: {fileID: 0}
+    towerIcon: {fileID: 21300000, guid: db69a63a38acd9340aa0c790dea10a7f, type: 3}
     sellCost: 75
-    upgradeIcon: {fileID: 0}
+    upgradeIcon: {fileID: 21300000, guid: 36b53685e1621334687f6dd222124736, type: 3}
     upgradeCost: 225
     upgradeName: Recoil Control
     upgradeDesc: Increases fire rate and damage
@@ -83,9 +83,9 @@ MonoBehaviour:
       type: 3}
   - towerID: 21
     towerName: Lvl 2 Mercenary
-    towerIcon: {fileID: 0}
+    towerIcon: {fileID: 21300000, guid: 4ae42ead9014ae24ca803bce9421ce30, type: 3}
     sellCost: 150
-    upgradeIcon: {fileID: 0}
+    upgradeIcon: {fileID: 21300000, guid: 811800d4bf18e034587a41d7d2f92662, type: 3}
     upgradeCost: 1500
     upgradeName: Semi-Auto
     upgradeDesc: Drastically reduces fire rate
@@ -93,9 +93,9 @@ MonoBehaviour:
       type: 3}
   - towerID: 22
     towerName: Lvl 3 Mercenary
-    towerIcon: {fileID: 0}
+    towerIcon: {fileID: 21300000, guid: afe1f76da0cd0884099402bae5ccadac, type: 3}
     sellCost: 1000
-    upgradeIcon: {fileID: 0}
+    upgradeIcon: {fileID: 21300000, guid: f91da3e2eda735542862b2584907fac4, type: 3}
     upgradeCost: 3000
     upgradeName: High Impact Rifle
     upgradeDesc: Increases damage and projectile speed
@@ -103,7 +103,7 @@ MonoBehaviour:
       type: 3}
   - towerID: 23
     towerName: Lvl 4 Mercenary
-    towerIcon: {fileID: 0}
+    towerIcon: {fileID: 21300000, guid: 1f962f927c31a1545a1a2c37d54c439b, type: 3}
     sellCost: 1500
     upgradeIcon: {fileID: 0}
     upgradeCost: 7000

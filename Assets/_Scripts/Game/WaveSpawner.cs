@@ -16,7 +16,8 @@ namespace Game.Spawning
             SpawningWave,
             SpawningSegment,
             Waiting,
-            Preparation
+            Preparation,
+            FinalWait
         }
 
         [SerializeField] private WavesSO wavesSO;
@@ -85,6 +86,8 @@ namespace Game.Spawning
                     break;                
                 case SpawnerStates.Preparation:
                     _interval = startDelay;
+                    break;
+                case SpawnerStates.FinalWait:
                     break;
                 default:
                     break;
@@ -164,6 +167,14 @@ namespace Game.Spawning
                         _interval -= Time.deltaTime;
                     }
                     break;
+                case SpawnerStates.FinalWait:
+                    if (transform.childCount <= 0)
+                    {
+                        levelManager.SetGameLost();
+                        Debug.Log(transform.childCount, gameObject);
+
+                    }
+                    break;
                 default:
                     break;
             }
@@ -183,6 +194,8 @@ namespace Game.Spawning
                     break;
                 case SpawnerStates.Preparation:
                     break;
+                case SpawnerStates.FinalWait:
+                    break;
                 default:
                     break;
             }
@@ -190,7 +203,7 @@ namespace Game.Spawning
 
         private void SpawningCompleted()
         {
-            ResetSpawner();
+            SwitchState(SpawnerStates.FinalWait);
         }
 
         private void SwitchState(SpawnerStates newState)

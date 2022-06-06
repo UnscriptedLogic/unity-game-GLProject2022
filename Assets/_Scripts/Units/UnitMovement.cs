@@ -42,8 +42,11 @@ namespace Units
             waypointCounter = 0;
             currHealth = health;
 
-            healthbar.SetLimits(currHealth, health);
-            healthbar.SetValue(health);
+            if (healthbar)
+            {
+                healthbar.SetLimits(currHealth, health);
+                healthbar.SetValue(health);
+            }
 
             gameObject.SetActive(true);
         }

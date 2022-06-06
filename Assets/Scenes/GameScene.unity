@@ -1628,7 +1628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wavesSO: {fileID: 11400000, guid: faa2c1d51e407604881bc6e66cb7e331, type: 2}
-  startDelay: 5
+  startDelay: 2
   waveIndex: 0
   spawnLocation: {fileID: 853069097}
   cam: {fileID: 330585546}
@@ -2438,8 +2438,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  waveCap: 20
-  multiplier: 500
+  waveCap: 10
+  multiplier: 1000
 --- !u!114 &1193752727
 MonoBehaviour:
   m_ObjectHideFlags: 0

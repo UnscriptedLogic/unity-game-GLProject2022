@@ -335,6 +335,7 @@ namespace Game
 
         #region StateSetters
         public void SetGameLost() => SwitchLevelState(LevelState.Lost);
+        public void SetGameWon() => SwitchLevelState(LevelState.Won);
         public void SetGamePlaying() => SwitchLevelState(LevelState.Playing);
         public void SetGamePaused() => SwitchLevelState(LevelState.Paused);
 

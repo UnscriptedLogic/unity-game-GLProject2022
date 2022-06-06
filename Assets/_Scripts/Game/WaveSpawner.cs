@@ -149,13 +149,8 @@ namespace Game.Spawning
                         }
 
                         SwitchState(SpawnerStates.SpawningSegment);
-                    } else
-                    {
+                    } else {
                         _interval -= Time.deltaTime;
-                        if (transform.childCount <= 0)
-                        {
-                            _interval = 0f;
-                        }
                     }
                     break;
                 case SpawnerStates.Preparation:
@@ -170,7 +165,7 @@ namespace Game.Spawning
                 case SpawnerStates.FinalWait:
                     if (transform.childCount <= 0)
                     {
-                        levelManager.SetGameLost();
+                        levelManager.SetGameWon();
                         Debug.Log(transform.childCount, gameObject);
 
                     }

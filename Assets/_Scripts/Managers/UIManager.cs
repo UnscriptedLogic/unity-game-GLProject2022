@@ -58,13 +58,13 @@ namespace Core.UI
 
             if (levelManager.WaveSpawner.WaveCount > levelManager.WaveSpawner.WavesSO.Waves.Length)
             {
-                waveText += levelManager.WaveSpawner.WaveCount.ToString() + " [re-run]";
+                waveText += (levelManager.WaveSpawner.WaveCount + 1).ToString() + " [re-run]";
             } else if (levelManager.WaveSpawner.WaveCount == levelManager.WaveSpawner.WavesSO.Waves.Length - 1)
             {
                 waveText = "The Final Wave!";
             } else
             {
-                waveText += levelManager.WaveSpawner.WaveCount.ToString();
+                waveText += (levelManager.WaveSpawner.WaveCount + 1).ToString();
             }
 
             waveCounterTMP.text = waveText;

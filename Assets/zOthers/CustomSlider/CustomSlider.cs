@@ -65,8 +65,11 @@ namespace External.CustomSlider
                 SetVisibility(!(current >= max));
             }
 
-            sliderFill.DOColor(sliderColour.Evaluate(currentValue / maxValue), lerpDuration);
-            predictFill.DOColor(predictSliderColour.Evaluate(currentValue / maxValue), lerpDuration);
+            if (current > 0)
+            {
+                sliderFill.DOColor(sliderColour.Evaluate(currentValue / maxValue), lerpDuration);
+                predictFill.DOColor(predictSliderColour.Evaluate(currentValue / maxValue), lerpDuration); 
+            }
         }
 
         public void SetLimits(float current, float max)
@@ -94,8 +97,11 @@ namespace External.CustomSlider
                 DOTween.To(() => slider.value, x => slider.value = x, currentValue, lerpDuration);
             }
 
-            sliderFill.DOColor(sliderColour.Evaluate(currentValue/maxValue), lerpDuration);
-            predictFill.DOColor(predictSliderColour.Evaluate(currentValue/maxValue), lerpDuration);
+            if (currentValue > 0)
+            {
+                sliderFill.DOColor(sliderColour.Evaluate(currentValue / maxValue), lerpDuration);
+                predictFill.DOColor(predictSliderColour.Evaluate(currentValue / maxValue), lerpDuration); 
+            }
 
             if (OnlyWhenNotFull)
             {

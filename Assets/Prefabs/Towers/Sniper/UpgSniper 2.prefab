@@ -80,10 +80,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerID: 22
   damage: 20
-  projectileSpeed: 50
+  projectileSpeed: 70
   projectileLifetime: 0.5
   range: 10
-  attackInterval: 1
+  attackInterval: 2
   rotationSpeed: 70
   projectilePrefab: {fileID: 2184705531295620089, guid: 5303ffed305f8ae4694b3f3b9e958285,
     type: 3}

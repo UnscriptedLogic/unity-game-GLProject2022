@@ -128,13 +128,15 @@ namespace Core.Grid
 
         public bool PlaceTower(GameObject towerAsset)
         {
+            bool successful = false;
             if (!IsOccupied && !isObstacle)
             {
                 tower = UnityEngine.Object.Instantiate(towerAsset, node.transform.position + placementOffset, Quaternion.identity);
                 tower.GetComponent<Tower>().GridNode = this;
+                successful = true;
             }
 
-            return IsOccupied;
+            return successful;
         }
 
         public void RemoveTower()

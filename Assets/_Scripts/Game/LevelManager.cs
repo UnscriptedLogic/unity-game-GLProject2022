@@ -108,6 +108,8 @@ namespace Game
                     break;
                 case LevelState.Paused:
                     buildManager.enabled = false;
+                    PausedUI();
+                    Time.timeScale = 0f;
                     break;
                 case LevelState.Won:
                     wonUI.SetActive(true);
@@ -235,7 +237,7 @@ namespace Game
                         }
                     }
 
-                    if (Input.GetKeyDown(KeyCode.Escape))
+                    if (Input.GetKeyDown(KeyCode.X))
                     {
                         SwitchGameState(GameState.None);
                     }
@@ -253,7 +255,7 @@ namespace Game
                         }
                     }
 
-                    if (Input.GetKeyDown(KeyCode.Escape))
+                    if (Input.GetKeyDown(KeyCode.X))
                     {
                         SwitchGameState(GameState.None);
                     }
@@ -287,6 +289,8 @@ namespace Game
                 case LevelState.Playing:
                     break;
                 case LevelState.Paused:
+                    Time.timeScale = 1f;
+                    ResumeUI();
                     break;
                 case LevelState.Won:
                     gameSceneManager.ReturnHome();
@@ -339,7 +343,17 @@ namespace Game
             OnGameStateChanged?.Invoke();
         }
 
-        
+        private void PausedUI()
+        {
+            buildModeUI.gameObject.SetActive(false);
+            gameModeUI.gameObject.SetActive(false);
+            viewModeUI.gameObject.SetActive(false);
+        }
+
+        private void ResumeUI()
+        {
+            gameModeUI.gameObject.SetActive(true);
+        }
 
         #region StateSetters
         public void SetGameLost() => SwitchLevelState(LevelState.Lost);

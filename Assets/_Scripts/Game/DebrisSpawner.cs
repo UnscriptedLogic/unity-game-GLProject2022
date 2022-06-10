@@ -22,7 +22,7 @@ namespace Game
         {
             for (int i = 0; i < debriAmount; i++)
             {
-                GameObject debri = MathHelper.FromList(assetManager.DebrisList);
+                GameObject debri = MathHelper.RandomFromList(assetManager.DebrisList);
                 GridNode node = GridGenerator.GetRandomEmptyNode();
 
                 node.ForcePlaceTower(debri);

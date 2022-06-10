@@ -227,6 +227,12 @@ namespace Game.Spawning
             {
                 item.transform.SetParent(transform);
                 item.GetComponent<Unit>().InitializeEnemy(levelManager);
+
+                //GreaterUnit greaterUnit = item.GetComponent<GreaterUnit>();
+                //if (greaterUnit != null)
+                //{
+                //    greaterUnit.InitializeEnemy(levelManager);
+                //}
             });
         }
 

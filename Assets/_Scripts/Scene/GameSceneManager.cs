@@ -14,7 +14,7 @@ namespace Core.Scene
         private const string MainMenuScene = "MainMenuScene";
         private const string GameScene = "GameScene";
 
-        public void StartGame() => TransitionScene(GameScene, 2f);
+        public void StartGame() => TransitionScene(GameScene, 1f);
         public void HideLoading() => animator.SetTrigger(hideLoadPage);
         public void ReturnHome() => TransitionScene(MainMenuScene, 1f);
 

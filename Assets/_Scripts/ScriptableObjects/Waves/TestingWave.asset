@@ -14,6 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveSegments:
+    - enemyToSpawn: {fileID: 7718091526450488610, guid: 104b8199cb95708429fc35ae3cd7c4d8,
+        type: 3}
+      amount: 1
+      interval: 0.5
+      segmentInterval: 1
+    waveInterval: 5
+  - waveSegments:
     - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
         type: 3}
       amount: 10

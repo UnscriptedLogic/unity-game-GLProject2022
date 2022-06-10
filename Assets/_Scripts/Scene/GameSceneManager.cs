@@ -8,12 +8,14 @@ namespace Core.Scene
     public class GameSceneManager : MonoBehaviour
     {
         [SerializeField] private Animator animator;
-        [SerializeField] private string triggerName = "showTransition";
+        [SerializeField] private string showLoadPage = "showTransition";
+        [SerializeField] private string hideLoadPage = "exitTransition";
 
         private const string MainMenuScene = "MainMenuScene";
         private const string GameScene = "GameScene";
 
         public void StartGame() => TransitionScene(GameScene, 2f);
+        public void HideLoading() => animator.SetTrigger(hideLoadPage);
         public void ReturnHome() => TransitionScene(MainMenuScene, 1f);
 
         private void TransitionScene(string sceneName, float duration) => StartCoroutine(DelaySceneChange(sceneName, duration));
@@ -21,7 +23,7 @@ namespace Core.Scene
 
         private IEnumerator DelaySceneChange(string sceneName, float duration)
         {
-            animator.SetTrigger(triggerName);
+            animator.SetTrigger(showLoadPage);
             yield return new WaitForSeconds(duration);
             ChangeScene(sceneName);
         }

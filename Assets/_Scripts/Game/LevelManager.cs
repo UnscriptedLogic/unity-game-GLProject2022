@@ -275,6 +275,7 @@ namespace Game
                     uiManager.Initialize(this);
                     waveIncome.Initialize(this);
                     loadingUI.SetActive(false);
+                    gameSceneManager.HideLoading();
                     break;
                 case LevelState.Playing:
                     break;

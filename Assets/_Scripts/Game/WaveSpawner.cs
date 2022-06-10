@@ -166,8 +166,6 @@ namespace Game.Spawning
                     if (transform.childCount <= 0)
                     {
                         levelManager.SetGameWon();
-                        Debug.Log(transform.childCount, gameObject);
-
                     }
                     break;
                 default:
@@ -228,7 +226,7 @@ namespace Game.Spawning
             PoolManager.instance.PullFromPool(currSegment.enemyToSpawn, item =>
             {
                 item.transform.SetParent(transform);
-                item.GetComponent<UnitMovement>().InitializeEnemy(levelManager);
+                item.GetComponent<Unit>().InitializeEnemy(levelManager);
             });
         }
 
@@ -237,7 +235,7 @@ namespace Game.Spawning
             int count = transform.childCount;
             for (int i = 0; i < count; i++)
             {
-                transform.GetChild(0).GetComponent<UnitMovement>().DestroyUnit();
+                transform.GetChild(0).GetComponent<Unit>().DestroyUnit();
             }
         }
     }

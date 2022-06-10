@@ -25,7 +25,7 @@ namespace Towers
         private float _attackInterval;
         private Collider[] unitsInRange;
         
-        private UnitMovement target;
+        private Unit target;
         private AttackBehaviour attackBehaviour;
 
         [Header("Others")]
@@ -66,10 +66,10 @@ namespace Towers
                 unitsInRange = Physics.OverlapSphere(transform.position, range, unitLayer);
                 foreach (Collider collider1 in unitsInRange)
                 {
-                    UnitMovement unitMovement = collider1.GetComponent<UnitMovement>();
+                    Unit unitMovement = collider1.GetComponent<Unit>();
                     if (target == null)
                     {
-                        target = unitsInRange[0].GetComponent<UnitMovement>();
+                        target = unitsInRange[0].GetComponent<Unit>();
                     }
                     else
                     {

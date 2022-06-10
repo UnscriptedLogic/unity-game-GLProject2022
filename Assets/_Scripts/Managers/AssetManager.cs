@@ -13,8 +13,10 @@ namespace Core.Assets
 
         [SerializeField] private GameObject testTower;
         [SerializeField] private GameObject worldSpaceSlider;
+        [SerializeField] private GameObject placedParticle;
 
         public GameObject Tower { get => testTower; }
         public GameObject WorldSpaceSlider { get => worldSpaceSlider; }
+        public GameObject PlacedParticle { get => placedParticle; }
     }
 }

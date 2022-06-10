@@ -21,7 +21,7 @@ namespace Towers
 
         private void OnTriggerEnter(Collider other)
         {
-            UnitMovement unit = other.GetComponent<UnitMovement>();
+            Unit unit = other.GetComponent<Unit>();
             if (unit != null)
             {
                 ModifyHealth(ModificationType.Subtract, unit.CurrentHealth);

@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 47b7a45414f3b564e9e8349bfa18b29f, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17757905, g: 0.22232258, b: 0.30451807, a: 1}
+  m_IndirectSpecularColor: {r: 0.0068713985, g: 0.042858474, b: 0.38062662, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -314,7 +314,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 812489d626d9cae4884d22449513da46, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -353,7 +353,7 @@ Transform:
   m_GameObject: {fileID: 188286003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5, y: -0.1, z: 1.5}
-  m_LocalScale: {x: 25, y: 0.1, z: 25}
+  m_LocalScale: {x: 25, y: 0.2, z: 25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1743,7 +1743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &884261077
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2263,7 +2263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSize: {x: 20, y: 20}
   gridSpacing: 1.2
-  nodePrefab: {fileID: 3159788204143126556, guid: 37dc664b21f90334a971bce341cb25ab,
+  nodePrefab: {fileID: 1060161535111058455, guid: af6568264b87a6b47a0c21fbe4f9928e,
     type: 3}
   homePrefab: {fileID: 7482607861986099073, guid: 47e8cd61d182e4d43ae8579f82b0555c,
     type: 3}
@@ -2322,6 +2322,7 @@ MonoBehaviour:
   uiManager: {fileID: 1193752725}
   pathManager: {fileID: 1193752719}
   gameSceneManager: {fileID: 1193752727}
+  assetManager: {fileID: 1193752722}
   UILayer:
     serializedVersion: 2
     m_Bits: 32
@@ -2347,6 +2348,8 @@ MonoBehaviour:
   testTower: {fileID: 836754924125986003, guid: 03e8205c481f37e49a17b1068fab1b31,
     type: 3}
   worldSpaceSlider: {fileID: 1524213906768237627, guid: 770e3a7c1edf75e408b87cc71e22b0db,
+    type: 3}
+  placedParticle: {fileID: 5154074676509688101, guid: 068c2772b2f202740a07ad7d3879f22e,
     type: 3}
 --- !u!114 &1193752723
 MonoBehaviour:
@@ -3899,32 +3902,32 @@ PrefabInstance:
     - target: {fileID: 3400458128361159786, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3400458128361159786, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3400458128361159786, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 126.33499
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3400458128361159786, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 39.882
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3400458128361159786, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 198.81248
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3400458128361159786, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -19.941
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3546353108096882102, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
@@ -4049,32 +4052,32 @@ PrefabInstance:
     - target: {fileID: 7445809053452766210, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7445809053452766210, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7445809053452766210, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 126.33499
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7445809053452766210, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 39.882
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7445809053452766210, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 63.167496
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7445809053452766210, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -19.941
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7573022345262112869, guid: 581229353f4e2c44a8d2fba0cb02fdd7,
         type: 3}

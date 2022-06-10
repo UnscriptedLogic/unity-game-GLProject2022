@@ -10,7 +10,7 @@ using Game;
 
 namespace Units
 {
-    public class UnitMovement : MonoBehaviour, IDamageable
+    public class Unit : MonoBehaviour, IDamageable
     {
         private PathManager nodeManager;
         private GridNode[] nodePath;

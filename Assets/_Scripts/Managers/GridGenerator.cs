@@ -102,7 +102,7 @@ namespace Core.Grid
         private GameObject node;
         private GameObject tower;
         private int teamIndex;
-        private Vector3 placementOffset = new Vector3(0, .1f, 0f);
+        private Vector3 placementOffset = new Vector3(0, .2f, 0f);
 
         public bool isObstacle = false;
         public float hCost;

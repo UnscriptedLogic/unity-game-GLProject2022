@@ -12,6 +12,7 @@ using Towers;
 using Standalone;
 using UnityEngine.EventSystems;
 using System;
+using Core.Assets;
 
 namespace Game
 {
@@ -43,6 +44,7 @@ namespace Game
         [SerializeField] private UIManager uiManager;
         [SerializeField] private PathManager pathManager;
         [SerializeField] private GameSceneManager gameSceneManager;
+        [SerializeField] private AssetManager assetManager;
 
         [Header("UI")]
         [SerializeField] private LayerMask UILayer;
@@ -233,6 +235,7 @@ namespace Game
                         {
                             currencyManager.ModifyCurrency(ModificationType.Subtract, currencyManager.TowerCosts.GetTowerCost(buildManager.TowerToPlace));
                             SwitchGameState(GameState.None);
+                            Destroy(Instantiate(assetManager.PlacedParticle, buildManager.PrevPlacedTower.transform.position, Quaternion.identity), 5f);
                         }
                     }
 

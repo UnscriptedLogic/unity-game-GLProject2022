@@ -74,7 +74,7 @@ namespace Projectiles
         private void OnTriggerEnter(Collider other)
         {
             IDamageable damageable = other.GetComponent<IDamageable>();
-            if (damageable != null && other.GetComponent<UnitMovement>() != null)
+            if (damageable != null && other.GetComponent<Unit>() != null)
             {
                 damageable.ModifyHealth(ModificationType.Subtract, damage);
                 poolManager.PushToPool(gameObject);

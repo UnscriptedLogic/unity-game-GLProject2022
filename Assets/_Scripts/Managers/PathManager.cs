@@ -91,10 +91,5 @@ namespace Core.Pathing
 
             callback();
         }
-
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.DrawWireSphere(Vector3.zero, weightPointDistance);
-        }
     }
 }

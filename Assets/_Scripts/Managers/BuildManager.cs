@@ -19,6 +19,7 @@ namespace Core.Building
         [SerializeField] private Transform rangeVFX;
         [SerializeField] private Transform blueprintVFX;
         private GameObject towerPrefab;
+        private GameObject prevPlacedTower;
         private Tower inspectedTower;
         private TowerTreeObject inspectedTowerDetails;
 
@@ -26,6 +27,7 @@ namespace Core.Building
 
         public bool BuildMode => buildMode;
         public GameObject TowerToPlace => towerPrefab;
+        public GameObject PrevPlacedTower => prevPlacedTower;
         public Tower InspectedTower { get => inspectedTower; set { inspectedTower = value; } }
         public TowerTreeSO TowerTree => towerTree;
         public TowerTreeObject InspectedTowerDetails { get => inspectedTowerDetails; set { inspectedTowerDetails = value; } }
@@ -65,6 +67,8 @@ namespace Core.Building
 
                 GridNode node = GridGenerator.GetNodeAt(x, y);
                 bool value = node.PlaceTower(towerPrefab);
+                if (value)
+                    prevPlacedTower = node.TowerOnNode;
                 return value;
             }
 

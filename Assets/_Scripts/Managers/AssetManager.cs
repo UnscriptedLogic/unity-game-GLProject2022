@@ -15,8 +15,11 @@ namespace Core.Assets
         [SerializeField] private GameObject worldSpaceSlider;
         [SerializeField] private GameObject placedParticle;
 
+        [SerializeField] private GameObject[] debris;
+
         public GameObject Tower { get => testTower; }
         public GameObject WorldSpaceSlider { get => worldSpaceSlider; }
         public GameObject PlacedParticle { get => placedParticle; }
+        public GameObject[] DebrisList { get => debris; }
     }
 }

@@ -93,6 +93,31 @@ namespace Core.Grid
 
             return GetNodeAt(x,z);
         }
+
+        public static GridNode GetRandomNode()
+        {
+            int coordx = UnityEngine.Random.Range(0, staticGridSize.x);
+            int coordy = UnityEngine.Random.Range(0, staticGridSize.y);
+            return GetNodeAt(coordx, coordy);
+        }
+
+        public static GridNode GetRandomEmptyNode()
+        {
+            GridNode gridNode = null;
+
+            bool invalid = true;
+            int maxTries = 50;
+            while (invalid || maxTries > 0)
+            {
+                int coordx = UnityEngine.Random.Range(0, staticGridSize.x - 1);
+                int coordy = UnityEngine.Random.Range(0, staticGridSize.y - 1);
+
+                gridNode = GetNodeAt(coordx, coordy);
+                invalid = gridNode.IsOccupied || gridNode.isObstacle;
+                maxTries--;
+            }
+            return gridNode;
+        }
     }
 
     [System.Serializable]

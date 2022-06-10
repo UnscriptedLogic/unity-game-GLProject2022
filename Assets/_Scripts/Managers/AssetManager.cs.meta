@@ -3,7 +3,13 @@ guid: f122334058c436b4f879aa3d37c1337d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - testTower: {instanceID: 0}
+  - worldSpaceSlider: {fileID: 1524213906768237627, guid: 770e3a7c1edf75e408b87cc71e22b0db,
+      type: 3}
+  - placedParticle: {fileID: 5154074676509688101, guid: 068c2772b2f202740a07ad7d3879f22e,
+      type: 3}
+  - stone: {fileID: 3582334324344510906, guid: 832f37848202c164fa952df22e5258f5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

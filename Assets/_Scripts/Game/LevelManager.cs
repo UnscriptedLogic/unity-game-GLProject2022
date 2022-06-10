@@ -45,6 +45,7 @@ namespace Game
         [SerializeField] private PathManager pathManager;
         [SerializeField] private GameSceneManager gameSceneManager;
         [SerializeField] private AssetManager assetManager;
+        [SerializeField] private DebrisSpawner debrisSpawner;
 
         [Header("UI")]
         [SerializeField] private LayerMask UILayer;
@@ -67,6 +68,7 @@ namespace Game
         public WaveSpawner WaveSpawner => waveSpawner;
         public GridManager GridNodeManager => gridManager;
         public PathManager PathManager => pathManager;
+        public AssetManager AssetManager => assetManager;
 
         public Action OnLevelStateChanged;
         public Action OnGameStateChanged;
@@ -98,12 +100,6 @@ namespace Game
                         SwitchLevelState(LevelState.Playing);
 
                     });
-                    waveSpawner.Initialize(this);
-                    waveSpawner.OnSpawningCompleted += () =>
-                    {
-                        SwitchLevelState(LevelState.Won);
-                        SwitchGameState(GameState.None);
-                    };
                     break;
                 case LevelState.Playing:
                     uiManager.UpdateTowerButtons();
@@ -277,7 +273,15 @@ namespace Game
                     currencyManager.ModifyCurrency(ModificationType.Set, currencyManager.CurrencyContainer.StartAmount);
                     uiManager.Initialize(this);
                     waveIncome.Initialize(this);
-                    loadingUI.SetActive(false);
+                    debrisSpawner.Initialize(this);
+
+                    waveSpawner.Initialize(this);
+                    waveSpawner.OnSpawningCompleted += () =>
+                    {
+                        SwitchLevelState(LevelState.Won);
+                        SwitchGameState(GameState.None);
+                    };
+
                     gameSceneManager.HideLoading();
                     break;
                 case LevelState.Playing:

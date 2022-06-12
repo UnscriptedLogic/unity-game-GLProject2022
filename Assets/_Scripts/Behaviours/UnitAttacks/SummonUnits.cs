@@ -88,6 +88,7 @@ namespace Units
         public override void ExitState()
         {
             context.ExitState();
+            context.Speed += reduction;
         }
     }
 }

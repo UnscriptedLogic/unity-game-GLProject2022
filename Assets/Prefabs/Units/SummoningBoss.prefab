@@ -155,13 +155,13 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5795732500522718543}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 100
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  emitterVelocityMode: 1
+  emitterVelocityMode: 0
   looping: 1
   prewarm: 0
   playOnAwake: 1
@@ -229,8 +229,8 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 15
+      minMaxState: 0
+      scalar: 10
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1088,7 +1088,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -1100,21 +1100,30 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 0
-          outSlope: 1
+          inSlope: 19.398647
+          outSlope: 19.398647
+          tangentMode: 0
+          weightedMode: 2
+          inWeight: 0
+          outWeight: 0.091900446
+        - serializedVersion: 3
+          time: 0.50029147
+          value: 1
+          inSlope: -0.0011658669
+          outSlope: -0.0011658669
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 0
+          value: 0
+          inSlope: -253.93744
+          outSlope: -253.93744
           tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          weightedMode: 1
+          inWeight: 0.0057506706
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -2185,7 +2194,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    inWorldSpace: 0
+    inWorldSpace: 1
   InheritVelocityModule:
     enabled: 0
     m_Mode: 0
@@ -4048,7 +4057,7 @@ ParticleSystem:
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 0.025
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4098,13 +4107,13 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minVertexDistance: 0.2
+    minVertexDistance: 0.05
     textureMode: 0
     textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
-    dieWithParticles: 1
+    dieWithParticles: 0
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
@@ -5702,7 +5711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: 5736165837249898625}
-  health: 1000
+  health: 1500
   movementSpeed: 0.5
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 5959593351887877580}
@@ -5725,6 +5734,6 @@ MonoBehaviour:
   - unitToSummon: {fileID: 7644136366003357881, guid: ee801da81d9c2714cbb897ed1b6c0df6,
       type: 3}
     amount: 5
-  slowdownDuration: 2
+  slowdownDuration: 5
   slowPercentage: 50
   spawnInterval: 0.5

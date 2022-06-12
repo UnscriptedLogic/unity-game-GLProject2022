@@ -18,7 +18,7 @@ MonoBehaviour:
     towerIcon: {fileID: 21300000, guid: 6f83de6c790fa524aa8708d7fefe29d3, type: 3}
     sellCost: 100
     upgradeIcon: {fileID: 21300000, guid: 187a33a09d877304a92453cb6d326ffd, type: 3}
-    upgradeCost: 100
+    upgradeCost: 200
     upgradeName: Sharper Bullets
     upgradeDesc: Increases weapon damage
     nextUpgrade: {fileID: 836754924125986003, guid: dcd578c7cecb9d14584e08bcab5a5f72,
@@ -47,7 +47,7 @@ MonoBehaviour:
     towerIcon: {fileID: 21300000, guid: 39e2258169c85844598929b63dc206ee, type: 3}
     sellCost: 35
     upgradeIcon: {fileID: 21300000, guid: f5575c4a96bfb344d8547970923792c2, type: 3}
-    upgradeCost: 600
+    upgradeCost: 750
     upgradeName: Tripod Stability
     upgradeDesc: Increass the fire rate of the weapon
     nextUpgrade: {fileID: 836754924125986003, guid: dab0061b195618c43acc03955e77329d,
@@ -67,7 +67,7 @@ MonoBehaviour:
     towerIcon: {fileID: 21300000, guid: 4d88f2b9efd0c734a89b8984fec4ee80, type: 3}
     sellCost: 125
     upgradeIcon: {fileID: 0}
-    upgradeCost: 500
+    upgradeCost: 3575
     upgradeName: Twin Stick Shooter
     upgradeDesc: Adds another gun to the tower, doubling its fire rate
     nextUpgrade: {fileID: 0}

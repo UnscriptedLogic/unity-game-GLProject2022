@@ -2327,7 +2327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491cc41bd3e96174eb30a1e0d8dc9acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wavesSO: {fileID: 11400000, guid: faa2c1d51e407604881bc6e66cb7e331, type: 2}
+  wavesSO: {fileID: 11400000, guid: 5d1852874c2646a4a8454e7d0aca791f, type: 2}
   startDelay: 2
   waveIndex: 0
   spawnLocation: {fileID: 853069097}

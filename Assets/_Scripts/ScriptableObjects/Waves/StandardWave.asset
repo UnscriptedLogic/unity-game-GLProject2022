@@ -77,7 +77,7 @@ MonoBehaviour:
       amount: 20
       interval: 0.2
       segmentInterval: 6
-    waveInterval: 10
+    waveInterval: 20
   - waveSegments:
     - enemyToSpawn: {fileID: 7644136366003357881, guid: f78919e5216024144a2aab50255dfa74,
         type: 3}
@@ -211,11 +211,11 @@ MonoBehaviour:
     - enemyToSpawn: {fileID: 3410873540175906039, guid: 72893ec1147fa8747b7246ff97557281,
         type: 3}
       amount: 2
-      interval: 0.5
+      interval: 1.5
       segmentInterval: 5
     - enemyToSpawn: {fileID: 7718091526450488610, guid: 104b8199cb95708429fc35ae3cd7c4d8,
         type: 3}
-      amount: 1
-      interval: 0
+      amount: 2
+      interval: 5
       segmentInterval: 5
     waveInterval: 10

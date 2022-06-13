@@ -12,16 +12,39 @@ namespace Core.UI
 {
     public class UIManager : MonoBehaviour
     {
+        public enum UIpages
+        {
+            BuildMode,
+            GameMode,
+            ViewMode,
+            Loading,
+            Lost,
+            Won
+        }
+
         [SerializeField] private TextMeshProUGUI waveCounterTMP;
         [SerializeField] private CustomSlider baseSlider;
         [SerializeField] private Transform towerButtonHolder;
         [SerializeField] private TowerDialogue towerDialogue;
+
+        [SerializeField] private GameObject buildModeUI;
+        [SerializeField] private GameObject gameModeUI;
+        [SerializeField] private GameObject viewModeUI;
+        [SerializeField] private GameObject loadingUI;
+        [SerializeField] private GameObject lostUI;
+        [SerializeField] private GameObject wonUI;
 
         private Button[] towerButtons;
         private LevelManager levelManager;
         private HomeTower homeTower;
 
         public TowerDialogue TowerDialogue => towerDialogue;
+        public GameObject BuildModeUI => buildModeUI;
+        public GameObject GameModeUI => gameModeUI;
+        public GameObject ViewModeUI => viewModeUI;
+        public GameObject LoadingUI => loadingUI;
+        public GameObject LostUI => lostUI;
+        public GameObject WonUI => wonUI;
 
         public void Initialize(LevelManager levelManager)
         {
@@ -78,6 +101,50 @@ namespace Core.UI
             }
 
             towerDialogue.UpdateButtons(levelManager.CurrencyManager.CurrencyContainer.CurrentAmount);
+        }
+
+        public void ShowOnlyUI(UIpages uiPages)
+        {
+            ToggleAllUI(false);
+
+            ShowUI(uiPages);
+        }
+
+        public void ToggleAllUI(bool value)
+        {
+            buildModeUI.SetActive(value);
+            gameModeUI.SetActive(value);
+            viewModeUI.SetActive(value);
+            loadingUI.SetActive(value);
+            lostUI.SetActive(value);
+            wonUI.SetActive(value);
+        }
+
+        public void ShowUI(UIpages uiPages, bool value = true)
+        {
+            switch (uiPages)
+            {
+                case UIpages.BuildMode:
+                    buildModeUI.SetActive(value);
+                    break;
+                case UIpages.GameMode:
+                    gameModeUI.SetActive(value);
+                    break;
+                case UIpages.ViewMode:
+                    viewModeUI.SetActive(value);
+                    break;
+                case UIpages.Loading:
+                    loadingUI.SetActive(value);
+                    break;
+                case UIpages.Lost:
+                    lostUI.SetActive(value);
+                    break;
+                case UIpages.Won:
+                    wonUI.SetActive(value);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

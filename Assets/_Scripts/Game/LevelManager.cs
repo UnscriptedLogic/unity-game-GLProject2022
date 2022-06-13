@@ -47,14 +47,7 @@ namespace Game
         [SerializeField] private AssetManager assetManager;
         [SerializeField] private DebrisSpawner debrisSpawner;
 
-        [Header("UI")]
         [SerializeField] private LayerMask UILayer;
-        [SerializeField] private GameObject buildModeUI;
-        [SerializeField] private GameObject gameModeUI;
-        [SerializeField] private GameObject viewModeUI;
-        [SerializeField] private GameObject loadingUI;
-        [SerializeField] private GameObject lostUI;
-        [SerializeField] private GameObject wonUI;
 
         [Space(10)]
         [SerializeField] private float returnHomedelay = 5f;
@@ -92,9 +85,7 @@ namespace Game
                 case LevelState.None:
                     break;
                 case LevelState.Start:
-                    loadingUI.SetActive(true);
-                    lostUI.SetActive(false);
-                    wonUI.SetActive(false);
+                    uiManager.ShowOnlyUI(UIManager.UIpages.Loading);
                     gridManager.GenerateGrid(() =>
                     {
                         SwitchLevelState(LevelState.Playing);
@@ -112,12 +103,12 @@ namespace Game
                     Time.timeScale = 0f;
                     break;
                 case LevelState.Won:
-                    wonUI.SetActive(true);
+                    uiManager.ShowOnlyUI(UIManager.UIpages.Won);
                     buildManager.enabled = false;
                     waveSpawner.StopSpawner();
                     break;
                 case LevelState.Lost:
-                    lostUI.SetActive(true);
+                    uiManager.ShowOnlyUI(UIManager.UIpages.Lost);
                     buildManager.enabled = false;
                     waveSpawner.StopSpawner();
                     break;
@@ -131,17 +122,14 @@ namespace Game
             switch (gameState)
             {
                 case GameState.None:
-                    buildModeUI.SetActive(false);
-                    gameModeUI.SetActive(true);
-                    viewModeUI.SetActive(false);
+                    uiManager.ShowOnlyUI(UIManager.UIpages.GameMode);
                     break;
                 case GameState.Building:
                     buildManager.EnableBuildMode();
-                    buildModeUI.SetActive(true);
-                    gameModeUI.SetActive(false);
+                    uiManager.ShowOnlyUI(UIManager.UIpages.BuildMode);
                     break;
                 case GameState.Viewing:
-                    viewModeUI.SetActive(true);
+                    uiManager.ShowUI(UIManager.UIpages.ViewMode);
                     uiManager.SetTowerDialogue(buildManager.InspectedTowerDetails, buildManager.InspectedTower, currencyManager.CurrencyContainer.CurrentAmount);
                     uiManager.TowerDialogue.SellButton.onClick.AddListener(() => 
                     { 
@@ -311,11 +299,10 @@ namespace Game
                     break;
                 case GameState.Building:
                     buildManager.DisableBuildMode();
-                    buildModeUI.SetActive(false);
-                    gameModeUI.SetActive(true);
+                    uiManager.ShowOnlyUI(UIManager.UIpages.GameMode);
                     break;
                 case GameState.Viewing:
-                    viewModeUI.SetActive(false);
+                    uiManager.ShowUI(UIManager.UIpages.ViewMode, false);
                     buildManager.HideRange();
                     uiManager.TowerDialogue.UpgradeButton.onClick.RemoveAllListeners();
                     uiManager.TowerDialogue.SellButton.onClick.RemoveAllListeners();
@@ -345,14 +332,12 @@ namespace Game
 
         private void PausedUI()
         {
-            buildModeUI.gameObject.SetActive(false);
-            gameModeUI.gameObject.SetActive(false);
-            viewModeUI.gameObject.SetActive(false);
+            uiManager.ToggleAllUI(false);
         }
 
         private void ResumeUI()
         {
-            gameModeUI.gameObject.SetActive(true);
+            uiManager.ShowOnlyUI(UIManager.UIpages.GameMode);
         }
 
         #region StateSetters

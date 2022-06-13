@@ -14,11 +14,10 @@ namespace Core.Grid
         [SerializeField] private GameObject nodePrefab;
         [SerializeField] private GameObject homePrefab;
         [SerializeField] private GameObject entitySpawnPrefab;
+        [SerializeField] private PathManager pathManager;
 
         [SerializeField] private bool drawGizmos;
         [SerializeField] private int teamIndex = 0;
-
-        private PathManager pathManager;
 
         public GameObject HomeNode => pathManager.Path[pathManager.Path.Length - 1].TowerOnNode;
 
@@ -33,7 +32,6 @@ namespace Core.Grid
                 parent: transform 
             );
 
-            pathManager = PathManager.instance;
             pathManager.GeneratePath(() =>
             {
                 pathManager.Path[0].ForcePlaceTower(entitySpawnPrefab);

@@ -19,15 +19,13 @@ namespace Core.Pathing
         private GridNode[] weightPoints;
         private List<GridNode> nodes;
         private List<GridNode> path;
+        private GridManager gridManager;
 
-        public static PathManager instance;
         public GridNode[] Path { get => path.ToArray(); }
-        private void Awake() => instance = this;
 
-        public void Initialize(int randomSeed, int pointCount)
+        public void Initialize(GridManager gridManager)
         {
-            seed = randomSeed;
-            weightPointCount = pointCount;
+            this.gridManager = gridManager;
         }
 
         public void GeneratePath(Action callback)

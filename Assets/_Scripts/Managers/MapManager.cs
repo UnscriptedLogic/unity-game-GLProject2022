@@ -8,7 +8,6 @@ using Core.Assets;
 
 namespace Core.Grid
 {
-    [RequireComponent(typeof(PathManager))]
     public class MapManager : MonoBehaviour
     {   
         [Header("Components")]
@@ -21,7 +20,6 @@ namespace Core.Grid
         [SerializeField] private bool drawGizmos;
 
         [Header("Path")]
-        [SerializeField] private PathManager pathManager;
         [SerializeField] private int seed = 10; //The seed for randomization
         [SerializeField] private int weightPointCount = 5; //The amount of 'crucial' points the path needs to meet (for proper path spread across the map)
         [SerializeField] private float weightPointDistance = 5f; //The amount of distance between the weightpoints;
@@ -36,13 +34,6 @@ namespace Core.Grid
         public int Seed => seed;
         public int WPcount => weightPointCount;
         public float WPdist => weightPointDistance;
-        public GameObject HomeNode => pathManager.Path[pathManager.Path.Length - 1].TowerOnNode;
-
-        private void Start()
-        {
-            RandomSeed();
-            GenerateMap();
-        }
 
         public void RandomSeed()
         {
@@ -50,7 +41,7 @@ namespace Core.Grid
                 seed = UnityEngine.Random.Range(-1000000, 1000000);
         }
 
-        public void GenerateMap()
+        public void GenerateMap(Transform parent, PathManager pathManager)
         {
             GridGenerator.CreateGrid(
                 gridSize: gridSize, 
@@ -58,7 +49,7 @@ namespace Core.Grid
                 center: transform.position, 
                 prefab: assetSO.NodePrefab, 
                 teamIndex: teamIndex, 
-                parent: transform 
+                parent: parent
             );
 
             pathManager.Initialize(this);
@@ -67,7 +58,7 @@ namespace Core.Grid
                 pathManager.Path[0].ForcePlaceTower(assetSO.SpawnPrefab);
                 pathManager.Path[pathManager.Path.Length - 1].ForcePlaceTower(assetSO.HomePrefab);
 
-                DebrisSpawner.GenerateDebri(assetSO.DebrisList, debriAmount);
+                DebrisSpawner.GenerateDebri(assetSO.DebrisList, debriAmount, parent);
             });
         }
 

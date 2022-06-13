@@ -85,11 +85,11 @@ namespace Game
                     break;
                 case LevelState.Start:
                     uiManager.ShowOnlyUI(UIManager.UIpages.Loading);
-                    gridManager.GenerateMap(() =>
-                    {
-                        SwitchLevelState(LevelState.Playing);
+                    //gridManager.GenerateMap(() =>
+                    //{
+                    //    SwitchLevelState(LevelState.Playing);
 
-                    });
+                    //});
                     break;
                 case LevelState.Playing:
                     uiManager.UpdateTowerButtons();

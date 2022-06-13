@@ -60,7 +60,7 @@ namespace Core.UI
 
             levelManager.WaveSpawner.OnWaveStarted += UpdateWaveCounter;
 
-            homeTower = levelManager.GridNodeManager.HomeNode.GetComponent<HomeTower>();
+            //homeTower = levelManager.GridNodeManager.HomeNode.GetComponent<HomeTower>();
             baseSlider.Initialize(homeTower.CurrentHealth, homeTower.MaxHealth, false, true, false);
             homeTower.OnHealthModified += (health) =>
             {

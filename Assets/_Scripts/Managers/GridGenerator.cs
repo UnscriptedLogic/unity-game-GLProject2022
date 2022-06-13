@@ -26,7 +26,7 @@ namespace Core.Grid
             int counter = 0;
             GridScaffold(center, gridSize, spacing, (x, y, pos) =>
             {
-                GameObject nodeObject = UnityEngine.Object.Instantiate(prefab, pos, Quaternion.identity, parent);
+                GameObject nodeObject = UnityEngine.Object.Instantiate(prefab, parent.position + pos, Quaternion.identity, parent);
                 nodeObject.name = $"{x}, {y}";
                 GridNode node = new GridNode(x, y, nodeObject, teamIndex);
                 coordDictionary.Add(new Vector2Int(x, y), node);

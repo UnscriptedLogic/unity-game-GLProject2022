@@ -8,7 +8,7 @@ namespace Core.Grid
 {
     public static class DebrisSpawner
     {
-        public static void GenerateDebri(GameObject[] debrisList, int amount)
+        public static void GenerateDebri(GameObject[] debrisList, int amount, Transform parent = null)
         {
             for (int i = 0; i < amount; i++)
             {
@@ -17,6 +17,8 @@ namespace Core.Grid
 
                 node.ForcePlaceTower(debri);
                 node.TowerOnNode.transform.forward = MathHelper.OfVectorDirectionAroundY();
+
+                node.TowerOnNode.transform.SetParent(parent);
             }
         }
     } 

@@ -30,6 +30,7 @@ namespace Projectiles
     public class Projectile : MonoBehaviour
     {
         [SerializeField] private Rigidbody rb;
+        [SerializeField] private TrailRenderer trailRenderer;
         
         private float damage = 1f;
         private float movementSpeed = 10f;
@@ -63,8 +64,7 @@ namespace Projectiles
 
             if (lifetime <= 0f)
             {
-                poolManager.PushToPool(gameObject);
-                projectileSettings = null;
+                DestroyProjectile();
             } else
             {
                 lifetime -= Time.deltaTime;
@@ -77,9 +77,21 @@ namespace Projectiles
             if (damageable != null && other.GetComponent<Unit>() != null)
             {
                 damageable.ModifyHealth(ModificationType.Subtract, damage);
-                poolManager.PushToPool(gameObject);
-                projectileSettings = null;
+                DestroyProjectile();
             }
+        }
+
+        private void DestroyProjectile()
+        {
+            poolManager.PushToPool(gameObject);
+            trailRenderer.Clear();
+            projectileSettings = null;
+        }
+
+        private void OnValidate()
+        {
+            if (trailRenderer == null)
+                trailRenderer.TryGetComponent(out trailRenderer);
         }
     }
 }

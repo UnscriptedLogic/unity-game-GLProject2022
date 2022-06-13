@@ -75,9 +75,9 @@ namespace Game.Spawning
                     break;
                 case SpawnerStates.SpawningWave:
                     currWave = wavesSO.Waves[waveIndex];
-                    OnWaveStarted?.Invoke();
                     break;
                 case SpawnerStates.SpawningSegment:
+                    OnWaveStarted?.Invoke();
                     currSegment = wavesSO.Waves[waveIndex].waveSegments[segmentIndex];
                     _spawnAmount = 0;
                     break;

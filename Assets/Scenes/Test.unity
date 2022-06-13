@@ -2334,7 +2334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 491cc41bd3e96174eb30a1e0d8dc9acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wavesSO: {fileID: 11400000, guid: faa2c1d51e407604881bc6e66cb7e331, type: 2}
+  wavesSO: {fileID: 11400000, guid: 5d1852874c2646a4a8454e7d0aca791f, type: 2}
   startDelay: 2
   waveIndex: 0
   spawnLocation: {fileID: 853069097}
@@ -3184,7 +3184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55dbe4590b21a1d4ea2b2960569aaa26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currencyContainer: {fileID: 11400000, guid: 0fc4e85be0953824cb233a28ee2458c2, type: 2}
+  currencyContainer: {fileID: 11400000, guid: c65af5b34a9cbbf4cae7994cd7939204, type: 2}
   towerCosts: {fileID: 11400000, guid: e09fb6c07c150064fa6ec93daf961436, type: 2}
   currencyTMP: {fileID: 1308344524}
 --- !u!114 &1193752725

@@ -1378,6 +1378,7 @@ GameObject:
   - component: {fileID: 324421730}
   - component: {fileID: 324421729}
   - component: {fileID: 324421733}
+  - component: {fileID: 324421734}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1490,6 +1491,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &324421734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324421728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643403a1f7eb55f45924f47e88c40526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipSO: {fileID: 11400000, guid: 50f6f9b6b0d95d444b0bd02a864adca3, type: 2}
+  tipTMP: {fileID: 8738040401486404277}
 --- !u!1001 &334103850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10145,3 +10160,15 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3593b866e394e924ca60d6e0f61fd34e, type: 3}
+--- !u!114 &8738040401486404277 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1916786467, guid: 3593b866e394e924ca60d6e0f61fd34e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8738040401486404276}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

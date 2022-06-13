@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 107970883229823073}
+  trailRenderer: {fileID: 2199068216212489892}
 --- !u!54 &107970883229823073
 Rigidbody:
   m_ObjectHideFlags: 0

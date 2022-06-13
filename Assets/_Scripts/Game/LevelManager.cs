@@ -36,7 +36,7 @@ namespace Game
     public class LevelManager : MonoBehaviour
     {
         [Header("Components")]
-        [SerializeField] private GridManager gridManager;
+        [SerializeField] private MapManager gridManager;
         [SerializeField] private BuildManager buildManager;
         [SerializeField] private WaveSpawner waveSpawner;
         [SerializeField] private WaveIncome waveIncome;
@@ -44,8 +44,7 @@ namespace Game
         [SerializeField] private UIManager uiManager;
         [SerializeField] private PathManager pathManager;
         [SerializeField] private GameSceneManager gameSceneManager;
-        [SerializeField] private AssetManager assetManager;
-        [SerializeField] private DebrisSpawner debrisSpawner;
+        [SerializeField] private AssetSO assetManager;
 
         [SerializeField] private LayerMask UILayer;
 
@@ -59,9 +58,9 @@ namespace Game
         public GameState CurrentGameState => gameState;
         public CurrencyManager CurrencyManager => currencyManager;
         public WaveSpawner WaveSpawner => waveSpawner;
-        public GridManager GridNodeManager => gridManager;
+        public MapManager GridNodeManager => gridManager;
         public PathManager PathManager => pathManager;
-        public AssetManager AssetManager => assetManager;
+        public AssetSO AssetManager => assetManager;
 
         public Action OnLevelStateChanged;
         public Action OnGameStateChanged;
@@ -86,7 +85,7 @@ namespace Game
                     break;
                 case LevelState.Start:
                     uiManager.ShowOnlyUI(UIManager.UIpages.Loading);
-                    gridManager.GenerateGrid(() =>
+                    gridManager.GenerateMap(() =>
                     {
                         SwitchLevelState(LevelState.Playing);
 
@@ -263,7 +262,7 @@ namespace Game
                     currencyManager.ModifyCurrency(ModificationType.Set, currencyManager.CurrencyContainer.StartAmount);
                     uiManager.Initialize(this);
                     waveIncome.Initialize(this);
-                    debrisSpawner.Initialize(this);
+                    //debrisSpawner.Initialize(this);
 
                     waveSpawner.Initialize(this);
                     waveSpawner.OnSpawningCompleted += () =>

@@ -4,25 +4,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game
+namespace Core.Grid
 {
-    public class DebrisSpawner : MonoBehaviour
+    public static class DebrisSpawner
     {
-        [SerializeField] private int debriAmount = 3;
-
-        private AssetManager assetManager;
-
-        public void Initialize(LevelManager levelManager)
+        public static void GenerateDebri(GameObject[] debrisList, int amount)
         {
-            assetManager = levelManager.AssetManager;
-            GenerateDebri();
-        }
-
-        private void GenerateDebri()
-        {
-            for (int i = 0; i < debriAmount; i++)
+            for (int i = 0; i < amount; i++)
             {
-                GameObject debri = MathHelper.RandomFromList(assetManager.DebrisList);
+                GameObject debri = MathHelper.RandomFromList(debrisList);
                 GridNode node = GridGenerator.GetRandomEmptyNode();
 
                 node.ForcePlaceTower(debri);

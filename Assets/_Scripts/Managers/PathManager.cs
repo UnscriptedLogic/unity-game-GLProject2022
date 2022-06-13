@@ -10,29 +10,30 @@ namespace Core.Pathing
 {
     public class PathManager : MonoBehaviour
     {
-        [SerializeField] private int seed = 10; //The seed for randomization
-        [SerializeField] private int weightPointCount = 5; //The amount of 'crucial' points the path needs to meet (for proper path spread across the map)
-        [SerializeField] private float weightPointDistance = 5f; //The amount of distance between the weightpoints;
-        [SerializeField] private bool randomizeSeed = false;
-        [SerializeField] private bool allowOverlap = false;
-
         private GridNode[] weightPoints;
         private List<GridNode> nodes;
         private List<GridNode> path;
-        private GridManager gridManager;
+        private MapManager mapManager;
 
         public GridNode[] Path { get => path.ToArray(); }
 
-        public void Initialize(GridManager gridManager)
+        public void Initialize(MapManager mapManager)
         {
-            this.gridManager = gridManager;
+            this.mapManager = mapManager;
         }
 
         public void GeneratePath(Action callback)
         {
-            if (randomizeSeed)
-                seed = UnityEngine.Random.Range(-1000000, 1000000);
+            UnityEngine.Random.InitState(mapManager.Seed);
+            nodes = new List<GridNode>(GridGenerator.GridNodes);
+            path = new List<GridNode>();
 
+            GetWeightPoints();
+            StartCoroutine(StitchPaths(callback));
+        }
+
+        public void GeneratePath(Action callback, int seed)
+        {
             UnityEngine.Random.InitState(seed);
             nodes = new List<GridNode>(GridGenerator.GridNodes);
             path = new List<GridNode>();
@@ -46,14 +47,14 @@ namespace Core.Pathing
             List<GridNode> newWeights = new List<GridNode>();
             newWeights.Add(nodes[UnityEngine.Random.Range(0, GridGenerator.GridNodes.Length - 1)]);
             int retries = 0, maxRetries = 50;
-            while (retries < maxRetries && newWeights.Count < weightPointCount)
+            while (retries < maxRetries && newWeights.Count < mapManager.WPcount)
             {
                 int randomIndex = UnityEngine.Random.Range(0, GridGenerator.GridNodes.Length - 1);
                 bool isClose = false;
                 for (int j = 0; j < newWeights.Count; j++)
                 {
                     //if (PathFinder.GetDistance(nodes[randomIndex], newWeights[j]) < weightPointDistance)
-                    if (Vector3.Distance(nodes[randomIndex].NodeObject.transform.position, newWeights[j].NodeObject.transform.position) < weightPointDistance)
+                    if (Vector3.Distance(nodes[randomIndex].NodeObject.transform.position, newWeights[j].NodeObject.transform.position) < mapManager.WPdist)
                     {
                         isClose = true;
                         break;
@@ -73,11 +74,11 @@ namespace Core.Pathing
 
         private IEnumerator StitchPaths(Action callback)
         {
-            for (int i = 0; i < weightPointCount - 1; i++)
+            for (int i = 0; i < mapManager.WPcount - 1; i++)
             {
                 if (i + 1 < weightPoints.Length)
                 {
-                    path.AddRange(PathFinder.GetPath(weightPoints[i], weightPoints[i + 1], allowOverlap));
+                    path.AddRange(PathFinder.GetPath(weightPoints[i], weightPoints[i + 1], mapManager.AllowOverlap));
                     yield return new WaitForSeconds(0.25f);
                 }
             }

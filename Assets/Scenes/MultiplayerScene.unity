@@ -2699,7 +2699,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157715727}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5fe5afb731b04c04db00faedb31ca762, type: 2}
   m_CullingMode: 0
@@ -2877,8 +2877,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapManager: {fileID: 1193752718}
   gameSet: {fileID: 4810204817209062563, guid: 6b13df39e87febe4bb7da2b0e0beff49, type: 3}
-  player1pos: {fileID: 724311032}
-  player2Pos: {fileID: 1434801126}
+  playerPositions:
+  - {fileID: 724311032}
+  - {fileID: 1434801126}
 --- !u!1 &1250642465
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,10 @@ namespace Core.Grid
         public void RandomSeed()
         {
             if (randomizeSeed)
+            {
                 seed = UnityEngine.Random.Range(-1000000, 1000000);
+                UnityEngine.Random.InitState(seed);
+            }
         }
 
         public void GenerateMap(Transform parent, PathManager pathManager)

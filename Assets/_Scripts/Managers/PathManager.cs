@@ -24,7 +24,6 @@ namespace Core.Pathing
 
         public void GeneratePath(Action callback)
         {
-            UnityEngine.Random.InitState(mapManager.Seed);
             nodes = new List<GridNode>(GridGenerator.GridNodes);
             path = new List<GridNode>();
 

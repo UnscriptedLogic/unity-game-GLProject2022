@@ -10,8 +10,7 @@ namespace Game
     {
         [SerializeField] private MapManager mapManager;
         [SerializeField] private GameObject gameSet;
-        [SerializeField] private Transform player1pos;
-        [SerializeField] private Transform player2Pos;
+        [SerializeField] private Transform[] playerPositions;
 
         private void Start()
         {
@@ -27,9 +26,11 @@ namespace Game
 
         private IEnumerator CreateMaps()
         {
-            CreateSet(player1pos);
-            yield return new WaitForSeconds(5f);
-            CreateSet(player2Pos);
+            for (int i = 0; i < playerPositions.Length; i++)
+            {
+                CreateSet(playerPositions[i]);
+                yield return new WaitForSeconds(3f);
+            }
         }
     }
 }

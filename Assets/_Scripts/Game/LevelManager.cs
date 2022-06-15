@@ -65,19 +65,19 @@ namespace Game
         public Action OnLevelStateChanged;
         public Action OnGameStateChanged;
 
-        private void Start()
+        protected virtual void Start()
         {
             EnterLevelState();
             EnterGameState();
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             UpdateLevelState();
             UpdateGameState();
         }
 
-        private void EnterLevelState()
+        protected virtual void EnterLevelState()
         {
             switch (levelState)
             {
@@ -116,7 +116,7 @@ namespace Game
             }
         }
 
-        private void EnterGameState()
+        protected virtual void EnterGameState()
         {
             switch (gameState)
             {
@@ -164,7 +164,7 @@ namespace Game
             }
         }
 
-        private void UpdateLevelState()
+        protected virtual void UpdateLevelState()
         {
             switch (levelState)
             {

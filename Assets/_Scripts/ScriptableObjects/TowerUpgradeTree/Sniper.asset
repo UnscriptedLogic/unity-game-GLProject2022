@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c193c917a0ea9546a271dcd365911f2, type: 3}
   m_Name: Sniper
   m_EditorClassIdentifier: 
+  towerCost: 600
+  baseTower: {fileID: 836754924125986003, guid: 41a5f627fa421d345ab44d4d5715d113,
+    type: 3}
   treeList:
   - towerID: 20
     towerName: Mercenary
@@ -52,3 +55,4 @@ MonoBehaviour:
     upgradeName: Piercing Shots
     upgradeDesc: Pierces through enemies
     nextUpgrade: {fileID: 0}
+  BaseTower: {fileID: 0}

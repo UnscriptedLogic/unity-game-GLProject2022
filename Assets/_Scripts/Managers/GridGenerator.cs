@@ -118,6 +118,21 @@ namespace Core.Grid
             }
             return gridNode;
         }
+
+        public static GridNode GetRandomEmptyNodeFrom(GridNode[] gridNodes)
+        {
+            GridNode gridNode = null;
+
+            bool invalid = true;
+            int maxTries = 50;
+            while (invalid || maxTries > 0)
+            {
+                gridNode = MathHelper.RandomFromList(gridNodes);
+                invalid = gridNode.IsOccupied || gridNode.isObstacle;
+                maxTries--;
+            }
+            return gridNode;
+        }
     }
 
     [System.Serializable]

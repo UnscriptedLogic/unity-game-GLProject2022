@@ -71,7 +71,7 @@ public static class MathHelper
         return new Vector3(xPos, yPos, zPos);
     }
 
-    public static Vector3 OfVectorDirectionAroundY()
+    public static Vector3 RandomVectorDirectionAroundY()
     {
         int index = FromIntZeroTo(4);
         if (index == 0)

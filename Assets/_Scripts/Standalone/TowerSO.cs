@@ -34,7 +34,12 @@ namespace Standalone
     [CreateAssetMenu(fileName = "New Tower", menuName = "ScriptableObjects/New Tower")]
     public class TowerSO : ScriptableObject
     {
+        [SerializeField] private float towerCost;
+        [SerializeField] private GameObject baseTower;
         [SerializeField] private TowerDetails[] treeList;
+
+        public float TowerCost => towerCost;
         public TowerDetails[] TreeList => treeList;
+        public GameObject BaseTower => baseTower;
     }
 }

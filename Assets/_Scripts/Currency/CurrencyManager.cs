@@ -9,14 +9,9 @@ namespace Core.Currency
     public class CurrencyManager : MonoBehaviour
     {
         [SerializeField] private CurrencySO currencyContainer;
-        [SerializeField] private TowerCosts towerCosts;
-
-        [Header("UI")]
-        [SerializeField] private TextMeshProUGUI currencyTMP;
-
         public CurrencySO CurrencyContainer => currencyContainer;
-        public TowerCosts TowerCosts => towerCosts;
-        public Action OnCashModified;
+
+        public Action<ModificationType, float, float> OnCashModified;
 
         public void ModifyCurrency(ModificationType modificationType, float amount)
         {
@@ -41,14 +36,7 @@ namespace Core.Currency
                     break;
             }
 
-            OnCashModified?.Invoke();
-            UpdateCashUI();
-        }
-
-        private void UpdateCashUI()
-        {
-            if (currencyTMP != null)
-                currencyTMP.text = "$" + currencyContainer.CurrentAmount.ToString();
+            OnCashModified?.Invoke(modificationType, amount, currencyContainer.CurrentAmount);
         }
     }       
 }

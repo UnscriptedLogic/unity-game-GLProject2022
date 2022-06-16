@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Core.Pathing;
+using Game;
 
 namespace Core.Grid
 {
@@ -15,7 +16,6 @@ namespace Core.Grid
         [SerializeField] private GameObject homePrefab;
         [SerializeField] private GameObject entitySpawnPrefab;
         [SerializeField] private PathManager pathManager;
-
         [SerializeField] private bool drawGizmos;
         [SerializeField] private int teamIndex = 0;
 
@@ -36,7 +36,6 @@ namespace Core.Grid
             {
                 pathManager.Path[0].ForcePlaceTower(entitySpawnPrefab);
                 pathManager.Path[pathManager.Path.Length - 1].ForcePlaceTower(homePrefab);
-
                 method();
             });
         }

@@ -26,9 +26,10 @@ namespace Core.Building
         private Vector3 mousePos;
 
         public bool BuildMode => buildMode;
+        public Tower TowerToPlaceScript => towerPrefab.GetComponent<Tower>();
+        public Tower InspectedTower { get => inspectedTower; set { inspectedTower = value; } }
         public GameObject TowerToPlace => towerPrefab;
         public GameObject PrevPlacedTower => prevPlacedTower;
-        public Tower InspectedTower { get => inspectedTower; set { inspectedTower = value; } }
         public TowerTreeSO TowerTree => towerTree;
         public TowerDetails InspectedTowerDetails { get => inspectedTowerDetails; set { inspectedTowerDetails = value; } }
 

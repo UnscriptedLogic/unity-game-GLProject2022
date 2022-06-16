@@ -25,5 +25,21 @@ namespace Standalone
 
             return null;
         }
+
+        public TowerSO GetTowerTree(int id)
+        {
+            for (int i = 0; i < towerSO.Length; i++)
+            {
+                for (int j = 0; j < towerSO[i].TreeList.Length; j++)
+                {
+                    if (towerSO[i].TreeList[j].ID == id)
+                    {
+                        return towerSO[i];
+                    }
+                }
+            }
+
+            return null;
+        }
     }
 }

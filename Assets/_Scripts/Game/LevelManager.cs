@@ -45,12 +45,15 @@ namespace Game
         [SerializeField] private PathManager pathManager;
         [SerializeField] private GameSceneManager gameSceneManager;
         [SerializeField] private AssetManager assetManager;
-        [SerializeField] private DebrisSpawner debrisSpawner;
 
         [SerializeField] private LayerMask UILayer;
 
         [Space(10)]
         [SerializeField] private float returnHomedelay = 5f;
+        [SerializeField] private int debrisAmount = 30;
+
+        [Space(10)]
+        [SerializeField] private TowerSO[] backupTowers;
 
         private LevelState levelState = LevelState.Start;
         private GameState gameState = GameState.None;
@@ -62,6 +65,7 @@ namespace Game
         public GridManager GridNodeManager => gridManager;
         public PathManager PathManager => pathManager;
         public AssetManager AssetManager => assetManager;
+        public BuildManager BuildManager => buildManager;
 
         public Action OnLevelStateChanged;
         public Action OnGameStateChanged;
@@ -85,31 +89,27 @@ namespace Game
                 case LevelState.None:
                     break;
                 case LevelState.Start:
-                    uiManager.ShowOnlyUI(UIManager.UIpages.Loading);
+                    uiManager.ShowOnlyUI(UIManager.Pages.Loading);
                     gridManager.GenerateGrid(() =>
                     {
+                        DebrisSpawner.GenerateDebri(debrisAmount, assetManager.DebrisList, GridGenerator.GridNodes);
                         SwitchLevelState(LevelState.Playing);
-
                     });
                     break;
                 case LevelState.Playing:
-                    uiManager.UpdateTowerButtons();
-                    buildManager.enabled = true;
+                    currencyManager.ModifyCurrency(ModificationType.Set, currencyManager.CurrencyContainer.StartAmount);
                     waveSpawner.StartSpawner();
                     break;
                 case LevelState.Paused:
-                    buildManager.enabled = false;
                     PausedUI();
                     Time.timeScale = 0f;
                     break;
                 case LevelState.Won:
-                    uiManager.ShowOnlyUI(UIManager.UIpages.Won);
-                    buildManager.enabled = false;
+                    uiManager.ShowOnlyUI(UIManager.Pages.Won);
                     waveSpawner.StopSpawner();
                     break;
                 case LevelState.Lost:
-                    uiManager.ShowOnlyUI(UIManager.UIpages.Lost);
-                    buildManager.enabled = false;
+                    uiManager.ShowOnlyUI(UIManager.Pages.Lost);
                     waveSpawner.StopSpawner();
                     break;
                 default:
@@ -122,14 +122,14 @@ namespace Game
             switch (gameState)
             {
                 case GameState.None:
-                    uiManager.ShowOnlyUI(UIManager.UIpages.GameMode);
+                    uiManager.ShowOnlyUI(UIManager.Pages.GameMode);
                     break;
                 case GameState.Building:
                     buildManager.EnableBuildMode();
-                    uiManager.ShowOnlyUI(UIManager.UIpages.BuildMode);
+                    uiManager.ShowOnlyUI(UIManager.Pages.BuildMode);
                     break;
                 case GameState.Viewing:
-                    uiManager.ShowUI(UIManager.UIpages.ViewMode);
+                    uiManager.ShowUI(UIManager.Pages.ViewMode);
                     uiManager.SetTowerDialogue(buildManager.InspectedTowerDetails, buildManager.InspectedTower, currencyManager.CurrencyContainer.CurrentAmount);
                     uiManager.TowerDialogue.SellButton.onClick.AddListener(() => 
                     { 
@@ -219,9 +219,9 @@ namespace Game
                     {
                         if (buildManager.PlaceTower())
                         {
-                            currencyManager.ModifyCurrency(ModificationType.Subtract, currencyManager.TowerCosts.GetTowerCost(buildManager.TowerToPlace));
-                            SwitchGameState(GameState.None);
+                            currencyManager.ModifyCurrency(ModificationType.Subtract, buildManager.TowerTree.GetTowerTree(buildManager.TowerToPlaceScript.ID).TowerCost);
                             Destroy(Instantiate(assetManager.PlacedParticle, buildManager.PrevPlacedTower.transform.position, Quaternion.identity), 5f);
+                            SwitchGameState(GameState.None);
                         }
                     }
 
@@ -261,17 +261,15 @@ namespace Game
                     break;
                 case LevelState.Start:
                     currencyManager.ModifyCurrency(ModificationType.Set, currencyManager.CurrencyContainer.StartAmount);
-                    uiManager.Initialize(this);
-                    waveIncome.Initialize(this);
-                    debrisSpawner.Initialize(this);
+
+                    TowerSO[] towers = LoadOutManager.SelectedTowers.Count != 0 ? LoadOutManager.SelectedTowers.ToArray() : backupTowers;
+                    uiManager.Initialize(this, towers);
+                    currencyManager.OnCashModified += uiManager.UpdateTowerButtons;
+                    waveSpawner.OnWaveStarted += uiManager.UpdateWaveCounter;
+
+                    waveSpawner.OnWaveCompleted += (curr, total) => currencyManager.ModifyCurrency(ModificationType.Add, waveIncome.AddWaveIncome(curr));
 
                     waveSpawner.Initialize(this);
-                    waveSpawner.OnSpawningCompleted += () =>
-                    {
-                        SwitchLevelState(LevelState.Won);
-                        SwitchGameState(GameState.None);
-                    };
-
                     gameSceneManager.HideLoading();
                     break;
                 case LevelState.Playing:
@@ -299,10 +297,10 @@ namespace Game
                     break;
                 case GameState.Building:
                     buildManager.DisableBuildMode();
-                    uiManager.ShowOnlyUI(UIManager.UIpages.GameMode);
+                    uiManager.ShowOnlyUI(UIManager.Pages.GameMode);
                     break;
                 case GameState.Viewing:
-                    uiManager.ShowUI(UIManager.UIpages.ViewMode, false);
+                    uiManager.ShowUI(UIManager.Pages.ViewMode, false);
                     buildManager.HideRange();
                     uiManager.TowerDialogue.UpgradeButton.onClick.RemoveAllListeners();
                     uiManager.TowerDialogue.SellButton.onClick.RemoveAllListeners();
@@ -337,7 +335,7 @@ namespace Game
 
         private void ResumeUI()
         {
-            uiManager.ShowOnlyUI(UIManager.UIpages.GameMode);
+            uiManager.ShowOnlyUI(UIManager.Pages.GameMode);
         }
 
         #region StateSetters

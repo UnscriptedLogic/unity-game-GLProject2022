@@ -40,9 +40,8 @@ namespace Game.Spawning
 
         public int WaveCount => waveCount;
         public WavesSO WavesSO => wavesSO;
-        public Action OnWaveCompleted;
-        public Action OnWaveStarted;
-        public Action OnSpawningCompleted;
+        public Action<int, int> OnWaveCompleted;
+        public Action<int, int> OnWaveStarted;
 
         public void Initialize(LevelManager levelManager)
         {
@@ -77,7 +76,7 @@ namespace Game.Spawning
                     currWave = wavesSO.Waves[waveIndex];
                     break;
                 case SpawnerStates.SpawningSegment:
-                    OnWaveStarted?.Invoke();
+                    OnWaveStarted?.Invoke(waveIndex, wavesSO.Waves.Length - 1);
                     currSegment = wavesSO.Waves[waveIndex].waveSegments[segmentIndex];
                     _spawnAmount = 0;
                     break;
@@ -136,7 +135,7 @@ namespace Game.Spawning
                             segmentIndex = 0;
                             waveIndex++;
                             waveCount++;
-                            OnWaveCompleted?.Invoke();
+                            OnWaveCompleted?.Invoke(waveIndex, wavesSO.Waves.Length - 1);
                             if (waveIndex >= wavesSO.Waves.Length)
                             {
                                 SpawningCompleted();

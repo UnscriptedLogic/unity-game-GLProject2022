@@ -13,32 +13,32 @@ namespace Towers
     public class Tower : MonoBehaviour, IFocuseable, IAttackable
     {
         [Header("Attributes")]
-        [SerializeField] private int towerID = 0;
-        [SerializeField] private float damage = 1f;
-        [SerializeField] private float projectileSpeed = 30f;
-        [SerializeField] private float projectileLifetime = 0.5f;
+        [SerializeField] protected int towerID = 0;
+        [SerializeField] protected float damage = 1f;
+        [SerializeField] protected float projectileSpeed = 30f;
+        [SerializeField] protected float projectileLifetime = 0.5f;
 
-        [SerializeField] private float range = 5f;
-        [SerializeField] private float attackInterval = 1f;
-        [SerializeField] private float rotationSpeed = 5f;
+        [SerializeField] protected float range = 5f;
+        [SerializeField] protected float attackInterval = 1f;
+        [SerializeField] protected float rotationSpeed = 5f;
 
-        private float _attackInterval;
-        private Collider[] unitsInRange;
-        
-        private Unit target;
-        private AttackBehaviour attackBehaviour;
+        protected float _attackInterval;
+        protected Collider[] unitsInRange;
+
+        protected Unit target;
+        protected AttackBehaviour attackBehaviour;
 
         [Header("Others")]
-        [SerializeField] private GameObject projectilePrefab;
-        [SerializeField] private Transform shootAnchor;
-        [SerializeField] private Transform rotationPart;
-        [SerializeField] private GridNode gridNode;
-        [SerializeField] private LayerMask unitLayer;
+        [SerializeField] protected GameObject projectilePrefab;
+        [SerializeField] protected Transform shootAnchor;
+        [SerializeField] protected Transform rotationPart;
+        [SerializeField] protected GridNode gridNode;
+        [SerializeField] protected LayerMask unitLayer;
 
-        private LookBehaviour lookBehaviour;
+        protected LookBehaviour lookBehaviour;
 
         [Header("Debugging")]
-        [SerializeField] private bool drawGizmos;
+        [SerializeField] protected bool drawGizmos;
 
         public int ID => towerID;
         public float Damage => damage;
@@ -48,13 +48,13 @@ namespace Towers
         public float ProjSpeed => projectileSpeed;
         public GridNode GridNode { get => gridNode; set { gridNode = value; } }
 
-        private void Start()
+        protected virtual void Start()
         {
             lookBehaviour = new LookBehaviour();
             attackBehaviour = new AttackBehaviour(PoolManager.instance);
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             if (_attackInterval >= 0)
             {
@@ -93,19 +93,19 @@ namespace Towers
             }
         }
 
-        private void OnDrawGizmos()
+        protected virtual void OnDrawGizmos()
         {
             if (!drawGizmos) return;
 
             Gizmos.DrawWireSphere(transform.position, range);
         }
 
-        public void FocusObject(Transform partToRotate, Vector3 target, float rotationSpeed)
+        public virtual void FocusObject(Transform partToRotate, Vector3 target, float rotationSpeed)
         {
             rotationPart.LookAt(new Vector3(target.x, partToRotate.position.y, target.z));
         }
 
-        public void DoAttack(GameObject projectile, Transform spawnpoint)
+        public virtual void DoAttack(GameObject projectile, Transform spawnpoint)
         {
             ProjectileSettings settings = new ProjectileSettings(damage, projectileSpeed, projectileLifetime);
             attackBehaviour.Attack(projectile, spawnpoint, settings);

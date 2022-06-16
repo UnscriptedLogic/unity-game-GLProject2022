@@ -906,6 +906,7 @@ GameObject:
   - component: {fileID: 1761782913273591786}
   - component: {fileID: -6004806168046530573}
   - component: {fileID: -318667220549779317}
+  - component: {fileID: -4257361026406768063}
   m_Layer: 6
   m_Name: LightningUnit
   m_TagString: Untagged
@@ -992,3 +993,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4257361026406768063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644136366003357881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33012fe27a7f1945ab72ff910e63830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusEffects: []

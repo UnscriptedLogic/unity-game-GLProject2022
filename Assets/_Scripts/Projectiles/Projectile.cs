@@ -29,36 +29,37 @@ namespace Projectiles
 
     public class Projectile : MonoBehaviour
     {
-        [SerializeField] private Rigidbody rb;
-        [SerializeField] private TrailRenderer trailRenderer;
+        [SerializeField] protected Rigidbody rb;
+        [SerializeField] protected TrailRenderer trailRenderer;
         
-        private float damage = 1f;
-        private float movementSpeed = 10f;
-        private float lifetime = 1f;
+        protected float damage = 1f;
+        protected float movementSpeed = 10f;
+        protected float lifetime = 1f;
 
-        private PoolManager poolManager;
-        private MovementBehaviour movementBehaviour;
-        private ProjectileSettings projectileSettings;
+        protected PoolManager poolManager;
+        protected MovementBehaviour movementBehaviour;
+        protected ProjectileSettings projectileSettings;
 
         public PoolManager PoolManager { get => poolManager; set { poolManager = value; } }
         public ProjectileSettings ProjectileSettings { get => projectileSettings; }
 
-        private void Start() => movementBehaviour = new MovementBehaviour();
+        protected void Start() => movementBehaviour = new MovementBehaviour();
 
-        private void OnEnable()
+        protected void OnEnable()
         {
             movementSpeed = 0f;
             lifetime = 10f;
         }
 
-        public void Initialize(ProjectileSettings projectileSettings)
+        public virtual void Initialize(ProjectileSettings projectileSettings)
         {
+            this.projectileSettings = projectileSettings;
             damage = projectileSettings.Damage;
             movementSpeed = projectileSettings.Speed;
             lifetime = projectileSettings.LifeTime;
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             movementBehaviour.MoveEntity(movementSpeed, transform.forward, rb);
 
@@ -71,7 +72,7 @@ namespace Projectiles
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             IDamageable damageable = other.GetComponent<IDamageable>();
             if (damageable != null && other.GetComponent<Unit>() != null)
@@ -81,14 +82,14 @@ namespace Projectiles
             }
         }
 
-        private void DestroyProjectile()
+        protected virtual void DestroyProjectile()
         {
             poolManager.PushToPool(gameObject);
             trailRenderer.Clear();
             projectileSettings = null;
         }
 
-        private void OnValidate()
+        protected virtual void OnValidate()
         {
             if (trailRenderer == null)
                 trailRenderer.TryGetComponent(out trailRenderer);

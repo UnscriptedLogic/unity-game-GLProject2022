@@ -803,6 +803,7 @@ GameObject:
   - component: {fileID: 1761782913273591786}
   - component: {fileID: -6004806168046530573}
   - component: {fileID: -318667220549779317}
+  - component: {fileID: 5101208140930066569}
   m_Layer: 6
   m_Name: SpeedyUnit
   m_TagString: Untagged
@@ -843,6 +844,7 @@ MonoBehaviour:
   damageFlash: {fileID: -6004806168046530573}
   health: 4
   movementSpeed: 2
+  waypointVerifyDistance: 0.05
   healthbar: {fileID: 1278209766786932308}
 --- !u!135 &1761782913273591786
 SphereCollider:
@@ -888,3 +890,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5101208140930066569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644136366003357881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33012fe27a7f1945ab72ff910e63830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusEffects: []

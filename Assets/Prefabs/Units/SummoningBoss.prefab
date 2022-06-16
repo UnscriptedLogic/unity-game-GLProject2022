@@ -5628,6 +5628,7 @@ GameObject:
   - component: {fileID: 5736165837249898625}
   - component: {fileID: 4808880514431471793}
   - component: {fileID: 8820277245108676987}
+  - component: {fileID: -4112419645948789584}
   m_Layer: 6
   m_Name: SummoningBoss
   m_TagString: Untagged
@@ -5737,3 +5738,16 @@ MonoBehaviour:
   slowdownDuration: 5
   slowPercentage: 50
   spawnInterval: 0.5
+--- !u!114 &-4112419645948789584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7718091526450488610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33012fe27a7f1945ab72ff910e63830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusEffects: []

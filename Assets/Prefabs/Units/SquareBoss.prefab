@@ -689,6 +689,7 @@ GameObject:
   - component: {fileID: 6715899306189405092}
   - component: {fileID: 4527079931924024517}
   - component: {fileID: 852029564262320468}
+  - component: {fileID: 182769414336041961}
   m_Layer: 6
   m_Name: SquareBoss
   m_TagString: Untagged
@@ -775,6 +776,19 @@ MonoBehaviour:
   flashMat: {fileID: 2100000, guid: 0b4b05fcd79a58043a9a23bac1cb49d0, type: 2}
   meshRenderer: {fileID: 6797352359855396119}
   blinkDuration: 0.075
+--- !u!114 &182769414336041961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3410873540175906039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33012fe27a7f1945ab72ff910e63830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusEffects: []
 --- !u!1 &6797352359855396105
 GameObject:
   m_ObjectHideFlags: 0

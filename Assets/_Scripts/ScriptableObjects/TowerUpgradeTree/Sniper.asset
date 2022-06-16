@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c193c917a0ea9546a271dcd365911f2, type: 3}
+  m_Name: Sniper
+  m_EditorClassIdentifier: 
+  treeList:
+  - towerID: 20
+    towerName: Mercenary
+    towerIcon: {fileID: 21300000, guid: db69a63a38acd9340aa0c790dea10a7f, type: 3}
+    sellCost: 75
+    upgradeIcon: {fileID: 21300000, guid: 36b53685e1621334687f6dd222124736, type: 3}
+    upgradeCost: 300
+    upgradeName: Recoil Control
+    upgradeDesc: Increases the tower's range greatly
+    nextUpgrade: {fileID: 836754924125986003, guid: 762e1bb9d2a31514abdd70cfaa9df389,
+      type: 3}
+  - towerID: 21
+    towerName: Lvl 3 Mercenary
+    towerIcon: {fileID: 21300000, guid: afe1f76da0cd0884099402bae5ccadac, type: 3}
+    sellCost: 1000
+    upgradeIcon: {fileID: 21300000, guid: f91da3e2eda735542862b2584907fac4, type: 3}
+    upgradeCost: 1750
+    upgradeName: High Impact Rifle
+    upgradeDesc: Increases damage and projectile speed
+    nextUpgrade: {fileID: 836754924125986003, guid: 5ae591a6662f490479581c438726e2e0,
+      type: 3}
+  - towerID: 22
+    towerName: Lvl 2 Mercenary
+    towerIcon: {fileID: 21300000, guid: 4ae42ead9014ae24ca803bce9421ce30, type: 3}
+    sellCost: 150
+    upgradeIcon: {fileID: 21300000, guid: 811800d4bf18e034587a41d7d2f92662, type: 3}
+    upgradeCost: 3000
+    upgradeName: Semi-Auto
+    upgradeDesc: Drastically reduces fire rate
+    nextUpgrade: {fileID: 836754924125986003, guid: ecb4f9548ff1367428b10296c66771fd,
+      type: 3}
+  - towerID: 23
+    towerName: Lvl 4 Mercenary
+    towerIcon: {fileID: 21300000, guid: 1f962f927c31a1545a1a2c37d54c439b, type: 3}
+    sellCost: 1500
+    upgradeIcon: {fileID: 0}
+    upgradeCost: 7000
+    upgradeName: Piercing Shots
+    upgradeDesc: Pierces through enemies
+    nextUpgrade: {fileID: 0}

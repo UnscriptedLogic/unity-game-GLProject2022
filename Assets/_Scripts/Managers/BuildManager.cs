@@ -21,7 +21,7 @@ namespace Core.Building
         private GameObject towerPrefab;
         private GameObject prevPlacedTower;
         private Tower inspectedTower;
-        private TowerTreeObject inspectedTowerDetails;
+        private TowerDetails inspectedTowerDetails;
 
         private Vector3 mousePos;
 
@@ -30,7 +30,7 @@ namespace Core.Building
         public GameObject PrevPlacedTower => prevPlacedTower;
         public Tower InspectedTower { get => inspectedTower; set { inspectedTower = value; } }
         public TowerTreeSO TowerTree => towerTree;
-        public TowerTreeObject InspectedTowerDetails { get => inspectedTowerDetails; set { inspectedTowerDetails = value; } }
+        public TowerDetails InspectedTowerDetails { get => inspectedTowerDetails; set { inspectedTowerDetails = value; } }
 
         private void Update()
         {

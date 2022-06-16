@@ -19,12 +19,12 @@ namespace Standalone
         [SerializeField] private Button upgradeButton;
         [SerializeField] private Button sellButton;
 
-        private TowerTreeObject towerDetails;
+        private TowerDetails towerDetails;
 
         public Button UpgradeButton => upgradeButton;
         public Button SellButton => sellButton;
 
-        public void SetDetails(TowerTreeObject _towerDetails)
+        public void SetDetails(TowerDetails _towerDetails)
         {
             towerDetails = _towerDetails;
 

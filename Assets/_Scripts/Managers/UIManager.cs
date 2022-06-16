@@ -68,7 +68,12 @@ namespace Core.UI
             };
         }
 
-        public void SetTowerDialogue(TowerTreeObject towerDetails, Tower tower, float currency)
+        public void SetTowerBuyButtons()
+        {
+
+        }
+
+        public void SetTowerDialogue(TowerDetails towerDetails, Tower tower, float currency)
         {
             towerDialogue.SetDetails(towerDetails);
             towerDialogue.UpdateStats(tower.Damage, tower.Range, tower.FireRate, tower.TurnSpeed, tower.ProjSpeed);

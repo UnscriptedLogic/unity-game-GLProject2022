@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Scout
   m_EditorClassIdentifier: 
   towerCost: 200
-  baseTower: {fileID: 836754924125986003, guid: e2f61cfa9b21bc340afc21d4c8126419,
+  baseTower: {fileID: 836754924125986003, guid: 03e8205c481f37e49a17b1068fab1b31,
     type: 3}
+  baseIcon: {fileID: 21300000, guid: 6f83de6c790fa524aa8708d7fefe29d3, type: 3}
   treeList:
   - towerID: 0
     towerName: Lvl 1 Scout

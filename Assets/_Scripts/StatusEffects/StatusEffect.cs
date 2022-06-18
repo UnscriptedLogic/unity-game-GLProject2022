@@ -1,3 +1,4 @@
+using Core.Assets;
 using Interfaces;
 using System;
 using System.Collections;
@@ -8,10 +9,9 @@ namespace Game.StatusEffects
 {
     public class StatusEffect : MonoBehaviour
     {
-        [SerializeField] protected float duration;
-        [SerializeField] protected float amount;
-        [SerializeField] protected float tickInterval;
-        [SerializeField] private GameObject effectsPrefab;
+        protected float duration;
+        protected float amount;
+        protected float tickInterval;
 
         protected float _duration;
         protected float _tick;
@@ -23,7 +23,6 @@ namespace Game.StatusEffects
         public float TickInterval => tickInterval;
         public float Amount => amount;
         public float Duration => duration;
-        public GameObject EffectsPrefab => effectsPrefab;
 
         public virtual void Initialize(AffectorManager affectorManager, float duration, float amount, float tickInterval)
         {
@@ -39,8 +38,10 @@ namespace Game.StatusEffects
                 isInifinite = true;
             }
 
-            if (effect != null)
-                effect = Instantiate(effectsPrefab, transform);
+            if (AssetManager.instance.FlameParticle != null)
+            {
+                effect = Instantiate(AssetManager.instance.FlameParticle, transform);
+            }
         }
 
         protected virtual void Update()
@@ -83,6 +84,11 @@ namespace Game.StatusEffects
             }
         }
 
+        private void OnDisable()
+        {
+            DestroyStatus();
+        }
+
         private void OnDestroy()
         {
             DestroyStatus();
@@ -91,7 +97,8 @@ namespace Game.StatusEffects
         private void DestroyStatus()
         {
             affectorManager.Remove(this);
-            Destroy(effect);
+            if (effect != null)
+                Destroy(effect.gameObject);
             Destroy(this);
         }
     }

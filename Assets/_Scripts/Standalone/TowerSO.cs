@@ -36,10 +36,12 @@ namespace Standalone
     {
         [SerializeField] private float towerCost;
         [SerializeField] private GameObject baseTower;
+        [SerializeField] private Sprite baseIcon;
         [SerializeField] private TowerDetails[] treeList;
 
         public float TowerCost => towerCost;
         public TowerDetails[] TreeList => treeList;
         public GameObject BaseTower => baseTower;
+        public Sprite BaseIcon => baseIcon;
     }
 }

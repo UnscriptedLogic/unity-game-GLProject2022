@@ -17,7 +17,6 @@ namespace Projectiles
         [SerializeField] private float tickSpeed;
         [SerializeField] private Vector3 startSize = Vector3.one;
 
-
         public float TickSpeed { get => tickSpeed; set { tickSpeed = value; } }
         public float BurnDamage { get => burnDamage; set { burnDamage = value; } }
         public float BurnDuration { get => burnDuration; set { burnDuration = value; } } 
@@ -33,13 +32,12 @@ namespace Projectiles
         {
             base.Update();
 
-            Debug.Log(projectileSettings);
+
             if (projectileSettings == null)
                 return;
 
+            movementSpeed = (projectileSettings.Speed / 100f) * (lifetime / projectileSettings.LifeTime * 100f);
             float scale = sizeCurve.Evaluate(projectileSettings.LifeTime - lifetime) * sizeMultiplier;
-            Debug.Log(scale);
-
             transform.localScale = Vector3.one * scale;
         }
 

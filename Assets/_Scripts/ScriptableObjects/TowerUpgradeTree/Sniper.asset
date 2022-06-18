@@ -15,6 +15,7 @@ MonoBehaviour:
   towerCost: 600
   baseTower: {fileID: 836754924125986003, guid: 41a5f627fa421d345ab44d4d5715d113,
     type: 3}
+  baseIcon: {fileID: 21300000, guid: db69a63a38acd9340aa0c790dea10a7f, type: 3}
   treeList:
   - towerID: 20
     towerName: Mercenary
@@ -55,4 +56,3 @@ MonoBehaviour:
     upgradeName: Piercing Shots
     upgradeDesc: Pierces through enemies
     nextUpgrade: {fileID: 0}
-  BaseTower: {fileID: 0}

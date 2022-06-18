@@ -15,6 +15,8 @@ namespace Projectiles
         [SerializeField] private float burnDuration;
         [SerializeField] private float burnDamage;
         [SerializeField] private float tickSpeed;
+        [SerializeField] private Vector3 startSize = Vector3.one;
+
 
         public float TickSpeed { get => tickSpeed; set { tickSpeed = value; } }
         public float BurnDamage { get => burnDamage; set { burnDamage = value; } }
@@ -23,7 +25,7 @@ namespace Projectiles
         public override void Initialize(ProjectileSettings projectileSettings)
         {
             base.Initialize(projectileSettings);
-            transform.localScale = new Vector3(1f, 1f, transform.localScale.z);
+            transform.localScale = startSize;
             sizeCurve.keys[sizeCurve.keys.Length - 1].time = projectileSettings.LifeTime;
         }
 
@@ -38,7 +40,7 @@ namespace Projectiles
             float scale = sizeCurve.Evaluate(projectileSettings.LifeTime - lifetime) * sizeMultiplier;
             Debug.Log(scale);
 
-            transform.localScale = new Vector3(scale, scale, transform.localScale.z);
+            transform.localScale = Vector3.one * scale;
         }
 
         protected override void OnTriggerEnter(Collider other)

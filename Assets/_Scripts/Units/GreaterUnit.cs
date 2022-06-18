@@ -11,6 +11,9 @@ namespace Units
         [SerializeField] private UnitAbility[] unitAbilities;
         [SerializeField] private float abilityInterval;
 
+        [Space(10)]
+        [SerializeField] private UnitAbility[] onDeathAbilities;
+
         private UnitAbility selectedAbility;
         private float _interval;
 
@@ -24,24 +27,29 @@ namespace Units
             }
 
             _interval = abilityInterval;
+            initialized = true;
         }
 
         protected override void Update()
         {
             base.Update();
 
-            if (selectedAbility == null && _interval <= 0f)
+            if (unitAbilities.Length > 0)
             {
-                selectedAbility = MathHelper.RandomFromList(unitAbilities);
-                selectedAbility.EnterState();
-            } else
-            {
-                _interval -= Time.deltaTime;
-            }
+                if (selectedAbility == null && _interval <= 0f)
+                {
+                    selectedAbility = MathHelper.RandomFromList(unitAbilities);
+                    selectedAbility.EnterState();
+                }
+                else
+                {
+                    _interval -= Time.deltaTime;
+                }
 
-            if (selectedAbility != null)
-            {
-                selectedAbility.UpdateState();
+                if (selectedAbility != null)
+                {
+                    selectedAbility.UpdateState();
+                }
             }
         }
 
@@ -49,6 +57,18 @@ namespace Units
         {
             selectedAbility = null;
             _interval = abilityInterval;
+        }
+
+        private void OnDisable()
+        {
+            if (!initialized)
+                return;
+
+            for (int i = 0; i < onDeathAbilities.Length; i++)
+            {
+                onDeathAbilities[i].Initialize(this);
+                onDeathAbilities[i].EnterState();
+            }
         }
     }
 }

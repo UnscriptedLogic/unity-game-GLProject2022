@@ -34,6 +34,7 @@ namespace Units
         public float Speed { get => movementSpeed; set { movementSpeed = value; } }
         public LevelManager LevelManager => levelManager;
         public Action<ModificationType, float> OnHealthModified;
+        protected bool initialized;
 
         public virtual void InitializeEnemy(LevelManager levelManager, int position = 0)
         {
@@ -53,10 +54,14 @@ namespace Units
             }
 
             gameObject.SetActive(true);
+            initialized = true;
         }
 
         protected virtual void Update()
         {
+            if (!initialized)
+                return;
+
             ApplyMovement();
         }
 

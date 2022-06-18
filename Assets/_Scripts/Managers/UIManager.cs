@@ -79,7 +79,7 @@ namespace Core.UI
                 GameObject newButton = Instantiate(towerButtonPrefab, towerButtonHolder);
                 buttons[i] = newButton.transform.GetComponent<Button>();
                 buttons[i].GetComponent<RectTransform>().sizeDelta = new Vector2(130f, 130f);
-                buttons[i].transform.GetChild(0).GetComponent<Image>().sprite = towerSOs[i].TreeList[i].Icon;
+                buttons[i].transform.GetChild(0).GetComponent<Image>().sprite = towerSOs[i].BaseIcon;
                 buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = towerSOs[i].TowerCost.ToString() + " points";
                 #endregion
 
@@ -103,12 +103,12 @@ namespace Core.UI
         {
             string waveText = "Wave: ";
 
-            if (current == total)
+            if (current == total + 1)
             {
                 waveText = "The Final Wave!";
             } else
             {
-                waveText += (levelManager.WaveSpawner.WaveCount + 1).ToString() + $" / {total}";
+                waveText += (levelManager.WaveSpawner.WaveCount + 1).ToString() + $" / {total + 1}";
             }
 
             waveCounterTMP.text = waveText;

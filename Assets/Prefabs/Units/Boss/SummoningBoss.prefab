@@ -5750,4 +5750,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33012fe27a7f1945ab72ff910e63830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statusEffects: []
+  resistances:
+  - effectType: 0
+    resistance: 50

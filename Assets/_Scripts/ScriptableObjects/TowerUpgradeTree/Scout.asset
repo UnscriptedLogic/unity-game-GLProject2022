@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Scout
   m_EditorClassIdentifier: 
   towerCost: 200
-  baseTower: {fileID: 836754924125986003, guid: 03e8205c481f37e49a17b1068fab1b31,
+  baseTower: {fileID: 836754924125986003, guid: e2f61cfa9b21bc340afc21d4c8126419,
     type: 3}
   treeList:
   - towerID: 0
@@ -45,4 +45,3 @@ MonoBehaviour:
     upgradeName: Piercing Shots
     upgradeDesc: Pierces through enemies
     nextUpgrade: {fileID: 0}
-  BaseTower: {fileID: 0}

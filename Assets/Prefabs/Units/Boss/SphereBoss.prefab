@@ -842,8 +842,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: 5736165837249898625}
-  health: 150
-  movementSpeed: 1
+  health: 250
+  movementSpeed: 0.8
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 5959593351887877580}
 --- !u!135 &1835879742151613041
@@ -902,4 +902,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33012fe27a7f1945ab72ff910e63830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statusEffects: []
+  resistances: []

@@ -107,6 +107,10 @@ namespace Game.Spawning
                     } else
                     {
                         _interval -= Time.deltaTime;
+                        if (transform.childCount == 0 && _interval > 2f)
+                        {
+                            _interval = 2f;
+                        }
                     }
                     break;
                 case SpawnerStates.SpawningSegment:

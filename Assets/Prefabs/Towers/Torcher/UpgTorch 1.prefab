@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerID: 31
-  damage: 0
+  damage: 1
   projectileSpeed: 3
   projectileLifetime: 1
   range: 4
@@ -129,6 +129,9 @@ MonoBehaviour:
   unitLayer:
     serializedVersion: 2
     m_Bits: 64
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
   drawGizmos: 0
   spawnPoints:
   - {fileID: 163164241}

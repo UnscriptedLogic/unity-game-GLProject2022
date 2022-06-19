@@ -82,6 +82,16 @@ namespace Core.Grid
             return null;
         }
 
+        public static GridNode GetNodeAt(Vector2Int coords)
+        {
+            if (coordDictionary.TryGetValue(coords, out GridNode node))
+            {
+                return node;
+            }
+
+            return null;
+        }
+
         public static GridNode NodeFromWorldPoint(Vector3 pos)
         {
             float xPercent = (pos.x + staticGridSize.x / 2f) / staticGridSize.x;
@@ -99,6 +109,11 @@ namespace Core.Grid
             int coordx = UnityEngine.Random.Range(0, staticGridSize.x);
             int coordy = UnityEngine.Random.Range(0, staticGridSize.y);
             return GetNodeAt(coordx, coordy);
+        }
+
+        public static GridNode GetRandomNodeFrom(GridNode[] gridNodes)
+        {
+            return MathHelper.RandomFromArray(gridNodes);
         }
 
         public static GridNode GetRandomEmptyNode()
@@ -127,7 +142,7 @@ namespace Core.Grid
             int maxTries = 50;
             while (invalid || maxTries > 0)
             {
-                gridNode = MathHelper.RandomFromList(gridNodes);
+                gridNode = MathHelper.RandomFromArray(gridNodes);
                 invalid = gridNode.IsOccupied || gridNode.isObstacle;
                 maxTries--;
             }
@@ -149,14 +164,15 @@ namespace Core.Grid
         public float gCost = float.MaxValue;
         public GridNode cameFromNode;
 
-        public Vector2Int Coords => new Vector2Int(coordx, coordy);
-        public GameObject NodeObject => node;
-        public GameObject TowerOnNode => tower;
         public bool IsOccupied => tower != null;
         public int TeamIndex => teamIndex;
+        public float fCost => hCost + gCost;
+        public float Elevation => node.transform.position.y;
+        public GameObject NodeObject => node;
+        public GameObject TowerOnNode => tower;
+        public Vector2Int Coords => new Vector2Int(coordx, coordy);
         public Vector3 Position => node.transform.position;
         public Vector3 TowerPosition => node.transform.position + placementOffset;
-        public float fCost => hCost + gCost;
 
         public GridNode(int coordx, int coordy, GameObject node, int teamIndex)
         {

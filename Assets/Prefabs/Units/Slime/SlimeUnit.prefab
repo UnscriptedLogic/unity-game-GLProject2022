@@ -888,7 +888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resistances:
   - effectType: 0
-    resistance: -125
+    resistance: -150
 --- !u!114 &583666642645108174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,7 +902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: -6004806168046530573}
-  health: 150
+  health: 250
   movementSpeed: 0.75
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 1278209766786932308}

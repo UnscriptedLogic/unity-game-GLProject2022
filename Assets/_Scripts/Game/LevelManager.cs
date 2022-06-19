@@ -51,6 +51,9 @@ namespace Game
         [Space(10)]
         [SerializeField] private float returnHomedelay = 5f;
         [SerializeField] private int debrisAmount = 30;
+        [SerializeField] private int elevationAmount = 5;
+        [SerializeField] private Vector2 elevationRange;
+        [SerializeField] private Vector2 secondaryElevationRange;
 
         [Space(10)]
         [SerializeField] private TowerSO[] backupTowers;
@@ -92,7 +95,12 @@ namespace Game
                     uiManager.ShowOnlyUI(UIManager.Pages.Loading);
                     gridManager.GenerateGrid(() =>
                     {
-                        DebrisSpawner.GenerateDebri(debrisAmount, assetManager.DebrisList, GridGenerator.GridNodes);
+
+                    },
+                    () =>
+                    {
+                        GridAddOns.GenerateElevations(elevationAmount, GridGenerator.GridNodes, elevationRange, secondaryElevationRange);
+                        GridAddOns.GenerateDebri(debrisAmount, assetManager.DebrisList, GridGenerator.GridNodes);
                         SwitchLevelState(LevelState.Playing);
                     });
                     break;
@@ -267,7 +275,7 @@ namespace Game
                     currencyManager.OnCashModified += uiManager.UpdateTowerButtons;
                     waveSpawner.OnWaveStarted += uiManager.UpdateWaveCounter;
 
-                    waveSpawner.OnWaveCompleted += (curr, total) => currencyManager.ModifyCurrency(ModificationType.Add, waveIncome.AddWaveIncome(curr));
+                    waveSpawner.OnWaveStarted += (curr, total) => currencyManager.ModifyCurrency(ModificationType.Add, waveIncome.AddWaveIncome(curr));
 
                     waveSpawner.Initialize(this);
                     gameSceneManager.HideLoading();

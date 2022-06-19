@@ -43,6 +43,11 @@ namespace Core.Pathing
                 foreach (GridNode neighbourNode in GetNeighbours(currentNode))
                 {
                     if (closedSet.Contains(neighbourNode)) continue;
+                    if (neighbourNode.Elevation > 0)
+                    {
+                        closedSet.Add(neighbourNode);
+                        continue;
+                    }
 
                     if (!allowOverlap)
                     {

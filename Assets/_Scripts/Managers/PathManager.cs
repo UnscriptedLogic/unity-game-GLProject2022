@@ -28,7 +28,7 @@ namespace Core.Pathing
             this.gridManager = gridManager;
         }
 
-        public void GeneratePath(Action callback)
+        public async Task GeneratePath()
         {
             if (randomizeSeed)
                 seed = UnityEngine.Random.Range(-1000000, 1000000);
@@ -37,8 +37,7 @@ namespace Core.Pathing
             nodes = new List<GridNode>(GridGenerator.GridNodes);
             path = new List<GridNode>();
 
-            GetWeightPoints();
-            StartCoroutine(StitchPaths(callback));
+            await CreatePath();
         }
 
         private void GetWeightPoints()
@@ -77,8 +76,17 @@ namespace Core.Pathing
             {
                 if (i + 1 < weightPoints.Length)
                 {
-                    path.AddRange(PathFinder.GetPath(weightPoints[i], weightPoints[i + 1], allowOverlap));
-                    yield return new WaitForSeconds(0.25f);
+                    List<GridNode> subpath = PathFinder.GetPath(weightPoints[i], weightPoints[i + 1], allowOverlap);
+                    
+                    if (subpath != null)
+                    {
+                        path.AddRange(subpath);
+                        yield return new WaitForSeconds(0.25f);
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
             }
 
@@ -88,6 +96,34 @@ namespace Core.Pathing
             }
 
             callback();
+        }
+
+        private async Task CreatePath()
+        {
+            GetWeightPoints();
+
+            for (int i = 0; i < weightPointCount - 1; i++)
+            {
+                if (i + 1 < weightPoints.Length)
+                {
+                    List<GridNode> subpath = PathFinder.GetPath(weightPoints[i], weightPoints[i + 1], allowOverlap);
+                    await Task.Yield();
+
+                    if (subpath != null)
+                    {
+                        path.AddRange(subpath);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+
+            for (int i = 0; i < path.Count; i++)
+            {
+                path[i].SetVisibility(false);
+            }
         }
     }
 }

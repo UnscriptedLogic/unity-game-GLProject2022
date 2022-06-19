@@ -843,7 +843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: -6004806168046530573}
-  health: 120
+  health: 200
   movementSpeed: 0.5
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 1278209766786932308}

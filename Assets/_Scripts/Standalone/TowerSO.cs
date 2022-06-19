@@ -35,10 +35,12 @@ namespace Standalone
     public class TowerSO : ScriptableObject
     {
         [SerializeField] private float towerCost;
+        [SerializeField] private Vector2 requriedElevation;
         [SerializeField] private GameObject baseTower;
         [SerializeField] private Sprite baseIcon;
         [SerializeField] private TowerDetails[] treeList;
 
+        public Vector2 RequiredElevation => requriedElevation;
         public float TowerCost => towerCost;
         public TowerDetails[] TreeList => treeList;
         public GameObject BaseTower => baseTower;

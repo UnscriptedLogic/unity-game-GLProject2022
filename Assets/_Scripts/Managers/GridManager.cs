@@ -21,7 +21,7 @@ namespace Core.Grid
 
         public GameObject HomeNode => pathManager.Path[pathManager.Path.Length - 1].TowerOnNode;
 
-        public void GenerateGrid(Action method)
+        public async void GenerateGrid(Action beforePath, Action afterPath)
         {
             GridGenerator.CreateGrid(
                 gridSize: gridSize, 
@@ -32,12 +32,13 @@ namespace Core.Grid
                 parent: transform 
             );
 
-            pathManager.GeneratePath(() =>
-            {
-                pathManager.Path[0].ForcePlaceTower(entitySpawnPrefab);
-                pathManager.Path[pathManager.Path.Length - 1].ForcePlaceTower(homePrefab);
-                method();
-            });
+            beforePath();
+
+            await pathManager.GeneratePath();
+            pathManager.Path[0].ForcePlaceTower(entitySpawnPrefab);
+            pathManager.Path[pathManager.Path.Length - 1].ForcePlaceTower(homePrefab);
+
+            afterPath();
         }
 
         private void OnDrawGizmos()

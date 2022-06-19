@@ -34,6 +34,7 @@ namespace Towers
         [SerializeField] protected Transform rotationPart;
         [SerializeField] protected GridNode gridNode;
         [SerializeField] protected LayerMask unitLayer;
+        [SerializeField] protected LayerMask wallLayer;
 
         protected LookBehaviour lookBehaviour;
 
@@ -75,10 +76,17 @@ namespace Towers
                     {
                         if (Vector3.Distance(target.transform.position, transform.position) > range || target.WaypointIndex == 0)
                         {
-                            target = null;
+                            if (unitsInRange.Length > 1)
+                            {
+                                target = unitsInRange[1].GetComponent<Unit>();
+                            } else
+                            {
+                                target = null;
+                            }
                             return;
                         }
 
+                        //Switch targets if one is ahead of the other
                         if (unitMovement.WaypointIndex > target.WaypointIndex)
                             target = unitMovement;
                     }
@@ -86,6 +94,13 @@ namespace Towers
 
                 if (unitsInRange.Length > 0 && target != null)
                 {
+                    //Vector3 correctedOrigin = new Vector3(transform.position.x, shootAnchor.position.y, transform.position.z);
+                    //Ray ray = new Ray(correctedOrigin, target.transform.position - correctedOrigin);
+                    //if (!Physics.Raycast(ray, range, wallLayer))
+                    //{
+
+                    //}
+
                     FocusObject(rotationPart, target.transform.position, rotationSpeed);
                     DoAttack(projectilePrefab, shootAnchor);
                     _attackInterval = attackInterval;

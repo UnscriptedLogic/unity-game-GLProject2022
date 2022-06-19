@@ -147,11 +147,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerID: 34
-  damage: 0
+  damage: 4
   projectileSpeed: 3
-  projectileLifetime: 1
+  projectileLifetime: 1.75
   range: 4
-  attackInterval: 0.9
+  attackInterval: 0.75
   rotationSpeed: 50
   projectilePrefab: {fileID: 2184705531295620089, guid: e08e0078e8f556145a3b0a9fbb02e9c9,
     type: 3}
@@ -164,6 +164,9 @@ MonoBehaviour:
   unitLayer:
     serializedVersion: 2
     m_Bits: 64
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
   drawGizmos: 0
   spawnPoints:
   - {fileID: 163164241}
@@ -175,7 +178,7 @@ MonoBehaviour:
   - {fileID: 8151097776333618693}
   - {fileID: 8584976786478111057}
   burnDamage: 2
-  burnDuration: 10
+  burnDuration: 25
   tickSpeed: 0.25
 --- !u!1 &1392790762214195975
 GameObject:

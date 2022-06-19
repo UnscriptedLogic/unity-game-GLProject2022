@@ -19,7 +19,7 @@ namespace Standalone
 
         public void GenerateTip()
         {
-            tip = MathHelper.RandomFromList(tipSO.Tips);
+            tip = MathHelper.RandomFromArray(tipSO.Tips);
         }
     }
 }

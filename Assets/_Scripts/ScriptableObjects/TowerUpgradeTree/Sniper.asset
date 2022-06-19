@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Sniper
   m_EditorClassIdentifier: 
   towerCost: 600
+  requriedElevation: {x: 0, y: 0}
   baseTower: {fileID: 836754924125986003, guid: 41a5f627fa421d345ab44d4d5715d113,
     type: 3}
   baseIcon: {fileID: 21300000, guid: db69a63a38acd9340aa0c790dea10a7f, type: 3}
@@ -42,7 +43,7 @@ MonoBehaviour:
     towerIcon: {fileID: 21300000, guid: 4ae42ead9014ae24ca803bce9421ce30, type: 3}
     sellCost: 150
     upgradeIcon: {fileID: 21300000, guid: 811800d4bf18e034587a41d7d2f92662, type: 3}
-    upgradeCost: 3000
+    upgradeCost: 4200
     upgradeName: Semi-Auto
     upgradeDesc: Drastically reduces fire rate
     nextUpgrade: {fileID: 836754924125986003, guid: ecb4f9548ff1367428b10296c66771fd,

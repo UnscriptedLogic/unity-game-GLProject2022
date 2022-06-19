@@ -18,12 +18,17 @@ namespace Core.Building
         [SerializeField] private TowerTreeSO towerTree;
         [SerializeField] private Transform rangeVFX;
         [SerializeField] private Transform blueprintVFX;
+
+        [SerializeField] private Color viewingColor;
+        [SerializeField] private Color validPlacement;
+        [SerializeField] private Color invalidPlacement;
+
+        private Renderer rangeRenderer;
         private GameObject towerPrefab;
+        private Vector2 requiredElevation;
         private GameObject prevPlacedTower;
         private Tower inspectedTower;
         private TowerDetails inspectedTowerDetails;
-
-        private Vector3 mousePos;
 
         public bool BuildMode => buildMode;
         public Tower TowerToPlaceScript => towerPrefab.GetComponent<Tower>();
@@ -32,6 +37,16 @@ namespace Core.Building
         public GameObject PrevPlacedTower => prevPlacedTower;
         public TowerTreeSO TowerTree => towerTree;
         public TowerDetails InspectedTowerDetails { get => inspectedTowerDetails; set { inspectedTowerDetails = value; } }
+
+        private void Start()
+        {
+            if (rangeVFX != null && blueprintVFX != null)
+            {
+                rangeRenderer = rangeVFX.GetComponent<Renderer>();
+            }
+            else
+                Debug.LogWarning("RangeVFX or BlueprintVFX not assigned!");
+        }
 
         private void Update()
         {
@@ -44,18 +59,30 @@ namespace Core.Building
                     int.TryParse(str[1], out int y);
 
                     GridNode node = GridGenerator.GetNodeAt(x, y);
-                    if (!node.IsOccupied && !node.isObstacle)
-                    {
-                        float range = towerPrefab.GetComponent<Tower>().Range * 2f;
-                        rangeVFX.localScale = new Vector3(range, rangeVFX.localScale.y, range);
+                    rangeVFX.position = node.TowerPosition;
+                    blueprintVFX.position = node.TowerPosition;
 
-                        rangeVFX.position = node.TowerPosition;
-                        blueprintVFX.position = node.TowerPosition;
-
-                        mousePos = Input.mousePosition;
-                    }
+                    if (SatisfiesRequirements(node))
+                        SetBlueprintColor(validPlacement);
+                    else
+                        SetBlueprintColor(invalidPlacement);
                 }
             }
+        }
+
+        private bool SatisfiesRequirements(GridNode node)
+        {
+            bool valid = false;
+
+            if (!node.IsOccupied && !node.isObstacle)
+                if (node.Elevation >= requiredElevation.x && node.Elevation <= requiredElevation.y)
+                    valid = true;
+            return valid;
+        }
+
+        private void SetBlueprintColor(Color color)
+        {
+            rangeRenderer.material.color = color;
         }
 
         public bool PlaceTower()
@@ -67,10 +94,14 @@ namespace Core.Building
                 int.TryParse(str[1], out int y);
 
                 GridNode node = GridGenerator.GetNodeAt(x, y);
-                bool value = node.PlaceTower(towerPrefab);
-                if (value)
-                    prevPlacedTower = node.TowerOnNode;
-                return value;
+
+                if (node.Elevation >= requiredElevation.x && node.Elevation <= requiredElevation.y)
+                {
+                    bool value = node.PlaceTower(towerPrefab);
+                    if (value)
+                        prevPlacedTower = node.TowerOnNode;
+                    return value;
+                }
             }
 
             return false;
@@ -91,6 +122,7 @@ namespace Core.Building
 
         public void VisualizeRange()
         {
+            SetBlueprintColor(viewingColor);
             rangeVFX.gameObject.SetActive(true);
             rangeVFX.localScale = new Vector3(inspectedTower.Range * 2f, rangeVFX.localScale.y, InspectedTower.Range * 2f);
             rangeVFX.position = inspectedTower.transform.position;
@@ -106,6 +138,10 @@ namespace Core.Building
         public void SetBuildObject(GameObject newObject)
         {
             towerPrefab = newObject;
+            requiredElevation = towerTree.GetTowerTree(TowerToPlaceScript.ID).RequiredElevation;
+
+            float range = towerPrefab.GetComponent<Tower>().Range * 2f;
+            rangeVFX.localScale = new Vector3(range, rangeVFX.localScale.y, range);
         }
 
         public void EnableBuildMode() 

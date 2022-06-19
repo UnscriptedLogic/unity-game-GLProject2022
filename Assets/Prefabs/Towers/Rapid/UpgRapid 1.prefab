@@ -96,6 +96,9 @@ MonoBehaviour:
   unitLayer:
     serializedVersion: 2
     m_Bits: 64
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
   drawGizmos: 1
 --- !u!65 &6236998431455586218
 BoxCollider:

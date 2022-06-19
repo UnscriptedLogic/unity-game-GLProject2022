@@ -51,7 +51,7 @@ public static class MathHelper
         return UnityEngine.Random.Range(0, value);
     }
 
-    public static T RandomFromList<T>(T[] list)
+    public static T RandomFromArray<T>(T[] list)
     {
         int index = FromIntZeroTo(list.Length);
         return list[index];

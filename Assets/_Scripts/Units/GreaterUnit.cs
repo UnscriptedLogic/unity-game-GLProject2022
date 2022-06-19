@@ -38,7 +38,7 @@ namespace Units
             {
                 if (selectedAbility == null && _interval <= 0f)
                 {
-                    selectedAbility = MathHelper.RandomFromList(unitAbilities);
+                    selectedAbility = MathHelper.RandomFromArray(unitAbilities);
                     selectedAbility.EnterState();
                 }
                 else

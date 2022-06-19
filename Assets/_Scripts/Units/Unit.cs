@@ -31,6 +31,7 @@ namespace Units
 
         public int WaypointIndex => waypointCounter;
         public float CurrentHealth => currHealth;
+        public float MaxHealth => health;
         public float Speed { get => movementSpeed; set { movementSpeed = value; } }
         public LevelManager LevelManager => levelManager;
         public Action<ModificationType, float> OnHealthModified;

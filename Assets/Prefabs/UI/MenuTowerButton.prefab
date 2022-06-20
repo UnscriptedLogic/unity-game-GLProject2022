@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 325386691065049433}
   - component: {fileID: 325386691065049434}
   - component: {fileID: 325386691065049435}
+  - component: {fileID: 5265426882536061690}
   m_Layer: 5
   m_Name: MenuTowerButton
   m_TagString: Untagged
@@ -198,3 +199,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5265426882536061690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325386691065049437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e5ff6aa2e502e4bbe43e946ac2f6bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 0}
+  towerMenu: {fileID: 0}

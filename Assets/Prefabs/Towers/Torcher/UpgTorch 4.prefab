@@ -147,11 +147,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerID: 34
-  damage: 4
+  damage: 3
   projectileSpeed: 3
   projectileLifetime: 1.75
   range: 4
-  attackInterval: 0.75
+  attackInterval: 0.85
   rotationSpeed: 50
   projectilePrefab: {fileID: 2184705531295620089, guid: e08e0078e8f556145a3b0a9fbb02e9c9,
     type: 3}

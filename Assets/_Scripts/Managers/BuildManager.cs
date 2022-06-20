@@ -23,6 +23,10 @@ namespace Core.Building
         [SerializeField] private Color validPlacement;
         [SerializeField] private Color invalidPlacement;
 
+        [Header("Animation")]
+        [SerializeField] private LeanTweenType easeType = LeanTweenType.easeOutQuart;
+        private float animTime = 0.05f;
+
         private Renderer rangeRenderer;
         private GameObject towerPrefab;
         private Vector2 requiredElevation;
@@ -59,8 +63,8 @@ namespace Core.Building
                     int.TryParse(str[1], out int y);
 
                     GridNode node = GridGenerator.GetNodeAt(x, y);
-                    rangeVFX.position = node.TowerPosition;
-                    blueprintVFX.position = node.TowerPosition;
+                    rangeVFX.LeanMove(node.TowerPosition, animTime).setEase(easeType);
+                    blueprintVFX.LeanMove(node.TowerPosition, animTime).setEase(easeType);
 
                     if (SatisfiesRequirements(node))
                         SetBlueprintColor(validPlacement);
@@ -122,17 +126,27 @@ namespace Core.Building
 
         public void VisualizeRange()
         {
+            if (rangeVFX.gameObject.activeSelf)
+            {
+                rangeVFX.LeanMove(inspectedTower.transform.position, animTime).setEase(easeType);
+            }
+            else
+            {
+                rangeVFX.position = inspectedTower.transform.position;
+                rangeVFX.localScale = new Vector3(0f, rangeVFX.localScale.y, 0f);
+            }
+
+            rangeVFX.LeanScale(new Vector3(inspectedTower.Range * 2f, rangeVFX.localScale.y, InspectedTower.Range * 2f), animTime).setEase(easeType);
+
             SetBlueprintColor(viewingColor);
             rangeVFX.gameObject.SetActive(true);
-            rangeVFX.localScale = new Vector3(inspectedTower.Range * 2f, rangeVFX.localScale.y, InspectedTower.Range * 2f);
-            rangeVFX.position = inspectedTower.transform.position;
         }
 
         public void HideRange()
         {
             rangeVFX.gameObject.SetActive(false);
             rangeVFX.SetParent(null);
-            rangeVFX.localPosition = Vector3.zero;
+            //rangeVFX.localPosition = Vector3.zero;
         }
 
         public void SetBuildObject(GameObject newObject)

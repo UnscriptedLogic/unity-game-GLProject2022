@@ -21,7 +21,7 @@ MonoBehaviour:
   - towerID: 30
     towerName: Torch
     towerIcon: {fileID: 21300000, guid: 5ed8035dc7b2d3a45adcb9adcfed7704, type: 3}
-    sellCost: 1200
+    sellCost: 225
     upgradeIcon: {fileID: 21300000, guid: d2aa71e0d01182b48a728ffb4226f71e, type: 3}
     upgradeCost: 900
     upgradeName: Persistant Flames
@@ -31,7 +31,7 @@ MonoBehaviour:
   - towerID: 31
     towerName: Lvl 2 Torch
     towerIcon: {fileID: 21300000, guid: 01b0fe18ba8cf124bafcd47696197471, type: 3}
-    sellCost: 1950
+    sellCost: 675
     upgradeIcon: {fileID: 21300000, guid: f91da3e2eda735542862b2584907fac4, type: 3}
     upgradeCost: 1750
     upgradeName: Scalding Hot Oil Wax (S.H.O.W. time)

@@ -2833,6 +2833,7 @@ MonoBehaviour:
   viewingColor: {r: 0, g: 1, b: 0.95004964, a: 0.5019608}
   validPlacement: {r: 0, g: 1, b: 0.53639245, a: 0.5019608}
   invalidPlacement: {r: 1, g: 0.37264153, b: 0.3726415, a: 0.5019608}
+  easeType: 9
 --- !u!54 &1193752717
 Rigidbody:
   m_ObjectHideFlags: 0

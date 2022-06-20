@@ -43,7 +43,7 @@ MonoBehaviour:
     towerIcon: {fileID: 21300000, guid: 4ae42ead9014ae24ca803bce9421ce30, type: 3}
     sellCost: 150
     upgradeIcon: {fileID: 21300000, guid: 811800d4bf18e034587a41d7d2f92662, type: 3}
-    upgradeCost: 4200
+    upgradeCost: 8500
     upgradeName: Semi-Auto
     upgradeDesc: Drastically reduces fire rate
     nextUpgrade: {fileID: 836754924125986003, guid: ecb4f9548ff1367428b10296c66771fd,

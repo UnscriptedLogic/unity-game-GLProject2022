@@ -43,7 +43,7 @@ MonoBehaviour:
     towerIcon: {fileID: 21300000, guid: 4d88f2b9efd0c734a89b8984fec4ee80, type: 3}
     sellCost: 1275
     upgradeIcon: {fileID: 21300000, guid: 187a33a09d877304a92453cb6d326ffd, type: 3}
-    upgradeCost: 8575
+    upgradeCost: 4500
     upgradeName: Bullet Fury Firearm (BFF)
     upgradeDesc: Increases firing rate, damage and range
     nextUpgrade: {fileID: 836754924125986003, guid: 6e0c33edf4427804f822997e43674635,

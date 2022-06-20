@@ -105,8 +105,6 @@ namespace Game
                     });
                     break;
                 case LevelState.Playing:
-                    currencyManager.ModifyCurrency(ModificationType.Set, currencyManager.CurrencyContainer.StartAmount);
-                    waveSpawner.StartSpawner();
                     break;
                 case LevelState.Paused:
                     PausedUI();
@@ -279,6 +277,9 @@ namespace Game
 
                     waveSpawner.Initialize(this);
                     gameSceneManager.HideLoading();
+
+                    currencyManager.ModifyCurrency(ModificationType.Set, currencyManager.CurrencyContainer.StartAmount);
+                    waveSpawner.StartSpawner();
                     break;
                 case LevelState.Playing:
                     break;

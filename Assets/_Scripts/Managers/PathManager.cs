@@ -33,11 +33,55 @@ namespace Core.Pathing
             if (randomizeSeed)
                 seed = UnityEngine.Random.Range(-1000000, 1000000);
 
-            UnityEngine.Random.InitState(seed);
-            nodes = new List<GridNode>(GridGenerator.GridNodes);
-            path = new List<GridNode>();
+            bool invalid = true;
+            int counter = 0;
+            while (invalid)
+            {
+                UnityEngine.Random.InitState(seed);
+                nodes = new List<GridNode>(GridGenerator.GridNodes);
+                path = new List<GridNode>();
+                await CreatePath();
 
-            await CreatePath();
+                for (int i = 0; i < path.Count; i++)
+                {
+                    int adjacentPaths = 0; 
+                    GridNode[] neighbours = GridGenerator.GetNeighboursOf(path[i]);
+                    for (int j = 0; j < neighbours.Length; j++)
+                    {
+                        if (neighbours[j] != null)
+                        {
+                            if (neighbours[j].isObstacle)
+                            {
+                                adjacentPaths++;
+                            }
+                        }
+                    }
+
+                    if (adjacentPaths > 6 || path.Count < 70)
+                    {
+
+                        invalid = true;
+                        counter++;
+                        Reseed();
+                        Debug.Log("Re-seeding... x" + counter);
+                        break;
+                    }
+                    else
+                    {
+                        invalid = false;
+                    }
+                }
+            }
+        }
+
+        private void Reseed()
+        {
+            seed++;
+            for (int j = 0; j < path.Count; j++)
+            {
+                path[j].isObstacle = false;
+                path[j].SetVisibility(true);
+            }
         }
 
         private void GetWeightPoints()

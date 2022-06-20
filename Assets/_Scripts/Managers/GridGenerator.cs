@@ -148,6 +148,22 @@ namespace Core.Grid
             }
             return gridNode;
         }
+
+        public static GridNode[] GetNeighboursOf(GridNode node)
+        {
+            GridNode[] neighbours = new GridNode[8];
+
+            neighbours[0] = GetNodeAt(node.Coords.x - 1, node.Coords.y);
+            neighbours[1] = GetNodeAt(node.Coords.x + 1, node.Coords.y);
+            neighbours[2] = GetNodeAt(node.Coords.x, node.Coords.y + 1);
+            neighbours[3] = GetNodeAt(node.Coords.x, node.Coords.y - 1);
+            neighbours[4] = GetNodeAt(node.Coords.x - 1, node.Coords.y - 1);
+            neighbours[5] = GetNodeAt(node.Coords.x + 1, node.Coords.y + 1);
+            neighbours[6] = GetNodeAt(node.Coords.x - 1, node.Coords.y + 1);
+            neighbours[7] = GetNodeAt(node.Coords.x + 1, node.Coords.y - 1);
+
+            return neighbours;
+        }
     }
 
     [System.Serializable]

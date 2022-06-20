@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using TMPro;
 using Towers;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace MainMenu.UI
@@ -74,12 +75,13 @@ namespace MainMenu.UI
                 towerButton.transform.GetChild(0).GetComponent<Image>().sprite = towers[i].TreeList[0].Icon;
 
                 towerUpgradeTree = towers[i];
+
+                TowerMenuButton towerMenuButton = towerButton.GetComponent<TowerMenuButton>();
+                towerMenuButton.tower = towerUpgradeTree;
+                towerMenuButton.towerMenu = this;
                 AddListener(towerButton.GetComponent<Button>(), towerUpgradeTree, tower =>
                 {
-                    if (towerNameTMP.text == tower.TreeList[0].Name)
-                        AddToLoadOut(tower);
-
-                    DisplayDetails(tower);
+                    AddToLoadOut(tower);
                 });
             }
         }

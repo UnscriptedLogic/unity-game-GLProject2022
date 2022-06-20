@@ -23,22 +23,13 @@ namespace Game
 
         public static void GenerateElevations(int elevations, GridNode[] grid, Vector2 primary, Vector2 secondary)
         {
-            GridNode[] neighbours = new GridNode[8];
             for (int i = 0; i < elevations; i++)
             {
                 GridNode node = GridGenerator.GetRandomEmptyNodeFrom(grid);
                 float elevation = UnityEngine.Random.Range(primary.x, primary.y);
                 node.NodeObject.transform.position = node.Position + Vector3.up * elevation; 
 
-
-                neighbours[0] = GridGenerator.GetNodeAt(node.Coords.x - 1, node.Coords.y);
-                neighbours[1] = GridGenerator.GetNodeAt(node.Coords.x + 1, node.Coords.y);
-                neighbours[2] = GridGenerator.GetNodeAt(node.Coords.x, node.Coords.y + 1);
-                neighbours[3] = GridGenerator.GetNodeAt(node.Coords.x, node.Coords.y - 1);
-                neighbours[4] = GridGenerator.GetNodeAt(node.Coords.x - 1, node.Coords.y - 1);
-                neighbours[5] = GridGenerator.GetNodeAt(node.Coords.x + 1, node.Coords.y + 1);
-                neighbours[6] = GridGenerator.GetNodeAt(node.Coords.x - 1, node.Coords.y + 1);
-                neighbours[7] = GridGenerator.GetNodeAt(node.Coords.x + 1, node.Coords.y - 1);
+                GridNode[] neighbours = GridGenerator.GetNeighboursOf(node);
 
                 for (int j = 0; j < neighbours.Length; j++)
                 {

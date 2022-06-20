@@ -10552,7 +10552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: -6004806168046530573}
-  health: 7000
+  health: 15000
   movementSpeed: 0.25
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 1278209766786932308}

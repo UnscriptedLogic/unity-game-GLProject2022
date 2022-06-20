@@ -30,7 +30,7 @@ namespace External.CustomSlider
         [Header("Animation")]
         [SerializeField] private Gradient sliderColour;
         [SerializeField] private Gradient predictSliderColour;
-        [SerializeField] private float lerpDuration = 0.5f;
+        private float lerpDuration = 0.1f;
 
         [Header("Test Value")]
         [SerializeField] protected float amount = 25;

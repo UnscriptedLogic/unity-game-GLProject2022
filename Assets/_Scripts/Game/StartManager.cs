@@ -1,3 +1,4 @@
+using Core;
 using Core.Assets;
 using Core.Grid;
 using Core.Scene;
@@ -8,6 +9,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Towers;
+using UI;
 using UnityEngine;
 
 namespace Start
@@ -18,6 +20,8 @@ namespace Start
         [SerializeField] private GridManager gridManager;
         [SerializeField] private TowerTreeSO towerTreeSO;
         [SerializeField] private WaveSpawner waveSpawner;
+        [SerializeField] private ThanksUIController thanksUIController;
+        [SerializeField] private MainScreenUIController mainMenuScreen;
         [SerializeField] private LayerMask nodeLayer;
 
         [Space(10)]
@@ -35,6 +39,13 @@ namespace Start
                 waveSpawner.StartSpawner();
 
                 gameSceneManager.HideLoading();
+
+                if (!GameManager.hasSeenThanksPage && GameManager.timesPlayed > 0)
+                {
+                    mainMenuScreen.HideScreen();
+                    thanksUIController.ShowDialogue();
+                    GameManager.hasSeenThanksPage = true;
+                }
             });
         }
 

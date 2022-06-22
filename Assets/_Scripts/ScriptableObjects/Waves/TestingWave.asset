@@ -19,10 +19,15 @@ MonoBehaviour:
       amount: 15
       interval: 0.5
       segmentInterval: 1
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: 8fe48a3cbfb8334429292524360849b6,
+        type: 3}
+      amount: 15
+      interval: 0.5
+      segmentInterval: 10
     waveInterval: 2
-    totalPoints: 3750
-    averageHealth: 250
-    averageSpeed: 0.75
+    totalPoints: 6750
+    averageHealth: 225
+    averageSpeed: 0.7
   - waveSegments:
     - enemyToSpawn: {fileID: 7718091526450488610, guid: 104b8199cb95708429fc35ae3cd7c4d8,
         type: 3}
@@ -75,6 +80,6 @@ MonoBehaviour:
       interval: 0.5
       segmentInterval: 1
     waveInterval: 2
-    totalPoints: 10050
-    averageHealth: 398.57144
+    totalPoints: 10175
+    averageHealth: 399.2857
     averageSpeed: 2.0714285

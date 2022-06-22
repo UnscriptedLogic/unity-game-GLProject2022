@@ -242,6 +242,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8738040401254873042, guid: 3593b866e394e924ca60d6e0f61fd34e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 39.59961
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3593b866e394e924ca60d6e0f61fd34e, type: 3}
@@ -2717,7 +2722,6 @@ GameObject:
   - component: {fileID: 1193752725}
   - component: {fileID: 1193752720}
   - component: {fileID: 1193752726}
-  - component: {fileID: 1193752723}
   - component: {fileID: 1193752717}
   - component: {fileID: 1193752727}
   - component: {fileID: 1193752728}
@@ -2869,34 +2873,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7c12938d8db77604fbe7fb9447474e74, type: 2}
   - {fileID: 11400000, guid: 9aa4419f6d72dbc41b96031de27e0579, type: 2}
   - {fileID: 11400000, guid: 8701930cc29bf4d4cbc885ccd350f469, type: 2}
---- !u!114 &1193752723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193752713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10446af2a4e1d674c9ac46ccc652adac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSource: {fileID: 11400000, guid: 47ed1488d0760224685a55e8bda671bd, type: 2}
-  OnEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1193752721}
-        m_TargetAssemblyTypeName: Game.LevelManager, Assembly-CSharp
-        m_MethodName: SetGameLost
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1193752724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3000,11 +2976,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9107447bc3306dc4d9b6336157f1e23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTowerSlot: 49
-  secondTowerSlot: 50
-  thirdTowerSlot: 51
+  firstTowerSlot: 48
+  secondTowerSlot: 49
+  thirdTowerSlot: 50
+  fourthTowerSlot: 51
+  fifthTowerSlot: 52
   upgradeTower: 113
   sellTower: 101
+  pauseKeybind: 112
+  pauseButton: {fileID: 235985800}
+  resumeButton: {fileID: 2013176649}
 --- !u!1 &1250642465
 GameObject:
   m_ObjectHideFlags: 0

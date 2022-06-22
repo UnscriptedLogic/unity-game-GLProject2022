@@ -37,20 +37,8 @@ namespace Units
         {
             for (int i = 0; i < summonSettings.Length; i++)
             {
-                SpawnEnemy(summonSettings[i].Unit, waypointIndex);
-                for (int j = 1; j < summonSettings[i].Amount; j++)
+                for (int j = 0; j < summonSettings[i].Amount; j++)
                 {
-                    if (front)
-                    {
-                        sign = 1;
-                        front = false;
-                    }
-                    else
-                    {
-                        sign = -1;
-                        front = true;
-                    }
-                    
                     SpawnEnemy(summonSettings[i].Unit, waypointIndex);
                 }
             }

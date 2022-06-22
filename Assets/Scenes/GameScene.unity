@@ -3065,7 +3065,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  waveCap: 10
+  waveCap: 15
   multiplier: 1000
 --- !u!114 &1193752727
 MonoBehaviour:
@@ -3094,11 +3094,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9107447bc3306dc4d9b6336157f1e23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTowerSlot: 49
-  secondTowerSlot: 50
-  thirdTowerSlot: 51
+  firstTowerSlot: 48
+  secondTowerSlot: 49
+  thirdTowerSlot: 50
+  fourthTowerSlot: 51
+  fifthTowerSlot: 52
   upgradeTower: 113
   sellTower: 101
+  pauseKeybind: 112
+  pauseButton: {fileID: 235985800}
+  resumeButton: {fileID: 2013176649}
 --- !u!1 &1250642465
 GameObject:
   m_ObjectHideFlags: 0

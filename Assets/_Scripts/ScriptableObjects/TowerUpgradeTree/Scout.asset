@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c193c917a0ea9546a271dcd365911f2, type: 3}
   m_Name: Scout
   m_EditorClassIdentifier: 
-  towerCost: 200
+  towerCost: 100
   requriedElevation: {x: 0, y: 0}
   baseTower: {fileID: 836754924125986003, guid: 03e8205c481f37e49a17b1068fab1b31,
     type: 3}
@@ -23,10 +23,11 @@ MonoBehaviour:
     towerName: Scout
     towerIcon: {fileID: 21300000, guid: 6f83de6c790fa524aa8708d7fefe29d3, type: 3}
     overrideSellCost: 0
-    sellCost: 100
+    sellCost: 50
     upgradeIcon: {fileID: 21300000, guid: 187a33a09d877304a92453cb6d326ffd, type: 3}
-    upgradeCost: 200
+    upgradeCost: 100
     upgradeName: Sharper Bullets
+    overrideDesc: 0
     upgradeDesc: Increases weapon damage
     nextUpgrade: {fileID: 836754924125986003, guid: dcd578c7cecb9d14584e08bcab5a5f72,
       type: 3}
@@ -35,11 +36,12 @@ MonoBehaviour:
     towerName: Lvl 2 Scout
     towerIcon: {fileID: 21300000, guid: 08606989148d5724796e71887dfb7f4a, type: 3}
     overrideSellCost: 0
-    sellCost: 200
+    sellCost: 100
     upgradeIcon: {fileID: 21300000, guid: df3fe60946792bc41b6fffc79a1d2f8a, type: 3}
-    upgradeCost: 300
+    upgradeCost: 150
     upgradeName: Better Equipment
-    upgradeDesc: Improves range, damage and firing rate
+    overrideDesc: 0
+    upgradeDesc: Increases damage,  range and fire rate.
     nextUpgrade: {fileID: 836754924125986003, guid: a6284b46561af654ea3be22ed93ede06,
       type: 3}
   - towerID: 2
@@ -47,9 +49,10 @@ MonoBehaviour:
     towerName: Lvl 3 Scout
     towerIcon: {fileID: 21300000, guid: 344a7005d5d6c56469262e2f0d2351ff, type: 3}
     overrideSellCost: 0
-    sellCost: 350
+    sellCost: 175
     upgradeIcon: {fileID: 0}
     upgradeCost: 200
     upgradeName: Piercing Shots
+    overrideDesc: 0
     upgradeDesc: Pierces through enemies
     nextUpgrade: {fileID: 0}

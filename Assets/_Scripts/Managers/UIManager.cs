@@ -42,6 +42,7 @@ namespace Core.UI
         private HomeTower homeTower;
         private TowerSO[] towers;
 
+        public Transform TowerButtonHolder => towerButtonHolder;
         public TowerDialogue TowerDialogue => towerDialogue;
         public GameObject BuildModeUI => buildModeUI;
         public GameObject GameModeUI => gameModeUI;

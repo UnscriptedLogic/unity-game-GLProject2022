@@ -13,6 +13,7 @@ using Standalone;
 using UnityEngine.EventSystems;
 using System;
 using Core.Assets;
+using Core;
 
 namespace Game
 {
@@ -228,7 +229,14 @@ namespace Game
                         {
                             currencyManager.ModifyCurrency(ModificationType.Subtract, buildManager.TowerTree.GetTowerTree(buildManager.TowerToPlaceScript.ID).TowerCost);
                             Destroy(Instantiate(assetManager.PlacedParticle, buildManager.PrevPlacedTower.transform.position, Quaternion.identity), 5f);
-                            SwitchGameState(GameState.None);
+
+                            if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0))
+                            {
+                                if (buildManager.TryInspectTower())
+                                {
+                                    SwitchGameState(GameState.Viewing);
+                                }
+                            }
                         }
                     }
 
@@ -280,8 +288,9 @@ namespace Game
                     waveSpawner.Initialize(pathManager.Path);
                     waveSpawner.StartSpawner();
 
-                    playerKeybinds.Initialize(uiManager.TowerDialogue.UpgradeButton, uiManager.TowerDialogue.SellButton);
+                    playerKeybinds.Initialize(uiManager.TowerDialogue.UpgradeButton, uiManager.TowerDialogue.SellButton, uiManager.TowerButtonHolder);
                     OnGameStateChanged += playerKeybinds.UpdateGameState;
+                    OnLevelStateChanged += playerKeybinds.UpdateLevelState;
 
                     gameSceneManager.HideLoading();
                     break;
@@ -293,9 +302,13 @@ namespace Game
                     break;
                 case LevelState.Won:
                     gameSceneManager.ReturnHome();
+                    GameManager.wins++;
+                    GameManager.timesPlayed++;
                     break;
                 case LevelState.Lost:
                     gameSceneManager.ReturnHome();
+                    GameManager.loss++;
+                    GameManager.timesPlayed++;
                     break;
                 default:
                     break;

@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerID: 13
-  damage: 2
+  damage: 3
   projectileSpeed: 25
   projectileLifetime: 0.5
   range: 5

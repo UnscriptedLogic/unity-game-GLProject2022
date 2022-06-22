@@ -59,14 +59,16 @@ namespace Standalone
         {
             if (towerDetails != null)
             {
-                upgradeButton.interactable = false;
                 if (amount >= towerDetails.UpgradeCost)
                 {
                     if (towerDetails.UpgradedTower != null)
                     {
                         upgradeButton.interactable = true;
+                        return;
                     }
                 }
+
+                upgradeButton.interactable = false;
             }
         }
     }

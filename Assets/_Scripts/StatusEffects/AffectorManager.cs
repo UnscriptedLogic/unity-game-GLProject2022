@@ -38,13 +38,13 @@ namespace Game.StatusEffects
         {
             if (hasResistance(type, out float resistance))
             {
-                //Resistant to effect
+                //Weak to effect
                 if (resistance > 0)
                 {
                     duration *= resistance;
                     amount *= resistance;
                 }
-                //Weak to effect
+                //Resistant to effect
                 else if (resistance < 0)
                 {
                     duration /= resistance;

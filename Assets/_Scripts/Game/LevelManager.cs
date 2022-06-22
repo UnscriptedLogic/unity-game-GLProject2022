@@ -45,6 +45,7 @@ namespace Game
         [SerializeField] private PathManager pathManager;
         [SerializeField] private GameSceneManager gameSceneManager;
         [SerializeField] private AssetManager assetManager;
+        [SerializeField] private PlayerKeybinds playerKeybinds;
 
         [SerializeField] private LayerMask UILayer;
 
@@ -70,8 +71,8 @@ namespace Game
         public AssetManager AssetManager => assetManager;
         public BuildManager BuildManager => buildManager;
 
-        public Action OnLevelStateChanged;
-        public Action OnGameStateChanged;
+        public Action<LevelState> OnLevelStateChanged;
+        public Action<GameState> OnGameStateChanged;
 
         private void Start()
         {
@@ -93,14 +94,14 @@ namespace Game
                     break;
                 case LevelState.Start:
                     uiManager.ShowOnlyUI(UIManager.Pages.Loading);
-                    gridManager.GenerateGrid(() =>
+                    gridManager.GenerateGrid((grid) =>
                     {
 
                     },
-                    () =>
+                    (grid, path) =>
                     {
-                        GridAddOns.GenerateElevations(elevationAmount, GridGenerator.GridNodes, elevationRange, secondaryElevationRange);
-                        GridAddOns.GenerateDebri(debrisAmount, assetManager.DebrisList, GridGenerator.GridNodes);
+                        GridAddOns.GenerateElevations((GridGenerator.GridSize.x / 2 + GridGenerator.GridSize.y / 2) / 2, grid, elevationRange, secondaryElevationRange);
+                        GridAddOns.GenerateDebri(GridGenerator.GridSize.x + GridGenerator.GridSize.y, assetManager.ThemeFile.DebriList, grid);
                         SwitchLevelState(LevelState.Playing);
                     });
                     break;
@@ -270,16 +271,19 @@ namespace Game
 
                     TowerSO[] towers = LoadOutManager.SelectedTowers.Count != 0 ? LoadOutManager.SelectedTowers.ToArray() : backupTowers;
                     uiManager.Initialize(this, towers);
+                    
                     currencyManager.OnCashModified += uiManager.UpdateTowerButtons;
-                    waveSpawner.OnWaveStarted += uiManager.UpdateWaveCounter;
-
-                    waveSpawner.OnWaveStarted += (curr, total) => currencyManager.ModifyCurrency(ModificationType.Add, waveIncome.AddWaveIncome(curr));
-
-                    waveSpawner.Initialize(this);
-                    gameSceneManager.HideLoading();
-
                     currencyManager.ModifyCurrency(ModificationType.Set, currencyManager.CurrencyContainer.StartAmount);
+
+                    waveSpawner.OnWaveStarted += uiManager.UpdateWaveCounter;
+                    waveSpawner.OnWaveStarted += (curr, total) => currencyManager.ModifyCurrency(ModificationType.Add, waveIncome.AddWaveIncome(curr));
+                    waveSpawner.Initialize(pathManager.Path);
                     waveSpawner.StartSpawner();
+
+                    playerKeybinds.Initialize(uiManager.TowerDialogue.UpgradeButton, uiManager.TowerDialogue.SellButton);
+                    OnGameStateChanged += playerKeybinds.UpdateGameState;
+
+                    gameSceneManager.HideLoading();
                     break;
                 case LevelState.Playing:
                     break;
@@ -325,7 +329,7 @@ namespace Game
             levelState = newState;
             EnterLevelState();
 
-            OnLevelStateChanged?.Invoke();
+            OnLevelStateChanged?.Invoke(levelState);
         }
 
         public void SwitchGameState(GameState newState)
@@ -334,7 +338,7 @@ namespace Game
             gameState = newState;
             EnterGameState();
 
-            OnGameStateChanged?.Invoke();
+            OnGameStateChanged?.Invoke(gameState);
         }
 
         private void PausedUI()

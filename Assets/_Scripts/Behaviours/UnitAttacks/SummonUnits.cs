@@ -46,8 +46,8 @@ namespace Units
             //GameObject enemy = Instantiate(currSegment.enemyToSpawn, spawnLocation.position, Quaternion.identity, transform);
             PoolManager.instance.PullFromPool(spawn, item =>
             {
-                item.transform.SetParent(context.LevelManager.WaveSpawner.transform);
-                item.GetComponent<Unit>().InitializeEnemy(context.LevelManager, waypoint);
+                item.transform.SetParent(context.transform.parent);
+                item.GetComponent<Unit>().InitializeEnemy(context.Path, waypoint);
             });
         }
 

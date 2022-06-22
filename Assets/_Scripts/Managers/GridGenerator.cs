@@ -151,18 +151,40 @@ namespace Core.Grid
 
         public static GridNode[] GetNeighboursOf(GridNode node)
         {
-            GridNode[] neighbours = new GridNode[8];
+            List<GridNode> neighbours = new List<GridNode>();
 
-            neighbours[0] = GetNodeAt(node.Coords.x - 1, node.Coords.y);
-            neighbours[1] = GetNodeAt(node.Coords.x + 1, node.Coords.y);
-            neighbours[2] = GetNodeAt(node.Coords.x, node.Coords.y + 1);
-            neighbours[3] = GetNodeAt(node.Coords.x, node.Coords.y - 1);
-            neighbours[4] = GetNodeAt(node.Coords.x - 1, node.Coords.y - 1);
-            neighbours[5] = GetNodeAt(node.Coords.x + 1, node.Coords.y + 1);
-            neighbours[6] = GetNodeAt(node.Coords.x - 1, node.Coords.y + 1);
-            neighbours[7] = GetNodeAt(node.Coords.x + 1, node.Coords.y - 1);
+            GridNode neighbourNode = GetNodeAt(node.Coords.x - 1, node.Coords.y);
+            if (neighbourNode != null)
+                neighbours.Add(neighbourNode);
 
-            return neighbours;
+            AddIfNotNull(node.Coords.x - 1, node.Coords.y, ref neighbours);
+            AddIfNotNull(node.Coords.x + 1, node.Coords.y, ref neighbours);
+            AddIfNotNull(node.Coords.x, node.Coords.y + 1, ref neighbours);
+            AddIfNotNull(node.Coords.x, node.Coords.y - 1, ref neighbours);
+
+            AddIfNotNull(node.Coords.x - 1, node.Coords.y - 1, ref neighbours);
+            AddIfNotNull(node.Coords.x + 1, node.Coords.y + 1, ref neighbours);
+            AddIfNotNull(node.Coords.x - 1, node.Coords.y + 1, ref neighbours);
+            AddIfNotNull(node.Coords.x + 1, node.Coords.y - 1, ref neighbours);
+
+            return neighbours.ToArray();
+        }
+
+        public static GridNode ParseGameObjectToNode(string name)
+        {
+            string[] str = name.Split(",");
+            int.TryParse(str[0], out int x);
+            int.TryParse(str[1], out int y);
+
+            return GetNodeAt(x, y);
+        }
+
+        private static void AddIfNotNull(int x, int y, ref List<GridNode> gridNodes)
+        {
+            if (GetNodeAt(x, y) != null)
+            {
+                gridNodes.Add(GetNodeAt(x, y));
+            }
         }
     }
 

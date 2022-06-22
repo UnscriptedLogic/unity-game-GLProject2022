@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Core.Pooling;
 using Units;
+using Core.Grid;
 
 namespace Game.Spawning
 {
@@ -29,7 +30,7 @@ namespace Game.Spawning
         private Wave currWave;
         private WaveSegment currSegment;
         private SpawnerStates currentState = SpawnerStates.Stopped;
-        private LevelManager levelManager;
+        private GridNode[] nodePath;
 
         private float _interval;
         private int _spawnAmount;
@@ -42,10 +43,12 @@ namespace Game.Spawning
         public WavesSO WavesSO => wavesSO;
         public Action<int, int> OnWaveCompleted;
         public Action<int, int> OnWaveStarted;
+        public UnityEvent OnCompleted;
+        public UnityEvent<float> OnUnitHealthDeducted;
 
-        public void Initialize(LevelManager levelManager)
+        public void Initialize(GridNode[] path)
         {
-            this.levelManager = levelManager;
+            nodePath = path;
         }
 
         public void StartSpawner()
@@ -168,7 +171,7 @@ namespace Game.Spawning
                 case SpawnerStates.FinalWait:
                     if (transform.childCount <= 0)
                     {
-                        levelManager.SetGameWon();
+                        OnCompleted?.Invoke();
                     }
                     break;
                 default:
@@ -212,13 +215,16 @@ namespace Game.Spawning
         public void StopSpawner() => stopSpawning = true;
         public void ContinueSpawner() => stopSpawning = false;
 
-        private void ResetSpawner()
+        public void ResetSpawner()
         {
             waveIndex = 0;
             segmentIndex = 0;
+            _interval = 0f;
 
             currWave = wavesSO.Waves[waveIndex];
             currSegment = currWave.waveSegments[segmentIndex];
+
+            stopSpawning = false;
 
             SwitchState(SpawnerStates.SpawningWave);
         }
@@ -229,7 +235,12 @@ namespace Game.Spawning
             PoolManager.instance.PullFromPool(currSegment.enemyToSpawn, item =>
             {
                 item.transform.SetParent(transform);
-                item.GetComponent<Unit>().InitializeEnemy(levelManager);
+                item.GetComponent<Unit>().InitializeEnemy(nodePath);
+
+                item.GetComponent<Unit>().OnHealthDeducted += amount =>
+                {
+                    OnUnitHealthDeducted?.Invoke(amount);
+                };
 
                 //GreaterUnit greaterUnit = item.GetComponent<GreaterUnit>();
                 //if (greaterUnit != null)

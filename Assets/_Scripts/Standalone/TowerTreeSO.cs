@@ -9,6 +9,7 @@ namespace Standalone
     public class TowerTreeSO : ScriptableObject
     {
         [SerializeField] private TowerSO[] towerSO;
+        public TowerSO[] TowerSOs => towerSO;
 
         public TowerDetails GetTowerDetail(int id)
         {

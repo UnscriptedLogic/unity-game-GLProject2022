@@ -12,7 +12,6 @@ namespace Units
 {
     public class Unit : MonoBehaviour, IDamageable
     {
-        protected PathManager nodeManager;
         protected GridNode[] nodePath;
 
         [SerializeField] protected DamageFlash damageFlash;
@@ -25,24 +24,23 @@ namespace Units
         [SerializeField] protected float waypointVerifyDistance = 0.05f;
         [SerializeField] protected WorldSpaceCustomSlider healthbar;
 
+        protected bool initialized;
         protected float currHealth;
         protected int waypointCounter = 0;
-        protected LevelManager levelManager;
 
         public int WaypointIndex => waypointCounter;
         public float CurrentHealth => currHealth;
         public float MaxHealth => health;
         public float Speed { get => movementSpeed; set { movementSpeed = value; } }
-        public LevelManager LevelManager => levelManager;
+        public GridNode[] Path => nodePath;
+
         public Action<ModificationType, float> OnHealthModified;
-        protected bool initialized;
+        public Action<float> OnHealthDeducted;
+        public Action OnHealthDepleted;
 
-        public virtual void InitializeEnemy(LevelManager levelManager, int position = 0)
+        public virtual void InitializeEnemy(GridNode[] nodePath, int position = 0)
         {
-            this.levelManager = levelManager;
-
-            nodeManager = levelManager.PathManager;
-            nodePath = nodeManager.Path;
+            this.nodePath = nodePath;
             transform.position = nodePath[position].Position;
 
             waypointCounter = position;
@@ -100,11 +98,15 @@ namespace Units
                     currHealth -= amount;
                     healthbar.SetValue(currHealth);
                     if (currHealth <= 0f)
+                    {
                         currHealth = 0f;
+                        OnHealthDepleted?.Invoke();
+                    }
                     else
                         damageFlash.Flash();
 
-                    levelManager.CurrencyManager.ModifyCurrency(ModificationType.Add, Mathf.Round(prev - currHealth));
+                    //levelManager.CurrencyManager.ModifyCurrency(ModificationType.Add, Mathf.Round(prev - currHealth));
+                    OnHealthDeducted?.Invoke(amount);
                     break;
                 case ModificationType.Set:
                     currHealth = amount;

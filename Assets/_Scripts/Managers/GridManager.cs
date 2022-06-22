@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Core.Pathing;
 using Game;
+using Core.Assets;
 
 namespace Core.Grid
 {
@@ -12,33 +13,36 @@ namespace Core.Grid
     {   
         [SerializeField] private Vector2Int gridSize = new Vector2Int(10, 10);
         [SerializeField] private float gridSpacing = 1f;
-        [SerializeField] private GameObject nodePrefab;
-        [SerializeField] private GameObject homePrefab;
-        [SerializeField] private GameObject entitySpawnPrefab;
         [SerializeField] private PathManager pathManager;
         [SerializeField] private bool drawGizmos;
         [SerializeField] private int teamIndex = 0;
 
+        private AssetManager assetManager;
+
         public GameObject HomeNode => pathManager.Path[pathManager.Path.Length - 1].TowerOnNode;
 
-        public async void GenerateGrid(Action beforePath, Action afterPath)
+        public async void GenerateGrid(Action<GridNode[]> beforePath, Action<GridNode[], GridNode[]> afterPath)
         {
-            GridGenerator.CreateGrid(
+            if (assetManager == null)
+                assetManager = AssetManager.instance;
+
+            GridNode[] grid = GridGenerator.CreateGrid(
                 gridSize: gridSize, 
                 spacing: gridSpacing, 
                 center: transform.position, 
-                prefab: nodePrefab, 
+                prefab: assetManager.ThemeFile.Node, 
                 teamIndex: teamIndex, 
                 parent: transform 
             );
 
-            beforePath();
+            beforePath(grid);
 
             await pathManager.GeneratePath();
-            pathManager.Path[0].ForcePlaceTower(entitySpawnPrefab);
-            pathManager.Path[pathManager.Path.Length - 1].ForcePlaceTower(homePrefab);
+            pathManager.TokenSource.Cancel();
+            pathManager.Path[0].ForcePlaceTower(assetManager.ThemeFile.Spawn);
+            pathManager.Path[pathManager.Path.Length - 1].ForcePlaceTower(assetManager.ThemeFile.Home);
 
-            afterPath();
+            afterPath(grid, pathManager.Path);
         }
 
         private void OnDrawGizmos()

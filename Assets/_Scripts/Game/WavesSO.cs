@@ -10,6 +10,7 @@ namespace Game.Spawning
     public class WavesSO : ScriptableObject
     {
         [SerializeField] private Wave[] waves;
+
         public Wave[] Waves => waves;
 
         private void OnValidate()

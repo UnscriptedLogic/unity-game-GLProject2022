@@ -26,12 +26,11 @@ namespace Units
         private int sign;
 
         private int waypointIndex;
-        private LevelManager levelManager;
 
         public override void Initialize(GreaterUnit _context)
         {
+            context = _context;
             waypointIndex = _context.WaypointIndex;
-            levelManager = _context.LevelManager;
         }
 
         public override void EnterState()
@@ -52,7 +51,7 @@ namespace Units
                         front = true;
                     }
                     
-                    SpawnEnemy(summonSettings[i].Unit, waypointIndex + (j * sign));
+                    SpawnEnemy(summonSettings[i].Unit, waypointIndex);
                 }
             }
         }
@@ -61,8 +60,15 @@ namespace Units
         {
             PoolManager.instance.PullFromPool(spawn, item =>
             {
-                item.transform.SetParent(levelManager.WaveSpawner.transform);
-                item.GetComponent<Unit>().InitializeEnemy(levelManager, waypoint);
+                item.transform.SetParent(transform.parent);
+                item.GetComponent<Unit>().InitializeEnemy(context.Path, waypoint);
+
+                float angle = UnityEngine.Random.Range(0f, 360f);
+                float radius = 0.5f;
+                float x = radius * Mathf.Cos(angle);
+                float z = radius * Mathf.Sin(angle);
+                Vector3 position = new Vector3(transform.position.x + x, item.transform.position.y, transform.position.z + z);
+                item.transform.position = position;
             });
         }
     }

@@ -705,7 +705,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  lerpDuration: 0.5
   amount: 25
   keepSize: 0
   trackSpeed: 0.025
@@ -842,8 +841,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: 5736165837249898625}
-  health: 7500
-  movementSpeed: 1.75
+  health: 10000
+  movementSpeed: 2
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 5959593351887877580}
 --- !u!135 &1835879742151613041

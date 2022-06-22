@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Core.Grid;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Core.Pathing
 {
@@ -20,8 +21,10 @@ namespace Core.Pathing
         private List<GridNode> nodes;
         private List<GridNode> path;
         private GridManager gridManager;
+        private CancellationTokenSource tokenSource = new CancellationTokenSource();
 
         public GridNode[] Path { get => path.ToArray(); }
+        public CancellationTokenSource TokenSource => tokenSource;
 
         public void Initialize(GridManager gridManager)
         {
@@ -35,12 +38,19 @@ namespace Core.Pathing
 
             bool invalid = true;
             int counter = 0;
+
             while (invalid)
             {
+                if (tokenSource.IsCancellationRequested)
+                {
+                    return;
+                }
+
                 UnityEngine.Random.InitState(seed);
                 nodes = new List<GridNode>(GridGenerator.GridNodes);
                 path = new List<GridNode>();
-                await CreatePath();
+
+                await CreatePath(tokenSource);
 
                 for (int i = 0; i < path.Count; i++)
                 {
@@ -57,12 +67,12 @@ namespace Core.Pathing
                         }
                     }
 
-                    if (adjacentPaths > 6 || path.Count < 70)
+                    float percentage = (path.Count / (float)GridGenerator.GridNodes.Length) * 100f;
+                    if (adjacentPaths > 6 || percentage < 17.5f)
                     {
-
                         invalid = true;
                         counter++;
-                        Reseed();
+                        Reseed(nodes);
                         Debug.Log("Re-seeding... x" + counter);
                         break;
                     }
@@ -74,13 +84,13 @@ namespace Core.Pathing
             }
         }
 
-        private void Reseed()
+        private void Reseed(List<GridNode> nodes)
         {
             seed++;
-            for (int j = 0; j < path.Count; j++)
+            for (int j = 0; j < nodes.Count; j++)
             {
-                path[j].isObstacle = false;
-                path[j].SetVisibility(true);
+                nodes[j].isObstacle = false;
+                nodes[j].SetVisibility(true);
             }
         }
 
@@ -114,40 +124,17 @@ namespace Core.Pathing
             weightPoints = newWeights.ToArray();
         }
 
-        private IEnumerator StitchPaths(Action callback)
-        {
-            for (int i = 0; i < weightPointCount - 1; i++)
-            {
-                if (i + 1 < weightPoints.Length)
-                {
-                    List<GridNode> subpath = PathFinder.GetPath(weightPoints[i], weightPoints[i + 1], allowOverlap);
-                    
-                    if (subpath != null)
-                    {
-                        path.AddRange(subpath);
-                        yield return new WaitForSeconds(0.25f);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-
-            for (int i = 0; i < path.Count; i++)
-            {
-                path[i].SetVisibility(false);
-            }
-
-            callback();
-        }
-
-        private async Task CreatePath()
+        private async Task CreatePath(CancellationTokenSource tokenSource)
         {
             GetWeightPoints();
 
             for (int i = 0; i < weightPointCount - 1; i++)
             {
+                if (tokenSource.IsCancellationRequested)
+                {
+                    return;
+                }
+
                 if (i + 1 < weightPoints.Length)
                 {
                     List<GridNode> subpath = PathFinder.GetPath(weightPoints[i], weightPoints[i + 1], allowOverlap);
@@ -168,6 +155,11 @@ namespace Core.Pathing
             {
                 path[i].SetVisibility(false);
             }
+        }
+
+        private void OnDisable()
+        {
+            tokenSource.Cancel();
         }
     }
 }

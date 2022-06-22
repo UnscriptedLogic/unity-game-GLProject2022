@@ -47,6 +47,7 @@ namespace Towers
         public float FireRate => attackInterval;
         public float TurnSpeed => rotationSpeed;
         public float ProjSpeed => projectileSpeed;
+        public float ProjLifeTime => projectileLifetime;
         public GridNode GridNode { get => gridNode; set { gridNode = value; } }
 
         protected virtual void Start()

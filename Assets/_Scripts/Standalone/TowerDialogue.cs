@@ -59,8 +59,14 @@ namespace Standalone
         {
             if (towerDetails != null)
             {
-                upgradeButton.interactable = amount >= towerDetails.UpgradeCost;
-                upgradeButton.gameObject.SetActive(towerDetails.UpgradedTower != null);
+                upgradeButton.interactable = false;
+                if (amount >= towerDetails.UpgradeCost)
+                {
+                    if (towerDetails.UpgradedTower != null)
+                    {
+                        upgradeButton.interactable = true;
+                    }
+                }
             }
         }
     }

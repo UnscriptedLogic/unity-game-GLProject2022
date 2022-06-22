@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Interfaces;
 using Game;
+using Core.Grid;
 
 namespace Units
 {
@@ -17,14 +18,16 @@ namespace Units
         private UnitAbility selectedAbility;
         private float _interval;
 
-        public override void InitializeEnemy(LevelManager levelManager, int position = 0)
+        public override void InitializeEnemy(GridNode[] path, int position = 0)
         {
-            base.InitializeEnemy(levelManager, position);
+            base.InitializeEnemy(path, position);
 
             foreach (UnitAbility unitAbility in unitAbilities)
             {
                 unitAbility.Initialize(this);
             }
+
+            OnHealthDepleted += FireOnDeathAbilities;
 
             _interval = abilityInterval;
             initialized = true;
@@ -58,12 +61,9 @@ namespace Units
             selectedAbility = null;
             _interval = abilityInterval;
         }
-
-        private void OnDisable()
+        
+        private void FireOnDeathAbilities()
         {
-            if (!initialized)
-                return;
-
             for (int i = 0; i < onDeathAbilities.Length; i++)
             {
                 onDeathAbilities[i].Initialize(this);

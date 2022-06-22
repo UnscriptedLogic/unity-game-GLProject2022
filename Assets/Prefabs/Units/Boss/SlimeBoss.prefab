@@ -10137,7 +10137,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  lerpDuration: 0.5
   amount: 25
   keepSize: 0
   trackSpeed: 0
@@ -10552,13 +10551,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: -6004806168046530573}
-  health: 15000
+  health: 17000
   movementSpeed: 0.25
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 1278209766786932308}
   unitAbilities:
   - {fileID: 8321871149408018362}
-  abilityInterval: 4
+  abilityInterval: 6
   onDeathAbilities: []
 --- !u!114 &8321871149408018362
 MonoBehaviour:

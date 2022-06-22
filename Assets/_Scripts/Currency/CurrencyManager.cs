@@ -38,5 +38,10 @@ namespace Core.Currency
 
             OnCashModified?.Invoke(modificationType, amount, currencyContainer.CurrentAmount);
         }
+
+        public void AddCash(float amount)
+        {
+            ModifyCurrency(ModificationType.Add, amount);
+        }
     }       
 }

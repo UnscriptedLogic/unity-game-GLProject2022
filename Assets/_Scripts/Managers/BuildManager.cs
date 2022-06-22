@@ -61,7 +61,6 @@ namespace Core.Building
                     string[] str = hit.transform.name.Split(",");
                     int.TryParse(str[0], out int x);
                     int.TryParse(str[1], out int y);
-
                     GridNode node = GridGenerator.GetNodeAt(x, y);
                     rangeVFX.LeanMove(node.TowerPosition, animTime).setEase(easeType);
                     blueprintVFX.LeanMove(node.TowerPosition, animTime).setEase(easeType);

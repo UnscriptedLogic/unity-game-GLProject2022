@@ -2083,6 +2083,12 @@ MonoBehaviour:
   waveIndex: 0
   spawnLocation: {fileID: 853069097}
   cam: {fileID: 330585546}
+  OnCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnitHealthDeducted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &853069099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2714,6 +2720,7 @@ GameObject:
   - component: {fileID: 1193752723}
   - component: {fileID: 1193752717}
   - component: {fileID: 1193752727}
+  - component: {fileID: 1193752728}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -2762,6 +2769,7 @@ MonoBehaviour:
   viewingColor: {r: 0, g: 1, b: 0.95004964, a: 0.7529412}
   validPlacement: {r: 0, g: 1, b: 0.53639245, a: 0.7529412}
   invalidPlacement: {r: 1, g: 0.37264153, b: 0.3726415, a: 0.7529412}
+  easeType: 9
 --- !u!54 &1193752717
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2792,12 +2800,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSize: {x: 20, y: 20}
   gridSpacing: 1.2
-  nodePrefab: {fileID: 1060161535111058455, guid: af6568264b87a6b47a0c21fbe4f9928e,
-    type: 3}
-  homePrefab: {fileID: 7482607861986099073, guid: 47e8cd61d182e4d43ae8579f82b0555c,
-    type: 3}
-  entitySpawnPrefab: {fileID: 4142320509489033550, guid: bd377e4a30ee3d34e9cb4dc22248f3da,
-    type: 3}
   pathManager: {fileID: 1193752719}
   drawGizmos: 0
   teamIndex: 0
@@ -2817,7 +2819,7 @@ MonoBehaviour:
   weightPointCount: 6
   weightPointDistance: 8
   randomizeSeed: 1
-  allowOverlap: 1
+  allowOverlap: 0
 --- !u!114 &1193752720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2853,6 +2855,7 @@ MonoBehaviour:
   pathManager: {fileID: 1193752719}
   gameSceneManager: {fileID: 1193752727}
   assetManager: {fileID: 1498055947}
+  playerKeybinds: {fileID: 1193752728}
   UILayer:
     serializedVersion: 2
     m_Bits: 32
@@ -2985,6 +2988,23 @@ MonoBehaviour:
   animator: {fileID: 1157715732}
   showLoadPage: showTransition
   hideLoadPage: exitTransition
+--- !u!114 &1193752728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193752713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9107447bc3306dc4d9b6336157f1e23d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstTowerSlot: 49
+  secondTowerSlot: 50
+  thirdTowerSlot: 51
+  upgradeTower: 113
+  sellTower: 101
 --- !u!1 &1250642465
 GameObject:
   m_ObjectHideFlags: 0

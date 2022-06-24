@@ -42,8 +42,8 @@ namespace Standalone
                 upgradeDescTMP.text = "No more upgrades";
             }
 
-            upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Upgrade(${towerDetails.UpgradeCost})";
-            sellButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Sell(${towerDetails.SellCost})";
+            upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = $"[Q] Upgrade(${towerDetails.UpgradeCost})";
+            sellButton.GetComponentInChildren<TextMeshProUGUI>().text = $"[E] Sell(${towerDetails.SellCost})";
         }
 
         public void UpdateStats(float damage, float range, float fireRate, float turnSpeed, float projSpeed)

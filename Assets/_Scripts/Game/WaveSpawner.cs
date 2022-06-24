@@ -39,7 +39,7 @@ namespace Game.Spawning
         private int waveCount;
         private bool stopSpawning = true;
 
-        public int WaveCount => waveCount;
+        public int WaveCount => waveCount + 1;
         public WavesSO WavesSO => wavesSO;
         public Action<int, int> OnWaveCompleted;
         public Action<int, int> OnWaveStarted;

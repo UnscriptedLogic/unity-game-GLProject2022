@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c93cd2eef175364687a2250e77d059f, type: 3}
+  m_Name: TestingWave 1
+  m_EditorClassIdentifier: 
+  waves:
+  - waveSegments:
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
+        type: 3}
+      amount: 1
+      interval: 0.5
+      segmentInterval: 10
+    waveInterval: 1
+    totalPoints: 6
+    averageHealth: 6
+    averageSpeed: 1.5

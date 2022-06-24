@@ -35,11 +35,13 @@ namespace Units
 
         public override void EnterState()
         {
+            int count = 0;
             for (int i = 0; i < summonSettings.Length; i++)
             {
                 for (int j = 0; j < summonSettings[i].Amount; j++)
                 {
                     SpawnEnemy(summonSettings[i].Unit, waypointIndex);
+                    count++;
                 }
             }
         }

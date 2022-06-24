@@ -14,6 +14,8 @@ using UnityEngine.EventSystems;
 using System;
 using Core.Assets;
 using Core;
+using UnityEngine.Events;
+using Backend;
 
 namespace Game
 {
@@ -47,6 +49,7 @@ namespace Game
         [SerializeField] private GameSceneManager gameSceneManager;
         [SerializeField] private AssetManager assetManager;
         [SerializeField] private PlayerKeybinds playerKeybinds;
+        [SerializeField] private PlayFabBehaviour playFabBehaviour;
 
         [SerializeField] private LayerMask UILayer;
 
@@ -74,6 +77,9 @@ namespace Game
 
         public Action<LevelState> OnLevelStateChanged;
         public Action<GameState> OnGameStateChanged;
+        public UnityEvent<int> OnGameWon;
+        public UnityEvent<int> OnGameLost;
+        public UnityEvent OnGameStarted;
 
         private void Start()
         {
@@ -87,7 +93,7 @@ namespace Game
             UpdateGameState();
         }
 
-        private void EnterLevelState()
+        private async void EnterLevelState()
         {
             switch (levelState)
             {
@@ -95,7 +101,7 @@ namespace Game
                     break;
                 case LevelState.Start:
                     uiManager.ShowOnlyUI(UIManager.Pages.Loading);
-                    gridManager.GenerateGrid((grid) =>
+                    await gridManager.GenerateGrid((grid) =>
                     {
 
                     },
@@ -111,14 +117,30 @@ namespace Game
                 case LevelState.Paused:
                     PausedUI();
                     Time.timeScale = 0f;
+                    playFabBehaviour.HighestWaveCount(waveSpawner.WaveCount);
                     break;
                 case LevelState.Won:
+                    OnGameWon?.Invoke(waveSpawner.WaveCount);
                     uiManager.ShowOnlyUI(UIManager.Pages.Won);
                     waveSpawner.StopSpawner();
+
+                    playFabBehaviour.HighestWaveCount(waveSpawner.WaveCount);
+                    playFabBehaviour.UpdateLeaderboardTowerCount(buildManager.BuildCount);
+
+                    GameManager.wins++;
+                    GameManager.gamesPlayed++;
+                    PlayFabManager.SavePlayerData(successs => { Debug.Log("Data Saved!"); }, PlayFabManager.HandleError);
                     break;
                 case LevelState.Lost:
+                    OnGameLost?.Invoke(waveSpawner.WaveCount);
                     uiManager.ShowOnlyUI(UIManager.Pages.Lost);
                     waveSpawner.StopSpawner();
+
+                    playFabBehaviour.HighestWaveCount(waveSpawner.WaveCount);
+
+                    GameManager.loss++;
+                    GameManager.gamesPlayed++;
+                    PlayFabManager.SavePlayerData(successs => { Debug.Log("Data Saved!"); }, PlayFabManager.HandleError);
                     break;
                 default:
                     break;
@@ -285,6 +307,7 @@ namespace Game
 
                     waveSpawner.OnWaveStarted += uiManager.UpdateWaveCounter;
                     waveSpawner.OnWaveStarted += (curr, total) => currencyManager.ModifyCurrency(ModificationType.Add, waveIncome.AddWaveIncome(curr));
+                    waveSpawner.OnWaveStarted += (curr, total) => { if (curr + 1 > GameManager.highestWave) GameManager.highestWave = curr + 1; };
                     waveSpawner.Initialize(pathManager.Path);
                     waveSpawner.StartSpawner();
 
@@ -292,6 +315,7 @@ namespace Game
                     OnGameStateChanged += playerKeybinds.UpdateGameState;
                     OnLevelStateChanged += playerKeybinds.UpdateLevelState;
 
+                    OnGameStarted?.Invoke();
                     gameSceneManager.HideLoading();
                     break;
                 case LevelState.Playing:
@@ -302,13 +326,9 @@ namespace Game
                     break;
                 case LevelState.Won:
                     gameSceneManager.ReturnHome();
-                    GameManager.wins++;
-                    GameManager.timesPlayed++;
                     break;
                 case LevelState.Lost:
                     gameSceneManager.ReturnHome();
-                    GameManager.loss++;
-                    GameManager.timesPlayed++;
                     break;
                 default:
                     break;

@@ -5,14 +5,14 @@ using Core.Scene;
 using Game;
 using Game.Spawning;
 using Standalone;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Towers;
 using UI;
 using UnityEngine;
+using TMPro;
+using Backend;
 
-namespace Start
+namespace StartScreen
 {
     public class StartManager : MonoBehaviour
     {
@@ -22,6 +22,9 @@ namespace Start
         [SerializeField] private WaveSpawner waveSpawner;
         [SerializeField] private ThanksUIController thanksUIController;
         [SerializeField] private MainScreenUIController mainMenuScreen;
+        [SerializeField] private AccountUIController accountUIController;
+        [SerializeField] private TextMeshProUGUI versionText;
+        [SerializeField] private TextMeshProUGUI deviceTMP;
         [SerializeField] private LayerMask nodeLayer;
 
         [Space(10)]
@@ -29,24 +32,64 @@ namespace Start
 
         private List<GameObject> towers = new List<GameObject>();
 
-        private void Start()
+        private async void Start()
         {
-            gridManager.GenerateGrid((gridNodes) => { }, (gridNodes, path) =>
+            versionText.text = $"Version: {Application.version}";
+            if (!PlayerPrefs.HasKey(PlayFabManager.DEVICE_ID))
+            {
+                System.Guid guid = System.Guid.NewGuid();
+                PlayerPrefs.SetString(PlayFabManager.DEVICE_ID, guid.ToString()); 
+            }
+
+            GameManager.deviceID = PlayerPrefs.GetString(PlayFabManager.DEVICE_ID);
+            deviceTMP.text = GameManager.deviceID.ToString();
+
+            await gridManager.GenerateGrid((gridNodes) => { }, (gridNodes, path) =>
             {
                 MapLogic(gridNodes);
 
                 waveSpawner.Initialize(path);
                 waveSpawner.StartSpawner();
 
-                gameSceneManager.HideLoading();
-
-                if (!GameManager.hasSeenThanksPage && GameManager.timesPlayed > 0)
-                {
-                    mainMenuScreen.HideScreen();
-                    thanksUIController.ShowDialogue();
-                    GameManager.hasSeenThanksPage = true;
-                }
             });
+
+            if (!GameManager.loggedIn)
+            {
+                PlayFabManager.AnonymousLogIn(result =>
+                {
+                    Debug.Log("Success!");
+                    GameManager.loggedIn = true;
+                    PlayFabManager.GetPlayerData(res => { }, PlayFabManager.HandleError);
+                    gameSceneManager.HideLoading();
+                }, error =>
+                {
+                    Debug.Log($"Could not log in to PlayFab {error.GenerateErrorReport()}");
+                    gameSceneManager.HideLoading();
+                });
+            } else
+            {
+                gameSceneManager.HideLoading();
+            }
+
+            if (!GameManager.hasSeenThanksPage && GameManager.gamesPlayed > 0)
+            {
+                mainMenuScreen.HideMainScreen();
+                thanksUIController.ShowDialogue();
+                GameManager.hasSeenThanksPage = true;
+                mainMenuScreen.AboutButton.gameObject.SetActive(true);
+                PlayFabManager.SavePlayerData(res => { }, PlayFabManager.HandleError);
+            }
+        }
+
+        private void Update()
+        {
+            if (!mainMenuScreen.AboutButton.gameObject.activeSelf)
+            {
+                if (GameManager.hasSeenThanksPage)
+                {
+                    mainMenuScreen.AboutButton.gameObject.SetActive(true);
+                }
+            }
         }
 
         private void MapLogic(GridNode[] gridNodes)

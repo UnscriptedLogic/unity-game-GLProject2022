@@ -23,6 +23,7 @@ namespace Core.UI
         }
 
         [SerializeField] private TextMeshProUGUI waveCounterTMP;
+        [SerializeField] private TextMeshProUGUI seedTMP;
         [SerializeField] private CustomSlider baseSlider;
         [SerializeField] private TowerDialogue towerDialogue;
         [SerializeField] private TextMeshProUGUI currencyTMP;
@@ -64,6 +65,8 @@ namespace Core.UI
             {
                 baseSlider.SetValue(health);
             };
+
+            seedTMP.text = $"Seed: {GameManager.seed}";
         }
 
         public void SetTowerBuyButtons(TowerSO[] towerSOs)
@@ -109,7 +112,7 @@ namespace Core.UI
                 waveText = "The Final Wave!";
             } else
             {
-                waveText += (levelManager.WaveSpawner.WaveCount + 1).ToString() + $" / {total + 1}";
+                waveText += (levelManager.WaveSpawner.WaveCount).ToString() + $" / {total + 1}";
             }
 
             waveCounterTMP.text = waveText;

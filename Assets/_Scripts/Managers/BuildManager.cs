@@ -27,6 +27,7 @@ namespace Core.Building
         [SerializeField] private LeanTweenType easeType = LeanTweenType.easeOutQuart;
         private float animTime = 0.05f;
 
+        private int buildCount = 0;
         private Renderer rangeRenderer;
         private GameObject towerPrefab;
         private Vector2 requiredElevation;
@@ -34,6 +35,7 @@ namespace Core.Building
         private Tower inspectedTower;
         private TowerDetails inspectedTowerDetails;
 
+        public int BuildCount => buildCount;
         public bool BuildMode => buildMode;
         public Tower TowerToPlaceScript => towerPrefab.GetComponent<Tower>();
         public Tower InspectedTower { get => inspectedTower; set { inspectedTower = value; } }
@@ -44,6 +46,7 @@ namespace Core.Building
 
         private void Start()
         {
+            buildCount = 0;
             if (rangeVFX != null && blueprintVFX != null)
             {
                 rangeRenderer = rangeVFX.GetComponent<Renderer>();
@@ -102,7 +105,10 @@ namespace Core.Building
                 {
                     bool value = node.PlaceTower(towerPrefab);
                     if (value)
+                    {
                         prevPlacedTower = node.TowerOnNode;
+                        buildCount++;
+                    }
                     return value;
                 }
             }

@@ -17,6 +17,7 @@ namespace Units
 
         private UnitAbility selectedAbility;
         private float _interval;
+        private bool called;
 
         public override void InitializeEnemy(GridNode[] path, int position = 0)
         {
@@ -31,6 +32,7 @@ namespace Units
 
             _interval = abilityInterval;
             initialized = true;
+            called = false;
         }
 
         protected override void Update()
@@ -64,10 +66,14 @@ namespace Units
         
         private void FireOnDeathAbilities()
         {
-            for (int i = 0; i < onDeathAbilities.Length; i++)
+            if (!called)
             {
-                onDeathAbilities[i].Initialize(this);
-                onDeathAbilities[i].EnterState();
+                called = true;
+                for (int i = 0; i < onDeathAbilities.Length; i++)
+                {
+                    onDeathAbilities[i].Initialize(this);
+                    onDeathAbilities[i].EnterState();
+                } 
             }
         }
     }

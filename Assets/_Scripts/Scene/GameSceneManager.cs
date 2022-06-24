@@ -17,6 +17,7 @@ namespace Core.Scene
         public void StartGame() => TransitionScene(GameScene, 1f);
         public void HideLoading() => animator.SetTrigger(hideLoadPage);
         public void ReturnHome() => TransitionScene(MainMenuScene, 1f);
+        public void QuitGame() => Application.Quit();
 
         private void TransitionScene(string sceneName, float duration) => StartCoroutine(DelaySceneChange(sceneName, duration));
         private void ChangeScene(string sceneName) => SceneManager.LoadSceneAsync(sceneName);

@@ -34,7 +34,15 @@ namespace Core.Pathing
         public async Task GeneratePath()
         {
             if (randomizeSeed)
-                seed = UnityEngine.Random.Range(-1000000, 1000000);
+            {
+                if (!GameManager.setSeed)
+                {
+                    GameManager.seed = UnityEngine.Random.Range(-1000000, 1000000);
+                }
+
+                seed = GameManager.seed;
+                GameManager.setSeed = false;
+            }
 
             bool invalid = true;
             int counter = 0;
@@ -73,7 +81,6 @@ namespace Core.Pathing
                         invalid = true;
                         counter++;
                         Reseed(nodes);
-                        Debug.Log("Re-seeding... x" + counter);
                         break;
                     }
                     else

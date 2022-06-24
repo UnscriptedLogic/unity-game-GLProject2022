@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using Core.Pathing;
 using Game;
 using Core.Assets;
+using System.Threading.Tasks;
 
 namespace Core.Grid
 {
@@ -21,7 +22,7 @@ namespace Core.Grid
 
         public GameObject HomeNode => pathManager.Path[pathManager.Path.Length - 1].TowerOnNode;
 
-        public async void GenerateGrid(Action<GridNode[]> beforePath, Action<GridNode[], GridNode[]> afterPath)
+        public async Task GenerateGrid(Action<GridNode[]> beforePath, Action<GridNode[], GridNode[]> afterPath)
         {
             if (assetManager == null)
                 assetManager = AssetManager.instance;

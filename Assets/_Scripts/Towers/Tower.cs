@@ -68,10 +68,10 @@ namespace Towers
                 unitsInRange = Physics.OverlapSphere(transform.position, range, unitLayer);
                 foreach (Collider collider1 in unitsInRange)
                 {
-                    Unit unitMovement = collider1.GetComponent<Unit>();
+                    EnemyUnits unitMovement = collider1.GetComponent<EnemyUnits>();
                     if (target == null)
                     {
-                        target = unitsInRange[0].GetComponent<Unit>();
+                        target = unitsInRange[0].GetComponent<EnemyUnits>();
                     }
                     else
                     {
@@ -79,7 +79,7 @@ namespace Towers
                         {
                             if (unitsInRange.Length > 1)
                             {
-                                target = unitsInRange[1].GetComponent<Unit>();
+                                target = unitsInRange[1].GetComponent<EnemyUnits>();
                             } else
                             {
                                 target = null;

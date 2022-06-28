@@ -4,13 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Assets.Scripts
+namespace External.DamageFlash
 {
-    public class DamageFlashMultiComp : MonoBehaviour
+    public class DamageFlashMultiComp : DamageFlash
     {
-        [SerializeField] private Material flashMat;
         [SerializeField] private MeshRenderer[] meshRenderers;
-        [SerializeField] private float blinkDuration = 0.075f;
 
         private class MeshRendererMat
         {
@@ -20,7 +18,7 @@ namespace Assets.Scripts
 
         private MeshRendererMat[] meshRendererMats;
 
-        private void Start()
+        protected override void Start()
         {
             meshRendererMats = new MeshRendererMat[meshRenderers.Length];
             for (int i = 0; i < meshRenderers.Length; i++)
@@ -29,7 +27,7 @@ namespace Assets.Scripts
             }
         }
 
-        private void Update()
+        protected override void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -37,7 +35,7 @@ namespace Assets.Scripts
             }
         }
 
-        public void Flash()
+        public override void Flash()
         {
             StopAllCoroutines();
             for (int i = 0; i < meshRenderers.Length; i++)
@@ -60,7 +58,7 @@ namespace Assets.Scripts
             }
         }
 
-        private IEnumerator FadeDelay(MeshRenderer meshRenderer, int index)
+        protected IEnumerator FadeDelay(MeshRenderer meshRenderer, int index)
         {
             int length = meshRenderer.materials.Length;
             Material[] flashMats = new Material[length];

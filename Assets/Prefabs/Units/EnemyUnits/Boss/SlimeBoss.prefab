@@ -10547,11 +10547,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7644136366003357881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37daabfc6ce667c47918b6defc56dc99, type: 3}
+  m_Script: {fileID: 11500000, guid: 72e660c93255de741943d237a8d25d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: -6004806168046530573}
-  health: 17000
+  health: 10000
   movementSpeed: 0.25
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 1278209766786932308}
@@ -10575,6 +10575,6 @@ MonoBehaviour:
   - unitToSummon: {fileID: 7644136366003357881, guid: 6f692c8b5240a414b884262faf955318,
       type: 3}
     amount: 2
-  slowdownDuration: 0
-  slowPercentage: 0
+  slowdownDuration: 2
+  slowPercentage: 100
   spawnInterval: 2

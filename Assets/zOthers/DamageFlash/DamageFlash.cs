@@ -9,14 +9,14 @@ namespace External.DamageFlash
 {
     public class DamageFlash : MonoBehaviour
     {
-        [SerializeField] private Material flashMat;
-        [SerializeField] private MeshRenderer meshRenderer;
-        [SerializeField] private float blinkDuration = 0.075f;
+        [SerializeField] protected Material flashMat;
+        [SerializeField] protected MeshRenderer meshRenderer;
+        [SerializeField] protected float blinkDuration = 0.075f;
 
         private List<Material> materials = new List<Material>();
         private List<Material> flashMats = new List<Material>();
 
-        private void Start()
+        protected virtual void Start()
         {
             for (int i = 0; i < meshRenderer.materials.Length; i++)
             {
@@ -25,7 +25,7 @@ namespace External.DamageFlash
             }
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -33,14 +33,14 @@ namespace External.DamageFlash
             }
         }
 
-        public void Flash()
+        public virtual void Flash()
         {
             meshRenderer.materials = flashMats.ToArray();
 
             StartCoroutine(FadeDelay());
         }
 
-        private IEnumerator FadeDelay()
+        protected virtual IEnumerator FadeDelay()
         {
             yield return new WaitForSeconds(blinkDuration);
             for (int i = 0; i < meshRenderer.materials.Length; i++)

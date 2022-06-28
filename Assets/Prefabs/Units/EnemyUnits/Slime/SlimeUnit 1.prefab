@@ -600,7 +600,7 @@ Transform:
   m_GameObject: {fileID: 3294949983016240090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.75, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7644136366003357882}
@@ -634,7 +634,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9e65159a1df25bd47b50a1bf8dac82c2, type: 2}
+  - {fileID: 2100000, guid: 83e9bfc3774f94a47a57755a8bc5091d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -798,13 +798,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7644136366003357882}
-  - component: {fileID: 1887567689338842573}
   - component: {fileID: 1761782913273591786}
   - component: {fileID: -6004806168046530573}
   - component: {fileID: -318667220549779317}
   - component: {fileID: 6977565805839142435}
+  - component: {fileID: 8919177204763017569}
+  - component: {fileID: 8397582080604976828}
   m_Layer: 6
-  m_Name: ToughUnit
+  m_Name: SlimeUnit 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -828,23 +829,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1887567689338842573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7644136366003357881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9d75e229519f3c4cb076c6cc9631fc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageFlash: {fileID: -6004806168046530573}
-  health: 30
-  movementSpeed: 1
-  waypointVerifyDistance: 0.05
-  healthbar: {fileID: 1278209766786932308}
 --- !u!135 &1761782913273591786
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -901,4 +885,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33012fe27a7f1945ab72ff910e63830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resistances: []
+  resistances:
+  - effectType: 0
+    resistance: -100
+--- !u!114 &8919177204763017569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644136366003357881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e660c93255de741943d237a8d25d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageFlash: {fileID: -6004806168046530573}
+  health: 200
+  movementSpeed: 1
+  waypointVerifyDistance: 0.05
+  healthbar: {fileID: 1278209766786932308}
+  unitAbilities: []
+  abilityInterval: 0
+  onDeathAbilities:
+  - {fileID: 8397582080604976828}
+--- !u!114 &8397582080604976828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644136366003357881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ed1b03bc48cf94b9a185f8b99adf72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  summonSettings:
+  - unitToSummon: {fileID: 7644136366003357881, guid: f38c086fdaa099e42856b8c07ba912cc,
+      type: 3}
+    amount: 2

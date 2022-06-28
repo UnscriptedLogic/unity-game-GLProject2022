@@ -837,14 +837,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7644136366003357881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9d75e229519f3c4cb076c6cc9631fc1, type: 3}
+  m_Script: {fileID: 11500000, guid: 72e660c93255de741943d237a8d25d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: -6004806168046530573}
-  health: 100
-  movementSpeed: 1.2
+  health: 150
+  movementSpeed: 1.5
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 1278209766786932308}
+  unitAbilities: []
+  abilityInterval: 0
+  onDeathAbilities: []
 --- !u!135 &1761782913273591786
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -903,4 +906,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resistances:
   - effectType: 0
-    resistance: -150
+    resistance: -50

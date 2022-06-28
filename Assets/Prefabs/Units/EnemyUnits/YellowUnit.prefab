@@ -634,7 +634,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 97d8627e1ba822346ad58671eb2bc511, type: 2}
+  - {fileID: 2100000, guid: feaefcae47d89864ab1359b6c24b61d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -802,9 +802,9 @@ GameObject:
   - component: {fileID: 1761782913273591786}
   - component: {fileID: -6004806168046530573}
   - component: {fileID: -318667220549779317}
-  - component: {fileID: 7520800435039704539}
+  - component: {fileID: 5101208140930066569}
   m_Layer: 6
-  m_Name: NormalUnit
+  m_Name: YellowUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -837,14 +837,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7644136366003357881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9d75e229519f3c4cb076c6cc9631fc1, type: 3}
+  m_Script: {fileID: 11500000, guid: 72e660c93255de741943d237a8d25d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: -6004806168046530573}
-  health: 6
-  movementSpeed: 1.5
+  health: 25
+  movementSpeed: 3
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 1278209766786932308}
+  unitAbilities: []
+  abilityInterval: 0
+  onDeathAbilities: []
 --- !u!135 &1761782913273591786
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -889,7 +892,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7520800435039704539
+--- !u!114 &5101208140930066569
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

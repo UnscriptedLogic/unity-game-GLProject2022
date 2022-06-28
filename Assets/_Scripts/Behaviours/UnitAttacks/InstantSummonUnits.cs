@@ -27,7 +27,7 @@ namespace Units
 
         private int waypointIndex;
 
-        public override void Initialize(GreaterUnit _context)
+        public override void Initialize(EnemyUnits _context)
         {
             context = _context;
             waypointIndex = _context.WaypointIndex;

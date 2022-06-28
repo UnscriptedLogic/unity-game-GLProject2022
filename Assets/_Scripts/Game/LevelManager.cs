@@ -16,6 +16,7 @@ using Core.Assets;
 using Core;
 using UnityEngine.Events;
 using Backend;
+using Interfaces;
 
 namespace Game
 {
@@ -261,6 +262,9 @@ namespace Game
                         {
                             currencyManager.ModifyCurrency(ModificationType.Subtract, buildManager.TowerTree.GetTowerTree(buildManager.TowerToPlaceScript.ID).TowerCost);
                             Destroy(Instantiate(assetManager.PlacedParticle, buildManager.PrevPlacedTower.transform.position, Quaternion.identity), 5f);
+
+                            if (BuildManager.PrevPlacedTower.TryGetComponent(out IRequirePath requirePath))
+                                requirePath.InitPath(pathManager.Path);
 
                             if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0))
                             {

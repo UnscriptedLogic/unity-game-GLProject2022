@@ -7,7 +7,7 @@ using Core.Grid;
 
 namespace Units
 {
-    public class GreaterUnit : Unit
+    public partial class EnemyUnits : Unit
     {
         [SerializeField] private UnitAbility[] unitAbilities;
         [SerializeField] private float abilityInterval;

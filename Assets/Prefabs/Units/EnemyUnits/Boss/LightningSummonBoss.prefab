@@ -5707,17 +5707,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7718091526450488610}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37daabfc6ce667c47918b6defc56dc99, type: 3}
+  m_Script: {fileID: 11500000, guid: 72e660c93255de741943d237a8d25d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: 5736165837249898625}
-  health: 1500
+  health: 1000
   movementSpeed: 0.5
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 5959593351887877580}
   unitAbilities:
   - {fileID: 8820277245108676987}
-  abilityInterval: 10
+  abilityInterval: 0
   onDeathAbilities: []
 --- !u!114 &8820277245108676987
 MonoBehaviour:
@@ -5735,7 +5735,7 @@ MonoBehaviour:
   - unitToSummon: {fileID: 7644136366003357881, guid: ee801da81d9c2714cbb897ed1b6c0df6,
       type: 3}
     amount: 5
-  slowdownDuration: 5
+  slowdownDuration: 3
   slowPercentage: 50
   spawnInterval: 0.5
 --- !u!114 &-4112419645948789584

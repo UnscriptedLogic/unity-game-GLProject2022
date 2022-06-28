@@ -13,10 +13,10 @@ namespace Units
             Done
         }
         
-        protected GreaterUnit context;
+        protected EnemyUnits context;
         protected AbilityState currentState;
 
-        public virtual void Initialize(GreaterUnit _context)
+        public virtual void Initialize(EnemyUnits _context)
         {
             context = _context;
         }

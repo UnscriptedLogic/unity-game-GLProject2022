@@ -15,6 +15,7 @@ namespace Units
         protected GridNode[] nodePath;
 
         [SerializeField] protected DamageFlash damageFlash;
+        [SerializeField] protected bool faceDirection = false;
 
         [Header("Stats")]
         [SerializeField] protected float health = 100f;
@@ -71,7 +72,10 @@ namespace Units
 
             Vector3 direction = GetWaypoint(waypointCounter) - transform.position;
             transform.Translate(direction.normalized * movementSpeed * Time.deltaTime, Space.World);
-            //transform.forward = direction;
+            if (faceDirection)
+            {
+                transform.forward = direction; 
+            }
 
             if (Vector3.Distance(transform.position, GetWaypoint(waypointCounter)) <= waypointVerifyDistance)
                 waypointCounter++;

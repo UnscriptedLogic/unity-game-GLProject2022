@@ -18,6 +18,6 @@ namespace Core.Assets
 
         public GameObject PlacedParticle { get => placedParticle; }
         public GameObject FlameParticle { get => flameParticle; }
-        public ThemeSO ThemeFile => themeFile;
+        public ThemeSO ThemeFile { get => themeFile; set { themeFile = value; } }
     }
 }

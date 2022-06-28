@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 163164241}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8584976786478111057}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootAnchor (7)
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -177,9 +177,9 @@ MonoBehaviour:
   - {fileID: 5765596018541900776}
   - {fileID: 8151097776333618693}
   - {fileID: 8584976786478111057}
-  burnDamage: 2
-  burnDuration: 20
-  tickSpeed: 0.5
+  burnDamage: 1
+  burnDuration: 15
+  tickSpeed: 1
 --- !u!1 &1392790762214195975
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4176707163514115467}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootAnchor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -220,7 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8151097776333618693}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootAnchor (6)
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -251,7 +251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7839048709112719425}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootAnchor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -282,7 +282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6585799914417712501}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootAnchor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -313,7 +313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4567468479083457050}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootAnchor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -344,7 +344,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5765596018541900776}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootAnchor (5)
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -444,15 +444,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5754060345647867467, guid: 0a018189a3ca60244b8cef48e49d04bd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -2947538861075970057, guid: 0a018189a3ca60244b8cef48e49d04bd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: aa6a342d6296bbf49a2507c0c63a721f, type: 2}
+    - target: {fileID: 281855664364225751, guid: 0a018189a3ca60244b8cef48e49d04bd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0a018189a3ca60244b8cef48e49d04bd,
         type: 3}
       propertyPath: m_Name
       value: TorchUpg3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a018189a3ca60244b8cef48e49d04bd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504409719310791647, guid: 0a018189a3ca60244b8cef48e49d04bd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6947464325843983966, guid: 0a018189a3ca60244b8cef48e49d04bd,
         type: 3}

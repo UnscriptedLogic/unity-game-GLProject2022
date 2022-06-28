@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c193c917a0ea9546a271dcd365911f2, type: 3}
   m_Name: Sniper
   m_EditorClassIdentifier: 
-  towerCost: 600
+  towerCost: 900
   requriedElevation: {x: 0, y: 0}
   baseTower: {fileID: 836754924125986003, guid: 41a5f627fa421d345ab44d4d5715d113,
     type: 3}
@@ -23,7 +23,7 @@ MonoBehaviour:
     towerName: Mercenary
     towerIcon: {fileID: 21300000, guid: db69a63a38acd9340aa0c790dea10a7f, type: 3}
     overrideSellCost: 0
-    sellCost: 300
+    sellCost: 450
     upgradeIcon: {fileID: 21300000, guid: 36b53685e1621334687f6dd222124736, type: 3}
     upgradeCost: 300
     upgradeName: Pin Point Accuracy
@@ -36,7 +36,7 @@ MonoBehaviour:
     towerName: Lvl 2 Mercenary
     towerIcon: {fileID: 21300000, guid: 4ae42ead9014ae24ca803bce9421ce30, type: 3}
     overrideSellCost: 0
-    sellCost: 450
+    sellCost: 600
     upgradeIcon: {fileID: 21300000, guid: 36b53685e1621334687f6dd222124736, type: 3}
     upgradeCost: 600
     upgradeName: Enhanced Scope
@@ -49,7 +49,7 @@ MonoBehaviour:
     towerName: Lvl 3 Mercenary
     towerIcon: {fileID: 21300000, guid: afe1f76da0cd0884099402bae5ccadac, type: 3}
     overrideSellCost: 0
-    sellCost: 750
+    sellCost: 900
     upgradeIcon: {fileID: 21300000, guid: f91da3e2eda735542862b2584907fac4, type: 3}
     upgradeCost: 1750
     upgradeName: High Impact Rifle
@@ -62,7 +62,7 @@ MonoBehaviour:
     towerName: Lvl 4 Mercenary
     towerIcon: {fileID: 21300000, guid: 4ae42ead9014ae24ca803bce9421ce30, type: 3}
     overrideSellCost: 0
-    sellCost: 1625
+    sellCost: 1775
     upgradeIcon: {fileID: 21300000, guid: 811800d4bf18e034587a41d7d2f92662, type: 3}
     upgradeCost: 8500
     upgradeName: Semi-Auto
@@ -75,7 +75,7 @@ MonoBehaviour:
     towerName: Lvl 5 Mercenary
     towerIcon: {fileID: 21300000, guid: 1f962f927c31a1545a1a2c37d54c439b, type: 3}
     overrideSellCost: 0
-    sellCost: 5875
+    sellCost: 6025
     upgradeIcon: {fileID: 0}
     upgradeCost: 7000
     upgradeName: Piercing Shots

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 163164241}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ MonoBehaviour:
   projectileSpeed: 20
   projectileLifetime: 0.5
   range: 4
-  attackInterval: 0.2
+  attackInterval: 0.15
   rotationSpeed: 35
   projectilePrefab: {fileID: 2184705531295620089, guid: ab04dfce1227613429efaf692693b949,
     type: 3}
@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4317654547895627506}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: rapid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1232800585463336915}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TargettingParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 8269524216479826653}
   - component: {fileID: 9125988053783543172}
   - component: {fileID: 3732672443095540384}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,9 +256,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7604669971187994952, guid: 59f421749bc4a2b498b0c2cd8ad5af29, type: 3}
-  - {fileID: 5046226728603767883, guid: 59f421749bc4a2b498b0c2cd8ad5af29, type: 3}
-  - {fileID: -156576711893025377, guid: 59f421749bc4a2b498b0c2cd8ad5af29, type: 3}
+  - {fileID: 2100000, guid: 85d0f3606a5eb35439bb05b553170ad2, type: 2}
+  - {fileID: 2100000, guid: 1e2e05a6fde9f1f4ba1a63743b5db4eb, type: 2}
+  - {fileID: 2100000, guid: 3a9bf6e5f8922684f97f4d015ddf2314, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 551022172057363560}
   - component: {fileID: 5258059331660748891}
   - component: {fileID: 6524795806283776170}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,9 +341,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7604669971187994952, guid: 59f421749bc4a2b498b0c2cd8ad5af29, type: 3}
-  - {fileID: 5046226728603767883, guid: 59f421749bc4a2b498b0c2cd8ad5af29, type: 3}
-  - {fileID: -156576711893025377, guid: 59f421749bc4a2b498b0c2cd8ad5af29, type: 3}
+  - {fileID: 2100000, guid: 85d0f3606a5eb35439bb05b553170ad2, type: 2}
+  - {fileID: 2100000, guid: 1e2e05a6fde9f1f4ba1a63743b5db4eb, type: 2}
+  - {fileID: 2100000, guid: 3a9bf6e5f8922684f97f4d015ddf2314, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

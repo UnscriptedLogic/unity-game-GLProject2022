@@ -56,13 +56,15 @@ namespace UI
 
             PlayFabManager.GetTowerCountScores(success =>
             {
-                foreach (var item in success.Leaderboard)
+                for (int i = success.Leaderboard.Count - 1; i >= 0; i--)
                 {
-                    GameObject scoreCard = Instantiate(lbScorePrefab, listParent);
-                    scoreCard.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = item.DisplayName;
-                    scoreCard.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = item.StatValue.ToString();
+                    PlayFab.ClientModels.PlayerLeaderboardEntry entry = success.Leaderboard[i];
 
-                    if (item.PlayFabId == GameManager.playfabID)
+                    GameObject scoreCard = Instantiate(lbScorePrefab, listParent);
+                    scoreCard.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = entry.DisplayName;
+                    scoreCard.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = entry.StatValue.ToString();
+
+                    if (entry.PlayFabId == GameManager.playfabID)
                     {
                         scoreCard.transform.GetChild(0).GetComponent<Image>().color = myColor;
                     }

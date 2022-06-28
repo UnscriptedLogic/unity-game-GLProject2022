@@ -11,6 +11,7 @@ using UI;
 using UnityEngine;
 using TMPro;
 using Backend;
+using UnityEngine.UI;
 
 namespace StartScreen
 {
@@ -25,6 +26,8 @@ namespace StartScreen
         [SerializeField] private AccountUIController accountUIController;
         [SerializeField] private TextMeshProUGUI versionText;
         [SerializeField] private TextMeshProUGUI deviceTMP;
+        [SerializeField] private Button leaderboardButton;
+        [SerializeField] private ThemeToggleButton themeToggle;
         [SerializeField] private LayerMask nodeLayer;
 
         [Space(10)]
@@ -35,10 +38,16 @@ namespace StartScreen
         private async void Start()
         {
             versionText.text = $"Version: {Application.version}";
+            
             if (!PlayerPrefs.HasKey(PlayFabManager.DEVICE_ID))
             {
                 System.Guid guid = System.Guid.NewGuid();
-                PlayerPrefs.SetString(PlayFabManager.DEVICE_ID, guid.ToString()); 
+                PlayerPrefs.SetString(PlayFabManager.DEVICE_ID, guid.ToString());
+            }
+            else if (PlayerPrefs.GetString(PlayFabManager.DEVICE_ID) == "")
+            {
+                System.Guid guid = System.Guid.NewGuid();
+                PlayerPrefs.SetString(PlayFabManager.DEVICE_ID, guid.ToString());
             }
 
             GameManager.deviceID = PlayerPrefs.GetString(PlayFabManager.DEVICE_ID);
@@ -59,15 +68,20 @@ namespace StartScreen
                 {
                     Debug.Log("Success!");
                     GameManager.loggedIn = true;
+                    leaderboardButton.interactable = true;
                     PlayFabManager.GetPlayerData(res => { }, PlayFabManager.HandleError);
                     gameSceneManager.HideLoading();
                 }, error =>
                 {
                     Debug.Log($"Could not log in to PlayFab {error.GenerateErrorReport()}");
+                    deviceTMP.text = error.GenerateErrorReport();
+                    leaderboardButton.interactable = false;
                     gameSceneManager.HideLoading();
                 });
+
             } else
             {
+                leaderboardButton.interactable = true;
                 gameSceneManager.HideLoading();
             }
 
@@ -79,6 +93,7 @@ namespace StartScreen
                 mainMenuScreen.AboutButton.gameObject.SetActive(true);
                 PlayFabManager.SavePlayerData(res => { }, PlayFabManager.HandleError);
             }
+
         }
 
         private void Update()

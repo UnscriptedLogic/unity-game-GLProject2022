@@ -111,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3199580389701150390}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3199580389831394869}
   - component: {fileID: 3199580389831394867}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: PredictSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 3199580389840148063}
   - component: {fileID: 3199580389840148061}
   - component: {fileID: 3199580389840148062}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3199580389969540525}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 3199580390490795694}
   - component: {fileID: 3199580390490795692}
   - component: {fileID: 3199580390490795693}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 3199580391474192167}
   - component: {fileID: 3199580391474192166}
   - component: {fileID: 1656562306931233817}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CustomSliderWS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -591,7 +591,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  lerpDuration: 0.5
   amount: 25
   keepSize: 0
   trackSpeed: 0.025
@@ -611,7 +610,7 @@ GameObject:
   - component: {fileID: 3199580391508435565}
   - component: {fileID: 3199580391508435563}
   - component: {fileID: 3199580391508435564}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -728,7 +727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: 852029564262320468}
-  health: 2250
+  health: 1650
   movementSpeed: 0.45
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 1656562306931233817}

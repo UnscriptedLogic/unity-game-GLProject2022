@@ -99,6 +99,9 @@ namespace Core.Pathing
                 nodes[j].isObstacle = false;
                 nodes[j].SetVisibility(true);
             }
+
+            Debug.Log("Hello World");
+
         }
 
         private void GetWeightPoints()

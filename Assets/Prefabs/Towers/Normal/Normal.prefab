@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 163164241}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,8 +82,8 @@ MonoBehaviour:
   damage: 1
   projectileSpeed: 30
   projectileLifetime: 0.4
-  range: 5
-  attackInterval: 1.25
+  range: 4.5
+  attackInterval: 1.4
   rotationSpeed: 50
   projectilePrefab: {fileID: 2184705531295620089, guid: 5303ffed305f8ae4694b3f3b9e958285,
     type: 3}
@@ -192,10 +192,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6763858364670572316, guid: 6531b7a854e2e0a4eaeae27c5a9ec3c0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2045257923548263128, guid: 6531b7a854e2e0a4eaeae27c5a9ec3c0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6531b7a854e2e0a4eaeae27c5a9ec3c0,
         type: 3}
       propertyPath: m_Name
       value: scout
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6531b7a854e2e0a4eaeae27c5a9ec3c0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:

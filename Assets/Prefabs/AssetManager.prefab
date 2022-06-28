@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f122334058c436b4f879aa3d37c1337d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  themeFile: {fileID: 11400000, guid: 9be7180ffeceaa9458ac5c681aeb4023, type: 2}
+  themeFile: {fileID: 11400000, guid: 1a7ed1b555a37e14880ecef4f0c17fee, type: 2}
   placedParticle: {fileID: 5154074676509688101, guid: 068c2772b2f202740a07ad7d3879f22e,
     type: 3}
   flameParticle: {fileID: 3869479697698340525, guid: 86ab2b6d4967d2947aa6b17770d82a68,

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7712709671041865764}
   - component: {fileID: 6824970810714622896}
   - component: {fileID: 752986021837392661}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 7507150219427712891}
   - component: {fileID: 7507150219427712889}
   - component: {fileID: 7507150219427712888}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7507150219747723107}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 7507150219877037962}
   - component: {fileID: 7507150219877037960}
   - component: {fileID: 7507150219877037963}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7507150219885848544}
   - component: {fileID: 7507150219885848550}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: PredictSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7507150220016145528}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 7507150220592004850}
   - component: {fileID: 7507150220592004851}
   - component: {fileID: 5959593351887877580}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CustomSliderWS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,7 +705,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  lerpDuration: 0.5
   amount: 25
   keepSize: 0
   trackSpeed: 0.025
@@ -725,7 +724,7 @@ GameObject:
   - component: {fileID: 7507150220624659384}
   - component: {fileID: 7507150220624659390}
   - component: {fileID: 7507150220624659385}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,3 +1,4 @@
+using Core.Assets;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace Core
         public static int highestWave = 0;
         public static int lowestTowerUsage = 100;
 
-        public static Action OnUpdated;
+        //Game Related
+        public static ThemeSO themeSO;
     }
 }

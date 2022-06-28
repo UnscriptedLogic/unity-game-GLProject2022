@@ -44,15 +44,30 @@ MonoBehaviour:
     averageHealth: 5
     averageSpeed: 1.75
   - waveSegments:
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
+        type: 3}
+      amount: 17
+      interval: 0.5
+      segmentInterval: 3
+    waveInterval: 10
+    totalPoints: 102
+    averageHealth: 6
+    averageSpeed: 1.5
+  - waveSegments:
     - enemyToSpawn: {fileID: 7644136366003357881, guid: 335db610ae8adaf46a36ff38c7656c67,
         type: 3}
-      amount: 10
+      amount: 15
+      interval: 0.25
+      segmentInterval: 3
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
+        type: 3}
+      amount: 15
       interval: 0.75
       segmentInterval: 3
     waveInterval: 10
-    totalPoints: 40
-    averageHealth: 4
-    averageSpeed: 2
+    totalPoints: 150
+    averageHealth: 5
+    averageSpeed: 1.75
   - waveSegments:
     - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
         type: 3}
@@ -65,58 +80,108 @@ MonoBehaviour:
       interval: 0.5
       segmentInterval: 0
     waveInterval: 10
-    totalPoints: 230
-    averageHealth: 13
+    totalPoints: 330
+    averageHealth: 18
     averageSpeed: 1.25
   - waveSegments:
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: f78919e5216024144a2aab50255dfa74,
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: b7130a5aaf89d6b4c8c61cfbaa50cade,
         type: 3}
-      amount: 20
-      interval: 1
-      segmentInterval: 2
-    - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
-        type: 3}
-      amount: 1
-      interval: 1.5
+      amount: 5
+      interval: 0.5
       segmentInterval: 0
     - enemyToSpawn: {fileID: 7644136366003357881, guid: 335db610ae8adaf46a36ff38c7656c67,
         type: 3}
-      amount: 20
-      interval: 1
+      amount: 5
+      interval: 0.5
       segmentInterval: 0
-    waveInterval: 30
-    totalPoints: 730
-    averageHealth: 91.333336
-    averageSpeed: 1.2666667
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: f78919e5216024144a2aab50255dfa74,
+        type: 3}
+      amount: 11
+      interval: 1
+      segmentInterval: 2
+    waveInterval: 10
+    totalPoints: 380
+    averageHealth: 13.333333
+    averageSpeed: 1.5
   - waveSegments:
     - enemyToSpawn: {fileID: 7644136366003357881, guid: f78919e5216024144a2aab50255dfa74,
         type: 3}
-      amount: 45
+      amount: 20
       interval: 0.5
       segmentInterval: 0
-    waveInterval: 20
-    totalPoints: 900
-    averageHealth: 20
+    waveInterval: 17
+    totalPoints: 600
+    averageHealth: 30
     averageSpeed: 1
   - waveSegments:
     - enemyToSpawn: {fileID: 7644136366003357881, guid: f78919e5216024144a2aab50255dfa74,
         type: 3}
       amount: 15
-      interval: 1.5
+      interval: 0.5
       segmentInterval: 1.5
-    - enemyToSpawn: {fileID: 3410873540175906039, guid: 72893ec1147fa8747b7246ff97557281,
+    - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
         type: 3}
       amount: 1
+      interval: 1.5
+      segmentInterval: 1.5
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: 335db610ae8adaf46a36ff38c7656c67,
+        type: 3}
+      amount: 30
+      interval: 0.2
+      segmentInterval: 1.5
+    waveInterval: 35
+    totalPoints: 820
+    averageHealth: 94.666664
+    averageSpeed: 1.2666667
+  - waveSegments:
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: b88924bb25a8c904280c0b57a9206b76,
+        type: 3}
+      amount: 10
       interval: 0.25
-      segmentInterval: 0
-    waveInterval: 130
-    totalPoints: 2550
-    averageHealth: 1135
-    averageSpeed: 0.725
+      segmentInterval: 2
+    waveInterval: 15
+    totalPoints: 250
+    averageHealth: 25
+    averageSpeed: 3
+  - waveSegments:
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: 335db610ae8adaf46a36ff38c7656c67,
+        type: 3}
+      amount: 20
+      interval: 0.5
+      segmentInterval: 2
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: b88924bb25a8c904280c0b57a9206b76,
+        type: 3}
+      amount: 20
+      interval: 0.25
+      segmentInterval: 2
+    waveInterval: 15
+    totalPoints: 580
+    averageHealth: 14.5
+    averageSpeed: 2.5
   - waveSegments:
     - enemyToSpawn: {fileID: 7644136366003357881, guid: f78919e5216024144a2aab50255dfa74,
         type: 3}
+      amount: 23
+      interval: 0.5
+      segmentInterval: 0
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: 335db610ae8adaf46a36ff38c7656c67,
+        type: 3}
       amount: 20
+      interval: 0.25
+      segmentInterval: 3
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: b88924bb25a8c904280c0b57a9206b76,
+        type: 3}
+      amount: 20
+      interval: 0.25
+      segmentInterval: 0
+    waveInterval: 20
+    totalPoints: 1270
+    averageHealth: 19.666666
+    averageSpeed: 2
+  - waveSegments:
+    - enemyToSpawn: {fileID: 7644136366003357881, guid: f78919e5216024144a2aab50255dfa74,
+        type: 3}
+      amount: 15
       interval: 0.5
       segmentInterval: 0
     - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
@@ -124,232 +189,57 @@ MonoBehaviour:
       amount: 2
       interval: 1.5
       segmentInterval: 1.5
-    - enemyToSpawn: {fileID: 3410873540175906039, guid: 72893ec1147fa8747b7246ff97557281,
-        type: 3}
-      amount: 1
-      interval: 1
-      segmentInterval: 10
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: ee801da81d9c2714cbb897ed1b6c0df6,
-        type: 3}
-      amount: 3
-      interval: 1
-      segmentInterval: 0
     waveInterval: 30
-    totalPoints: 3195
-    averageHealth: 633.75
-    averageSpeed: 2.5625
+    totalPoints: 950
+    averageHealth: 140
+    averageSpeed: 0.9
   - waveSegments:
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: 335db610ae8adaf46a36ff38c7656c67,
-        type: 3}
-      amount: 10
-      interval: 0.25
-      segmentInterval: 0.5
     - enemyToSpawn: {fileID: 7644136366003357881, guid: f78919e5216024144a2aab50255dfa74,
         type: 3}
-      amount: 20
+      amount: 10
       interval: 0.25
       segmentInterval: 0.5
     - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
         type: 3}
-      amount: 5
-      interval: 0.75
-      segmentInterval: 3
-    - enemyToSpawn: {fileID: 3410873540175906039, guid: 72893ec1147fa8747b7246ff97557281,
+      amount: 1
+      interval: 0.25
+      segmentInterval: 0.5
+    - enemyToSpawn: {fileID: 7718091526450488610, guid: a419a5b792f435b4f9a69bfa70c9276f,
         type: 3}
       amount: 1
-      interval: 0
-      segmentInterval: 5
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: ee801da81d9c2714cbb897ed1b6c0df6,
-        type: 3}
-      amount: 25
-      interval: 0.75
-      segmentInterval: 5
-    waveInterval: 20
-    totalPoints: 4315
-    averageHealth: 507.8
-    averageSpeed: 2.45
+      interval: 0.25
+      segmentInterval: 0.5
+    waveInterval: 30
+    totalPoints: 1550
+    averageHealth: 426.66666
+    averageSpeed: 0.73333335
   - waveSegments:
     - enemyToSpawn: {fileID: 7644136366003357881, guid: f78919e5216024144a2aab50255dfa74,
         type: 3}
-      amount: 20
-      interval: 0.25
-      segmentInterval: 0.5
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: 335db610ae8adaf46a36ff38c7656c67,
-        type: 3}
       amount: 10
-      interval: 0.25
-      segmentInterval: 0.5
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: f78919e5216024144a2aab50255dfa74,
-        type: 3}
-      amount: 20
-      interval: 0.25
-      segmentInterval: 0.5
-    - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
-        type: 3}
-      amount: 10
-      interval: 0.75
-      segmentInterval: 3
+      interval: 0.1
+      segmentInterval: 0
     - enemyToSpawn: {fileID: 3410873540175906039, guid: 72893ec1147fa8747b7246ff97557281,
         type: 3}
       amount: 1
-      interval: 0
-      segmentInterval: 5
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: ee801da81d9c2714cbb897ed1b6c0df6,
-        type: 3}
-      amount: 25
-      interval: 0.75
-      segmentInterval: 5
-    waveInterval: 20
-    totalPoints: 5965
-    averageHealth: 426.5
-    averageSpeed: 2.2083333
+      interval: 0.1
+      segmentInterval: 0
+    waveInterval: 60
+    totalPoints: 1950
+    averageHealth: 840
+    averageSpeed: 0.725
   - waveSegments:
     - enemyToSpawn: {fileID: 7644136366003357881, guid: 8fe48a3cbfb8334429292524360849b6,
         type: 3}
       amount: 15
       interval: 1.25
       segmentInterval: 5
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: 6f692c8b5240a414b884262faf955318,
-        type: 3}
-      amount: 10
-      interval: 1
-      segmentInterval: 5
-    - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
-        type: 3}
-      amount: 10
-      interval: 1.5
-      segmentInterval: 5
-    - enemyToSpawn: {fileID: 7718091526450488610, guid: 104b8199cb95708429fc35ae3cd7c4d8,
+    - enemyToSpawn: {fileID: 7718091526450488610, guid: a419a5b792f435b4f9a69bfa70c9276f,
         type: 3}
       amount: 1
-      interval: 0
+      interval: 1.25
       segmentInterval: 5
     waveInterval: 15
-    totalPoints: 9500
-    averageHealth: 550
-    averageSpeed: 0.675
-  - waveSegments:
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: 8fe48a3cbfb8334429292524360849b6,
-        type: 3}
-      amount: 10
-      interval: 1.5
-      segmentInterval: 1
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: 6f692c8b5240a414b884262faf955318,
-        type: 3}
-      amount: 10
-      interval: 1
-      segmentInterval: 5
-    - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
-        type: 3}
-      amount: 5
-      interval: 2
-      segmentInterval: 5
-    - enemyToSpawn: {fileID: 3410873540175906039, guid: 72893ec1147fa8747b7246ff97557281,
-        type: 3}
-      amount: 2
-      interval: 2.5
-      segmentInterval: 1
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: ee801da81d9c2714cbb897ed1b6c0df6,
-        type: 3}
-      amount: 20
-      interval: 1
-      segmentInterval: 0
-    waveInterval: 5
-    totalPoints: 10550
-    averageHealth: 593
-    averageSpeed: 2.1299999
-  - waveSegments:
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: 8fe48a3cbfb8334429292524360849b6,
-        type: 3}
-      amount: 10
-      interval: 1.5
-      segmentInterval: 1
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: 6f692c8b5240a414b884262faf955318,
-        type: 3}
-      amount: 10
-      interval: 1
-      segmentInterval: 5
-    - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
-        type: 3}
-      amount: 15
-      interval: 2
-      segmentInterval: 5
-    - enemyToSpawn: {fileID: 3410873540175906039, guid: 72893ec1147fa8747b7246ff97557281,
-        type: 3}
-      amount: 2
-      interval: 2.5
-      segmentInterval: 1
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: ee801da81d9c2714cbb897ed1b6c0df6,
-        type: 3}
-      amount: 20
-      interval: 1
-      segmentInterval: 0
-    waveInterval: 15
-    totalPoints: 13050
-    averageHealth: 593
-    averageSpeed: 2.1299999
-  - waveSegments:
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: 8fe48a3cbfb8334429292524360849b6,
-        type: 3}
-      amount: 15
-      interval: 1.5
-      segmentInterval: 1
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: 6f692c8b5240a414b884262faf955318,
-        type: 3}
-      amount: 15
-      interval: 1
-      segmentInterval: 5
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: ee801da81d9c2714cbb897ed1b6c0df6,
-        type: 3}
-      amount: 20
-      interval: 2
-      segmentInterval: 1
-    - enemyToSpawn: {fileID: 7718091526450488610, guid: b96f452c7e151b246ba248ed4df1d77b,
-        type: 3}
-      amount: 10
-      interval: 0.75
-      segmentInterval: 3
-    waveInterval: 50
-    totalPoints: 9550
-    averageHealth: 178.75
-    averageSpeed: 2.55
-  - waveSegments:
-    - enemyToSpawn: {fileID: 7718091526450488610, guid: 10b88336b67796d4fbd326e715ee286f,
-        type: 3}
-      amount: 1
-      interval: 2
-      segmentInterval: 0.5
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: 6f692c8b5240a414b884262faf955318,
-        type: 3}
-      amount: 20
-      interval: 0.5
-      segmentInterval: 0.5
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: 8fe48a3cbfb8334429292524360849b6,
-        type: 3}
-      amount: 20
-      interval: 1.5
-      segmentInterval: 0.5
-    - enemyToSpawn: {fileID: 3410873540175906039, guid: 72893ec1147fa8747b7246ff97557281,
-        type: 3}
-      amount: 2
-      interval: 1.5
-      segmentInterval: 0.5
-    - enemyToSpawn: {fileID: 7718091526450488610, guid: 10b88336b67796d4fbd326e715ee286f,
-        type: 3}
-      amount: 3
-      interval: 2
-      segmentInterval: 0.75
-    - enemyToSpawn: {fileID: 7644136366003357881, guid: 471c9a8c68d64fb49be1c22150b6dcf1,
-        type: 3}
-      amount: 2
-      interval: 4
-      segmentInterval: 0.75
-    - enemyToSpawn: {fileID: 7718091526450488610, guid: 10b88336b67796d4fbd326e715ee286f,
-        type: 3}
-      amount: 5
-      interval: 20
-      segmentInterval: 0.75
-    waveInterval: 50
-    totalPoints: 137500
-    averageHealth: 7100
-    averageSpeed: 1.1571429
+    totalPoints: 4000
+    averageHealth: 600
+    averageSpeed: 0.525

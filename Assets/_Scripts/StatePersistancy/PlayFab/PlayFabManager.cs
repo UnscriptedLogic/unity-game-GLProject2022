@@ -159,8 +159,6 @@ namespace Backend
                             {
                                 GameManager.hasSeenThanksPage = bool.Parse(result.Data[SEEN_TY_PAGE].Value);
                             }
-
-                            GameManager.OnUpdated?.Invoke();
                         }
                     }, HandleError);
                 }

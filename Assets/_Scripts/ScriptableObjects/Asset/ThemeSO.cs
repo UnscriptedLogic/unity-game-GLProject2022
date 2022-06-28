@@ -13,11 +13,13 @@ namespace Core.Assets
         [SerializeField] private GameObject spawnPrefab;
         [SerializeField] private GameObject floorPrefab;
         [SerializeField] private GameObject[] debriList;
+        [SerializeField] private Material skyboxMat;
 
         public GameObject Node => nodePrefab;
         public GameObject Home => homePrefab;
         public GameObject Spawn => spawnPrefab;
         public GameObject Floor => floorPrefab;
         public GameObject[] DebriList => debriList;
+        public Material SkyboxMat => skyboxMat;
     }
 }

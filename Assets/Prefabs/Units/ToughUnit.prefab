@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3109567107017329784}
   - component: {fileID: 3109567107017329790}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: PredictSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 3109567107026607122}
   - component: {fileID: 3109567107026607120}
   - component: {fileID: 3109567107026607123}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3109567107156000736}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3109567107424349435}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 3109567107649987811}
   - component: {fileID: 3109567107649987809}
   - component: {fileID: 3109567107649987808}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 3109567108798403946}
   - component: {fileID: 3109567108798403947}
   - component: {fileID: 1278209766786932308}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CustomSliderWS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  lerpDuration: 0.5
   amount: 25
   keepSize: 0
   trackSpeed: 0
@@ -509,7 +508,7 @@ GameObject:
   - component: {fileID: 3109567108831209504}
   - component: {fileID: 3109567108831209510}
   - component: {fileID: 3109567108831209505}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +584,7 @@ GameObject:
   - component: {fileID: 7638186652432971199}
   - component: {fileID: 6899070518293440043}
   - component: {fileID: 827081317538457230}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: -6004806168046530573}
-  health: 20
+  health: 30
   movementSpeed: 1
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 1278209766786932308}
@@ -902,4 +901,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33012fe27a7f1945ab72ff910e63830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statusEffects: []
+  resistances: []

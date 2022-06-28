@@ -18,7 +18,7 @@ MonoBehaviour:
     type: 3}
   spawnPrefab: {fileID: 4142320509489033550, guid: bd377e4a30ee3d34e9cb4dc22248f3da,
     type: 3}
-  floorPrefab: {fileID: 4137680742384520833, guid: b611d401d0a55754daf19e9b5ccc1635,
+  floorPrefab: {fileID: 2428907169421101173, guid: 716bdb28326adc648acbaf03a55986cc,
     type: 3}
   debriList:
   - {fileID: 3483050820317334545, guid: 9e3591c143e5c8b4f91a29c6f935bf11, type: 3}
@@ -26,3 +26,4 @@ MonoBehaviour:
   - {fileID: 3582334324344510906, guid: 92c69aadc6624954b871d89b672e5675, type: 3}
   - {fileID: 3582334324344510906, guid: 8c9188dce579d72408d7bf2728ce9fb3, type: 3}
   - {fileID: 3582334324344510906, guid: 832f37848202c164fa952df22e5258f5, type: 3}
+  skyboxMat: {fileID: 2100000, guid: 47b7a45414f3b564e9e8349bfa18b29f, type: 2}

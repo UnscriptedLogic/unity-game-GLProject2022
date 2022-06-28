@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3109567107017329784}
   - component: {fileID: 3109567107017329790}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: PredictSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 3109567107026607122}
   - component: {fileID: 3109567107026607120}
   - component: {fileID: 3109567107026607123}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3109567107156000736}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3109567107424349435}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 3109567107649987811}
   - component: {fileID: 3109567107649987809}
   - component: {fileID: 3109567107649987808}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 3109567108798403946}
   - component: {fileID: 3109567108798403947}
   - component: {fileID: 1278209766786932308}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CustomSliderWS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 3109567108831209504}
   - component: {fileID: 3109567108831209510}
   - component: {fileID: 3109567108831209505}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 7638186652432971199}
   - component: {fileID: 6899070518293440043}
   - component: {fileID: 827081317538457230}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -972,6 +972,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LavaUnitParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869479697698340525, guid: b08bbc96011d9e947bf374e37d4eb4fb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3869479697698340527, guid: b08bbc96011d9e947bf374e37d4eb4fb,
         type: 3}

@@ -28,7 +28,7 @@ MonoBehaviour:
     upgradeCost: 100
     upgradeName: Sharper Bullets
     overrideDesc: 0
-    upgradeDesc: Increases weapon damage
+    upgradeDesc: Swaps out nerf bullets for actual bullets. Increases weapon damage.
     nextUpgrade: {fileID: 836754924125986003, guid: dcd578c7cecb9d14584e08bcab5a5f72,
       type: 3}
   - towerID: 1
@@ -38,10 +38,10 @@ MonoBehaviour:
     overrideSellCost: 0
     sellCost: 100
     upgradeIcon: {fileID: 21300000, guid: df3fe60946792bc41b6fffc79a1d2f8a, type: 3}
-    upgradeCost: 150
+    upgradeCost: 225
     upgradeName: Better Equipment
-    overrideDesc: 0
-    upgradeDesc: Increases damage,  range and fire rate.
+    overrideDesc: 1
+    upgradeDesc: Slightly increases Range
     nextUpgrade: {fileID: 836754924125986003, guid: a6284b46561af654ea3be22ed93ede06,
       type: 3}
   - towerID: 2
@@ -49,10 +49,37 @@ MonoBehaviour:
     towerName: Lvl 3 Scout
     towerIcon: {fileID: 21300000, guid: 344a7005d5d6c56469262e2f0d2351ff, type: 3}
     overrideSellCost: 0
-    sellCost: 175
-    upgradeIcon: {fileID: 0}
-    upgradeCost: 200
-    upgradeName: Piercing Shots
-    overrideDesc: 0
-    upgradeDesc: Pierces through enemies
+    sellCost: 212.5
+    upgradeIcon: {fileID: 21300000, guid: 811800d4bf18e034587a41d7d2f92662, type: 3}
+    upgradeCost: 300
+    upgradeName: Shotgun Shells
+    overrideDesc: 1
+    upgradeDesc: Shoots out 2 more bullets at a slight angle from the main bullet.
+      The extra bullets have half the damage as the main bullet.
+    nextUpgrade: {fileID: 836754924125986003, guid: efb5bba0ce2b25a45800864c29b99363,
+      type: 3}
+  - towerID: 3
+    overrideTowerName: 0
+    towerName: Lvl 4 Scout
+    towerIcon: {fileID: 21300000, guid: 344a7005d5d6c56469262e2f0d2351ff, type: 3}
+    overrideSellCost: 0
+    sellCost: 362.5
+    upgradeIcon: {fileID: 21300000, guid: 811800d4bf18e034587a41d7d2f92662, type: 3}
+    upgradeCost: 350
+    upgradeName: Bigger Barrels
+    overrideDesc: 1
+    upgradeDesc: Increases shotgun pellet count from 3 to 5.
+    nextUpgrade: {fileID: 836754924125986003, guid: cba4d3b1b4f16224b8724d0868c14e48,
+      type: 3}
+  - towerID: 4
+    overrideTowerName: 0
+    towerName: Lvl 5 Scout
+    towerIcon: {fileID: 21300000, guid: 344a7005d5d6c56469262e2f0d2351ff, type: 3}
+    overrideSellCost: 0
+    sellCost: 537.5
+    upgradeIcon: {fileID: 21300000, guid: 811800d4bf18e034587a41d7d2f92662, type: 3}
+    upgradeCost: 600
+    upgradeName: Bigger Barrels
+    overrideDesc: 1
+    upgradeDesc: 
     nextUpgrade: {fileID: 0}

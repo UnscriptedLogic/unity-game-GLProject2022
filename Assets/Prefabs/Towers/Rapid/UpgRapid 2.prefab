@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 163164241}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ MonoBehaviour:
   projectileSpeed: 25
   projectileLifetime: 0.5
   range: 5
-  attackInterval: 0.125
+  attackInterval: 0.1
   rotationSpeed: 35
   projectilePrefab: {fileID: 2184705531295620089, guid: ab04dfce1227613429efaf692693b949,
     type: 3}
@@ -212,11 +212,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: upg_rapid2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 85356e41c5b6dcd459f3906c60981c43,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800250516343163423, guid: 85356e41c5b6dcd459f3906c60981c43,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4321514657177891973, guid: 85356e41c5b6dcd459f3906c60981c43,
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: ad0d5ad8b7324f94a89e120bff2f5b89, type: 2}
+    - target: {fileID: 8009987137999418058, guid: 85356e41c5b6dcd459f3906c60981c43,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8946660040297601765, guid: 85356e41c5b6dcd459f3906c60981c43,
         type: 3}
       propertyPath: m_LocalScale.x

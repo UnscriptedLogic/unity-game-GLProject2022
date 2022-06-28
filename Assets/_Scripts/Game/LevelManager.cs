@@ -101,9 +101,16 @@ namespace Game
                     break;
                 case LevelState.Start:
                     uiManager.ShowOnlyUI(UIManager.Pages.Loading);
+                    
+                    if (GameManager.themeSO != null)
+                    {
+                        assetManager.ThemeFile = GameManager.themeSO;
+                    }
+                    RenderSettings.skybox = assetManager.ThemeFile.SkyboxMat;
+
                     await gridManager.GenerateGrid((grid) =>
                     {
-
+                        
                     },
                     (grid, path) =>
                     {
@@ -240,7 +247,10 @@ namespace Game
                     {
                         if (buildManager.TryInspectTower())
                         {
-                            SwitchGameState(GameState.Viewing);
+                            if (levelState != LevelState.Won || levelState != LevelState.Lost)
+                            {
+                                SwitchGameState(GameState.Viewing); 
+                            }
                         }
                     }
                     break;

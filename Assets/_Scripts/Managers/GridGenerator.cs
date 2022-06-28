@@ -157,7 +157,7 @@ namespace Core.Grid
             if (neighbourNode != null)
                 neighbours.Add(neighbourNode);
 
-            AddIfNotNull(node.Coords.x - 1, node.Coords.y, ref neighbours);
+            //AddIfNotNull(node.Coords.x - 1, node.Coords.y, ref neighbours);
             AddIfNotNull(node.Coords.x + 1, node.Coords.y, ref neighbours);
             AddIfNotNull(node.Coords.x, node.Coords.y + 1, ref neighbours);
             AddIfNotNull(node.Coords.x, node.Coords.y - 1, ref neighbours);

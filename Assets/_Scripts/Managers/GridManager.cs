@@ -36,6 +36,7 @@ namespace Core.Grid
                 parent: transform 
             );
 
+            Instantiate(assetManager.ThemeFile.Floor, Vector3.zero, Quaternion.identity);
             beforePath(grid);
 
             await pathManager.GeneratePath();

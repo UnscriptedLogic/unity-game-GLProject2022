@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c193c917a0ea9546a271dcd365911f2, type: 3}
   m_Name: Rifler
   m_EditorClassIdentifier: 
-  towerCost: 400
+  towerCost: 750
   requriedElevation: {x: 0, y: 0}
   baseTower: {fileID: 836754924125986003, guid: a03db29603aa5c143a906279e91413b2,
     type: 3}
@@ -23,9 +23,9 @@ MonoBehaviour:
     towerName: Rifler
     towerIcon: {fileID: 21300000, guid: 39e2258169c85844598929b63dc206ee, type: 3}
     overrideSellCost: 0
-    sellCost: 200
+    sellCost: 375
     upgradeIcon: {fileID: 21300000, guid: f5575c4a96bfb344d8547970923792c2, type: 3}
-    upgradeCost: 750
+    upgradeCost: 450
     upgradeName: Tripod Stability
     overrideDesc: 0
     upgradeDesc: Increass the fire rate of the weapon
@@ -36,9 +36,9 @@ MonoBehaviour:
     towerName: Lvl 2 Rifler
     towerIcon: {fileID: 21300000, guid: ed1bc996a654a254fa33ba7cd7f8fd46, type: 3}
     overrideSellCost: 0
-    sellCost: 575
+    sellCost: 600
     upgradeIcon: {fileID: 21300000, guid: 33ac22f6e33c8494fb4ac8ba9515055c, type: 3}
-    upgradeCost: 1200
+    upgradeCost: 750
     upgradeName: Enhanced Weaponry
     overrideDesc: 0
     upgradeDesc: Increases damage,  range,  fire rate and projectile speed.
@@ -49,9 +49,9 @@ MonoBehaviour:
     towerName: Lvl 3 Rifler
     towerIcon: {fileID: 21300000, guid: 4d88f2b9efd0c734a89b8984fec4ee80, type: 3}
     overrideSellCost: 0
-    sellCost: 1175
+    sellCost: 975
     upgradeIcon: {fileID: 21300000, guid: 187a33a09d877304a92453cb6d326ffd, type: 3}
-    upgradeCost: 4500
+    upgradeCost: 3000
     upgradeName: Bullet Fury Firearm (BFF)
     overrideDesc: 1
     upgradeDesc: Greatly increases fire rate and slightly improves damage
@@ -62,7 +62,7 @@ MonoBehaviour:
     towerName: Lvl 4 Rifler
     towerIcon: {fileID: 21300000, guid: 4d88f2b9efd0c734a89b8984fec4ee80, type: 3}
     overrideSellCost: 0
-    sellCost: 3425
+    sellCost: 2475
     upgradeIcon: {fileID: 0}
     upgradeCost: 0
     upgradeName: 

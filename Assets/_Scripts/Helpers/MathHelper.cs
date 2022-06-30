@@ -57,9 +57,9 @@ public static class MathHelper
         return list[index];
     }
 
-    public static T RandomFromList<T>(T[] list, out int index)
+    public static T RandomFromList<T>(List<T> list, out int index)
     {
-        index = FromIntZeroTo(list.Length);
+        index = FromIntZeroTo(list.Count);
         return list[index];
     }
 

@@ -56,8 +56,6 @@ namespace Game
 
         [Space(10)]
         [SerializeField] private float returnHomedelay = 5f;
-        [SerializeField] private int debrisAmount = 30;
-        [SerializeField] private int elevationAmount = 5;
         [SerializeField] private Vector2 elevationRange;
         [SerializeField] private Vector2 secondaryElevationRange;
 
@@ -183,7 +181,7 @@ namespace Game
                     uiManager.TowerDialogue.UpgradeButton.onClick.AddListener(() =>
                     {
                         currencyManager.ModifyCurrency(ModificationType.Subtract, buildManager.InspectedTowerDetails.UpgradeCost);
-                        GridNode node = buildManager.InspectedTower.GridNode;
+                        GridNode node = buildManager.InspectedTower.OwnedGridNode;
                         buildManager.InspectedTower.RemoveSelf();
                         node.PlaceTower(buildManager.InspectedTowerDetails.UpgradedTower);
 

@@ -149,6 +149,28 @@ namespace Core.Grid
             return gridNode;
         }
 
+        public static bool AreNodesEmpty(Vector2Int[] coords, Vector2 elevationClamp)
+        {
+            bool value = true;
+            for (int i = 0; i < coords.Length; i++)
+            {
+                GridNode gridnode = GetNodeAt(coords[i]);
+                if (!gridnode.isWithinElevation(elevationClamp))
+                {
+                    value = false;
+                    break;
+                }
+
+                if (gridnode.IsOccupied && gridnode.isObstacle)
+                {
+                    value = false;
+                    break;
+                }
+            }
+
+            return value;
+        }
+
         public static GridNode[] GetNeighboursOf(GridNode node)
         {
             List<GridNode> neighbours = new List<GridNode>();
@@ -203,6 +225,7 @@ namespace Core.Grid
         public GridNode cameFromNode;
 
         public bool IsOccupied => tower != null;
+        public bool isCompletelyEmpty => !isObstacle && !IsOccupied;
         public int TeamIndex => teamIndex;
         public float fCost => hCost + gCost;
         public float Elevation => node.transform.position.y;
@@ -226,7 +249,7 @@ namespace Core.Grid
             if (!IsOccupied && !isObstacle)
             {
                 tower = UnityEngine.Object.Instantiate(towerAsset, node.transform.position + placementOffset, Quaternion.identity);
-                tower.GetComponent<Tower>().GridNode = this;
+                tower.GetComponent<Tower>().OwnedGridNode = this;
                 successful = true;
             }
 
@@ -239,8 +262,19 @@ namespace Core.Grid
             tower = null;
         }
 
+        public bool isWithinElevation(Vector2 elevationClamp)
+        {
+            if (Elevation >= elevationClamp.x && Elevation <= elevationClamp.y)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public void ForcePlaceTower(GameObject towerAsset) => tower = GameObject.Instantiate(towerAsset, node.transform.position + placementOffset, Quaternion.identity);
         public void SetColor(Color color) => NodeObject.GetComponent<Renderer>().material.color = color;
         public void SetVisibility(bool value) => NodeObject.GetComponent<Renderer>().enabled = value;
+
     }
 }

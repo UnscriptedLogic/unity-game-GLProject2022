@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5401506761912210886}
   - component: {fileID: 5639083892103561982}
   m_Layer: 7
-  m_Name: EngiFact
+  m_Name: EngiFact 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
   damage: 0
   projectileSpeed: 0
   projectileLifetime: 0
-  range: 5
+  range: 1
   attackInterval: 35
   rotationSpeed: 0
   projectilePrefab: {fileID: 0}
@@ -99,18 +99,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   drawGizmos: 0
-  tankSpawnInterval: 20
-  turretSpawnInterval: 10
-  towerLifeTime: 21
+  tankSpawnInterval: 35
+  turretSpawnInterval: 20
+  towerLifeTime: 17
   unitPrefab: {fileID: 7644136366003357881, guid: 425076f0dcf90754f876b6c6fe0a4a45,
     type: 3}
-  turretPrefab: {fileID: 836754924125986003, guid: efb5bba0ce2b25a45800864c29b99363,
+  turretPrefab: {fileID: 836754924125986003, guid: a03db29603aa5c143a906279e91413b2,
     type: 3}
-  spawnTanks: 1
-  spawnTurrets: 1
+  spawnTanks: 0
+  spawnTurrets: 0
   nodeLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
 --- !u!65 &5401506761912210886
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -32,7 +32,7 @@ namespace Towers
         [SerializeField] protected GameObject projectilePrefab;
         [SerializeField] protected Transform shootAnchor;
         [SerializeField] protected Transform rotationPart;
-        [SerializeField] protected GridNode gridNode;
+        [SerializeField] protected GridNode ownedGridNode;
         [SerializeField] protected LayerMask unitLayer;
         [SerializeField] protected LayerMask wallLayer;
 
@@ -48,7 +48,7 @@ namespace Towers
         public float TurnSpeed => rotationSpeed;
         public float ProjSpeed => projectileSpeed;
         public float ProjLifeTime => projectileLifetime;
-        public GridNode GridNode { get => gridNode; set { gridNode = value; } }
+        public GridNode OwnedGridNode { get => ownedGridNode; set { ownedGridNode = value; } }
 
         protected virtual void Start()
         {
@@ -69,27 +69,31 @@ namespace Towers
                 foreach (Collider collider1 in unitsInRange)
                 {
                     EnemyUnits unitMovement = collider1.GetComponent<EnemyUnits>();
-                    if (target == null)
+                    if (unitMovement != null)
                     {
-                        target = unitsInRange[0].GetComponent<EnemyUnits>();
-                    }
-                    else
-                    {
-                        if (Vector3.Distance(target.transform.position, transform.position) > range || target.WaypointIndex == 0)
+                        if (target == null)
                         {
-                            if (unitsInRange.Length > 1)
-                            {
-                                target = unitsInRange[1].GetComponent<EnemyUnits>();
-                            } else
-                            {
-                                target = null;
-                            }
-                            return;
+                            target = unitsInRange[0].GetComponent<EnemyUnits>();
                         }
+                        else
+                        {
+                            if (Vector3.Distance(target.transform.position, transform.position) > range || target.WaypointIndex == 0)
+                            {
+                                if (unitsInRange.Length > 1)
+                                {
+                                    target = unitsInRange[1].GetComponent<EnemyUnits>();
+                                }
+                                else
+                                {
+                                    target = null;
+                                }
+                                return;
+                            }
 
-                        //Switch targets if one is ahead of the other
-                        if (unitMovement.WaypointIndex > target.WaypointIndex)
-                            target = unitMovement;
+                            //Switch targets if one is ahead of the other
+                            if (unitMovement.WaypointIndex > target.WaypointIndex)
+                                target = unitMovement;
+                        }   
                     }
                 }
 
@@ -127,6 +131,6 @@ namespace Towers
             attackBehaviour.Attack(projectile, spawnpoint, settings);
         }
 
-        public void RemoveSelf() => gridNode.RemoveTower();
+        public void RemoveSelf() => ownedGridNode.RemoveTower();
     }
 }

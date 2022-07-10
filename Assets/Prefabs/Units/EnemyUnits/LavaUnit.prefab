@@ -842,7 +842,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: -6004806168046530573}
+  faceDirection: 0
   health: 120
+  armor: 1
   movementSpeed: 0.75
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 1278209766786932308}
@@ -907,7 +909,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resistances:
   - effectType: 0
-    resistance: 200
+    resistance: 300
+  - effectType: 1
+    resistance: -10
 --- !u!1001 &7749906776196514248
 PrefabInstance:
   m_ObjectHideFlags: 0

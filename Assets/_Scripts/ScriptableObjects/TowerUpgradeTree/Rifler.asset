@@ -17,6 +17,13 @@ MonoBehaviour:
   baseTower: {fileID: 836754924125986003, guid: a03db29603aa5c143a906279e91413b2,
     type: 3}
   baseIcon: {fileID: 21300000, guid: 39e2258169c85844598929b63dc206ee, type: 3}
+  towerDescription: 'The Rifler is a fully automatic machine gun turret that is capable
+    of trimming away an enemy''s health down to nothing in a matter of seconds.
+
+
+    Its
+    high firing rate and relatively cheap production cost make it the first line
+    of defense in most cities.'
   treeList:
   - towerID: 10
     overrideTowerName: 0
@@ -27,8 +34,8 @@ MonoBehaviour:
     upgradeIcon: {fileID: 21300000, guid: f5575c4a96bfb344d8547970923792c2, type: 3}
     upgradeCost: 450
     upgradeName: Tripod Stability
-    overrideDesc: 0
-    upgradeDesc: Increass the fire rate of the weapon
+    overrideDesc: 1
+    upgradeDesc: '- Reduces attack interval from 0.15s - 0.125s'
     nextUpgrade: {fileID: 836754924125986003, guid: dab0061b195618c43acc03955e77329d,
       type: 3}
   - towerID: 11
@@ -40,8 +47,19 @@ MonoBehaviour:
     upgradeIcon: {fileID: 21300000, guid: 33ac22f6e33c8494fb4ac8ba9515055c, type: 3}
     upgradeCost: 750
     upgradeName: Enhanced Weaponry
-    overrideDesc: 0
-    upgradeDesc: Increases damage,  range,  fire rate and projectile speed.
+    overrideDesc: 1
+    upgradeDesc: '- Increases damage from 1 - 2
+
+
+      - Reduces attack interval
+      from 0.125s - 0.1s
+
+
+      - Increases projectile speed from 20 - 25
+
+
+      -
+      Increases range from 4 - 5'
     nextUpgrade: {fileID: 836754924125986003, guid: 276916985c3ebc04fa47d1fe1cec28bd,
       type: 3}
   - towerID: 12
@@ -50,11 +68,15 @@ MonoBehaviour:
     towerIcon: {fileID: 21300000, guid: 4d88f2b9efd0c734a89b8984fec4ee80, type: 3}
     overrideSellCost: 0
     sellCost: 975
-    upgradeIcon: {fileID: 21300000, guid: 187a33a09d877304a92453cb6d326ffd, type: 3}
+    upgradeIcon: {fileID: 21300000, guid: 811800d4bf18e034587a41d7d2f92662, type: 3}
     upgradeCost: 3000
     upgradeName: Bullet Fury Firearm (BFF)
     overrideDesc: 1
-    upgradeDesc: Greatly increases fire rate and slightly improves damage
+    upgradeDesc: '- Reduces attack interval from 0.1s - 0.075s
+
+
+      - Increases
+      damage from 2 - 4'
     nextUpgrade: {fileID: 836754924125986003, guid: 6e0c33edf4427804f822997e43674635,
       type: 3}
   - towerID: 13
@@ -69,3 +91,4 @@ MonoBehaviour:
     overrideDesc: 0
     upgradeDesc: 
     nextUpgrade: {fileID: 0}
+  nodeRequirements: []

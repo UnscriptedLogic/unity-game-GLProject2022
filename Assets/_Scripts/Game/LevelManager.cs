@@ -181,11 +181,18 @@ namespace Game
                     uiManager.TowerDialogue.UpgradeButton.onClick.AddListener(() =>
                     {
                         currencyManager.ModifyCurrency(ModificationType.Subtract, buildManager.InspectedTowerDetails.UpgradeCost);
-                        GridNode node = buildManager.InspectedTower.OwnedGridNode;
+                        GridNode baseNode = buildManager.InspectedTower.OwnedGridNodes[0];
+                        Vector3 position = buildManager.InspectedTower.transform.position;
                         buildManager.InspectedTower.RemoveSelf();
-                        node.PlaceTower(buildManager.InspectedTowerDetails.UpgradedTower);
+                        baseNode.PlaceTower(buildManager.InspectedTowerDetails.UpgradedTower);
+                        baseNode.TowerOnNode.transform.position = position;
 
-                        buildManager.InspectedTower = node.TowerOnNode.GetComponent<Tower>();
+                        if (baseNode.TowerOnNode.TryGetComponent(out IRequirePath requirePath))
+                        {
+                            requirePath.InitPath(pathManager.Path);
+                        }
+
+                        buildManager.InspectedTower = baseNode.TowerOnNode.GetComponent<Tower>();
                         buildManager.InspectedTowerDetails = buildManager.TowerTree.GetTowerDetail(buildManager.InspectedTower.ID);
                         
                         uiManager.TowerDialogue.UpgradeButton.onClick.RemoveAllListeners();

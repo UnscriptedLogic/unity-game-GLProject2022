@@ -17,6 +17,9 @@ MonoBehaviour:
   baseTower: {fileID: 836754924125986003, guid: 03e8205c481f37e49a17b1068fab1b31,
     type: 3}
   baseIcon: {fileID: 21300000, guid: 6f83de6c790fa524aa8708d7fefe29d3, type: 3}
+  towerDescription: "Scouts are popular because they're cheap and have good overall
+    operational power. \n\nBack then, everyone had one. It helped protect houses,
+    schools and banks. "
   treeList:
   - towerID: 0
     overrideTowerName: 0
@@ -28,7 +31,11 @@ MonoBehaviour:
     upgradeCost: 100
     upgradeName: Sharper Bullets
     overrideDesc: 0
-    upgradeDesc: Swaps out nerf bullets for actual bullets. Increases weapon damage.
+    upgradeDesc: '- Increases damage from 1 - 2
+
+
+      - Increases range from 4.5
+      - 4.75'
     nextUpgrade: {fileID: 836754924125986003, guid: dcd578c7cecb9d14584e08bcab5a5f72,
       type: 3}
   - towerID: 1
@@ -41,7 +48,11 @@ MonoBehaviour:
     upgradeCost: 225
     upgradeName: Better Equipment
     overrideDesc: 1
-    upgradeDesc: Slightly increases Range
+    upgradeDesc: '- Increases range from 4.75 - 5
+
+
+      - Reduces attack interval
+      from 1.4s - 1.25s'
     nextUpgrade: {fileID: 836754924125986003, guid: a6284b46561af654ea3be22ed93ede06,
       type: 3}
   - towerID: 2
@@ -54,8 +65,8 @@ MonoBehaviour:
     upgradeCost: 300
     upgradeName: Shotgun Shells
     overrideDesc: 1
-    upgradeDesc: Shoots out 2 more bullets at a slight angle from the main bullet.
-      The extra bullets have half the damage as the main bullet.
+    upgradeDesc: '- [Modifier] Shoots out 2 more bullets at a 15 degrees from the
+      main bullet. The extra bullets have half the damage as the main bullet.'
     nextUpgrade: {fileID: 836754924125986003, guid: efb5bba0ce2b25a45800864c29b99363,
       type: 3}
   - towerID: 3
@@ -64,11 +75,11 @@ MonoBehaviour:
     towerIcon: {fileID: 21300000, guid: 344a7005d5d6c56469262e2f0d2351ff, type: 3}
     overrideSellCost: 0
     sellCost: 362.5
-    upgradeIcon: {fileID: 21300000, guid: 811800d4bf18e034587a41d7d2f92662, type: 3}
+    upgradeIcon: {fileID: 21300000, guid: b7e1a88d59f223b489278667df5367f9, type: 3}
     upgradeCost: 350
     upgradeName: Bigger Barrels
     overrideDesc: 1
-    upgradeDesc: Increases shotgun pellet count from 3 to 5.
+    upgradeDesc: '- Increases shotgun pellet count from 3 to 5.'
     nextUpgrade: {fileID: 836754924125986003, guid: cba4d3b1b4f16224b8724d0868c14e48,
       type: 3}
   - towerID: 4
@@ -77,9 +88,10 @@ MonoBehaviour:
     towerIcon: {fileID: 21300000, guid: 344a7005d5d6c56469262e2f0d2351ff, type: 3}
     overrideSellCost: 0
     sellCost: 537.5
-    upgradeIcon: {fileID: 21300000, guid: 811800d4bf18e034587a41d7d2f92662, type: 3}
+    upgradeIcon: {fileID: 21300000, guid: 33ac22f6e33c8494fb4ac8ba9515055c, type: 3}
     upgradeCost: 600
     upgradeName: Bigger Barrels
     overrideDesc: 1
     upgradeDesc: 
     nextUpgrade: {fileID: 0}
+  nodeRequirements: []

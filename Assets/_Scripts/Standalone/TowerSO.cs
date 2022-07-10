@@ -50,13 +50,26 @@ namespace Standalone
         [SerializeField] private Vector2 requriedElevation;
         [SerializeField] private GameObject baseTower;
         [SerializeField] private Sprite baseIcon;
-        [SerializeField] private TowerDetails[] treeList;
 
+        [TextArea(5, 5)]
+        [SerializeField] private string towerDescription;
+
+        [SerializeField] private TowerDetails[] treeList;
+        [SerializeField] private Vector2Int[] nodeRequirements;
+
+        /**
+         * Base node or node 0,0 is always at the top left.
+         * (0,0)    (0,1)
+         * (-1,0), (-1,1)
+        **/
+        [Tooltip("Leave Empty for 1x1 constructions")]
+        public Vector2Int[] MultiNodeRequirements => nodeRequirements;
         public Vector2 RequiredElevation => requriedElevation;
         public float TowerCost => towerCost;
         public TowerDetails[] TreeList => treeList;
         public GameObject BaseTower => baseTower;
         public Sprite BaseIcon => baseIcon;
+        public string TowerDesc => towerDescription;
 
         private void OnValidate()
         {

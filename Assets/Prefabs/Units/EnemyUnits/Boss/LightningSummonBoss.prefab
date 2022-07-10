@@ -5711,13 +5711,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: 5736165837249898625}
+  faceDirection: 0
   health: 1000
+  armor: 2
   movementSpeed: 0.5
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 5959593351887877580}
   unitAbilities:
   - {fileID: 8820277245108676987}
-  abilityInterval: 0
+  abilityInterval: 10
   onDeathAbilities: []
 --- !u!114 &8820277245108676987
 MonoBehaviour:
@@ -5752,4 +5754,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resistances:
   - effectType: 0
+    resistance: 50
+  - effectType: 1
     resistance: 50

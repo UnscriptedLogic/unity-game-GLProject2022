@@ -49,3 +49,5 @@ MonoBehaviour:
     type: 3}
   flameParticle: {fileID: 3869479697698340525, guid: 86ab2b6d4967d2947aa6b17770d82a68,
     type: 3}
+  iceParticle: {fileID: 3869479697698340525, guid: 9e0263bce5cf8d94d80a849099706892,
+    type: 3}

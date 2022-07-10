@@ -87,11 +87,11 @@ namespace Core.UI
                 buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = towerSOs[i].TowerCost.ToString() + " points";
                 #endregion
 
-                GameObject baseTower = towerSOs[i].BaseTower;
+                TowerSO towerSO = towerSOs[i];
                 buttons[i].onClick.AddListener(() =>
                 {
                     levelManager.SetBuildMode();
-                    levelManager.BuildManager.SetBuildObject(baseTower);
+                    levelManager.BuildManager.SetBuildObject(towerSO);
                 });
             }
         }
@@ -99,7 +99,7 @@ namespace Core.UI
         public void SetTowerDialogue(TowerDetails towerDetails, Tower tower, float currency)
         {
             towerDialogue.SetDetails(towerDetails);
-            towerDialogue.UpdateStats(tower.Damage, tower.Range, tower.FireRate, tower.TurnSpeed, tower.ProjSpeed);
+            towerDialogue.UpdateStats(tower.Damage, tower.Piercing, tower.Range, tower.FireRate, tower.TurnSpeed, tower.ProjSpeed);
             towerDialogue.UpdateButtons(currency);
         }
 

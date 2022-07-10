@@ -7,19 +7,20 @@ using Game.StatusEffects;
 
 namespace Projectiles
 {
-    public class FlameProjectile : Projectile
+    public class SphericalStatusProjectile : Projectile
     {
+        [SerializeField] private AffectorManager.EffectType effectType;
         [SerializeField] private float sizeMultiplier = 3f;
         [SerializeField] private AnimationCurve sizeCurve;
 
-        [SerializeField] private float burnDuration;
-        [SerializeField] private float burnDamage;
-        [SerializeField] private float tickSpeed;
+        private float duration;
+        private float effectAmount;
+        private float tickSpeed;
         [SerializeField] private Vector3 startSize = Vector3.one;
 
         public float TickSpeed { get => tickSpeed; set { tickSpeed = value; } }
-        public float BurnDamage { get => burnDamage; set { burnDamage = value; } }
-        public float BurnDuration { get => burnDuration; set { burnDuration = value; } } 
+        public float EffectAmount { get => effectAmount; set { effectAmount = value; } }
+        public float EffectDuration { get => duration; set { duration = value; } } 
 
         public override void Initialize(ProjectileSettings projectileSettings)
         {
@@ -46,11 +47,11 @@ namespace Projectiles
             IDamageable damageable = other.GetComponent<IDamageable>();
             if (damageable != null && other.GetComponent<Unit>() != null)
             {
-                damageable.ModifyHealth(ModificationType.Subtract, damage);
+                damageable.ModifyHealth(ModificationType.Subtract, base.damage);
 
                 AffectorManager affectorManager = other.transform.GetComponent<AffectorManager>();
                 if (affectorManager != null)
-                affectorManager.ApplyEffect(AffectorManager.EffectType.Burn, burnDuration, burnDamage, tickSpeed);
+                affectorManager.ApplyEffect(effectType, duration, effectAmount, tickSpeed);
             }
         }
 

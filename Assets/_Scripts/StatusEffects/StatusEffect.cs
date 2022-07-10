@@ -3,6 +3,7 @@ using Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Units;
 using UnityEngine;
 
 namespace Game.StatusEffects
@@ -19,18 +20,20 @@ namespace Game.StatusEffects
         protected AffectorManager affectorManager;
         protected GameObject effect;
         protected IDamageable damageable;
+        protected Unit unit;
 
         public float TickInterval => tickInterval;
         public float Amount => amount;
         public float Duration => duration;
 
-        public virtual void Initialize(AffectorManager affectorManager, float duration, float amount, float tickInterval)
+        public void Initialize(AffectorManager affectorManager, float duration, float amount, float tickInterval)
         {
             this.affectorManager = affectorManager;
             this.duration = duration;
             this.amount = amount;
             this.tickInterval = tickInterval;
             damageable = GetComponent<IDamageable>();
+            unit = GetComponent<Unit>();
 
             _duration = duration;
             if (duration == 0)
@@ -38,10 +41,7 @@ namespace Game.StatusEffects
                 isInifinite = true;
             }
 
-            if (AssetManager.instance.FlameParticle != null)
-            {
-                effect = Instantiate(AssetManager.instance.FlameParticle, transform);
-            }
+            OnEffectStarted();
         }
 
         protected virtual void Update()
@@ -59,7 +59,17 @@ namespace Game.StatusEffects
             }
         }
 
+        protected virtual void OnEffectStarted()
+        {
+
+        }
+
         protected virtual void Tick()
+        {
+
+        }
+
+        protected virtual void OnEffectEnded()
         {
 
         }
@@ -69,7 +79,7 @@ namespace Game.StatusEffects
             _duration = newDuration;
         }
 
-        private void ReduceDuration()
+        protected void ReduceDuration()
         {
             if (isInifinite)
                 return;
@@ -84,19 +94,15 @@ namespace Game.StatusEffects
             }
         }
 
-        private void OnDisable()
+        protected void OnDestroy()
         {
             DestroyStatus();
         }
 
-        private void OnDestroy()
+        public virtual void DestroyStatus()
         {
-            DestroyStatus();
-        }
+            OnEffectEnded();
 
-        private void DestroyStatus()
-        {
-            affectorManager.Remove(this);
             if (effect != null)
                 Destroy(effect.gameObject);
             Destroy(this);

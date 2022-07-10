@@ -10,14 +10,15 @@ namespace Game.StatusEffects
     {
         public enum EffectType
         {
-            Burn
+            Burn,
+            Slow
         }
 
         [Serializable]
         public class Resistance
         {
             [SerializeField] private EffectType effectType;
-            [Range(-200f, 200f)]
+            [Range(-400f, 400f)]
             [SerializeField] private float resistance;
 
             public EffectType EffectType => effectType;
@@ -29,10 +30,9 @@ namespace Game.StatusEffects
 
         [SerializeField] private Resistance[] resistances;
 
-        private void OnEnable()
-        {
-            PurgeEffects();
-        }
+        private void Start() => PurgeEffects();
+        private void OnEnable() => PurgeEffects();
+        private void OnDisable() => PurgeEffects();
 
         public void ApplyEffect(EffectType type, float duration, float amount, float tick)
         {
@@ -61,22 +61,55 @@ namespace Game.StatusEffects
             switch (type)
             {
                 case EffectType.Burn:
-                    if (StatusEffectExists(out StatusBurning status))
+                    if (StatusEffectExists(out StatusSlow slow))
+                    {
+                        RemoveStatusEffect(slow);
+                    }
+
+                    if (StatusEffectExists(out StatusBurning burnStatus))
                     {
                         //This checks if there is a status weaker than the current and overrides it
-                        if (status.Amount < amount)
+                        if (burnStatus.Amount < amount)
                         {
-                            status.Initialize(this, duration, amount, tick);
+                            burnStatus.Initialize(this, duration, amount, tick);
                         } else
                         {
-                            status.ResetDuration(duration);
+                            burnStatus.ResetDuration(duration);
                         }
                     }
                     else
                     {
                         statusEffect = gameObject.AddComponent<StatusBurning>();
                         statusEffect.Initialize(this, duration, amount, tick);
-                        statusEffects.Add(statusEffect);
+                        statusEffects.Add((StatusBurning)statusEffect);
+                    }
+
+                    break;
+
+                case EffectType.Slow:
+
+                    if (StatusEffectExists(out burnStatus))
+                    {
+                        RemoveStatusEffect(burnStatus);
+                    }
+
+                    if (StatusEffectExists(out StatusSlow slowStatus))
+                    {
+
+                        if (slowStatus.Amount < amount)
+                        {
+                            slowStatus.Initialize(this, duration, amount, tick);
+                        }
+                        else
+                        {
+                            slowStatus.ResetDuration(duration);
+                        }
+                    }
+                    else
+                    {
+                        statusEffect = gameObject.AddComponent<StatusSlow>();
+                        statusEffect.Initialize(this, duration, amount, tick);
+                        statusEffects.Add((StatusSlow)statusEffect);
                     }
 
                     break;
@@ -110,13 +143,13 @@ namespace Game.StatusEffects
         {
             for (int i = 0; i < statusEffects.Count; i++)
             {
-                Destroy(statusEffects[i]);
+                RemoveStatusEffect(statusEffects[i]);
             }
         }
 
-        public void Remove(StatusEffect statusEffect)
+        public void RemoveStatusEffect(StatusEffect statusEffect)
         {
-            Destroy(statusEffect);
+            statusEffect.DestroyStatus();
             statusEffects.Remove(statusEffect);
         }
     }

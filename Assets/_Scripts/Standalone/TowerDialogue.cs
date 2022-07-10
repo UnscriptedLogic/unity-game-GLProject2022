@@ -46,10 +46,11 @@ namespace Standalone
             sellButton.GetComponentInChildren<TextMeshProUGUI>().text = $"[E] Sell(${towerDetails.SellCost})";
         }
 
-        public void UpdateStats(float damage, float range, float fireRate, float turnSpeed, float projSpeed)
+        public void UpdateStats(float damage, float piercing, float range, float fireRate, float turnSpeed, float projSpeed)
         {
             towerStatsTMP.text = 
                 $"Damage: {damage}\n" +
+                $"Pierce: {piercing}%\n" +
                 $"Range: {range}\n" +
                 $"Fire Rate: {fireRate}\n" +
                 $"Proj. Speed: {projSpeed}";

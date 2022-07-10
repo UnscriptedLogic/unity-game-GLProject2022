@@ -113,17 +113,16 @@ MonoBehaviour:
   damage: 4
   projectileSpeed: 30
   projectileLifetime: 0.4
+  piercingPercent: 50
   range: 5
   attackInterval: 1
   rotationSpeed: 5
+  multiAxis: 0
   projectilePrefab: {fileID: 2184705531295620089, guid: 5303ffed305f8ae4694b3f3b9e958285,
     type: 3}
   shootAnchor: {fileID: 0}
   rotationPart: {fileID: 6174439370646788796}
-  gridNode:
-    isObstacle: 0
-    hCost: 0
-    gCost: 0
+  ownedGridNode: []
   unitLayer:
     serializedVersion: 2
     m_Bits: 64

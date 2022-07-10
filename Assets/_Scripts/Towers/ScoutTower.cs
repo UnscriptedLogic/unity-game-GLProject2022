@@ -12,10 +12,10 @@ namespace Towers
 
         public override void DoAttack(GameObject projectile, Transform spawnpoint)
         {
-            ProjectileSettings settings = new ProjectileSettings(damage, projectileSpeed, projectileLifetime);
+            ProjectileSettings settings = new ProjectileSettings(damage, projectileSpeed, projectileLifetime, piercingPercent);
             attackBehaviour.Attack(projectile, spawnPoints[0], settings);
 
-            ProjectileSettings spreadSettings = new ProjectileSettings(damage / 2f, projectileSpeed, projectileLifetime);
+            ProjectileSettings spreadSettings = new ProjectileSettings(damage / 2f, projectileSpeed, projectileLifetime, piercingPercent);
             for (int i = 1; i < spawnPoints.Length; i++)
             {
                 attackBehaviour.Attack(projectile, spawnPoints[i], spreadSettings);

@@ -17,10 +17,14 @@ MonoBehaviour:
   baseTower: {fileID: 836754924125986003, guid: 41a5f627fa421d345ab44d4d5715d113,
     type: 3}
   baseIcon: {fileID: 21300000, guid: db69a63a38acd9340aa0c790dea10a7f, type: 3}
+  towerDescription: "Enforcers are towers that have large range and high damage but
+    lack the firing rate to keep up with faster targets. \n\nEnforcers are equipped
+    with piercing shots that allow them to penetrate armored and boss enemies efficiently.
+    In large groups, Enforcers are a force to be reckoned with."
   treeList:
   - towerID: 20
     overrideTowerName: 0
-    towerName: Mercenary
+    towerName: Enforcer
     towerIcon: {fileID: 21300000, guid: db69a63a38acd9340aa0c790dea10a7f, type: 3}
     overrideSellCost: 0
     sellCost: 450
@@ -28,57 +32,78 @@ MonoBehaviour:
     upgradeCost: 300
     upgradeName: Pin Point Accuracy
     overrideDesc: 1
-    upgradeDesc: Increasing the tower's range greatly.
+    upgradeDesc: '- Increases range from 7 - 10'
     nextUpgrade: {fileID: 836754924125986003, guid: 762e1bb9d2a31514abdd70cfaa9df389,
       type: 3}
   - towerID: 21
     overrideTowerName: 0
-    towerName: Lvl 2 Mercenary
+    towerName: Lvl 2 Enforcer
     towerIcon: {fileID: 21300000, guid: 4ae42ead9014ae24ca803bce9421ce30, type: 3}
     overrideSellCost: 0
     sellCost: 600
-    upgradeIcon: {fileID: 21300000, guid: 36b53685e1621334687f6dd222124736, type: 3}
+    upgradeIcon: {fileID: 21300000, guid: 08cafe7cdb0942f4fa4df8fba5b185b9, type: 3}
     upgradeCost: 600
     upgradeName: Enhanced Scope
     overrideDesc: 1
-    upgradeDesc: Further increases it's range greatly.
+    upgradeDesc: '- Increases range from 10 - 15'
     nextUpgrade: {fileID: 836754924125986003, guid: cce8158ff37e1264fb006230c82811f7,
       type: 3}
   - towerID: 22
     overrideTowerName: 0
-    towerName: Lvl 3 Mercenary
+    towerName: Lvl 3 Enforcer
     towerIcon: {fileID: 21300000, guid: afe1f76da0cd0884099402bae5ccadac, type: 3}
     overrideSellCost: 0
     sellCost: 900
     upgradeIcon: {fileID: 21300000, guid: f91da3e2eda735542862b2584907fac4, type: 3}
-    upgradeCost: 1750
+    upgradeCost: 2000
     upgradeName: High Impact Rifle
-    overrideDesc: 0
-    upgradeDesc: Increases damage and projectile speed.
+    overrideDesc: 1
+    upgradeDesc: '- Increases damage from 20 - 50
+
+
+      - Increases projectile
+      speed from 50 - 60
+
+
+      - Increases piercing power from 50% - 100%'
     nextUpgrade: {fileID: 836754924125986003, guid: 5ae591a6662f490479581c438726e2e0,
       type: 3}
   - towerID: 23
     overrideTowerName: 0
-    towerName: Lvl 4 Mercenary
+    towerName: Lvl 4 Enforcer
     towerIcon: {fileID: 21300000, guid: 4ae42ead9014ae24ca803bce9421ce30, type: 3}
     overrideSellCost: 0
-    sellCost: 1775
-    upgradeIcon: {fileID: 21300000, guid: 811800d4bf18e034587a41d7d2f92662, type: 3}
-    upgradeCost: 8500
-    upgradeName: Semi-Auto
-    overrideDesc: 0
-    upgradeDesc: Increases fire rate.
+    sellCost: 1900
+    upgradeIcon: {fileID: 21300000, guid: dbdc2845253ade240b1e115e377d227c, type: 3}
+    upgradeCost: 7000
+    upgradeName: Faster Reloads
+    overrideDesc: 1
+    upgradeDesc: '- Reduces attack interval from 3s - 2s'
     nextUpgrade: {fileID: 836754924125986003, guid: ecb4f9548ff1367428b10296c66771fd,
       type: 3}
   - towerID: 24
     overrideTowerName: 0
-    towerName: Lvl 5 Mercenary
+    towerName: Lvl 5 Enforcer
     towerIcon: {fileID: 21300000, guid: 1f962f927c31a1545a1a2c37d54c439b, type: 3}
     overrideSellCost: 0
-    sellCost: 6025
-    upgradeIcon: {fileID: 0}
-    upgradeCost: 7000
-    upgradeName: Piercing Shots
+    sellCost: 5400
+    upgradeIcon: {fileID: 21300000, guid: 902fb46fe64d0664082854b3208ac009, type: 3}
+    upgradeCost: 7500
+    upgradeName: Pump Action Rifle
+    overrideDesc: 1
+    upgradeDesc: '- Reduces attack interval from 3s - 1s'
+    nextUpgrade: {fileID: 836754924125986003, guid: 4659ab2d6806bf14a8ceb3285832151c,
+      type: 3}
+  - towerID: 25
+    overrideTowerName: 0
+    towerName: Lvl 6 Enforcer
+    towerIcon: {fileID: 21300000, guid: 1f962f927c31a1545a1a2c37d54c439b, type: 3}
+    overrideSellCost: 0
+    sellCost: 9150
+    upgradeIcon: {fileID: 21300000, guid: 33ac22f6e33c8494fb4ac8ba9515055c, type: 3}
+    upgradeCost: 0
+    upgradeName: Pump Action Rifle
     overrideDesc: 0
-    upgradeDesc: 123123
+    upgradeDesc: .
     nextUpgrade: {fileID: 0}
+  nodeRequirements: []

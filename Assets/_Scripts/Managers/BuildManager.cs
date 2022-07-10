@@ -27,20 +27,29 @@ namespace Core.Building
         [Header("Animation")]
         [SerializeField] private LeanTweenType easeType = LeanTweenType.easeOutQuart;
         private float animTime = 0.05f;
-
         private int buildCount = 0;
+
+        //VFX
         private Renderer rangeRenderer;
-        private GameObject towerPrefab;
+        private List<GameObject> extraBPs = new List<GameObject>();
+
+        //Pre-building
+        private TowerSO towerToPlaceSO;
         private Vector2 requiredElevation;
-        private GameObject prevPlacedTower;
+        private GridNode[] multitowerNodes;
+        private Vector3 recenteredPosition;
+
+        //Built
         private Tower inspectedTower;
         private TowerDetails inspectedTowerDetails;
+        private GameObject prevPlacedTower;
 
         public int BuildCount => buildCount;
         public bool BuildMode => buildMode;
-        public Tower TowerToPlaceScript => towerPrefab.GetComponent<Tower>();
+        public Vector3 RecenteredPos => recenteredPosition;
+        public Tower TowerToPlaceScript => towerToPlaceSO.BaseTower.GetComponent<Tower>();
         public Tower InspectedTower { get => inspectedTower; set { inspectedTower = value; } }
-        public GameObject TowerToPlace => towerPrefab;
+        public GameObject TowerToPlace => towerToPlaceSO.BaseTower;
         public GameObject PrevPlacedTower => prevPlacedTower;
         public TowerTreeSO TowerTree => towerTree;
         public TowerDetails InspectedTowerDetails { get => inspectedTowerDetails; set { inspectedTowerDetails = value; } }
@@ -50,7 +59,7 @@ namespace Core.Building
             buildCount = 0;
             if (rangeVFX != null && blueprintVFX != null)
             {
-                rangeRenderer = rangeVFX.GetComponent<Renderer>();
+                rangeRenderer = rangeVFX.transform.GetChild(0).GetComponent<Renderer>();
             }
             else
                 Debug.LogWarning("RangeVFX or BlueprintVFX not assigned!");
@@ -66,7 +75,9 @@ namespace Core.Building
                     int.TryParse(str[0], out int x);
                     int.TryParse(str[1], out int y);
                     GridNode node = GridGenerator.GetNodeAt(x, y);
-                    rangeVFX.LeanMove(node.TowerPosition, animTime).setEase(easeType);
+
+                    Vector3 adjustedCenter = new Vector3(node.TowerPosition.x, 0.2f, node.TowerPosition.z);
+                    rangeVFX.LeanMove(adjustedCenter, animTime).setEase(easeType);
                     blueprintVFX.LeanMove(node.TowerPosition, animTime).setEase(easeType);
 
                     if (SatisfiesRequirements(node))
@@ -79,12 +90,26 @@ namespace Core.Building
 
         private bool SatisfiesRequirements(GridNode node)
         {
-            bool valid = false;
+            if (node.isCompletelyEmpty && node.isWithinElevation(towerToPlaceSO.RequiredElevation))
+            {
+                if (towerToPlaceSO.MultiNodeRequirements.Length > 0)
+                {
+                    if (GridGenerator.AreNodesEmpty(baseNode: node, coords: towerToPlaceSO.MultiNodeRequirements, elevationClamp: towerToPlaceSO.RequiredElevation, out multitowerNodes))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return true;
+                }
+            }
 
-            if (!node.IsOccupied && !node.isObstacle)
-                if (node.Elevation >= requiredElevation.x && node.Elevation <= requiredElevation.y)
-                    valid = true;
-            return valid;
+            return false;
         }
 
         private void SetBlueprintColor(Color color)
@@ -102,13 +127,25 @@ namespace Core.Building
 
                 GridNode node = GridGenerator.GetNodeAt(x, y);
 
-                if (node.Elevation >= requiredElevation.x && node.Elevation <= requiredElevation.y)
+                if (SatisfiesRequirements(node))
                 {
-                    bool value = node.PlaceTower(towerPrefab);
+                    bool value = node.PlaceTower(towerToPlaceSO.BaseTower);
                     if (value)
                     {
                         prevPlacedTower = node.TowerOnNode;
                         buildCount++;
+
+                        if (multitowerNodes != null && multitowerNodes.Length > 0)
+                        {
+                            for (int i = 0; i < multitowerNodes.Length; i++)
+                            {
+                                multitowerNodes[i].isObstacle = true;
+                                prevPlacedTower.GetComponent<Tower>().OwnedGridNodes.Add(multitowerNodes[i]);
+                                multitowerNodes = new GridNode[0];
+                            }
+
+                            prevPlacedTower.transform.position += new Vector3(recenteredPosition.x, 0f, recenteredPosition.z);
+                        }
                     }
                     return value;
                 }
@@ -132,17 +169,18 @@ namespace Core.Building
 
         public void VisualizeRange()
         {
+            Vector3 adjustedPosition = new Vector3(inspectedTower.transform.position.x, 0.2f, inspectedTower.transform.position.z);
             if (rangeVFX.gameObject.activeSelf)
             {
-                rangeVFX.LeanMove(inspectedTower.transform.position, animTime).setEase(easeType);
+                rangeVFX.LeanMove(adjustedPosition, animTime).setEase(easeType);
             }
             else
             {
-                rangeVFX.position = inspectedTower.transform.position;
-                rangeVFX.localScale = new Vector3(0f, rangeVFX.localScale.y, 0f);
+                rangeVFX.position = adjustedPosition;
+                rangeRenderer.transform.localScale = new Vector3(0f, rangeRenderer.transform.localScale.y, 0f);
             }
 
-            rangeVFX.LeanScale(new Vector3(inspectedTower.Range * 2f, rangeVFX.localScale.y, InspectedTower.Range * 2f), animTime).setEase(easeType);
+            rangeRenderer.transform.LeanScale(new Vector3(inspectedTower.Range * 2f, rangeRenderer.transform.localScale.y, InspectedTower.Range * 2f), animTime).setEase(easeType);
 
             SetBlueprintColor(viewingColor);
             rangeVFX.gameObject.SetActive(true);
@@ -155,13 +193,34 @@ namespace Core.Building
             //rangeVFX.localPosition = Vector3.zero;
         }
 
-        public void SetBuildObject(GameObject newObject)
+        public void SetBuildObject(TowerSO towerSO)
         {
-            towerPrefab = newObject;
+            towerToPlaceSO = towerSO;
             requiredElevation = towerTree.GetTowerTree(TowerToPlaceScript.ID).RequiredElevation;
 
-            float range = towerPrefab.GetComponent<Tower>().Range * 2f;
-            rangeVFX.localScale = new Vector3(range, rangeVFX.localScale.y, range);
+            float range = towerToPlaceSO.BaseTower.GetComponent<Tower>().Range * 2f;
+            rangeRenderer.transform.localScale = new Vector3(range, rangeRenderer.transform.localScale.y, range);
+
+            if (towerSO.MultiNodeRequirements != null && towerSO.MultiNodeRequirements.Length > 0)
+            {
+                float totalX = blueprintVFX.GetChild(0).localPosition.x;
+                float totalY = blueprintVFX.GetChild(0).localPosition.z;
+                for (int i = 0; i < towerSO.MultiNodeRequirements.Length; i++)
+                {
+                    extraBPs.Add(Instantiate(blueprintVFX.GetChild(0).gameObject, blueprintVFX));
+                    extraBPs[i].transform.localPosition = blueprintVFX.GetChild(0).localPosition + new Vector3(towerToPlaceSO.MultiNodeRequirements[i].x, 0f, towerToPlaceSO.MultiNodeRequirements[i].y);
+
+                    totalX += extraBPs[i].transform.localPosition.x;
+                    totalY += extraBPs[i].transform.localPosition.z;
+                }
+
+                float centerX = totalX / (towerToPlaceSO.MultiNodeRequirements.Length + 1) + 0.2f;
+                float centerY = totalY / (towerToPlaceSO.MultiNodeRequirements.Length + 1) - 0.2f;
+
+                recenteredPosition = new Vector3(centerX, 0f, centerY);
+
+                rangeVFX.GetChild(0).localPosition = new Vector3(centerX, 0f, centerY);
+            }
         }
 
         public void EnableBuildMode() 
@@ -171,11 +230,19 @@ namespace Core.Building
             blueprintVFX.gameObject.SetActive(true);
         }
 
-        internal void DisableBuildMode()
+        public void DisableBuildMode()
         {
             buildMode = false;
             rangeVFX.gameObject.SetActive(false);
             blueprintVFX.gameObject.SetActive(false);
+
+            for (int i = 0; i < extraBPs.Count; i++)
+            {
+                Destroy(extraBPs[i]);
+            }
+            extraBPs.Clear();
+
+            rangeRenderer.transform.localPosition = Vector3.zero;
         }
     }
 }

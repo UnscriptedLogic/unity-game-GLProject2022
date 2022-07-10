@@ -19,6 +19,7 @@ namespace Units
 
         [Header("Stats")]
         [SerializeField] protected float health = 100f;
+        [SerializeField] protected float armor = 0f;
         [SerializeField] protected float movementSpeed = 3f;
 
         [Space(10)]
@@ -32,6 +33,7 @@ namespace Units
         public int WaypointIndex => waypointCounter;
         public float CurrentHealth => currHealth;
         public float MaxHealth => health;
+        public float Armor { get => armor; set { armor = value; } }
         public float Speed { get => movementSpeed; set { movementSpeed = value; } }
         public GridNode[] Path => nodePath;
 
@@ -99,6 +101,12 @@ namespace Units
                     break;
                 case ModificationType.Subtract:
                     float prev = currHealth;
+                    amount -= armor;
+                    if (amount < 0)
+                    {
+                        amount = 0;
+                    }
+
                     currHealth -= amount;
                     healthbar.SetValue(currHealth);
                     if (currHealth <= 0f)
@@ -109,7 +117,6 @@ namespace Units
                     else
                         damageFlash.Flash();
 
-                    //levelManager.CurrencyManager.ModifyCurrency(ModificationType.Add, Mathf.Round(prev - currHealth));
                     OnHealthDeducted?.Invoke(amount);
                     break;
                 case ModificationType.Set:

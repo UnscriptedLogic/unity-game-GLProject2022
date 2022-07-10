@@ -17,10 +17,12 @@ namespace Towers
         [SerializeField] protected float damage = 1f;
         [SerializeField] protected float projectileSpeed = 30f;
         [SerializeField] protected float projectileLifetime = 0.5f;
+        [SerializeField] protected float piercingPercent = 0f;
 
         [SerializeField] protected float range = 5f;
         [SerializeField] protected float attackInterval = 1f;
         [SerializeField] protected float rotationSpeed = 5f;
+        [SerializeField] protected bool multiAxis = false;
 
         protected float _attackInterval;
         protected Collider[] unitsInRange;
@@ -32,7 +34,7 @@ namespace Towers
         [SerializeField] protected GameObject projectilePrefab;
         [SerializeField] protected Transform shootAnchor;
         [SerializeField] protected Transform rotationPart;
-        [SerializeField] protected GridNode ownedGridNode;
+        [SerializeField] protected List<GridNode> ownedGridNode;
         [SerializeField] protected LayerMask unitLayer;
         [SerializeField] protected LayerMask wallLayer;
 
@@ -46,9 +48,10 @@ namespace Towers
         public float Range => range;
         public float FireRate => attackInterval;
         public float TurnSpeed => rotationSpeed;
+        public float Piercing => piercingPercent;
         public float ProjSpeed => projectileSpeed;
         public float ProjLifeTime => projectileLifetime;
-        public GridNode OwnedGridNode { get => ownedGridNode; set { ownedGridNode = value; } }
+        public List<GridNode> OwnedGridNodes { get => ownedGridNode; set { ownedGridNode = value; } }
 
         protected virtual void Start()
         {
@@ -65,7 +68,8 @@ namespace Towers
 
             if (_attackInterval <= 0f)
             {
-                unitsInRange = Physics.OverlapSphere(transform.position, range, unitLayer);
+                Vector3 adjustedCenter = new Vector3(transform.position.x, 0.2f, transform.position.z);
+                unitsInRange = Physics.OverlapSphere(adjustedCenter, range, unitLayer);
                 foreach (Collider collider1 in unitsInRange)
                 {
                     EnemyUnits unitMovement = collider1.GetComponent<EnemyUnits>();
@@ -77,7 +81,7 @@ namespace Towers
                         }
                         else
                         {
-                            if (Vector3.Distance(target.transform.position, transform.position) > range || target.WaypointIndex == 0)
+                            if (Vector3.Distance(target.transform.position, adjustedCenter) > range || target.WaypointIndex == 0)
                             {
                                 if (unitsInRange.Length > 1)
                                 {
@@ -122,15 +126,29 @@ namespace Towers
 
         public virtual void FocusObject(Transform partToRotate, Vector3 target, float rotationSpeed)
         {
-            rotationPart.LookAt(new Vector3(target.x, partToRotate.position.y, target.z));
+            if (!multiAxis)
+            {
+                rotationPart.LookAt(new Vector3(target.x, partToRotate.position.y, target.z));
+            }
+            else
+            {
+                rotationPart.LookAt(new Vector3(target.x, target.y + 0.5f, target.z));
+            }
         }
 
         public virtual void DoAttack(GameObject projectile, Transform spawnpoint)
         {
-            ProjectileSettings settings = new ProjectileSettings(damage, projectileSpeed, projectileLifetime);
+            ProjectileSettings settings = new ProjectileSettings(damage, projectileSpeed, projectileLifetime, piercingPercent);
             attackBehaviour.Attack(projectile, spawnpoint, settings);
         }
 
-        public void RemoveSelf() => ownedGridNode.RemoveTower();
+        public void RemoveSelf()
+        {
+            ownedGridNode[0].RemoveTower();
+            for (int i = 1; i < ownedGridNode.Count; i++)
+            {
+                ownedGridNode[i].isObstacle = false;
+            }
+        }
     }
 }

@@ -32,6 +32,8 @@ namespace MainMenu.UI
         [SerializeField] private TextMeshProUGUI projSpeedTMP;
         [SerializeField] private TextMeshProUGUI currencyTMP;
         [SerializeField] private TextMeshProUGUI upgradesTMP;
+        [SerializeField] private TextMeshProUGUI piercingTMP;
+        [SerializeField] private TextMeshProUGUI descTMP;
 
         private List<TowerSO> towerLoadOut;
 
@@ -49,7 +51,7 @@ namespace MainMenu.UI
         public void DisplayDetails(TowerSO towerSO)
         {
             TowerDetails towerDetails = towerSO.TreeList[0];
-            icon.sprite = towerDetails.Icon;
+            icon.sprite = towerSO.BaseIcon;
             towerNameTMP.text = towerDetails.Name;
 
             Tower tower = towerSO.BaseTower.GetComponent<Tower>();
@@ -57,11 +59,13 @@ namespace MainMenu.UI
             rangeTMP.text = tower.Range.ToString();
             fireRateTMP.text = tower.FireRate.ToString();
             projSpeedTMP.text = tower.ProjSpeed.ToString();
-            currencyTMP.text = towerSO.TowerCost.ToString();
-            upgradesTMP.text = towerSO.TreeList.Length.ToString();
+            currencyTMP.text = $"{towerSO.TowerCost}";
+            upgradesTMP.text = $"{towerSO.TreeList.Length} Levels";
+            piercingTMP.text = $"{tower.Piercing}%";
+            descTMP.text = towerSO.TowerDesc;
         }
 
-        public void DisplayTowers()
+        public void DisplayTowers() 
         {
             for (int i = 0; i < towerList.childCount; i++)
             {
@@ -72,7 +76,7 @@ namespace MainMenu.UI
             for (int i = 0; i < towers.Length; i++)
             {
                 GameObject towerButton = Instantiate(buttonPrefab, towerList);
-                towerButton.transform.GetChild(0).GetComponent<Image>().sprite = towers[i].TreeList[0].Icon;
+                towerButton.transform.GetChild(0).GetComponent<Image>().sprite = towers[i].BaseIcon;
 
                 towerUpgradeTree = towers[i];
 
@@ -105,7 +109,7 @@ namespace MainMenu.UI
             for (int i = 0; i < towerLoadOut.Count; i++)
             {
                 Image image = loadoutList.GetChild(i).GetChild(1).GetComponent<Image>();
-                image.sprite = towerLoadOut[i].TreeList[0].Icon;
+                image.sprite = towerLoadOut[i].BaseIcon;
                 image.enabled = true;
 
                 Button button = loadoutList.GetChild(i).GetComponent<Button>();

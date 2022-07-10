@@ -1,4 +1,5 @@
 using Core.Grid;
+using Core.Pathing;
 using Core.Pooling;
 using Interfaces;
 using System.Collections;
@@ -25,19 +26,16 @@ namespace Towers
         private float _turretInterval;
 
         private bool called;
+        private bool initialized;
 
         private PoolManager poolManager;
         private GridNode[] path;
 
-        protected override void Start()
-        {
-            base.Start();
-            poolManager = PoolManager.instance;
-            _turretInterval = 5f;
-        }
 
         protected override void Update()
         {
+            if (!initialized) return;
+
             if (spawnTanks)
             {
                 if (_tankInterval <= 0f)
@@ -97,9 +95,13 @@ namespace Towers
 
         public void InitPath(GridNode[] path)
         {
+            base.Start();
+            poolManager = PoolManager.instance;
+            _turretInterval = 5f;
             List<GridNode> gridNodes = new List<GridNode>(path);
             gridNodes.Reverse();
             this.path = gridNodes.ToArray();
+            initialized = true;
         }
     }
 }

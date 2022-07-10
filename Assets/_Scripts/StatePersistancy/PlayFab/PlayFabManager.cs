@@ -127,40 +127,38 @@ namespace Backend
 
         public static void GetPlayerData(Action<GetUserDataResult> onDataRecieved, Action<PlayFabError> onError)
         {
+            Debug.Log("Getting player data");
             PlayFabClientAPI.GetUserData(new GetUserDataRequest(), result =>
             {
                 if (GameManager.loggedIn)
                 {
-                    GetPlayerData(result =>
+                    if (result.Data != null)
                     {
-                        if (result.Data != null)
+                        if (result.Data.ContainsKey(WINS))
                         {
-                            if (result.Data.ContainsKey(WINS))
-                            {
-                                GameManager.wins = int.Parse(result.Data[WINS].Value);
-                            }
-
-                            if (result.Data.ContainsKey(LOSS))
-                            {
-                                GameManager.loss = int.Parse(result.Data[LOSS].Value);
-                            }
-
-                            if (result.Data.ContainsKey(HIGHEST_WAVE))
-                            {
-                                GameManager.highestWave = int.Parse(result.Data[HIGHEST_WAVE].Value);
-                            }
-
-                            if (result.Data.ContainsKey(GAMES_PLAYED))
-                            {
-                                GameManager.gamesPlayed = int.Parse(result.Data[GAMES_PLAYED].Value);
-                            }
-
-                            if (result.Data.ContainsKey(SEEN_TY_PAGE))
-                            {
-                                GameManager.hasSeenThanksPage = bool.Parse(result.Data[SEEN_TY_PAGE].Value);
-                            }
+                            GameManager.wins = int.Parse(result.Data[WINS].Value);
                         }
-                    }, HandleError);
+
+                        if (result.Data.ContainsKey(LOSS))
+                        {
+                            GameManager.loss = int.Parse(result.Data[LOSS].Value);
+                        }
+
+                        if (result.Data.ContainsKey(HIGHEST_WAVE))
+                        {
+                            GameManager.highestWave = int.Parse(result.Data[HIGHEST_WAVE].Value);
+                        }
+
+                        if (result.Data.ContainsKey(GAMES_PLAYED))
+                        {
+                            GameManager.gamesPlayed = int.Parse(result.Data[GAMES_PLAYED].Value);
+                        }
+
+                        if (result.Data.ContainsKey(SEEN_TY_PAGE))
+                        {
+                            GameManager.hasSeenThanksPage = bool.Parse(result.Data[SEEN_TY_PAGE].Value);
+                        }
+                    }
                 }
 
                 onDataRecieved(result);

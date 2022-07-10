@@ -17,6 +17,15 @@ MonoBehaviour:
   baseTower: {fileID: 836754924125986003, guid: e2f61cfa9b21bc340afc21d4c8126419,
     type: 3}
   baseIcon: {fileID: 21300000, guid: 5ed8035dc7b2d3a45adcb9adcfed7704, type: 3}
+  towerDescription: 'Reliant on it''s burning capabilities, the Torch tower burns
+    and decimates everyone in its radius, leaving almost everyone who dares to come
+    close with a scalding reminder to never come back.
+
+
+    Torchers were held as
+    a highly valuable turret due to their effectiveness during the Slime Infestation.
+    It could kill every slime unit, including it''s smaller variants, with fire in
+    a matter of seconds.'
   treeList:
   - towerID: 30
     overrideTowerName: 0
@@ -24,11 +33,11 @@ MonoBehaviour:
     towerIcon: {fileID: 21300000, guid: 5ed8035dc7b2d3a45adcb9adcfed7704, type: 3}
     overrideSellCost: 0
     sellCost: 375
-    upgradeIcon: {fileID: 21300000, guid: d2aa71e0d01182b48a728ffb4226f71e, type: 3}
+    upgradeIcon: {fileID: 21300000, guid: 4bf5b4bb5b38d71459c00fcef030024e, type: 3}
     upgradeCost: 900
     upgradeName: Persistant Flames
     overrideDesc: 1
-    upgradeDesc: Increases burn duration greatly
+    upgradeDesc: '- Increases burn duration from 10s - 15s'
     nextUpgrade: {fileID: 836754924125986003, guid: eb4e08bc5ef8da94cad7251dbef788c7,
       type: 3}
   - towerID: 31
@@ -37,12 +46,11 @@ MonoBehaviour:
     towerIcon: {fileID: 21300000, guid: 01b0fe18ba8cf124bafcd47696197471, type: 3}
     overrideSellCost: 0
     sellCost: 825
-    upgradeIcon: {fileID: 21300000, guid: f91da3e2eda735542862b2584907fac4, type: 3}
+    upgradeIcon: {fileID: 21300000, guid: 67d8c493022bc8c4a9fd6faa0f6ce486, type: 3}
     upgradeCost: 1750
     upgradeName: Scalding Hot Oil Wax (S.H.O.W. time)
     overrideDesc: 1
-    upgradeDesc: Increases burn damage frequency, making them sparkle with damage
-      every second, almost like a light show.
+    upgradeDesc: '- Reduces burn intervals from 2s - 1s'
     nextUpgrade: {fileID: 836754924125986003, guid: 50033943cd8e11e45a5621b4f0a8cc01,
       type: 3}
   - towerID: 32
@@ -51,12 +59,15 @@ MonoBehaviour:
     towerIcon: {fileID: 21300000, guid: 4c6d720f23e0a6a498e892e5ca8d5896, type: 3}
     overrideSellCost: 0
     sellCost: 1700
-    upgradeIcon: {fileID: 21300000, guid: 811800d4bf18e034587a41d7d2f92662, type: 3}
+    upgradeIcon: {fileID: 21300000, guid: 9072d862058ef4c44834c981e8afc2cf, type: 3}
     upgradeCost: 2550
     upgradeName: Ring Of Fire
     overrideDesc: 1
-    upgradeDesc: Adds 4 more outputs along the diagonals, making it more likely to
-      catch units on fire
+    upgradeDesc: '- [Modifier] Adds 4 more outputs along the diagonals, making it
+      more likely to catch units on fire
+
+
+      - Increases damage from 0 - 1'
     nextUpgrade: {fileID: 836754924125986003, guid: 018de5e1302e07b498c9023efb5abc3a,
       type: 3}
   - towerID: 33
@@ -65,12 +76,12 @@ MonoBehaviour:
     towerIcon: {fileID: 21300000, guid: 7008d7d75e358914aa4342a08bb9256e, type: 3}
     overrideSellCost: 0
     sellCost: 2975
-    upgradeIcon: {fileID: 21300000, guid: 33ac22f6e33c8494fb4ac8ba9515055c, type: 3}
+    upgradeIcon: {fileID: 21300000, guid: d4e28896fbbaa454c98d9c3722109c87, type: 3}
     upgradeCost: 6500
     upgradeName: Inferno
     overrideDesc: 1
-    upgradeDesc: Increases damage, fire rate and projectile lifetime. <b>No one</b>
-      will leave my sight unscorched.
+    upgradeDesc: '- Increases burn damage, burn duration, burn frequency, damage,
+      attack interval and projectile lifetime'
     nextUpgrade: {fileID: 836754924125986003, guid: 8521988962601434a878a383e9bb2552,
       type: 3}
   - towerID: 34
@@ -85,3 +96,4 @@ MonoBehaviour:
     overrideDesc: 0
     upgradeDesc: 
     nextUpgrade: {fileID: 0}
+  nodeRequirements: []

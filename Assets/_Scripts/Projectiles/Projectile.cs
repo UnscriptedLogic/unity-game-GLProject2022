@@ -14,16 +14,19 @@ namespace Projectiles
         private float damage;
         private float speed;
         private float lifetime;
+        private float piercingPercent;
 
         public float Damage => damage;
         public float Speed => speed;
         public float LifeTime => lifetime;
+        public float PiercePercemt => piercingPercent;
 
-        public ProjectileSettings(float damage, float speed, float lifetime)
+        public ProjectileSettings(float damage, float speed, float lifetime, float piercingPercent)
         {
             this.damage = damage;
             this.speed = speed;
             this.lifetime = lifetime;
+            this.piercingPercent = piercingPercent;
         }
     }
 
@@ -35,6 +38,7 @@ namespace Projectiles
         protected float damage = 1f;
         protected float movementSpeed = 10f;
         protected float lifetime = 1f;
+        protected float piercingPercent = 0f;
 
         protected PoolManager poolManager;
         protected MovementBehaviour movementBehaviour;
@@ -75,8 +79,12 @@ namespace Projectiles
         protected virtual void OnTriggerEnter(Collider other)
         {
             IDamageable damageable = other.GetComponent<IDamageable>();
-            if (damageable != null && other.GetComponent<Unit>() != null)
+            Unit unit = other.GetComponent<Unit>();
+            if (damageable != null && unit != null)
             {
+                float pierce = (unit.Armor / 100) * piercingPercent;
+                damage += pierce;
+
                 damageable.ModifyHealth(ModificationType.Subtract, damage);
                 DestroyProjectile();
             }

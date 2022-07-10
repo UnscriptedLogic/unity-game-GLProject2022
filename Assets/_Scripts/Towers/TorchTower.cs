@@ -22,10 +22,10 @@ namespace Towers
         {
             for (int i = 0; i < spawnPoints.Length; i++)
             {
-                ProjectileSettings settings = new ProjectileSettings(damage, projectileSpeed, projectileLifetime);
-                FlameProjectile projectile1 = (FlameProjectile)attackBehaviour.Attack(projectile, spawnPoints[i], settings);
-                projectile1.BurnDamage = burnDamage;
-                projectile1.BurnDuration = burnDuration;
+                ProjectileSettings settings = new ProjectileSettings(damage, projectileSpeed, projectileLifetime, piercingPercent);
+                SphericalStatusProjectile projectile1 = (SphericalStatusProjectile)attackBehaviour.Attack(projectile, spawnPoints[i], settings);
+                projectile1.EffectAmount = burnDamage;
+                projectile1.EffectDuration = burnDuration;
                 projectile1.TickSpeed = tickSpeed;
             }
         }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c193c917a0ea9546a271dcd365911f2, type: 3}
   m_Name: EngiFactory
   m_EditorClassIdentifier: 
-  towerCost: 0
+  towerCost: 450
   requriedElevation: {x: 0, y: 0}
   baseTower: {fileID: 836754924125986003, guid: 8acfeffb1e3f1fb43b73aeaea2ac36cf,
     type: 3}
@@ -21,12 +21,62 @@ MonoBehaviour:
   - towerID: 40
     overrideTowerName: 0
     towerName: Engineer's Factory
+    towerIcon: {fileID: 21300000, guid: d2aa71e0d01182b48a728ffb4226f71e, type: 3}
+    overrideSellCost: 0
+    sellCost: 225
+    upgradeIcon: {fileID: 0}
+    upgradeCost: 400
+    upgradeName: Better Conveyor Belts
+    overrideDesc: 1
+    upgradeDesc: Changes the tank into a Armored Desolite Tank that has an increased
+      health and a reduced spawn interval
+    nextUpgrade: {fileID: 836754924125986003, guid: 92705edd226298942ba1b07d760cad48,
+      type: 3}
+  - towerID: 41
+    overrideTowerName: 0
+    towerName: Lvl 2 Engineer's Factory
     towerIcon: {fileID: 0}
     overrideSellCost: 0
-    sellCost: 0
+    sellCost: 425
+    upgradeIcon: {fileID: 21300000, guid: f5575c4a96bfb344d8547970923792c2, type: 3}
+    upgradeCost: 1200
+    upgradeName: Gaurdians of the Factory
+    overrideDesc: 1
+    upgradeDesc: Allows the factory to spawn Portable Gaurdians within its range
+      to protect itself. Each gaurdian will be desotryed after some time.
+    nextUpgrade: {fileID: 836754924125986003, guid: 0e84194354421254188738822e3e2c8a,
+      type: 3}
+  - towerID: 42
+    overrideTowerName: 0
+    towerName: Lvl 3 Engineer's Factory
+    towerIcon: {fileID: 0}
+    overrideSellCost: 0
+    sellCost: 1025
+    upgradeIcon: {fileID: 21300000, guid: df3fe60946792bc41b6fffc79a1d2f8a, type: 3}
+    upgradeCost: 2500
+    upgradeName: Built To Withstand
+    overrideDesc: 1
+    upgradeDesc: Reduces the spawn interval of the Portable Gaurdians
+    nextUpgrade: {fileID: 836754924125986003, guid: ba3e366b63c33644ea6b7870b9e94a7a,
+      type: 3}
+  - towerID: 43
+    overrideTowerName: 0
+    towerName: Lvl 4 Engineer's Factory
+    towerIcon: {fileID: 0}
+    overrideSellCost: 0
+    sellCost: 2275
     upgradeIcon: {fileID: 0}
     upgradeCost: 0
     upgradeName: 
-    overrideDesc: 0
-    upgradeDesc: 
+    overrideDesc: 1
+    upgradeDesc: .
     nextUpgrade: {fileID: 0}
+  nodeRequirements:
+  - {x: 0, y: -1}
+  - {x: 0, y: -2}
+  - {x: 1, y: 0}
+  - {x: 1, y: -1}
+  - {x: 2, y: 0}
+  - {x: 2, y: -1}
+  - {x: 1, y: -2}
+  - {x: 2, y: -2}

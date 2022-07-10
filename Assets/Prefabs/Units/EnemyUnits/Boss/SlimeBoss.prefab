@@ -10537,7 +10537,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resistances:
   - effectType: 0
-    resistance: -125
+    resistance: 50
+  - effectType: 1
+    resistance: 50
 --- !u!114 &583666642645108174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10551,13 +10553,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: -6004806168046530573}
+  faceDirection: 0
   health: 10000
+  armor: 2
   movementSpeed: 0.25
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 1278209766786932308}
   unitAbilities:
   - {fileID: 8321871149408018362}
-  abilityInterval: 6
+  abilityInterval: 5
   onDeathAbilities: []
 --- !u!114 &8321871149408018362
 MonoBehaviour:
@@ -10575,6 +10579,6 @@ MonoBehaviour:
   - unitToSummon: {fileID: 7644136366003357881, guid: 6f692c8b5240a414b884262faf955318,
       type: 3}
     amount: 2
-  slowdownDuration: 2
-  slowPercentage: 100
+  slowdownDuration: 0
+  slowPercentage: 0
   spawnInterval: 2

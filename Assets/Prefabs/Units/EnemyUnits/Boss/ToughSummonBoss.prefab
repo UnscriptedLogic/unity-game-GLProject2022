@@ -5701,7 +5701,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: 5736165837249898625}
+  faceDirection: 0
   health: 1000
+  armor: 2
   movementSpeed: 0.35
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 5959593351887877580}
@@ -5725,8 +5727,8 @@ MonoBehaviour:
   - unitToSummon: {fileID: 7644136366003357881, guid: f78919e5216024144a2aab50255dfa74,
       type: 3}
     amount: 4
-  slowdownDuration: 2
-  slowPercentage: 50
+  slowdownDuration: 0
+  slowPercentage: 0
   spawnInterval: 0.5
 --- !u!114 &-4112419645948789584
 MonoBehaviour:
@@ -5742,4 +5744,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resistances:
   - effectType: 0
+    resistance: 50
+  - effectType: 1
     resistance: 50

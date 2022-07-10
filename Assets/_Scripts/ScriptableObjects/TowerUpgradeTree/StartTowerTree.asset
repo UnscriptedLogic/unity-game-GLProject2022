@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b2d79564296824793b0144595e248b, type: 3}
+  m_Name: StartTowerTree
+  m_EditorClassIdentifier: 
+  towerSO:
+  - {fileID: 11400000, guid: 72fb9e926af9e274b9c71952010db997, type: 2}
+  - {fileID: 11400000, guid: 7c12938d8db77604fbe7fb9447474e74, type: 2}
+  - {fileID: 11400000, guid: 9aa4419f6d72dbc41b96031de27e0579, type: 2}
+  - {fileID: 11400000, guid: 8701930cc29bf4d4cbc885ccd350f469, type: 2}
+  - {fileID: 11400000, guid: 6607551b6b6d2ab4abc0ec149c14a17e, type: 2}
+  - {fileID: 11400000, guid: 269019ef08ad01d45a337316af4fbe52, type: 2}

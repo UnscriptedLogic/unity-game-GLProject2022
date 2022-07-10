@@ -727,7 +727,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: 852029564262320468}
-  health: 1200
+  faceDirection: 0
+  health: 2000
+  armor: 2
   movementSpeed: 0.35
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 1656562306931233817}
@@ -790,7 +792,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33012fe27a7f1945ab72ff910e63830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resistances: []
+  resistances:
+  - effectType: 0
+    resistance: 50
+  - effectType: 1
+    resistance: 50
 --- !u!1 &6797352359855396105
 GameObject:
   m_ObjectHideFlags: 0

@@ -149,23 +149,32 @@ namespace Core.Grid
             return gridNode;
         }
 
-        public static bool AreNodesEmpty(Vector2Int[] coords, Vector2 elevationClamp)
+        public static bool AreNodesEmpty(GridNode baseNode, Vector2Int[] coords, Vector2 elevationClamp, out GridNode[] nodes)
         {
+            nodes = new GridNode[coords.Length];
             bool value = true;
             for (int i = 0; i < coords.Length; i++)
             {
-                GridNode gridnode = GetNodeAt(coords[i]);
+                GridNode gridnode = GetNodeAt(baseNode.Coords.x + coords[i].x, baseNode.Coords.y + coords[i].y);
+                if (gridnode == null)
+                {
+                    value = false;
+                    break;
+                }
+
                 if (!gridnode.isWithinElevation(elevationClamp))
                 {
                     value = false;
                     break;
                 }
 
-                if (gridnode.IsOccupied && gridnode.isObstacle)
+                if (!gridnode.isCompletelyEmpty)
                 {
                     value = false;
                     break;
                 }
+
+                nodes[i] = gridnode;
             }
 
             return value;
@@ -249,7 +258,7 @@ namespace Core.Grid
             if (!IsOccupied && !isObstacle)
             {
                 tower = UnityEngine.Object.Instantiate(towerAsset, node.transform.position + placementOffset, Quaternion.identity);
-                tower.GetComponent<Tower>().OwnedGridNode = this;
+                tower.GetComponent<Tower>().OwnedGridNodes.Insert(0, this);
                 successful = true;
             }
 

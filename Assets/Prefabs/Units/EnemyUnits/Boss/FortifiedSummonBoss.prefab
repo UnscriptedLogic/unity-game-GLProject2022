@@ -5709,7 +5709,7 @@ MonoBehaviour:
   healthbar: {fileID: 5959593351887877580}
   unitAbilities:
   - {fileID: 8820277245108676987}
-  abilityInterval: 3
+  abilityInterval: 15
   onDeathAbilities: []
 --- !u!114 &8820277245108676987
 MonoBehaviour:
@@ -5726,7 +5726,7 @@ MonoBehaviour:
   summons:
   - unitToSummon: {fileID: 7644136366003357881, guid: 5630d882fa5c2ee49b3e2219a89d68df,
       type: 3}
-    amount: 4
+    amount: 3
   slowdownDuration: 0
   slowPercentage: 0
   spawnInterval: 0.5
@@ -5744,6 +5744,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resistances:
   - effectType: 0
-    resistance: 50
+    resistance: 75
   - effectType: 1
-    resistance: 50
+    resistance: 75

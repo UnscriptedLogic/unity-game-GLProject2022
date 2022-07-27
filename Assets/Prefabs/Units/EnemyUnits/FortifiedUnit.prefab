@@ -908,4 +908,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resistances:
   - effectType: 0
-    resistance: 50
+    resistance: -25

@@ -1,14 +1,13 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace External.DamageFlash
 {
-    public class DamageFlashMultiComp : DamageFlash
+    public class DamageFlashMultiComp : MonoBehaviour
     {
+        [SerializeField] private Material flashMat;
         [SerializeField] private MeshRenderer[] meshRenderers;
+        [SerializeField] private float blinkDuration = 0.075f;
 
         private class MeshRendererMat
         {
@@ -18,7 +17,7 @@ namespace External.DamageFlash
 
         private MeshRendererMat[] meshRendererMats;
 
-        protected override void Start()
+        private void Start()
         {
             meshRendererMats = new MeshRendererMat[meshRenderers.Length];
             for (int i = 0; i < meshRenderers.Length; i++)
@@ -27,15 +26,7 @@ namespace External.DamageFlash
             }
         }
 
-        protected override void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Flash();
-            }
-        }
-
-        public override void Flash()
+        public void Flash()
         {
             StopAllCoroutines();
             for (int i = 0; i < meshRenderers.Length; i++)
@@ -44,21 +35,7 @@ namespace External.DamageFlash
             }
         }
 
-        private void MeshRendererMethod()
-        {
-            for (int i = 0; i < meshRenderers.Length; i++)
-            {
-                int count = meshRenderers[i].materials.Length;
-                Material[] flashmaterials = new Material[count];
-                for (int x = 0; x < flashmaterials.Length; x++)
-                {
-                    flashmaterials[x] = flashMat;
-                }
-                meshRenderers[i].materials = flashmaterials;
-            }
-        }
-
-        protected IEnumerator FadeDelay(MeshRenderer meshRenderer, int index)
+        private IEnumerator FadeDelay(MeshRenderer meshRenderer, int index)
         {
             int length = meshRenderer.materials.Length;
             Material[] flashMats = new Material[length];

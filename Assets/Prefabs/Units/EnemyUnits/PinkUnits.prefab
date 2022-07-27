@@ -910,4 +910,4 @@ MonoBehaviour:
   - effectType: 0
     resistance: 100
   - effectType: 1
-    resistance: -40
+    resistance: -25

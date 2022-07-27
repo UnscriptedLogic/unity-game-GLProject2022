@@ -1,22 +1,19 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using DG.Tweening;
 
 namespace External.DamageFlash
 {
     public class DamageFlash : MonoBehaviour
     {
-        [SerializeField] protected Material flashMat;
-        [SerializeField] protected MeshRenderer meshRenderer;
-        [SerializeField] protected float blinkDuration = 0.075f;
+        [SerializeField] private Material flashMat;
+        [SerializeField] private MeshRenderer meshRenderer;
+        [SerializeField] private float blinkDuration = 0.075f;
 
         private List<Material> materials = new List<Material>();
         private List<Material> flashMats = new List<Material>();
 
-        protected virtual void Start()
+        private void Start()
         {
             for (int i = 0; i < meshRenderer.materials.Length; i++)
             {
@@ -25,28 +22,43 @@ namespace External.DamageFlash
             }
         }
 
-        protected virtual void Update()
+        //When object pooling, flash material could still be applied.
+        //Goes through and reverts them back just in case
+        private void OnEnable()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (materials.Count > 0)
             {
-                Flash();
+                meshRenderer.materials = materials.ToArray();
             }
         }
 
-        public virtual void Flash()
+        public void Flash()
         {
             meshRenderer.materials = flashMats.ToArray();
 
             StartCoroutine(FadeDelay());
         }
 
-        protected virtual IEnumerator FadeDelay()
+        private IEnumerator FadeDelay()
         {
             yield return new WaitForSeconds(blinkDuration);
             for (int i = 0; i < meshRenderer.materials.Length; i++)
             {
                 meshRenderer.materials = materials.ToArray();
             }
+        }
+
+        private void OnValidate()
+        {
+            if (meshRenderer == null)
+            {
+                gameObject.TryGetComponent(out meshRenderer);
+            }
+        }
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
         }
     }
 }

@@ -68,7 +68,7 @@ namespace Backend
             {
                 StatisticName = "GameBeatenWithTowerCount",
                 StartPosition = 0,
-                MaxResultsCount = 10
+                MaxResultsCount = 30
             };
 
             PlayFabClientAPI.GetLeaderboard(request, OnSuccess, OnError);

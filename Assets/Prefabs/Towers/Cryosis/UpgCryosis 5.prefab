@@ -113,7 +113,7 @@ MonoBehaviour:
   projectileLifetime: 1.5
   piercingPercent: 0
   range: 4
-  attackInterval: 0.5
+  attackInterval: 0.85
   rotationSpeed: 5
   multiAxis: 0
   projectilePrefab: {fileID: 2184705531295620089, guid: bfc93a58287763c4d9f6979ffc84fb09,

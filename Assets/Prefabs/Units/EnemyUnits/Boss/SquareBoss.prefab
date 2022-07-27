@@ -794,9 +794,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resistances:
   - effectType: 0
-    resistance: 50
+    resistance: 75
   - effectType: 1
-    resistance: 50
+    resistance: 75
 --- !u!1 &6797352359855396105
 GameObject:
   m_ObjectHideFlags: 0

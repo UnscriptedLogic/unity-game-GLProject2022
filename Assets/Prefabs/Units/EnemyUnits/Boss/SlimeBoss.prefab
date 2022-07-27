@@ -10537,9 +10537,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resistances:
   - effectType: 0
-    resistance: 50
+    resistance: 75
   - effectType: 1
-    resistance: 50
+    resistance: 75
 --- !u!114 &583666642645108174
 MonoBehaviour:
   m_ObjectHideFlags: 0

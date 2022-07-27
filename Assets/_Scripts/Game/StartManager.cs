@@ -71,6 +71,13 @@ namespace StartScreen
                     leaderboardButton.interactable = true;
                     PlayFabManager.GetPlayerData(res => { }, PlayFabManager.HandleError);
                     gameSceneManager.HideLoading();
+
+                    if (GameManager.username == null)
+                    {
+                        string generatedUsername = $"Player{UnityEngine.Random.Range(0, 9999)}";
+                        PlayFabManager.UpdateUsername(generatedUsername, res => { }, PlayFabManager.HandleError);
+                        GameManager.username = generatedUsername;
+                    }
                 }, error =>
                 {
                     Debug.Log($"Could not log in to PlayFab {error.GenerateErrorReport()}");
@@ -93,7 +100,6 @@ namespace StartScreen
                 mainMenuScreen.AboutButton.gameObject.SetActive(true);
                 PlayFabManager.SavePlayerData(res => { }, PlayFabManager.HandleError);
             }
-
         }
 
         private void Update()

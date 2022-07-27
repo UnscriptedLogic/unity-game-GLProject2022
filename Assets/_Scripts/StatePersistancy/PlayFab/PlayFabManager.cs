@@ -68,7 +68,7 @@ namespace Backend
             {
                 StatisticName = "GameBeatenWithTowerCount",
                 StartPosition = 0,
-                MaxResultsCount = 30
+                MaxResultsCount = 50
             };
 
             PlayFabClientAPI.GetLeaderboard(request, OnSuccess, OnError);
@@ -100,7 +100,7 @@ namespace Backend
             {
                 StatisticName = "highest_wave",
                 StartPosition = 0,
-                MaxResultsCount = 10
+                MaxResultsCount = 50
             };
 
             PlayFabClientAPI.GetLeaderboard(request, OnSuccess, OnError);

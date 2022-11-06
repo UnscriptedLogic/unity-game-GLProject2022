@@ -39,11 +39,14 @@ namespace StartScreen
         {
             versionText.text = $"Version: {Application.version}";
             
+            //If doesn't have key
             if (!PlayerPrefs.HasKey(PlayFabManager.DEVICE_ID))
             {
                 System.Guid guid = System.Guid.NewGuid();
                 PlayerPrefs.SetString(PlayFabManager.DEVICE_ID, guid.ToString());
             }
+
+            //If string is empty
             else if (PlayerPrefs.GetString(PlayFabManager.DEVICE_ID) == "")
             {
                 System.Guid guid = System.Guid.NewGuid();
@@ -69,15 +72,16 @@ namespace StartScreen
                     Debug.Log("Success!");
                     GameManager.loggedIn = true;
                     leaderboardButton.interactable = true;
-                    PlayFabManager.GetPlayerData(res => { }, PlayFabManager.HandleError);
-                    gameSceneManager.HideLoading();
-
-                    if (GameManager.username == null)
+                    PlayFabManager.GetPlayerData(res => 
                     {
-                        string generatedUsername = $"Player{UnityEngine.Random.Range(0, 9999)}";
-                        PlayFabManager.UpdateUsername(generatedUsername, res => { }, PlayFabManager.HandleError);
-                        GameManager.username = generatedUsername;
-                    }
+                        gameSceneManager.HideLoading();
+                        if (GameManager.username == null)
+                        {
+                            string generatedUsername = $"Player{UnityEngine.Random.Range(0, 9999)}";
+                            PlayFabManager.UpdateUsername(generatedUsername, res => { }, PlayFabManager.HandleError);
+                            GameManager.username = generatedUsername;
+                        }
+                    }, PlayFabManager.HandleError);
                 }, error =>
                 {
                     Debug.Log($"Could not log in to PlayFab {error.GenerateErrorReport()}");

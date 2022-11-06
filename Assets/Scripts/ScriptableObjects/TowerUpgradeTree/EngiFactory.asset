@@ -12,20 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c193c917a0ea9546a271dcd365911f2, type: 3}
   m_Name: EngiFactory
   m_EditorClassIdentifier: 
-  towerCost: 450
+  towerCost: 0
   requriedElevation: {x: 0, y: 0}
   baseTower: {fileID: 836754924125986003, guid: 8acfeffb1e3f1fb43b73aeaea2ac36cf,
     type: 3}
   baseIcon: {fileID: 21300000, guid: 5153cd8637ce3af4191ec39bfd9f067e, type: 3}
+  towerDescription: 
   treeList:
   - towerID: 40
     overrideTowerName: 0
     towerName: Engineer's Factory
     towerIcon: {fileID: 21300000, guid: d2aa71e0d01182b48a728ffb4226f71e, type: 3}
     overrideSellCost: 0
-    sellCost: 225
+    sellCost: 0
     upgradeIcon: {fileID: 0}
-    upgradeCost: 400
+    upgradeCost: 0
     upgradeName: Better Conveyor Belts
     overrideDesc: 1
     upgradeDesc: Changes the tank into a Armored Desolite Tank that has an increased
@@ -37,9 +38,9 @@ MonoBehaviour:
     towerName: Lvl 2 Engineer's Factory
     towerIcon: {fileID: 0}
     overrideSellCost: 0
-    sellCost: 425
+    sellCost: 0
     upgradeIcon: {fileID: 21300000, guid: f5575c4a96bfb344d8547970923792c2, type: 3}
-    upgradeCost: 1200
+    upgradeCost: 0
     upgradeName: Gaurdians of the Factory
     overrideDesc: 1
     upgradeDesc: Allows the factory to spawn Portable Gaurdians within its range
@@ -51,9 +52,9 @@ MonoBehaviour:
     towerName: Lvl 3 Engineer's Factory
     towerIcon: {fileID: 0}
     overrideSellCost: 0
-    sellCost: 1025
+    sellCost: 0
     upgradeIcon: {fileID: 21300000, guid: df3fe60946792bc41b6fffc79a1d2f8a, type: 3}
-    upgradeCost: 2500
+    upgradeCost: 0
     upgradeName: Built To Withstand
     overrideDesc: 1
     upgradeDesc: Reduces the spawn interval of the Portable Gaurdians
@@ -64,7 +65,7 @@ MonoBehaviour:
     towerName: Lvl 4 Engineer's Factory
     towerIcon: {fileID: 0}
     overrideSellCost: 0
-    sellCost: 2275
+    sellCost: 0
     upgradeIcon: {fileID: 0}
     upgradeCost: 0
     upgradeName: 

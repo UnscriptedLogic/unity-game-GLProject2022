@@ -841,7 +841,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: -6004806168046530573}
+  faceDirection: 0
   health: 6
+  armor: 0
   movementSpeed: 1
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 1278209766786932308}

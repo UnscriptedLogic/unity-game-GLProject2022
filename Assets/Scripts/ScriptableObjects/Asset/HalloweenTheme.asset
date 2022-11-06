@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 135ab26e095160e41a9b12e1b1e2600c, type: 3}
+  m_Name: HalloweenTheme
+  m_EditorClassIdentifier: 
+  nodePrefab: {fileID: 4442036527919966514, guid: 2ffae48416a87c44a876e4d0d83451e1,
+    type: 3}
+  homePrefab: {fileID: 7482607861986099073, guid: 47e8cd61d182e4d43ae8579f82b0555c,
+    type: 3}
+  spawnPrefab: {fileID: 4142320509489033550, guid: bd377e4a30ee3d34e9cb4dc22248f3da,
+    type: 3}
+  floorPrefab: {fileID: 2428907169421101173, guid: 1d362b999f573714ea22aa3ebe8c9a01,
+    type: 3}
+  debriList:
+  - {fileID: 6764649111348463712, guid: 40576739b332b744080ccab6062e23b7, type: 3}
+  - {fileID: 5329647939776184198, guid: 50b2526f94b9bed439bada3d4cb743e1, type: 3}
+  - {fileID: 3582334324344510906, guid: 92c69aadc6624954b871d89b672e5675, type: 3}
+  - {fileID: 3582334324344510906, guid: 8c9188dce579d72408d7bf2728ce9fb3, type: 3}
+  - {fileID: 3582334324344510906, guid: 832f37848202c164fa952df22e5258f5, type: 3}
+  - {fileID: 7644472474777923634, guid: 1ddc61c70a50c0746b0482d748d20441, type: 3}
+  - {fileID: 945644087555667831, guid: 7be18fd6970a14e48ba0c336b3fc5d7b, type: 3}
+  - {fileID: 4561386777176522312, guid: c11364a8297c68e48997e778c09f681e, type: 3}
+  - {fileID: 919132149155446097, guid: 76be51c4654e44045b934c56ac49872d, type: 3}
+  - {fileID: 919132149155446097, guid: 6c986627530e9d44891540ccad0af29f, type: 3}
+  skyboxMat: {fileID: 2100000, guid: 47b7a45414f3b564e9e8349bfa18b29f, type: 2}

@@ -634,7 +634,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 83e9bfc3774f94a47a57755a8bc5091d, type: 2}
+  - {fileID: 2100000, guid: 86146cb9529f1204dab174581bab340d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -901,7 +901,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageFlash: {fileID: -6004806168046530573}
+  faceDirection: 0
   health: 200
+  armor: 0
   movementSpeed: 1
   waypointVerifyDistance: 0.05
   healthbar: {fileID: 1278209766786932308}

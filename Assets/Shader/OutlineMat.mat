@@ -40,9 +40,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _OVERLAY: 1
-    - _colorThreshold: 0.1
-    - _normalThreshold: 0.001
+    - _colorThreshold: 1.7
+    - _normalThreshold: 1.7
     m_Colors:
-    - _shaderOutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _shaderOutlineColor: {r: 0.335849, g: 0.335849, b: 0.335849, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

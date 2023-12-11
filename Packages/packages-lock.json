@@ -108,6 +108,15 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.inputsystem": {
+      "version": "1.7.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.uielements": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.mathematics": {
       "version": "1.2.6",
       "depth": 1,
@@ -213,6 +222,15 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "com.unscriptedlogic.unscriptedengine": {
+      "version": "https://github.com/UnscriptedLogic/unity-framework-UnscriptedEngine.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.inputsystem": "1.7.0"
+      },
+      "hash": "f171633a70da34ce9d3f29c0d85b3e4ff231f42b"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",

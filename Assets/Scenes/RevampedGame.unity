@@ -120,6 +120,74 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &355449159
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4137680742384520833, guid: b611d401d0a55754daf19e9b5ccc1635,
+        type: 3}
+      propertyPath: m_Name
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137680742384520837, guid: b611d401d0a55754daf19e9b5ccc1635,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137680742384520837, guid: b611d401d0a55754daf19e9b5ccc1635,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -79.076
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137680742384520837, guid: b611d401d0a55754daf19e9b5ccc1635,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137680742384520837, guid: b611d401d0a55754daf19e9b5ccc1635,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137680742384520837, guid: b611d401d0a55754daf19e9b5ccc1635,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137680742384520837, guid: b611d401d0a55754daf19e9b5ccc1635,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137680742384520837, guid: b611d401d0a55754daf19e9b5ccc1635,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137680742384520837, guid: b611d401d0a55754daf19e9b5ccc1635,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137680742384520837, guid: b611d401d0a55754daf19e9b5ccc1635,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137680742384520837, guid: b611d401d0a55754daf19e9b5ccc1635,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b611d401d0a55754daf19e9b5ccc1635, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +342,7 @@ MonoBehaviour:
     type: 3}
   gameInstance: {fileID: 1146424582312471352, guid: 10b4ab17a27717649ab6a00f08dfc4e9,
     type: 3}
+  gridSize: {x: 0, y: 0}
 --- !u!4 &420371171
 Transform:
   m_ObjectHideFlags: 0
@@ -467,7 +536,7 @@ GameObject:
   - component: {fileID: 1659121122}
   - component: {fileID: 1659121121}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1184,7 +1253,7 @@ ParticleSystem:
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
-    radiusThickness: 0.8
+    radiusThickness: 0.07
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
@@ -1267,7 +1336,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1000
+      value: 300
       mode: 0
       spread: 0
       speed:
@@ -5298,13 +5367,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659121120}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -400, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5314,3 +5383,4 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 1659121123}
   - {fileID: 420371171}
+  - {fileID: 355449159}

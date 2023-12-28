@@ -4,10 +4,14 @@ using UnscriptedEngine;
 
 public class C_TDPlayerController : UController
 {
+    [SerializeField] private UIC_GameHUD gameHUDPrefab;
+
     private GM_TowerDefenceGameMode levelManager;
     private P_TDPlayerPawn playerPawn;
     private InputActionMap defaultMap;
     private Vector2 mousePos;
+
+    private UIC_GameHUD gameHUD;
 
     protected override void OnLevelStarted()
     {
@@ -16,7 +20,9 @@ public class C_TDPlayerController : UController
         defaultMap = levelManager.InputContext.FindActionMap("Default");
 
         defaultMap.FindAction("MouseScroll").performed += C_TDPlayerController_performed;
-     
+
+        gameHUD = AttachUIWidget(gameHUDPrefab);
+
         base.OnLevelStarted();
     }
 
@@ -43,6 +49,8 @@ public class C_TDPlayerController : UController
     protected override void OnDestroy()
     {
         defaultMap.FindAction("MouseScroll").performed -= C_TDPlayerController_performed;
+
+        DettachUIWidget(gameHUD);
 
         base.OnDestroy();
     }

@@ -330,6 +330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 420371171}
   - component: {fileID: 420371170}
+  - component: {fileID: 420371172}
   m_Layer: 0
   m_Name: GM_TowerDefenceGameMode
   m_TagString: Untagged
@@ -349,7 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6a537f2c1e06e459aa5f023b80ae3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputContext: {fileID: -944628639613478452, guid: 4e5a17b3f5cce7c448f9361e1586fdda,
+  inputContext: {fileID: -944628639613478452, guid: 4c957105ddf844f4f9105ff0925c4391,
     type: 3}
   playerController: {fileID: 2542525994819955371, guid: d6928b5d0a8831944a86978b2bb57a2c,
     type: 3}
@@ -357,6 +358,34 @@ MonoBehaviour:
     type: 3}
   gameInstance: {fileID: 1146424582312471352, guid: 10b4ab17a27717649ab6a00f08dfc4e9,
     type: 3}
+  mapGenerator: {fileID: 420371172}
+--- !u!4 &420371171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420371169}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &420371172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420371169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc16e48d7cda21449cf8e835afcef07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   generateRandom: 1
   logCurrentSeed: 0
   seed: 0
@@ -409,21 +438,6 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   heatmapParent: {fileID: 0}
---- !u!4 &420371171
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420371169}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &591457390
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5012887055904622890}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5000004, y: -0, z: -0, w: 0.8660252}
-  m_LocalPosition: {x: 1.5, y: 36, z: -21}
+  m_LocalPosition: {x: 1.5, y: 15, z: -21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -184,6 +184,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panSpeed: 20
   smoothing: 0.5
-  bounds: {x: 20, y: 20}
+  bounds: {x: 10, y: 20}
   anchor: {fileID: 7249408081362507098}
   panningDetectionThickness: {x: 5, y: 5}
+  cameraTransform: {fileID: 5726847828621237488}
+  scrollSpeed: 2
+  scrollBounds: {x: 10, y: 30}

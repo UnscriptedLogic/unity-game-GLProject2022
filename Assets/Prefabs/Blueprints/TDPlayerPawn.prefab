@@ -187,6 +187,9 @@ MonoBehaviour:
   bounds: {x: 10, y: 20}
   anchor: {fileID: 7249408081362507098}
   panningDetectionThickness: {x: 5, y: 5}
+  nodeLayer:
+    serializedVersion: 2
+    m_Bits: 8
   cameraTransform: {fileID: 5726847828621237488}
   scrollSpeed: 2
   scrollBounds: {x: 10, y: 30}

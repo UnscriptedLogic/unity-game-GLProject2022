@@ -23,7 +23,6 @@ public class TowerBtn : UButtonComponent, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("hello");
         nameTMP.transform.DOLocalMoveX(125, 0.15f).SetEase(Ease.OutSine);
         nameTMP.transform.DOScale(1, 0.15f).SetEase(Ease.OutSine);
     }

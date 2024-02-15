@@ -206,7 +206,7 @@
       "dependencies": {
         "com.unity.inputsystem": "1.7.0"
       },
-      "hash": "7286bc37b3aa68d3792b7723340545a17d1a22bb"
+      "hash": "0874d66c60d5b015505458b7044db800af1dfed9"
     },
     "com.unscriptedlogic.unscriptedlogiclib": {
       "version": "https://github.com/UnscriptedLogic/unity-library-UnscriptedLogic.git",

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6417071997887996426}
   - component: {fileID: 2542525994819955371}
+  - component: {fileID: 8873113216515403469}
   m_Layer: 0
   m_Name: TDPlayerController
   m_TagString: Untagged
@@ -48,3 +49,15 @@ MonoBehaviour:
     type: 3}
   buildHUDPrefab: {fileID: 1415045400436635233, guid: 33ee324e1e8657d42b444e0acd69982d,
     type: 3}
+--- !u!114 &8873113216515403469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662405209192896816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f38db2ca74504749b591b8153af3395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

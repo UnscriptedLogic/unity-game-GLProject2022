@@ -19,14 +19,26 @@ public class C_TDPlayerController : UController
     {
         levelManager = GameMode.CastTo<GM_TowerDefenceGameMode>();
 
-        defaultMap = levelManager.InputContext.FindActionMap("Default");
+        defaultMap = GetDefaultInputMap();
 
         defaultMap.FindAction("MouseScroll").performed += C_TDPlayerController_performed;
 
         gameHUD = AttachUIWidget(gameHUDPrefab);
         buildHUD = AttachUIWidget(buildHUDPrefab);
+        buildHUD.OnBuildRequested += BuildHUD_OnBuildRequested;
 
         base.OnLevelStarted();
+    }
+
+    public override void OnDefaultLeftMouseDown()
+    {
+        base.OnDefaultLeftMouseDown();
+        playerPawn.ControllerLeftMouseDown();
+    }
+
+    private void BuildHUD_OnBuildRequested(object sender, OnBuildRequestedeventArgs args)
+    {
+        playerPawn.EnterBuildMode(args.index, args.towerSO);
     }
 
     private void C_TDPlayerController_performed(InputAction.CallbackContext obj)
@@ -52,6 +64,8 @@ public class C_TDPlayerController : UController
     protected override void OnDestroy()
     {
         defaultMap.FindAction("MouseScroll").performed -= C_TDPlayerController_performed;
+
+        buildHUD.OnBuildRequested -= BuildHUD_OnBuildRequested;
 
         DettachUIWidget(gameHUD);
         DettachUIWidget(buildHUD);

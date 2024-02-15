@@ -8,10 +8,11 @@ using Projectiles;
 using Core.Pooling;
 using Core.Grid;
 using System.Linq;
+using UnscriptedEngine.BuildHandlers;
 
 namespace Towers
 {
-    public class Tower : MonoBehaviour, IFocuseable, IAttackable
+    public class Tower : MonoBehaviour, IFocuseable, IAttackable, IBuildable
     {
         public enum TargettingMode
         {
@@ -208,6 +209,11 @@ namespace Towers
             {
                 ownedGridNode[i].isObstacle = false;
             }
+        }
+
+        public virtual void LocalPassBuildConditions<T>(T builder, out List<LocalBuildCondition> localBuildConditions)
+        {
+            localBuildConditions = new List<LocalBuildCondition>();
         }
     }
 }

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a7cf2a4e661a4459090ba1b01c2cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allTowerListSO: {fileID: 11400000, guid: 2aa8d0fabaf0be44a8c0705f332c45c2, type: 2}
   selectedTowers:
   - {fileID: 11400000, guid: 72fb9e926af9e274b9c71952010db997, type: 2}
   - {fileID: 11400000, guid: 7c12938d8db77604fbe7fb9447474e74, type: 2}

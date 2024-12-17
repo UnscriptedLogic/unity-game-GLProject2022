@@ -14,12 +14,12 @@ namespace Units
 
         [Space(10)]
         [SerializeField] private UnitAbility[] onDeathAbilities;
-
+        
         private UnitAbility selectedAbility;
         private float _interval;
         private bool called;
 
-        public override void InitializeEnemy(GridNode[] path, int position = 0)
+        public override void InitializeEnemy(Vector3[] path, int position = 0)
         {
             base.InitializeEnemy(path, position);
 

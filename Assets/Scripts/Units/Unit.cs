@@ -12,7 +12,7 @@ namespace Units
 {
     public class Unit : MonoBehaviour, IDamageable
     {
-        protected GridNode[] nodePath;
+        protected Vector3[] nodePath;
 
         [SerializeField] protected DamageFlash damageFlash;
         [SerializeField] protected bool faceDirection = false;
@@ -26,6 +26,11 @@ namespace Units
         [SerializeField] protected float waypointVerifyDistance = 0.05f;
         [SerializeField] protected WorldSpaceCustomSlider healthbar;
 
+        [Header("SFX")] 
+        [SerializeField] private AudioClip hitSFX;
+        [SerializeField] private AudioClip deathSFX;
+        [SerializeField] private AudioClip overArmoredSFX;
+        
         protected bool initialized;
         protected float currHealth;
         protected int waypointCounter = 0;
@@ -35,16 +40,16 @@ namespace Units
         public float MaxHealth => health;
         public float Armor { get => armor; set { armor = value; } }
         public float Speed { get => movementSpeed; set { movementSpeed = value; } }
-        public GridNode[] Path => nodePath;
+        public Vector3[] Path => nodePath;
 
         public Action<ModificationType, float> OnHealthModified;
         public Action<float> OnHealthDeducted;
         public Action OnHealthDepleted;
 
-        public virtual void InitializeEnemy(GridNode[] nodePath, int position = 0)
+        public virtual void InitializeEnemy(Vector3[] nodePath, int position = 0)
         {
             this.nodePath = nodePath;
-            transform.position = nodePath[position].Position;
+            transform.position = nodePath[position];
 
             waypointCounter = position;
             currHealth = health;
@@ -85,7 +90,7 @@ namespace Units
 
         protected Vector3 GetWaypoint(int index)
         {
-            Vector3 position = nodePath[index].NodeObject.transform.position;
+            Vector3 position = nodePath[index];
             position.y = transform.position.y;
             return position;
         }
@@ -105,6 +110,7 @@ namespace Units
                     if (amount < 0)
                     {
                         amount = 0;
+                        AudioManager.PlayAudio(AudioManager.AudioType.UNITS, overArmoredSFX, 0.025f, transform.position, true);
                     }
 
                     currHealth -= amount;
@@ -113,9 +119,13 @@ namespace Units
                     {
                         currHealth = 0f;
                         OnHealthDepleted?.Invoke();
+                        AudioManager.PlayAudio(AudioManager.AudioType.UNITS, deathSFX, 0.3f, transform.position, true);
                     }
                     else
+                    {
                         damageFlash.Flash();
+                        AudioManager.PlayAudio(AudioManager.AudioType.UNITS, hitSFX, 0.025f, transform.position, true);                        
+                    }
 
                     OnHealthDeducted?.Invoke(amount);
                     break;
@@ -145,7 +155,7 @@ namespace Units
         public void DestroyUnit()
         {
             PoolManager.instance.PushToPool(gameObject);
-            transform.position = nodePath[0].Position;
+            transform.position = nodePath[0];
             waypointCounter = 0;
         }
     }

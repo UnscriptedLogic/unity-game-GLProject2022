@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba06f6e002aff64cab2cd572d01249f, type: 3}
+  m_Name: DarkTheme
+  m_EditorClassIdentifier: 
+  debris:
+  - prefab: {fileID: 7644472474777923634, guid: 1ddc61c70a50c0746b0482d748d20441,
+      type: 3}
+    size: 1
+    heatmapRange: {x: -1, y: -1}
+    faceClosestPath: 0
+    mustContain: 12
+  - prefab: {fileID: 945644087555667831, guid: 7be18fd6970a14e48ba0c336b3fc5d7b, type: 3}
+    size: 1
+    heatmapRange: {x: -1, y: -1}
+    faceClosestPath: 0
+    mustContain: 12
+  - prefab: {fileID: 4561386777176522312, guid: c11364a8297c68e48997e778c09f681e,
+      type: 3}
+    size: 1
+    heatmapRange: {x: -1, y: -1}
+    faceClosestPath: 0
+    mustContain: 12
+  - prefab: {fileID: 6764649111348463712, guid: 40576739b332b744080ccab6062e23b7,
+      type: 3}
+    size: 1
+    heatmapRange: {x: -1, y: -1}
+    faceClosestPath: 0
+    mustContain: 12
+  - prefab: {fileID: 5329647939776184198, guid: 50b2526f94b9bed439bada3d4cb743e1,
+      type: 3}
+    size: 1
+    heatmapRange: {x: -1, y: -1}
+    faceClosestPath: 0
+    mustContain: 12

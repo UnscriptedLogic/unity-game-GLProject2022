@@ -20,6 +20,9 @@ namespace Towers
             {
                 attackBehaviour.Attack(projectile, spawnPoints[i], spreadSettings);
             }
+            
+            if (shootSFX != null)
+                AudioManager.PlayAudio(AudioManager.AudioType.TOWERS, shootSFX, 0.025f, transform.position, true);
         }
     }
 }

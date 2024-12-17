@@ -29,7 +29,7 @@ namespace Towers
         private bool initialized;
 
         private PoolManager poolManager;
-        private GridNode[] path;
+        private Vector3[] path;
 
 
         protected override void Update()
@@ -100,7 +100,7 @@ namespace Towers
             _turretInterval = 5f;
             List<GridNode> gridNodes = new List<GridNode>(path);
             gridNodes.Reverse();
-            this.path = gridNodes.ToArray();
+            // this.path = gridNodes.ToArray();
             initialized = true;
         }
     }

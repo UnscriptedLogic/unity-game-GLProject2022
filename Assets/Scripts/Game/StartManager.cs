@@ -60,8 +60,8 @@ namespace StartScreen
             {
                 MapLogic(gridNodes);
 
-                waveSpawner.Initialize(path);
-                waveSpawner.StartSpawner();
+                // waveSpawner.Initialize(path);
+                // waveSpawner.StartSpawner();
 
             });
 

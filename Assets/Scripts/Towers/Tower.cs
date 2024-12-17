@@ -8,11 +8,12 @@ using Projectiles;
 using Core.Pooling;
 using Core.Grid;
 using System.Linq;
+using UnscriptedEngine;
 using UnscriptedEngine.BuildHandlers;
 
 namespace Towers
 {
-    public class Tower : MonoBehaviour, IFocuseable, IAttackable, IBuildable
+    public class Tower : ULevelObject, IFocuseable, IAttackable, IBuildable, IInspectable
     {
         public enum TargettingMode
         {
@@ -43,6 +44,8 @@ namespace Towers
         protected Unit currentTarget;
         protected AttackBehaviour attackBehaviour;
 
+        protected GI_CustomGameInstance gameInstance;
+
         [Header("Others")]
         [SerializeField] protected GameObject projectilePrefab;
         [SerializeField] protected Transform shootAnchor;
@@ -50,6 +53,11 @@ namespace Towers
         [SerializeField] protected List<GridNode> ownedGridNode;
         [SerializeField] protected LayerMask unitLayer;
         [SerializeField] protected LayerMask wallLayer;
+        
+        [SerializeField] protected UIC_InspectWindow overrideInspectWindow;
+
+        [Header("Audio")] 
+        [SerializeField] protected AudioClip shootSFX;
 
         protected LookBehaviour lookBehaviour;
 
@@ -70,6 +78,8 @@ namespace Towers
         {
             lookBehaviour = new LookBehaviour();
             attackBehaviour = new AttackBehaviour(PoolManager.instance);
+            
+            gameInstance = GameMode.GameInstance.CastTo<GI_CustomGameInstance>();
         }
 
         protected virtual void FixedUpdate()
@@ -200,6 +210,9 @@ namespace Towers
         {
             ProjectileSettings settings = new ProjectileSettings(damage, projectileSpeed, projectileLifetime, piercingPercent);
             attackBehaviour.Attack(projectile, spawnpoint, settings);
+            
+            if (shootSFX != null)
+                AudioManager.PlayAudio(AudioManager.AudioType.TOWERS, shootSFX, 0.025f, transform.position, true);
         }
 
         public void RemoveSelf()
@@ -213,7 +226,21 @@ namespace Towers
 
         public virtual void LocalPassBuildConditions<T>(T builder, out List<LocalBuildCondition> localBuildConditions)
         {
-            localBuildConditions = new List<LocalBuildCondition>();
+            localBuildConditions = new List<LocalBuildCondition>()
+            {
+                new("Obstruction Check", ObstructionCheck, "Something is in the way", "Building placed"),
+            };
+        }
+
+        private bool ObstructionCheck(Vector3 position, Quaternion rotation)
+        {
+            Collider[] colliders = Physics.OverlapBox(position, transform.localScale / 2, rotation, GI_CustomGameInstance.DebriLayer);
+            return colliders.Length == 0;
+        }
+
+        public virtual void OnInspect()
+        {
+            
         }
     }
 }

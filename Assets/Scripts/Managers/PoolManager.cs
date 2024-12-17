@@ -123,6 +123,17 @@ namespace Core.Pooling
 
             pools[poolName].Enqueue(poolItem);
         }
+        
+        public void PushToPool(GameObject poolItem, float time)
+        {
+            StartCoroutine(PushToPoolCoroutine(poolItem, time));
+        }
+
+        private IEnumerator PushToPoolCoroutine(GameObject poolItem, float time)
+        {
+            yield return new WaitForSeconds(time);
+            PushToPool(poolItem);
+        }
 
         public void CreatePool(string poolName, GameObject item)
         {

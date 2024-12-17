@@ -20,6 +20,7 @@ public class C_TDPlayerController : UController
         levelManager = GameMode.CastTo<GM_TowerDefenceGameMode>();
 
         defaultMap = GetDefaultInputMap();
+        EnableInput(levelManager.InputContext);
 
         defaultMap.FindAction("MouseScroll").performed += C_TDPlayerController_performed;
 
@@ -28,6 +29,9 @@ public class C_TDPlayerController : UController
         buildHUD.OnBuildRequested += BuildHUD_OnBuildRequested;
 
         base.OnLevelStarted();
+        
+        PossessPawn(GameMode.GetPlayerPawn());
+        playerPawn = (P_TDPlayerPawn) possessedPawn;
     }
 
     public override void OnDefaultLeftMouseDown()
@@ -45,13 +49,7 @@ public class C_TDPlayerController : UController
     {
         playerPawn.ZoomCamera(obj.ReadValue<float>());
     }
-
-    protected override ULevelPawn PossessPawn()
-    {
-        playerPawn = levelManager.GetPlayerPawn().CastTo<P_TDPlayerPawn>();
-        return playerPawn;
-    }
-
+    
     private void Update()
     {
         if (playerPawn == null) return;

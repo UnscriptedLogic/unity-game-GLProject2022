@@ -25,12 +25,11 @@ namespace Game.Spawning
         [SerializeField] private float startDelay = 5f;
         [SerializeField] private int waveIndex;
         [SerializeField] private Transform spawnLocation;
-        [SerializeField] private Transform cam;
 
         private Wave currWave;
         private WaveSegment currSegment;
         private SpawnerStates currentState = SpawnerStates.Stopped;
-        private GridNode[] nodePath;
+        private Vector3[] nodePath;
 
         private float _interval;
         private int _spawnAmount;
@@ -46,7 +45,7 @@ namespace Game.Spawning
         public UnityEvent OnCompleted;
         public UnityEvent<float> OnUnitHealthDeducted;
 
-        public void Initialize(GridNode[] path)
+        public void Initialize(Vector3[] path)
         {
             nodePath = path;
         }

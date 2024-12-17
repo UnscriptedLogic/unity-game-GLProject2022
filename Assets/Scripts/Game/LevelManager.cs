@@ -327,8 +327,8 @@ namespace Game
                     waveSpawner.OnWaveStarted += uiManager.UpdateWaveCounter;
                     waveSpawner.OnWaveStarted += (curr, total) => currencyManager.ModifyCurrency(ModificationType.Add, waveIncome.AddWaveIncome(curr));
                     waveSpawner.OnWaveStarted += (curr, total) => { if (curr + 1 > GameManager.highestWave) GameManager.highestWave = curr + 1; };
-                    waveSpawner.Initialize(pathManager.Path);
-                    waveSpawner.StartSpawner();
+                    // waveSpawner.Initialize(pathManager.Path);
+                    // waveSpawner.StartSpawner();
 
                     playerKeybinds.Initialize(uiManager.TowerDialogue.UpgradeButton, uiManager.TowerDialogue.SellButton, uiManager.TowerButtonHolder);
                     OnGameStateChanged += playerKeybinds.UpdateGameState;

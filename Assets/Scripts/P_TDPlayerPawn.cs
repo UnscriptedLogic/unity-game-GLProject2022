@@ -1,6 +1,9 @@
 using Standalone;
 using System.Linq;
+using Core.Pooling;
+using Interfaces;
 using Towers;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnscriptedEngine;
@@ -18,17 +21,35 @@ public class P_TDPlayerPawn : URTSCamera, IBuilder<Tower, GameObject>
     [Header("Extension")]
     [SerializeField] private Vector2 panningDetectionThickness = new Vector2(5, 5);
     [SerializeField] private LayerMask nodeLayer;
+    [SerializeField] private LayerMask debriLayer;
 
-    [Header("Scrolling")]
-    [SerializeField] private Transform cameraTransform;
+    [Header("Scrolling")] 
+    [SerializeField] private CinemachineCameraOffset camOffset;
     [SerializeField] private float scrollSpeed = 1f;
     [SerializeField] private Vector2 scrollBounds;
+    private Transform cameraTransform;
+
+    [Header("Building")] 
+    [SerializeField] private RangeVisualizer rangeVisualizer;
+    [SerializeField] private Material[] buildingMaterials;
+
+    [Header("Inspection")] 
+    [SerializeField] private UIC_InspectWindow inspectWindowPrefab;
+    
+    private UIC_InspectWindow inspectWindow;
+
+    [Header("Audio")] 
+    [SerializeField] private AudioClip towerBuildSFX;
+    
+    private Material canPlaceMaterial => buildingMaterials[0];
+    private Material cannotPlaceMaterial => buildingMaterials[1];
 
     private PlayerState currentState;
     private GameObject previewObject;
     private int towerIndex;
     private Vector3 hitPosition;
     private bool isOverUI;
+    private Vector3 previousProposedPosition;
 
     private BuildHandlerSimple<Tower, GameObject, P_TDPlayerPawn> buildHandler;
 
@@ -51,7 +72,8 @@ public class P_TDPlayerPawn : URTSCamera, IBuilder<Tower, GameObject>
     {
         base.Awake();
 
-        cam = GetComponentInChildren<Camera>();
+        cam = Camera.main;
+        cameraTransform = cam.transform;
         buildHandler = new BuildHandlerSimple<Tower, GameObject, P_TDPlayerPawn>(this, buildableContainers.ToList());
     }
 
@@ -62,6 +84,12 @@ public class P_TDPlayerPawn : URTSCamera, IBuilder<Tower, GameObject>
             case PlayerState.Normal:
                 break;
             case PlayerState.Building:
+                
+                if (inspectWindow != null)
+                {
+                    DettachUIWidget(inspectWindow);
+                }
+                
                 break;
             case PlayerState.Deleting:
                 break;
@@ -85,6 +113,37 @@ public class P_TDPlayerPawn : URTSCamera, IBuilder<Tower, GameObject>
                     previewObject.transform.position = hitPosition;
                 }
                 
+                if (previousProposedPosition != hitPosition)
+                {
+                    previousProposedPosition = hitPosition;
+                    buildHandler.AdminConditionCheck(previewObject.GetComponent<Tower>(), out BuildResult adminBuildResult);
+                    buildHandler.LocalConditionCheck(previewObject.GetComponent<Tower>(), hitPosition, Quaternion.identity, out BuildResult localBuildResult);
+                    
+                    void SetMaterial(Material material)
+                    {
+                        MeshRenderer[] meshRenderers = previewObject.GetComponentsInChildren<MeshRenderer>();
+                        for (int i = 0; i < meshRenderers.Length; i++)
+                        {
+                            Material[] materials = meshRenderers[i].materials;
+                            for (int j = 0; j < materials.Length; j++)
+                            {
+                                materials[j] = material;
+                            }
+                            
+                            meshRenderers[i].materials = materials;
+                        }
+                    }
+                    
+                    if (adminBuildResult.Passed && localBuildResult.Passed)
+                    {
+                        SetMaterial(canPlaceMaterial);
+                    }
+                    else
+                    {
+                        SetMaterial(cannotPlaceMaterial);
+                    }
+                }
+                
                 break;
             case PlayerState.Deleting:
                 break;
@@ -100,7 +159,6 @@ public class P_TDPlayerPawn : URTSCamera, IBuilder<Tower, GameObject>
             case PlayerState.Normal:
                 break;
             case PlayerState.Building:
-                Debug.Log("Hello");
                 Destroy(previewObject);
                 break;
             case PlayerState.Deleting:
@@ -123,6 +181,13 @@ public class P_TDPlayerPawn : URTSCamera, IBuilder<Tower, GameObject>
      
         towerIndex = index;
         previewObject = Instantiate(towerSO.BaseTower);
+        
+        Tower tower = previewObject.GetComponent<Tower>();
+        tower.enabled = false;
+
+        RangeVisualizer visualizer = PoolManager.instance.PullFromPool(rangeVisualizer.gameObject).GetComponent<RangeVisualizer>();
+        visualizer.transform.SetParent(previewObject.transform);
+        visualizer.ShowRange(tower.Range);
     }
 
     public void ControllerLeftMouseDown()
@@ -132,6 +197,25 @@ public class P_TDPlayerPawn : URTSCamera, IBuilder<Tower, GameObject>
         switch (currentState)
         {
             case PlayerState.Normal:
+                
+                if (inspectWindow != null)
+                {
+                    DettachUIWidget(inspectWindow);
+                }
+                
+                // Raycast to check if we hit an inspectable object
+                if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 1000f))
+                {
+                    IInspectable inspectable = hit.transform.GetComponent<IInspectable>();
+                    if (inspectable != null)
+                    {
+                        inspectable.OnInspect();
+                        
+                        inspectWindow = AttachUIWidget(inspectWindowPrefab);
+                        inspectWindow.SetInspectable(inspectable);
+                    }
+                }
+                
                 break;
             case PlayerState.Building:
                 buildHandler.Build(towerIndex, hitPosition, Quaternion.identity, OnConditionResult);
@@ -175,13 +259,7 @@ public class P_TDPlayerPawn : URTSCamera, IBuilder<Tower, GameObject>
 
     public void ZoomCamera(float value)
     {
-        Vector3 prevPos = cameraTransform.position;
-        cameraTransform.Translate(cameraTransform.forward * value * (scrollSpeed * 100f) * Time.deltaTime, Space.World);
-
-        if (cameraTransform.position.y <= scrollBounds.x || cameraTransform.position.y >= scrollBounds.y)
-        {
-            cameraTransform.position = prevPos;
-        }
+        camOffset.Offset.z += value * (scrollSpeed * 100f) * Time.deltaTime;
     }
 
     public Tower WhenGetBuildable(GameObject buildableObject)
@@ -199,6 +277,12 @@ public class P_TDPlayerPawn : URTSCamera, IBuilder<Tower, GameObject>
         if (!buildResult.Passed)
         {
             Debug.Log(buildResult.Description);
+        }
+        else
+        {
+            SwitchState(PlayerState.Normal);
+            
+            AudioManager.PlayAudio(AudioManager.AudioType.TOWERS, towerBuildSFX, 1f, hitPosition);
         }
     }
 }

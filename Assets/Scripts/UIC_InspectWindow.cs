@@ -7,7 +7,6 @@ using UnscriptedEngine;
 
 public class UIC_InspectWindow : UCanvasController
 {
-    [SerializeField] private Image icon;
     private UTextComponent objectName;
 
     private GI_CustomGameInstance gameInstance;
@@ -33,7 +32,6 @@ public class UIC_InspectWindow : UCanvasController
     {
         TowerDetails towerDetails = gameInstance.AllTowerListSO.GetTowerDetail(tower.ID);
         
-        icon.sprite = towerDetails.Icon;
         objectName.TMP.text = towerDetails.Name;
     }
 }
